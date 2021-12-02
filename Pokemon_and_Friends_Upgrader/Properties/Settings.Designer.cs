@@ -73,7 +73,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("501")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public string FirstPokemonNr {
             get {
                 return ((string)(this["FirstPokemonNr"]));
@@ -85,7 +85,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("750")]
+        [global::System.Configuration.DefaultSettingValueAttribute("898")]
         public string LastPokemonNr {
             get {
                 return ((string)(this["LastPokemonNr"]));
@@ -260,6 +260,174 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
             }
             set {
                 this["Masterball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("files\\LoadingScreen.png")]
+        public string LoadingScreenPath {
+            get {
+                return ((string)(this["LoadingScreenPath"]));
+            }
+            set {
+                this["LoadingScreenPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("files\\shinyblue.png")]
+        public string ShinyScreenPath {
+            get {
+                return ((string)(this["ShinyScreenPath"]));
+            }
+            set {
+                this["ShinyScreenPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Challenger Approaches.mp3")]
+        public string LoadingSoundPath {
+            get {
+                return ((string)(this["LoadingSoundPath"]));
+            }
+            set {
+                this["LoadingSoundPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("chrizzz_1508")]
+        public string StreamerName {
+            get {
+                return ((string)(this["StreamerName"]));
+            }
+            set {
+                this["StreamerName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseSummon {
+            get {
+                return ((int)(this["UseSummon"]));
+            }
+            set {
+                this["UseSummon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MyPokemonWebhook {
+            get {
+                return ((string)(this["MyPokemonWebhook"]));
+            }
+            set {
+                this["MyPokemonWebhook"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("PokemonBot")]
+        public string MyPokemonUser {
+            get {
+                return ((string)(this["MyPokemonUser"]));
+            }
+            set {
+                this["MyPokemonUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UsePriorityThrow {
+            get {
+                return ((int)(this["UsePriorityThrow"]));
+            }
+            set {
+                this["UsePriorityThrow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseBonusTime {
+            get {
+                return ((int)(this["UseBonusTime"]));
+            }
+            set {
+                this["UseBonusTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("300000")]
+        public string BonusTime {
+            get {
+                return ((string)(this["BonusTime"]));
+            }
+            set {
+                this["BonusTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseThrowOvertime {
+            get {
+                return ((int)(this["UseThrowOvertime"]));
+            }
+            set {
+                this["UseThrowOvertime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseThrowMessage {
+            get {
+                return ((int)(this["UseThrowMessage"]));
+            }
+            set {
+                this["UseThrowMessage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int UseSeperateWebhook {
+            get {
+                return ((int)(this["UseSeperateWebhook"]));
+            }
+            set {
+                this["UseSeperateWebhook"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseRefundMessage {
+            get {
+                return ((int)(this["UseRefundMessage"]));
+            }
+            set {
+                this["UseRefundMessage"] = value;
             }
         }
     }

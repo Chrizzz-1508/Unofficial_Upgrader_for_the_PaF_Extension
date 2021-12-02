@@ -15,10 +15,10 @@
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="FirstPokemonNr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">501</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="LastPokemonNr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">750</Value>
+      <Value Profile="(Default)">898</Value>
     </Setting>
     <Setting Name="ShinyPercentage" Type="System.String" Scope="User">
       <Value Profile="(Default)">10</Value>
@@ -60,6 +60,48 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Masterball" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LoadingScreenPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">files\LoadingScreen.png</Value>
+    </Setting>
+    <Setting Name="ShinyScreenPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">files\shinyblue.png</Value>
+    </Setting>
+    <Setting Name="LoadingSoundPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Challenger Approaches.mp3</Value>
+    </Setting>
+    <Setting Name="StreamerName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">chrizzz_1508</Value>
+    </Setting>
+    <Setting Name="UseSummon" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="MyPokemonWebhook" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MyPokemonUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PokemonBot</Value>
+    </Setting>
+    <Setting Name="UsePriorityThrow" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="UseBonusTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="BonusTime" Type="System.String" Scope="User">
+      <Value Profile="(Default)">300000</Value>
+    </Setting>
+    <Setting Name="UseThrowOvertime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="UseThrowMessage" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="UseSeperateWebhook" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="UseRefundMessage" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
