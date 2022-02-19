@@ -20,7 +20,7 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void frmSelectLoadingSound_Load(object sender, EventArgs e)
         {
-            DirectoryInfo df = new DirectoryInfo("files");
+            DirectoryInfo df = new DirectoryInfo("files\\loadingsounds");
             foreach(FileInfo f in df.GetFiles())
             {
                 if (f.Name.Contains(".mp3"))
@@ -54,9 +54,9 @@ namespace Pokemon_and_Friends_Upgrader
         {
             MP3 m = ((MP3)lbSound.SelectedItem);
             txt.Text = m.sName;
-            if(!File.Exists(@"files\" + m.sName))
+            if(!File.Exists(@"files\loadingsounds\" + m.sName))
             {
-                File.Copy(m.sPath, @"files\" + m.sName, false);
+                File.Copy(m.sPath, @"files\loadingsounds\" + m.sName, false);
             }
             this.Close();
         }

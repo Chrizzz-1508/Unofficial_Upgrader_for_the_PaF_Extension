@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,13 +18,7 @@ namespace Pokemon_and_Friends_Upgrader
 {
     public partial class frmMain : Form
     {
-        
-        //SoundPlayer(@"c:\Windows\Media\chimes.wav");
-        //transparent shiny wallpaper
-        //dev channel dc
-        //paf category
-        //host / raid abuse bonus time
-        //shiny 100% 30s
+        public volatile string sPath = "";
 
         string sLoadingScreenPath;
         string sShinyScreenPath;
@@ -33,425 +28,768 @@ namespace Pokemon_and_Friends_Upgrader
             InitializeComponent();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            initializeCBs();
-            initializeToolTips();
-            LoadValues();
-            LoadSources();
-            //btnHelp_Click(null, null);
-        }
-
-        private void initializeCBs()
-        {
-            cbLanguage.SelectedIndex = 0;
-            cbUseBreakout.SelectedIndex = 0;
-            cbUseDiscord.SelectedIndex = 0;
-            cbUseLoadingScreen.SelectedIndex = 0;
-            cbUseSpawnMusic.SelectedIndex = 0;
-            cbMasterball.SelectedIndex = 0;
-            cbUseGift.SelectedIndex = 0;
-        }
-
-        private void initializeToolTips()
-        {
-            TTExplanation.IsBalloon = true;
-            TTExplanation.SetToolTip(lblBoard, "Select your LioranBoard Receiver(PC) Folder and let the Upgrader grab the correct board");
-            TTExplanation.SetToolTip(lblLanguage, "Select your Language");
-            TTExplanation.SetToolTip(lblRunMin, "Pokemon starts with 0% escape rate. \nEverytime it breaks out, this is the minimum rate it can increase");
-            TTExplanation.SetToolTip(lblRunMax, "Pokemon starts with 0% escape rate. \nEverytime it breaks out, this is the maximum rate it can increase");
-            TTExplanation.SetToolTip(lblFirstPokemon, "First Pokemon number that can appear");
-            TTExplanation.SetToolTip(lblLastPokemon, "Last Pokemon number that can appear");
-            TTExplanation.SetToolTip(lblShinyChance, "Shiny Chance in %");
-            TTExplanation.SetToolTip(lblSpawnTimer, "Time until a new pokemon spawns \nin miliseconds (300000 = 5min)");
-            TTExplanation.SetToolTip(lblRunTimer, "Time until the current pokemon runs away when no \none throws a ball in miliseconds (180000 = 3min). Throws reset this timer");
-            TTExplanation.SetToolTip(lblGreatballTimer, "Time in miliseconds until the ball upgrades \nto a greatball. Only rises when a ball is available. (30000 = 30s)");
-            TTExplanation.SetToolTip(lblUltraballTimer, "Time in miliseconds until the ball upgrades \nto a ultraball. Only rises when a ball is available. (60000 = 60s)");
-            TTExplanation.SetToolTip(lblUseLoadingscreen, "Use a 5s loadingscreen before the pokemon \nspawns so that everyone can prepare themselves");
-            TTExplanation.SetToolTip(lblUseMasterball, "Enable an expensive masterball for 100% catches");
-            TTExplanation.SetToolTip(lblUseSpawnMusic, "Use a spawn music before the pokemon \nspawns so that everyone can prepare themselves");
-            TTExplanation.SetToolTip(lblUseBreakout, "Shows when a pokemon breaks out in the chat. \nFor example: Oh no the wild Mew broke out");
-            TTExplanation.SetToolTip(lblUseBreakout, "This sends a message to your discord whenever \nsomeone catches a pokemon. You need to install the Discord Webhook extension for LB first. \nYou can grab it from the LB discord in the releases channel");
-            TTExplanation.SetToolTip(lblWebhookURL, "Webhook URL for the Discord Webhook (Serversettings => Integration => Webhooks)");
-            TTExplanation.SetToolTip(lblWebhookUser, "Webhook User for the Discord Webhook (Serversettings => Integration => Webhooks)");
-            TTExplanation.SetToolTip(lblCatchRate, "The higher you set this, the easier the viewers can catch the pokemon. \n1 out of (floor((300-poke_api_catch_rate_real)/Catch_Rate)) chance - 1 per ball");
-            TTExplanation.SetToolTip(lblGift, "Enables the channel point reward \"Give a gift\"\n which lets the viewer reduce the runaway chance of the current pokemon");
-            TTExplanation.SetToolTip(lblStreamer, "Enter the name of the streamer.\nUsed for Priority Catch feature.");
-            TTExplanation.SetToolTip(lblMaxPokemon, "This is used for the message:\nYou have caught x/<Max Amount> pokemon");
-            TTExplanation.SetToolTip(lblUseSummon, "Enables the channel point reward \"Summon Pokemon\"\nViewers can summon a Pokemon of their choice with this.");
-            TTExplanation.SetToolTip(lblPriorityThrow, "When a user summons a Pokemon with the Mystery Reward,\nhe will throw a free random ball if he doesn't have it yet.");
-            TTExplanation.SetToolTip(lblUseOvertime, "When a user throws a ball, the other users will have\nthe chance to add balls into the queue for 2s. These balls\nwill be emptied until the pokemon gets caught or runs away.\nAfter that, everything in the queue gets refunded.");
-            TTExplanation.SetToolTip(lblThrowMessage, "Shows who throws the current ball in chat.\nOnly works when the Overtime command is enabled.");
-            TTExplanation.SetToolTip(lblBonusTime, "Enables the bonus time feature. This feature is triggered by\n!bonustime, hosts and raids and increases the spawn-, shiny- and catchrate for X min");
-            TTExplanation.SetToolTip(lblUseBonusTime, "This sets the value of how long the bonus time will last in ms (300000 = 5min)");
-            TTExplanation.SetToolTip(lblDiscord, "Enables the discord extension");
-            TTExplanation.SetToolTip(lblUseSeparateWebhook, "Enable this if you want to use 2 webhooks to post into 2 different channels.\nOne for the catches, the other one for the !mypokemon command");
-            TTExplanation.SetToolTip(lblMYPWebhook, "Used as separate Webhook URL for the !mypokemon command");
-            TTExplanation.SetToolTip(lblMYPUser, "Used as separate Webhook User for the !mypokemon command");
-            TTExplanation.SetToolTip(lblLoadingScreen, "This lets you change the Loading Screen picture");
-            TTExplanation.SetToolTip(lblLoadingSound, "This lets you change the Loading Screen sound");
-            TTExplanation.SetToolTip(lblShinyWallpaper, "This lets you change the Shiny Wallpaper");
-            TTExplanation.SetToolTip(lblRefundMessage, "Shows when points are refunded at the end of the queue.");
-        }
-
-        private void cbUseDiscord_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbUseDiscord.SelectedIndex == 0)
-            {
-                txtWebhookURL.Enabled = true;
-                txtWebhookUser.Enabled = true;
-                txtMyPokemonUser.Enabled = true;
-                txtMyPokemonWebhook.Enabled = true;
-            }
-            else
-            {
-                txtWebhookURL.Enabled = false;
-                txtWebhookUser.Enabled = false;
-                txtMyPokemonUser.Enabled = false;
-                txtMyPokemonWebhook.Enabled = false;
-            }
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog of = new FolderBrowserDialog();
-            of.Description = "Please select the LioranBoard Receiver(PC) Folder";
-            if (of.ShowDialog() == DialogResult.OK)
+            try
             {
-                try
-                {
-                    DirectoryInfo df = new DirectoryInfo(of.SelectedPath);
-                    List<string> lsFoundConfigs = new List<string>();
-                    foreach (FileInfo f in df.GetFiles())
-                    {
-                        if (f.Name.EndsWith(".ini") && f.Name.StartsWith("configs") && !f.Name.Contains("backup"))
-                        {
-                            lsFoundConfigs.Add(f.FullName);
-                        }
-                    }
-                    for (int i = 0; i < lsFoundConfigs.Count; i++)
-                    {
-                        StreamReader srConfig = new StreamReader(lsFoundConfigs[i]);
-                        string sTemp = srConfig.ReadToEnd();
-                        srConfig.Close();
-                        if ((sTemp.Contains("!poke-install") && sTemp.Contains("Install WaldoAndFriends Pokemon Game")))
-                        {
-                            if (DialogResult.Yes == MessageBox.Show("The file " + lsFoundConfigs[i] + " seems to be the original Pokemon Board File. Use it now?", "Use file?", MessageBoxButtons.YesNo))
-                            {
-                                txtBoardLocation.Text = lsFoundConfigs[i];
-                                return;
-                            }
-                        }
-                        else if (sTemp.ToLowerInvariant().Contains("poke_chrizzz"))
-                        {
-                            if (DialogResult.Yes == MessageBox.Show("The file " + lsFoundConfigs[i] + " seems to be the modified Pokemon Board File. Use it now?", "Use file?", MessageBoxButtons.YesNo))
-                            {
-                                txtBoardLocation.Text = lsFoundConfigs[i];
-                                return;
-                            }
-                        }
-                    }
+                FolderBrowserDialog fb = new FolderBrowserDialog();
+                fb.Description = "Select your LB2 folder\nIt should contain the LioranBoard 2.0.exe";
 
-                    foreach(DirectoryInfo d in df.GetDirectories())
-                    {
-                        if (d.Name == "LioranBoard Receiver(PC)")
-                        {
-                            foreach (FileInfo f in d.GetFiles())
-                            {
-                                if (f.Name.EndsWith(".ini") && f.Name.StartsWith("configs") && !f.Name.Contains("backup"))
-                                {
-                                    lsFoundConfigs.Add(f.FullName);
-                                }
-                            }
-                            for (int i = 0; i < lsFoundConfigs.Count; i++)
-                            {
-                                StreamReader srConfig = new StreamReader(lsFoundConfigs[i]);
-                                string sTemp = srConfig.ReadToEnd();
-                                srConfig.Close();
-                                if ((sTemp.Contains("!poke-install") && sTemp.Contains("Install WaldoAndFriends Pokemon Game")))
-                                {
-                                    if (DialogResult.Yes == MessageBox.Show("The file " + lsFoundConfigs[i] + " seems to be the original Pokemon Board File. Use it now?", "Use file?", MessageBoxButtons.YesNo))
-                                    {
-                                        txtBoardLocation.Text = lsFoundConfigs[i];
-                                        return;
-                                    }
-                                }
-                                else if (sTemp.ToLowerInvariant().Contains("poke_chrizzz"))
-                                {
-                                    if (DialogResult.Yes == MessageBox.Show("The file " + lsFoundConfigs[i] + " seems to be the modified Pokemon Board File. Use it now?", "Use file?", MessageBoxButtons.YesNo))
-                                    {
-                                        txtBoardLocation.Text = lsFoundConfigs[i];
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    MessageBox.Show("No file with the correct structure was found in this folder!");
-                }
-                
-                catch(Exception ex)
+                if (fb.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("Can't access the file. Please close the .ini File and Lioaran Board first." + ex.ToString());
+                    if (!Directory.Exists(fb.SelectedPath + "\\transmitter") || !File.Exists(fb.SelectedPath + "\\LioranBoard 2.0.exe"))
+                    {
+                        MessageBox.Show("Unfortunately this is not the LB2 folder.\nThe LB2 folder contains a transmitter folder and the Lioranboard 2.0.exe.\nPlease select the correct folder.");
+                        btnSearch_Click(null,null);
+                    }
+                    else
+                    {
+                        if (!Directory.Exists(fb.SelectedPath + "\\Pokemon and Friends")) Directory.CreateDirectory(fb.SelectedPath + "\\Pokemon and Friends");
+                        txtLB2.Text = fb.SelectedPath;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't access the file. Please close the .ini File and Lioaran Board first." + ex.ToString());
+            }
+            
         }
+        private void CopyFiles()
+        {
+            string sPAFPath = txtLB2.Text + @"\Pokemon and Friends";            
 
+            if (!Directory.Exists(sPAFPath + @"\backup")) Directory.CreateDirectory(sPAFPath + @"\backup");
+            if (!Directory.Exists(sPAFPath + @"\database")) Directory.CreateDirectory(sPAFPath + @"\database");
+            if (!Directory.Exists(sPAFPath + @"\sources")) Directory.CreateDirectory(sPAFPath + @"\sources");
+            if (!Directory.Exists(sPAFPath + @"\trainers")) Directory.CreateDirectory(sPAFPath + @"\trainers");
+            if (!Directory.Exists(sPAFPath + @"\wallpaper")) Directory.CreateDirectory(sPAFPath + @"\wallpaper");
+            if (!Directory.Exists(sPAFPath + @"\hdsprites240\normal")) Directory.CreateDirectory(sPAFPath + @"\hdsprites240\normal");
+            if (!Directory.Exists(sPAFPath + @"\hdsprites240\shiny")) Directory.CreateDirectory(sPAFPath + @"\hdsprites240\shiny");
+            if (!Directory.Exists(sPAFPath + @"\hdsprites240\normalgif")) Directory.CreateDirectory(sPAFPath + @"\hdsprites240\normalgif");
+            if (!Directory.Exists(sPAFPath + @"\hdsprites240\shinygif")) Directory.CreateDirectory(sPAFPath + @"\hdsprites240\shinygif");
+            if (!Directory.Exists(sPAFPath + @"\hdsprites512\normal")) Directory.CreateDirectory(sPAFPath + @"\hdsprites512\normal");
+            if (!Directory.Exists(sPAFPath + @"\hdsprites512\shiny")) Directory.CreateDirectory(sPAFPath + @"\hdsprites512\shiny");
+
+            //Copy Database
+            DirectoryInfo diDatabase = new DirectoryInfo(@"files\database");
+            foreach (FileInfo f in diDatabase.GetFiles())
+            {
+                string fptarget = sPAFPath + @"\database\" + f.Name;
+                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+            }
+
+            //Copy Trainers
+            DirectoryInfo diTrainers = new DirectoryInfo(@"files\trainers");
+            foreach (FileInfo f in diTrainers.GetFiles())
+            {
+                string fptarget = sPAFPath + @"\trainers\" + f.Name;
+                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+            }
+
+            //Copy Wallpapers
+            DirectoryInfo diWallpapers = new DirectoryInfo(@"files\wallpaper");
+            foreach (FileInfo f in diWallpapers.GetFiles())
+            {
+                string fptarget = sPAFPath + @"\wallpaper\" + f.Name;
+                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+            }
+
+            //Copy Pokemon240PNG
+            DirectoryInfo diPokemonPNG240Normal = new DirectoryInfo(@"files\hdsprites240\normal");
+            foreach (FileInfo f in diPokemonPNG240Normal.GetFiles())
+            {
+                string fptarget = sPAFPath + @"\hdsprites240\normal\" + f.Name;
+                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+            }
+
+            DirectoryInfo diPokemonPNG240Shiny = new DirectoryInfo(@"files\hdsprites240\shiny");
+            foreach (FileInfo f in diPokemonPNG240Shiny.GetFiles())
+            {
+                string fptarget = sPAFPath + @"\hdsprites240\shiny\" + f.Name;
+                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+            }
+
+            //Copy Pokemon512PNG
+            DirectoryInfo diPokemonPNG512Normal = new DirectoryInfo(@"files\hdsprites512\normal");
+            foreach (FileInfo f in diPokemonPNG512Normal.GetFiles())
+            {
+                string fptarget = sPAFPath + @"\hdsprites512\normal\" + f.Name;
+                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+            }
+
+            DirectoryInfo diPokemonPNG512Shiny = new DirectoryInfo(@"files\hdsprites512\shiny");
+            foreach (FileInfo f in diPokemonPNG512Shiny.GetFiles())
+            {
+                string fptarget = sPAFPath + @"\hdsprites512\shiny\" + f.Name;
+                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+            }
+
+            //Copy Other Stuff
+            string ftSourceTargetPath = sPAFPath + @"\sources\";
+
+            if (!File.Exists(ftSourceTargetPath + @"pokeball.png")) File.Copy(@"files\sources\pokeball.png", ftSourceTargetPath + @"pokeball.png");
+            if (!File.Exists(ftSourceTargetPath + @"greatball.png")) File.Copy(@"files\sources\greatball.png", ftSourceTargetPath + @"greatball.png");
+            if (!File.Exists(ftSourceTargetPath + @"ultraball.png")) File.Copy(@"files\sources\ultraball.png", ftSourceTargetPath + @"ultraball.png");
+            if (!File.Exists(ftSourceTargetPath + @"masterball.png")) File.Copy(@"files\sources\masterball.png", ftSourceTargetPath + @"masterball.png");
+            if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper.png")) File.Copy(@"files\sources\PokedexWallpaper.png", ftSourceTargetPath + @"PokedexWallpaper.png");
+            if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper720.png")) File.Copy(@"files\sources\PokedexWallpaper720.png", ftSourceTargetPath + @"PokedexWallpaper720.png");
+            if (!File.Exists(ftSourceTargetPath + @"pokemon_wallpaper.png")) File.Copy(@"files\sources\pokemon_wallpaper.png", ftSourceTargetPath + @"pokemon_wallpaper.png");
+
+            if (!File.Exists(ftSourceTargetPath + @"Pokemon_Loading_Animation.webm")) File.Copy(@"files\loadinganimations\Pokemon_Loading_Animation.webm", ftSourceTargetPath + @"Pokemon_Loading_Animation.webm");
+            if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_POOF.wav")) File.Copy(@"files\sources\SFX_BALL_POOF.wav", ftSourceTargetPath + @"SFX_BALL_POOF.wav");
+            if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_TOSS.wav")) File.Copy(@"files\sources\SFX_BALL_TOSS.wav", ftSourceTargetPath + @"SFX_BALL_TOSS.wav");
+            if (!File.Exists(ftSourceTargetPath + @"SFX_CAUGHT_MON.wav")) File.Copy(@"files\sources\SFX_CAUGHT_MON.wav", ftSourceTargetPath + @"SFX_CAUGHT_MON.wav");
+            if (!File.Exists(ftSourceTargetPath + @"SFX_RUN.wav")) File.Copy(@"files\sources\SFX_RUN.wav", ftSourceTargetPath + @"SFX_RUN.wav");
+            File.Copy(sLoadingScreenPath, ftSourceTargetPath + @"LoadingScreen.png", true);
+            File.Copy(sShinyScreenPath, ftSourceTargetPath + @"shiny.png", true);
+            File.Copy(@"files\loadingsounds\" + txtLoadingSound.Text, ftSourceTargetPath + @"Challenger Approaches.mp3", true);
+
+            //Copy GIF Files
+
+            DirectoryInfo diPokemonGIF240Normal = new DirectoryInfo(@"files\hdsprites240\normalgif");
+            foreach (FileInfo f in diPokemonGIF240Normal.GetFiles())
+            {
+                string fptarget = sPAFPath + @"\hdsprites240\normalgif\" + f.Name;
+                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+            }
+
+            DirectoryInfo diPokemonGIF240Shiny = new DirectoryInfo(@"files\hdsprites240\shinygif");
+            foreach (FileInfo f in diPokemonGIF240Shiny.GetFiles())
+            {
+                string fptarget = sPAFPath + @"\hdsprites240\shinygif\" + f.Name;
+                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+            }         
+        }
+        private void CreateLB2Extension()
+        {
+            StreamReader sr = new StreamReader(@"files\PaF_Unconverted");
+            string sOutput = sr.ReadToEnd();
+            sr.Close();
+
+            string VAR_LANGUAGE_VAR = "en";
+            switch(cbLanguage.SelectedIndex)
+            {
+                case 1:
+                    VAR_LANGUAGE_VAR = "de";
+                    break;
+                case 2:
+                    VAR_LANGUAGE_VAR = "fr";
+                    break;
+                default:
+                    break;
+            }
+
+            string VAR_USE_NON_AFFILIATE_VAR = "true";
+            if (cbAffiliate.SelectedIndex == 1) VAR_USE_NON_AFFILIATE_VAR = "false";
+
+            string VAR_USE_IGNORE_LB_VAR = "true";
+            if (cbLeaderboard.SelectedIndex == 1) VAR_USE_IGNORE_LB_VAR = "false";
+
+            string VAR_USE_GIFS_VAR = "true";
+            if (cbUseGIFS.SelectedIndex == 1) VAR_USE_GIFS_VAR = "false";
+
+            string VAR_USE_SPAWNCHANCE_VAR = "true";
+            if (cbRandomSpawn.SelectedIndex == 1) VAR_USE_SPAWNCHANCE_VAR = "false";
+
+            string VAR_USE_SPAWNMUSIC_VAR = "true";
+            if (cbSpawnSound.SelectedIndex == 1) VAR_USE_SPAWNMUSIC_VAR = "false";
+
+            string VAR_USE_LOADINGSCREEN_VAR = "true";
+            if (cbUseLoadingScreen.SelectedIndex == 1) VAR_USE_LOADINGSCREEN_VAR = "false";
+
+            string VAR_USE_LOADINGANIMATION_VAR = "true";
+            if (cbLoadingAnimation.SelectedIndex == 1) VAR_USE_LOADINGANIMATION_VAR = "false";
+
+            string VAR_USE_DISCORD_VAR = "true";
+            if (cbUseDiscord.SelectedIndex == 1) VAR_USE_DISCORD_VAR = "false";
+
+            string VAR_USE_BONUSTIME_VAR = "true";
+            if (cbUseBonusTime.SelectedIndex == 1) VAR_USE_BONUSTIME_VAR = "false";
+
+            string VAR_USE_GREATBALL_VAR = "true";
+            if (cbGreatball.SelectedIndex == 1) VAR_USE_GREATBALL_VAR = "false";
+
+            string VAR_USE_ULTRABALL_VAR = "true";
+            if (cbUltraball.SelectedIndex == 1) VAR_USE_ULTRABALL_VAR = "false";
+
+            string VAR_USE_MASTERBALL_VAR = "true";
+            if (cbMasterball.SelectedIndex == 1) VAR_USE_MASTERBALL_VAR = "false";
+
+            string VAR_USE_MYS_POK_VAR = "true";
+            if (cbMysteryPokemon.SelectedIndex == 1) VAR_USE_MYS_POK_VAR = "false";
+
+            string VAR_USE_MYS_SHINY_VAR = "true";
+            if (cbMysteryShiny.SelectedIndex == 1) VAR_USE_MYS_SHINY_VAR = "false";
+
+            string VAR_USE_SUMMON_VAR = "true";
+            if (cbSummon.SelectedIndex == 1) VAR_USE_SUMMON_VAR = "false";
+
+            string VAR_USE_GIFT_VAR = "true";
+            if (cbGift.SelectedIndex == 1) VAR_USE_GIFT_VAR = "false";
+
+            string VAR_USE_BREAKOUT_MSG_VAR = "true";
+            if (cbUseBreakout.SelectedIndex == 1) VAR_USE_BREAKOUT_MSG_VAR = "false";
+
+            string VAR_USE_RUN_MSG_VAR = "true";
+            if (cbUseRunMessage.SelectedIndex == 1) VAR_USE_RUN_MSG_VAR = "false";
+
+            string VAR_USE_REFUND_MSG_VAR = "true";
+            if (cbRefundMessage.SelectedIndex == 1) VAR_USE_REFUND_MSG_VAR = "false";
+
+            sOutput = sOutput.Replace("VAR_LANGUAGE_VAR", VAR_LANGUAGE_VAR);
+            sOutput = sOutput.Replace("VAR_POKE_PATH_VAR",txtLB2.Text.Replace(@"\","/") + @"/Pokemon and Friends/");
+            sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", VAR_USE_NON_AFFILIATE_VAR);
+            sOutput = sOutput.Replace("VAR_THRESHOLD_VAR", txtAudioTreshhold.Text);
+            sOutput = sOutput.Replace("VAR_USE_IGNORE_LB_VAR", VAR_USE_IGNORE_LB_VAR);
+            sOutput = sOutput.Replace("VAR_OBSWSPORT_VAR",txtOBSWSPort.Text);
+            sOutput = sOutput.Replace("VAR_OBSWSPW_VAR",txtOBSWSPW.Text);
+            sOutput = sOutput.Replace("VAR_FIRSTPKM_VAR",txtFirstPokemon.Text);
+            sOutput = sOutput.Replace("VAR_LASTPKM_VAR",txtLastPokemon.Text);
+            sOutput = sOutput.Replace("VAR_MAXNUMBER_VAR",txtMaxPokemon.Text);
+            sOutput = sOutput.Replace("VAR_SHINYCHANCE_VAR",txtShinyChance.Text);
+            sOutput = sOutput.Replace("VAR_USE_GIFS_VAR", VAR_USE_GIFS_VAR);
+            sOutput = sOutput.Replace("VAR_CR_POKEBALL_VAR",txtCatchRatePokeball.Text);
+            sOutput = sOutput.Replace("VAR_CR_GREATBALL_VAR",txtCatchRateGreatball.Text);
+            sOutput = sOutput.Replace("VAR_CR_ULTRABALL_VAR",txtCatchRateUltraball.Text);
+            sOutput = sOutput.Replace("VAR_CR_MIN_VAR",txtCatchIncMin.Text);
+            sOutput = sOutput.Replace("VAR_CR_MAX_VAR", txtCatchIncMax.Text);
+            sOutput = sOutput.Replace("VAR_SPAWN_TIME_VAR", txtSpawnTimer.Text);
+            sOutput = sOutput.Replace("VAR_USE_SPAWNCHANCE_VAR", VAR_USE_SPAWNCHANCE_VAR);
+            sOutput = sOutput.Replace("VAR_SPAWNCHANCE_VAR",txtSpawnChance.Text);
+            sOutput = sOutput.Replace("VAR_USE_SPAWNMUSIC_VAR", VAR_USE_SPAWNMUSIC_VAR);
+            sOutput = sOutput.Replace("VAR_USE_LOADINGSCREEN_VAR", VAR_USE_LOADINGSCREEN_VAR);
+            sOutput = sOutput.Replace("VAR_USE_LOADINGANIMATION_VAR", VAR_USE_LOADINGANIMATION_VAR);
+            sOutput = sOutput.Replace("VAR_RUN_MIN_VAR",txtRunMin.Text);
+            sOutput = sOutput.Replace("VAR_RUN_MAX_VAR",txtRunMax.Text);
+            sOutput = sOutput.Replace("VAR_RUN_TIME_VAR",txtRunTimer.Text);
+            sOutput = sOutput.Replace("VAR_USE_DISCORD_VAR", VAR_USE_DISCORD_VAR);
+            sOutput = sOutput.Replace("VAR_DC_CATCHHOOK_VAR",txtWebhookURL.Text);
+
+            if(cbUseSeparateWebhook.SelectedIndex == 1) sOutput = sOutput.Replace("VAR_MYP_CATCHHOOK_VAR", txtWebhookURL.Text);
+            else sOutput = sOutput.Replace("VAR_MYP_CATCHHOOK_VAR", txtMyPokemonWebhook.Text);
+
+            sOutput = sOutput.Replace("VAR_USE_BONUSTIME_VAR", VAR_USE_BONUSTIME_VAR);
+            sOutput = sOutput.Replace("VAR_BONUS_MIN_USERS_VAR",txtBonusMinUsers.Text);
+            sOutput = sOutput.Replace("VAR_BONUS_DURATION_VAR",txtBonusTime.Text);
+            sOutput = sOutput.Replace("VAR_BONUS_SPAWNTIME_VAR", txtBonusSpawnTimer.Text);
+            sOutput = sOutput.Replace("VAR_USE_GREATBALL_VAR", VAR_USE_GREATBALL_VAR);
+            sOutput = sOutput.Replace("VAR_USE_ULTRABALL_VAR", VAR_USE_ULTRABALL_VAR);
+            sOutput = sOutput.Replace("VAR_USE_MASTERBALL_VAR", VAR_USE_MASTERBALL_VAR);
+            sOutput = sOutput.Replace("VAR_USE_MYS_POK_VAR", VAR_USE_MYS_POK_VAR);
+            sOutput = sOutput.Replace("VAR_USE_MYS_SHINY_VAR", VAR_USE_MYS_SHINY_VAR);
+            sOutput = sOutput.Replace("VAR_USE_SUMMON_VAR", VAR_USE_SUMMON_VAR);
+            sOutput = sOutput.Replace("VAR_USE_GIFT_VAR", VAR_USE_GIFT_VAR);
+            sOutput = sOutput.Replace("VAR_USE_BREAKOUT_MSG_VAR", VAR_USE_BREAKOUT_MSG_VAR);
+            sOutput = sOutput.Replace("VAR_USE_RUN_MSG_VAR", VAR_USE_RUN_MSG_VAR);
+            sOutput = sOutput.Replace("VAR_USE_REFUND_MSG_VAR", VAR_USE_REFUND_MSG_VAR);
+            sOutput = sOutput.Replace("VAR_MYSTERY_P_VAR",txtMysteryPokemon.Text);
+            sOutput = sOutput.Replace("VAR_MYSTERY_S_VAR", txtMysteryShiny.Text);
+            sOutput = sOutput.Replace("VAR_SUMMON_VAR", txtSummon.Text);
+            sOutput = sOutput.Replace("VAR_POKEBALL_VAR", txtPokeball.Text);
+            sOutput = sOutput.Replace("VAR_GREATBALL_VAR",txtGreatball.Text);
+            sOutput = sOutput.Replace("VAR_ULTRABALL_VAR",txtUltraball.Text);
+            sOutput = sOutput.Replace("VAR_MASTERBALL_VAR", txtMasterball.Text);
+            sOutput = sOutput.Replace("VAR_GIFT_VAR", txtGift.Text);
+
+            sOutput = sOutput.Replace("VAR_PRICE_POKEBALL_VAR", txtPricePokeball.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_GREATBALL_VAR", txtPriceGreatball.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_ULTRABALL_VAR", txtPriceUltraball.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_MASTERBALL_VAR", txtPriceMasterball.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_SUMMON_VAR", txtPriceSummon.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_MYSTERY_P_VAR", txtPriceMysteryPokemon.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_MYSTERY_S_VAR", txtPriceMysteryShiny.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_GIFT_VAR", txtPriceGift.Text);
+
+
+            using (StreamWriter sw = new StreamWriter(txtLB2.Text + @"\Pokemon and Friends\PaFGame.lb2"))
+            {
+                sw.Write(sOutput);
+                sw.Flush();
+                sw.Close();
+            }
+        }
         private void btnInstall_Click(object sender, EventArgs e)
         {
-            if(CheckValues())
+            if (CheckValues())
             {
-                string sDiscord = "0";
-                string sLoading = "0";
-                string sBreakout = "0";
-                string sLanguage = "en";
-                string sMusic = "0";
-                string sMasterball = "0";
-                string sUseGift = "0";
-
-                string sUseBonusTime = "0";
-                string sUsePriorityThrow = "0";
-                string sUseSummonReward = "0";
-
-                string sUseThrowMessage = "0";
-                string sUseOvertimeThrow = "0";
-                string sUseRefundMessage = "0";
-
-
-                if (cbUseDiscord.SelectedIndex == 0)
+                CreateLB2Extension();
+                pbLoading.Visible = true;
+                lblLoading.Parent = pbLoading;
+                lblLoading.Visible = true;
+                Thread t = new Thread(CopyFiles);
+                t.Start();
+                while (t.IsAlive)
                 {
-                    sDiscord = "1";
+                    Application.DoEvents();
+                    Thread.Sleep(100);
                 }
+                pbLoading.Visible = false;
 
-                if (cbUseLoadingScreen.SelectedIndex == 0)
+                if (!File.Exists(txtLB2.Text + @"\Pokemon and Friends\hdsprites240\normal\1.png") || (!File.Exists(txtLB2.Text + @"\Pokemon and Friends\hdsprites240\normalgif\1.gif") && cbUseGIFS.SelectedIndex == 0))
                 {
-                    sLoading = "1";
-                }
-
-                if (cbUseSpawnMusic.SelectedIndex == 0)
-                {
-                    sMusic = "1";
-                }
-
-                if (cbUseBreakout.SelectedIndex == 0)
-                {
-                    sBreakout = "1";
-                }
-
-                if (cbMasterball.SelectedIndex == 0)
-                {
-                    sMasterball = "1";
-                }
-
-                if (cbUseGift.SelectedIndex == 0)
-                {
-                    sUseGift = "1";
-                }
-
-                if (cbUseBonusTime.SelectedIndex == 0)
-                {
-                    sUseBonusTime = "1";
-                }
-
-                if (cbUseSummonReward.SelectedIndex == 0)
-                {
-                    sUseSummonReward = "1";
-                }
-
-                if (cbUsePriorityThrow.SelectedIndex == 0)
-                {
-                    sUsePriorityThrow = "1";
-                }
-
-                if (cbUseThrowMessage.SelectedIndex == 0)
-                {
-                    sUseThrowMessage = "1";
-                }
-
-                if (cbOvertimeThrows.SelectedIndex == 0)
-                {
-                    sUseOvertimeThrow = "1";
-                }
-
-                if (cbRefundMessage.SelectedIndex == 0)
-                {
-                    sUseRefundMessage = "1";
-                }
-
-                switch (cbLanguage.SelectedIndex)
-                {
-                    case 0:
-                        sLanguage = "en";
-                        break;
-                    case 1:
-                        sLanguage = "de";
-                        break;
-                    default:
-                        break;
-                }
-
-                string[] saPath = txtBoardLocation.Text.Split('\\');
-                string sPath = "";
-                for (int i = 0; i < saPath.Length - 1; i++)
-                {
-                    sPath += saPath[i];
-                    if (i < saPath.Length - 1) sPath += "\\";
-                }
-
-                File.Copy("files\\CreateTop10.exe", sPath + "\\CreateTop10.exe", true);
-                File.Copy("files\\Pokedex.csv", sPath + "\\Pokedex.csv", true);
-                File.Copy("files\\PokeWhisper.exe", sPath + "\\PokeWhisper.exe", true);
-                using(StreamReader srconfig = new StreamReader("files\\PokeWhisper.exe.config"))
-                {
-                    StreamWriter swconfig = new StreamWriter(sPath + "\\PokeWhisper.exe.config");
-                    swconfig.Write(srconfig.ReadToEnd().Replace("VAR_LANGUAGE_VAR", sLanguage));
-                    swconfig.Flush();
-                    swconfig.Close();
-                    srconfig.Close();
-                }
-
-                sPath += @"Ext\Pokemon and Friends by WaldoAndFriends\";
-                string sPathConverted = sPath.Replace("\\", "/");
-
-                File.Copy(txtBoardLocation.Text, txtBoardLocation.Text + ".backup",true);
-                File.Delete(txtBoardLocation.Text);
-
-                StreamReader sr = new StreamReader("files\\PokemonInstaller");
-                StreamWriter sw = new StreamWriter(txtBoardLocation.Text);
-                string sText = sr.ReadToEnd();
-
-                sText = sText.Replace("VAR_RUN_AWAY_MIN_VAR", txtRunMin.Text);
-                sText = sText.Replace("VAR_RUN_AWAY_MAX_VAR", txtRunMax.Text);
-                sText = sText.Replace("VAR_FIRST_POKEMON_VAR", txtFirstPokemon.Text);
-                sText = sText.Replace("VAR_LAST_POKEMON_VAR", txtLastPokemon.Text);
-                sText = sText.Replace("VAR_SHINY_CHANCE_VAR", txtShinyChance.Text);
-                sText = sText.Replace("VAR_SPAWN_TIMER_VAR", txtSpawnTimer.Text);
-                sText = sText.Replace("VAR_RUN_TIMER_VAR", txtRunTimer.Text);
-                sText = sText.Replace("VAR_GREATBALL_TIMER_VAR", txtGreatballTimer.Text);
-                sText = sText.Replace("VAR_ULTRABALL_TIMER_VAR", txtUltraballTimer.Text);
-                sText = sText.Replace("VAR_DISCORD_WEBHOOK_VAR", txtWebhookURL.Text);
-                sText = sText.Replace("VAR_DISCORD_USER_VAR", txtWebhookUser.Text);
-                sText = sText.Replace("VAR_MAX_POKEMON_VAR", txtMaxPokemon.Text);
-                sText = sText.Replace("VAR_GREATBALL_TIMER_VAR", txtGreatballTimer.Text);
-                sText = sText.Replace("VAR_USE_DISCORD_VAR", sDiscord);
-                sText = sText.Replace("VAR_LOADING_SCREEN_VAR", sLoading);
-                sText = sText.Replace("VAR_BREAKOUT_MESSAGE_VAR", sBreakout);
-                sText = sText.Replace("VAR_LANGUAGE_VAR", sLanguage);
-                sText = sText.Replace("VAR_PATH_LOCATION_VAR", sPathConverted);
-                sText = sText.Replace("VAR_CATCH_RATE_VAR", txtCatchRate.Text);
-                sText = sText.Replace("VAR_SPAWN_MUSIC_VAR", sMusic);
-                sText = sText.Replace("VAR_USE_MASTERBALL_VAR", sMasterball);
-                sText = sText.Replace("VAR_USE_GIFT_VAR", sUseGift);
-
-                sText = sText.Replace("VAR_BONUS_TIME_VAR",txtBonusTime.Text);
-                if (cbUseSeparateWebhook.SelectedIndex == 0)
-                {
-                    sText = sText.Replace("VAR_MYP_WEBHOOK_VAR", txtMyPokemonWebhook.Text);
-                    sText = sText.Replace("VAR_MYP_USER_VAR", txtMyPokemonUser.Text);
+                    if (DialogResult.Yes == MessageBox.Show("Not all Files were copied successfully, do you want to try again?", "Try again?", MessageBoxButtons.YesNo)) btnInstall_Click(null, null);
                 }
                 else
                 {
-                    sText = sText.Replace("VAR_MYP_WEBHOOK_VAR", txtWebhookURL.Text);
-                    sText = sText.Replace("VAR_MYP_USER_VAR", txtWebhookUser.Text);
+                    MessageBox.Show("DONE");
                 }
-                sText = sText.Replace("VAR_BROADCASTER_VAR", txtStreamerName.Text.ToLowerInvariant());
-                sText = sText.Replace("VAR_USE_BONUS_TIME_VAR",sUseBonusTime);
-                sText = sText.Replace("VAR_USE_PRIORITY_VAR",sUsePriorityThrow);
-                sText = sText.Replace("VAR_USE_SUMMON_REWARD_VAR",sUseSummonReward);
-
-                sText = sText.Replace("VAR_USE_OVERTIME_VAR", sUseOvertimeThrow);
-                sText = sText.Replace("VAR_USE_THROW_MESSAGE_VAR", sUseThrowMessage);
-                sText = sText.Replace("VAR_USE_REFUND_MESSAGE_VAR", sUseRefundMessage);
-
-
-
-                sw.Write(sText);
-                sw.Flush();
-                sw.Close();
-                sr.Close();
-
-                //Copy Files:
-                File.Copy(@"files\pokeball.png", sPath + @"sources\pokeball.png",true);
-                File.Copy(@"files\greatball.png", sPath + @"sources\greatball.png", true);
-                File.Copy(@"files\ultraball.png", sPath + @"sources\ultraball.png", true);
-                File.Copy(@"files\masterball.png", sPath + @"sources\masterball.png", true);
-                File.Copy(sLoadingScreenPath, sPath + @"sources\LoadingScreen.png", true);
-                File.Copy(@"files\" + txtLoadingSound.Text, sPath + @"sources\Challenger Approaches.mp3", true);
-                File.Copy(sShinyScreenPath, sPath + @"sources\shiny.png", true);
-
-
-                MessageBox.Show("Installation Completed.\nNow start LioranBoard, connect it with obs and run the !poke-upgrade command.\nIf you want to support me, feel free to hit that \"Support Me\"-Button");
             }
             else
             {
-                MessageBox.Show("No Board found, please select the correct board to perform the upgrade.");
+                MessageBox.Show("No LB2 Folder selected");
                 btnSearch_Click(null, null);
             }
         }
-
         private bool CheckValues()
         {
-            if (string.IsNullOrEmpty(txtBoardLocation.Text)) return false;
+            if (string.IsNullOrEmpty(txtLB2.Text)) return false;
 
             return true;
         }
 
+        #region "Initialize / Load / Close Stuff"
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            initializeToolTips();
+            LoadValues();
+            LoadSources();
+        }
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.LB2 = txtLB2.Text;
+            Properties.Settings.Default.Language = cbLanguage.SelectedIndex;
+            Properties.Settings.Default.NonAffiliate = cbAffiliate.SelectedIndex;
+            Properties.Settings.Default.Leaderboard = cbLeaderboard.SelectedIndex;
+            Properties.Settings.Default.AudioTreshhold = txtAudioTreshhold.Text;
+            Properties.Settings.Default.OBSWSPort = txtOBSWSPort.Text;
+            Properties.Settings.Default.OBSWSPW = txtOBSWSPW.Text;
+
+            Properties.Settings.Default.FirstPokemon = txtFirstPokemon.Text;
+            Properties.Settings.Default.LastPokemon = txtLastPokemon.Text;
+            Properties.Settings.Default.ShinyChance = txtShinyChance.Text;
+            Properties.Settings.Default.MaxPokemon = txtMaxPokemon.Text;
+            Properties.Settings.Default.Gifs = cbUseGIFS.SelectedIndex;
+
+            Properties.Settings.Default.SpawnTimer = txtSpawnTimer.Text;
+            Properties.Settings.Default.UseSpawnChance = cbRandomSpawn.SelectedIndex;
+            Properties.Settings.Default.SpawnChance = txtSpawnChance.Text;
+            Properties.Settings.Default.SpawnMusic = cbSpawnSound.SelectedIndex;
+            Properties.Settings.Default.LoadingScreen = cbUseLoadingScreen.SelectedIndex;
+            Properties.Settings.Default.LoadingAnimation = cbLoadingAnimation.SelectedIndex;
+            
+            Properties.Settings.Default.CatchValuePokeball = txtCatchRatePokeball.Text;
+            Properties.Settings.Default.CatchValueGreatball = txtCatchRateGreatball.Text;
+            Properties.Settings.Default.CatchValueUltraball = txtCatchRateUltraball.Text;
+            Properties.Settings.Default.CatchMinIncrease = txtCatchIncMin.Text;
+            Properties.Settings.Default.CatchMaxIncrease = txtCatchIncMax.Text;
+
+            Properties.Settings.Default.UseBonustime = cbUseBonusTime.SelectedIndex;
+            Properties.Settings.Default.BonusTimeDuration = txtBonusTime.Text;
+            Properties.Settings.Default.BonusTimeMinUsers = txtBonusMinUsers.Text;
+            Properties.Settings.Default.BonusTimeSpawnTimer = txtBonusSpawnTimer.Text;
+
+            Properties.Settings.Default.RunAwayMinIncrease = txtRunMin.Text;
+            Properties.Settings.Default.RunAwayMaxIncrease = txtRunMax.Text;
+            Properties.Settings.Default.RunTimer = txtRunTimer.Text;
+
+            Properties.Settings.Default.UseDiscord = cbUseDiscord.SelectedIndex;
+            Properties.Settings.Default.UseSepareteWebhook = cbUseSeparateWebhook.SelectedIndex;
+            Properties.Settings.Default.WebhookURLCatch = txtWebhookURL.Text;
+            Properties.Settings.Default.WebhookURLMYP = txtMyPokemonWebhook.Text;
+
+            Properties.Settings.Default.UseBreakoutMessage = cbUseBreakout.SelectedIndex;
+            Properties.Settings.Default.UseRefundMessage = cbRefundMessage.SelectedIndex;
+            Properties.Settings.Default.UseRunMessage = cbUseRunMessage.SelectedIndex;
+
+            Properties.Settings.Default.LoadingSoundPath = txtLoadingSound.Text;
+            Properties.Settings.Default.ShinyScreenPath = sShinyScreenPath;
+            Properties.Settings.Default.LoadingScreenPath = sLoadingScreenPath;
+
+            Properties.Settings.Default.NamePokeball = txtPokeball.Text;
+            Properties.Settings.Default.PricePokeball = txtPricePokeball.Text;
+
+            Properties.Settings.Default.NameGreatball = txtGreatball.Text;
+            Properties.Settings.Default.UseGreatball = cbGreatball.SelectedIndex;
+            Properties.Settings.Default.PriceGreatball = txtPriceGreatball.Text;
+
+            Properties.Settings.Default.NameUltraball = txtUltraball.Text;
+            Properties.Settings.Default.UseUltraball = cbUltraball.SelectedIndex;
+            Properties.Settings.Default.PriceUltraball = txtPriceUltraball.Text;
+
+            Properties.Settings.Default.NameMasterball = txtMasterball.Text;
+            Properties.Settings.Default.UseMasterball = cbMasterball.SelectedIndex;
+            Properties.Settings.Default.PriceMasterball = txtPriceMasterball.Text;
+
+            Properties.Settings.Default.NameMysteryPokemon = txtMysteryPokemon.Text;
+            Properties.Settings.Default.UseMysteryPokemon = cbMysteryPokemon.SelectedIndex;
+            Properties.Settings.Default.PriceMysteryPokemon = txtPriceMysteryPokemon.Text;
+
+            Properties.Settings.Default.NameMysteryShiny = txtMysteryShiny.Text;
+            Properties.Settings.Default.UseMysteryShiny = cbMysteryShiny.SelectedIndex;
+            Properties.Settings.Default.PriceMysteryShiny = txtPriceMysteryShiny.Text;
+
+            Properties.Settings.Default.NameSummon = txtSummon.Text;
+            Properties.Settings.Default.UseSummon = cbSummon.SelectedIndex;
+            Properties.Settings.Default.PriceSummon = txtPriceSummon.Text;
+
+
+            Properties.Settings.Default.NameGift = txtGift.Text;
+            Properties.Settings.Default.UseGift = cbGift.SelectedIndex;
+            Properties.Settings.Default.PriceGift = txtPriceGift.Text;
+
+            Properties.Settings.Default.Save();
+        }
+        private void initializeToolTips()
+        {          
+            TTExplanation.SetToolTip(lblLB2, "Select your LB2 Folder");
+            TTExplanation.SetToolTip(lblLanguage, "Select your Language");
+            TTExplanation.SetToolTip(lblAffiliate, "Non Affiliate Mode turns off channel points and \nadds the !throw command instead.\nRecommended only for people who\nhaven't unlocked Channel Points yet");
+            TTExplanation.SetToolTip(lblLeaderboard, "Turn on to not showup on the leaderboard");
+            TTExplanation.SetToolTip(lblAudioTreshhold, "Sets the Limter of the Volume of the Sounds\nThe higher it is, the lower the maximum Volume of the Sounds will be\nRecommended Value is 30-35\n0 = Nearly no Limit");
+            TTExplanation.SetToolTip(lblOBSWSPort, "OBS Websocket Port.\nDefault is \"4444\"\nCan be found in OBS under Tools => Websocket Server Settings");
+            TTExplanation.SetToolTip(lblOBSWSPW, "OBS Websocket Password.\nCan be found in OBS under Tools => Websocket Server Settings\nCan be left empty if the Password checkbox is not ticked in the OBS Websocket Settings");
+
+            TTExplanation.SetToolTip(lblFirstPokemon, "First Pokemon number that can appear");
+            TTExplanation.SetToolTip(lblLastPokemon, "Last Pokemon number that can appear");
+            TTExplanation.SetToolTip(lblMaxPokemon, "This is used for the message:\nYou have caught x/<Max Amount> pokemon");
+            TTExplanation.SetToolTip(lblShinyChance, "Shiny Chance in %");
+            TTExplanation.SetToolTip(lblUseGIFs, "Use GIFs instead of the PNGS files.\nUnfortunately not available for all Pokemon\nyet (around 100 GIFs missing).\nIf GIF is not found, automatic\nfallback to the PNG.");
+
+            TTExplanation.SetToolTip(lblSpawnTimer, "Time until a new pokemon spawns in seconds (300 = 5min)");
+            TTExplanation.SetToolTip(lblRandomSpawn, "Turn on to make pokemons spawn with\na certain chance every x-min");
+            TTExplanation.SetToolTip(lblSpawnChance, "Chance of the pokemon appearing every x-min");
+            TTExplanation.SetToolTip(lblSpawnSound, "This lets you enable the Spawn sound");
+            TTExplanation.SetToolTip(lblUseLoadingScreen, "This lets you enable the Loading Screen\nNot recommended with LoadingAnimation activated");
+            TTExplanation.SetToolTip(lblUseLoadingAnimation, "This lets you enable a Loading Screen Animation\nNot recommended with LoadingScreen activated");
+
+            TTExplanation.SetToolTip(lblCatchRatePokeball, "The higher this value is, the harder the pokemons will be catched\n\nUsed to calculate the catch rates of the different balls\n\nHave fun reading this xD\n\ncatch_increase = Random Number between catch_min_increase and catch_max_increase\nPokeball Catchrate = (ceil(poke_catchrate / global.catch_pokeball) + catch_increase)\nGreatball Catchrate = Pokeball Catchrate + catch_greatball\nUltraball\nCatchrate = Pokeball Catchrate + catch_ultraball\n\nExample for Legendary:\ncatch_increase = 4\n(ceil(3 / 4) + 4) => 5% chance with Pokeball / 15% Greatball / 20% Ultraball\n\nExample for Normal Pokemon:\ncatch_increase = 2\n(ceil(45 / 4) + 2) => 14% chance with Pokeball / 24% Greatball / 29% Ultraball\n\nExample for Common Pokemon:\ncatch_increase = 3\n(ceil(255 / 4) + 2) => 66% chance with Pokeball / 76% Greatball / 81% Ultraball");
+            TTExplanation.SetToolTip(lblCatchRateGreatball, "The higher this value is, the easier the pokemons will be catched with a greatball\n\nUsed to calculate the catch rates of the different balls\n\nHave fun reading this xD\n\ncatch_increase = Random Number between catch_min_increase and catch_max_increase\nPokeball Catchrate = (ceil(poke_catchrate / global.catch_pokeball) + catch_increase)\nGreatball Catchrate = Pokeball Catchrate + catch_greatball\nUltraball\nCatchrate = Pokeball Catchrate + catch_ultraball\n\nExample for Legendary:\ncatch_increase = 4\n(ceil(3 / 4) + 4) => 5% chance with Pokeball / 15% Greatball / 20% Ultraball\n\nExample for Normal Pokemon:\ncatch_increase = 2\n(ceil(45 / 4) + 2) => 14% chance with Pokeball / 24% Greatball / 29% Ultraball\n\nExample for Common Pokemon:\ncatch_increase = 3\n(ceil(255 / 4) + 2) => 66% chance with Pokeball / 76% Greatball / 81% Ultraball");
+            TTExplanation.SetToolTip(lblCatchRateUltraball, "The higher this value is, the harder the pokemons will be catched with an ultraball\n\nUsed to calculate the catch rates of the different balls\n\nHave fun reading this xD\n\ncatch_increase = Random Number between catch_min_increase and catch_max_increase\nPokeball Catchrate = (ceil(poke_catchrate / global.catch_pokeball) + catch_increase)\nGreatball Catchrate = Pokeball Catchrate + catch_greatball\nUltraball\nCatchrate = Pokeball Catchrate + catch_ultraball\n\nExample for Legendary:\ncatch_increase = 4\n(ceil(3 / 4) + 4) => 5% chance with Pokeball / 15% Greatball / 20% Ultraball\n\nExample for Normal Pokemon:\ncatch_increase = 2\n(ceil(45 / 4) + 2) => 14% chance with Pokeball / 24% Greatball / 29% Ultraball\n\nExample for Common Pokemon:\ncatch_increase = 3\n(ceil(255 / 4) + 2) => 66% chance with Pokeball / 76% Greatball / 81% Ultraball");
+            TTExplanation.SetToolTip(lblCatchIncMin, "Used to calculate the catch rates of the different balls\n\nHave fun reading this xD\n\ncatch_increase = Random Number between catch_min_increase and catch_max_increase\nPokeball Catchrate = (ceil(poke_catchrate / global.catch_pokeball) + catch_increase)\nGreatball Catchrate = Pokeball Catchrate + catch_greatball\nUltraball\nCatchrate = Pokeball Catchrate + catch_ultraball\n\nExample for Legendary:\ncatch_increase = 4\n(ceil(3 / 4) + 4) => 5% chance with Pokeball / 15% Greatball / 20% Ultraball\n\nExample for Normal Pokemon:\ncatch_increase = 2\n(ceil(45 / 4) + 2) => 14% chance with Pokeball / 24% Greatball / 29% Ultraball\n\nExample for Common Pokemon:\ncatch_increase = 3\n(ceil(255 / 4) + 2) => 66% chance with Pokeball / 76% Greatball / 81% Ultraball");
+            TTExplanation.SetToolTip(lblCatchIncMax, "Used to calculate the catch rates of the different balls\n\nHave fun reading this xD\n\ncatch_increase = Random Number between catch_min_increase and catch_max_increase\nPokeball Catchrate = (ceil(poke_catchrate / global.catch_pokeball) + catch_increase)\nGreatball Catchrate = Pokeball Catchrate + catch_greatball\nUltraball\nCatchrate = Pokeball Catchrate + catch_ultraball\n\nExample for Legendary:\ncatch_increase = 4\n(ceil(3 / 4) + 4) => 5% chance with Pokeball / 15% Greatball / 20% Ultraball\n\nExample for Normal Pokemon:\ncatch_increase = 2\n(ceil(45 / 4) + 2) => 14% chance with Pokeball / 24% Greatball / 29% Ultraball\n\nExample for Common Pokemon:\ncatch_increase = 3\n(ceil(255 / 4) + 2) => 66% chance with Pokeball / 76% Greatball / 81% Ultraball");
+
+            TTExplanation.SetToolTip(lblUseBonusTime, "Enables the bonus time feature. This feature is triggered by\n!bonustime, hosts and raids and increases the spawn-, shiny- and catchrate for X min");
+            TTExplanation.SetToolTip(lblBonusMinUsers, "Minimum amount of users to trigger the bonus time");
+            TTExplanation.SetToolTip(lblBonusTime, "This sets the value of how long the bonus time will last in s (300 = 5min)");
+            TTExplanation.SetToolTip(lblBonusSpawnTimer, "Time in seconds on how fast pokemons will spawn in bonus time");
+
+            TTExplanation.SetToolTip(lblRunMin, "Pokemon starts with 0% escape rate. \nEverytime it breaks out, this is the minimum rate it can increase");
+            TTExplanation.SetToolTip(lblRunMax, "Pokemon starts with 0% escape rate. \nEverytime it breaks out, this is the maximum rate it can increase");
+            TTExplanation.SetToolTip(lblRunTimer, "Time until the current pokemon runs away when no \none throws a ball in miliseconds (180000 = 3min). Throws reset this timer");
+
+            TTExplanation.SetToolTip(lblDiscord, "Enables the discord extension");
+            TTExplanation.SetToolTip(lblUseSeparateWebhook, "Enable this if you want to use 2 webhooks to post into 2 different channels.\nOne for the catches, the other one for the !mypokemon command");
+            TTExplanation.SetToolTip(lblWebhookURL, "Webhook URL for the Discord Webhook (Serversettings => Integration => Webhooks)");
+            TTExplanation.SetToolTip(lblMYPWebhook, "Used as separate Webhook URL for the !mypokemon command");
+
+            TTExplanation.SetToolTip(lblUseBreakout, "Shows when a pokemon breaks out in the chat. \nFor example: Oh no the wild Mew broke out");
+            TTExplanation.SetToolTip(lblRefundMessage, "Shows when points are refunded at the end of the queue.");
+            TTExplanation.SetToolTip(lblUseRunMessage, "Shows a message in Chat when the Pokemon runs away");
+
+            TTExplanation.SetToolTip(lblLoadingScreen, "This lets you change the Loadingscreen");
+            TTExplanation.SetToolTip(lblShinyWallpaper, "This lets you change the Shiny Wallpaper");
+            TTExplanation.SetToolTip(lblLoadingSound, "This lets you change the Spawn Music");
+
+            TTExplanation.SetToolTip(lblPokeball, "This lets you edit the Pokeball Channel Point Reward");
+            TTExplanation.SetToolTip(lblGreatball, "This lets you edit the Greatball Channel Point Reward");
+            TTExplanation.SetToolTip(lblUltraball, "This lets you edit the Ultraball Channel Point Reward");
+            TTExplanation.SetToolTip(lblMasterball, "This lets you edit the Masterball Channel Point Reward");
+            TTExplanation.SetToolTip(lblMysteryPokemon, "This lets you edit the Mystery Pokemon Channel Point Reward");
+            TTExplanation.SetToolTip(lblMysteryShiny, "This lets you edit the Mystery Shiny Channel Point Reward");
+            TTExplanation.SetToolTip(lblSummon, "This lets you edit the Summon Pokemon Channel Point Reward");
+            TTExplanation.SetToolTip(lblGift, "This lets you edit the Give a Gift Channel Point Reward");
+
+
+        }
+        private void LoadValues()
+        {
+            txtLB2.Text = Properties.Settings.Default.LB2;
+            cbLanguage.SelectedIndex = Properties.Settings.Default.Language;
+            cbAffiliate.SelectedIndex = Properties.Settings.Default.NonAffiliate;
+            cbLeaderboard.SelectedIndex = Properties.Settings.Default.Leaderboard;
+            txtAudioTreshhold.Text = Properties.Settings.Default.AudioTreshhold;
+            txtOBSWSPort.Text = Properties.Settings.Default.OBSWSPort;
+            txtOBSWSPW.Text = Properties.Settings.Default.OBSWSPW;
+
+            txtFirstPokemon.Text = Properties.Settings.Default.FirstPokemon;
+            txtLastPokemon.Text = Properties.Settings.Default.LastPokemon;
+            txtShinyChance.Text = Properties.Settings.Default.ShinyChance;
+            txtMaxPokemon.Text = Properties.Settings.Default.MaxPokemon;
+            cbUseGIFS.SelectedIndex = Properties.Settings.Default.Gifs;
+
+            txtSpawnTimer.Text = Properties.Settings.Default.SpawnTimer;
+            cbRandomSpawn.SelectedIndex = Properties.Settings.Default.UseSpawnChance;
+            txtSpawnChance.Text = Properties.Settings.Default.SpawnChance;
+            cbSpawnSound.SelectedIndex = Properties.Settings.Default.SpawnMusic;
+            cbUseLoadingScreen.SelectedIndex = Properties.Settings.Default.LoadingScreen;
+            cbLoadingAnimation.SelectedIndex = Properties.Settings.Default.LoadingAnimation;
+
+            txtCatchRatePokeball.Text = Properties.Settings.Default.CatchValuePokeball;
+            txtCatchRateGreatball.Text = Properties.Settings.Default.CatchValueGreatball;
+            txtCatchRateUltraball.Text = Properties.Settings.Default.CatchValueUltraball;
+            txtCatchIncMin.Text = Properties.Settings.Default.CatchMinIncrease;
+            txtCatchIncMax.Text = Properties.Settings.Default.CatchMaxIncrease;
+
+            cbUseBonusTime.SelectedIndex = Properties.Settings.Default.UseBonustime;
+            txtBonusTime.Text = Properties.Settings.Default.BonusTimeDuration;
+            txtBonusMinUsers.Text = Properties.Settings.Default.BonusTimeMinUsers;
+            txtBonusSpawnTimer.Text = Properties.Settings.Default.BonusTimeSpawnTimer;
+
+            txtRunMin.Text = Properties.Settings.Default.RunAwayMinIncrease;
+            txtRunMax.Text = Properties.Settings.Default.RunAwayMaxIncrease;
+            txtRunTimer.Text = Properties.Settings.Default.RunTimer;
+
+            cbUseDiscord.SelectedIndex = Properties.Settings.Default.UseDiscord;
+            cbUseSeparateWebhook.SelectedIndex = Properties.Settings.Default.UseSepareteWebhook;
+            txtWebhookURL.Text = Properties.Settings.Default.WebhookURLCatch;
+            txtMyPokemonWebhook.Text = Properties.Settings.Default.WebhookURLMYP;
+
+            cbUseBreakout.SelectedIndex = Properties.Settings.Default.UseBreakoutMessage;
+            cbRefundMessage.SelectedIndex = Properties.Settings.Default.UseRefundMessage;
+            cbUseRunMessage.SelectedIndex = Properties.Settings.Default.UseRunMessage;
+
+            txtLoadingSound.Text = Properties.Settings.Default.LoadingSoundPath;
+            sShinyScreenPath = Properties.Settings.Default.ShinyScreenPath;
+            sLoadingScreenPath = Properties.Settings.Default.LoadingScreenPath;
+
+            txtPokeball.Text = Properties.Settings.Default.NamePokeball;
+            txtPricePokeball.Text = Properties.Settings.Default.PricePokeball;
+
+            txtGreatball.Text = Properties.Settings.Default.NameGreatball;
+            cbGreatball.SelectedIndex = Properties.Settings.Default.UseGreatball;
+            txtPriceGreatball.Text = Properties.Settings.Default.PriceGreatball;
+
+            txtUltraball.Text = Properties.Settings.Default.NameUltraball;
+            cbUltraball.SelectedIndex = Properties.Settings.Default.UseUltraball;
+            txtPriceUltraball.Text = Properties.Settings.Default.PriceUltraball;
+
+            txtMasterball.Text = Properties.Settings.Default.NameMasterball;
+            cbMasterball.SelectedIndex = Properties.Settings.Default.UseMasterball;
+            txtPriceMasterball.Text = Properties.Settings.Default.PriceMasterball;
+
+            txtMysteryPokemon.Text = Properties.Settings.Default.NameMysteryPokemon;
+            cbMysteryPokemon.SelectedIndex = Properties.Settings.Default.UseMysteryPokemon;
+            txtPriceMysteryPokemon.Text = Properties.Settings.Default.PriceMysteryPokemon;
+
+            txtMysteryShiny.Text = Properties.Settings.Default.NameMysteryShiny;
+            cbMysteryShiny.SelectedIndex = Properties.Settings.Default.UseMysteryShiny;
+            txtPriceMysteryShiny.Text = Properties.Settings.Default.PriceMysteryShiny;
+
+            txtSummon.Text = Properties.Settings.Default.NameSummon;
+            cbSummon.SelectedIndex = Properties.Settings.Default.UseSummon;
+            txtPriceSummon.Text = Properties.Settings.Default.PriceSummon;
+
+            txtGift.Text = Properties.Settings.Default.NameGift;
+            cbGift.SelectedIndex = Properties.Settings.Default.UseGift;
+            txtPriceGift.Text = Properties.Settings.Default.PriceGift;
+        }
+
+        #endregion
+
+        #region "ComboxBox"
+        private void cbUseSeparateWebhook_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbUseSeparateWebhook.SelectedIndex == 0)
+            {
+                lblMYPWebhook.Visible = true;
+                txtMyPokemonWebhook.Visible = true;
+            }
+            else
+            {
+                lblMYPWebhook.Visible = false;
+                txtMyPokemonWebhook.Visible = false;
+            }
+        }
+        private void cbUseDiscord_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbUseDiscord.SelectedIndex == 0)
+            {
+                txtWebhookURL.Visible = true;              
+                lblWebhookURL.Visible = true;
+
+                lblUseSeparateWebhook.Visible = true;
+                cbUseSeparateWebhook.Visible = true;
+
+                if (cbUseSeparateWebhook.SelectedIndex == 0)
+                {
+                    lblMYPWebhook.Visible = true;
+                    txtMyPokemonWebhook.Visible = true;
+                }
+                else
+                {
+                    lblMYPWebhook.Visible = false;
+                    txtMyPokemonWebhook.Visible = false;
+                }
+            }
+            else
+            {
+                txtWebhookURL.Visible = false;
+                lblWebhookURL.Visible = false;
+
+                lblUseSeparateWebhook.Visible = false;
+                cbUseSeparateWebhook.Visible = false;
+
+                lblMYPWebhook.Visible = false;
+                txtMyPokemonWebhook.Visible = false;
+            }
+        }
+        private void cbRandomSpawn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbRandomSpawn.SelectedIndex == 0)
+            {
+                lblSpawnChance.Visible = true;
+                txtSpawnChance.Visible = true;
+            }
+            else
+            {
+                lblSpawnChance.Visible = false;
+                txtSpawnChance.Visible = false;
+            }
+        }
+
+        #endregion
+
+        #region "Other Buttons"
+        private void btnMigrate_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog f = new OpenFileDialog();
+            f.Title = "Select your Pokemon_trainers.ini in the LB1 folder";
+            f.Filter = "File|Pokemon_trainers.ini";
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                File.Copy(f.FileName, f.FileName + ".backup" + DateTime.Now.ToString("yyyyMMdd"), true);
+                using (StreamWriter sw = new StreamWriter("temp", false))
+                {
+                    List<string> lsUsernames = new List<string>();
+
+                    using (StreamReader sr = new StreamReader(f.FileName))
+                    {
+                        string[] sUserblocks = sr.ReadToEnd().Split('[');
+                        List<PokeTrainer> lsTrainers = new List<PokeTrainer>();
+                        foreach (string s in sUserblocks)
+                        {
+                            if (!string.IsNullOrEmpty(s))
+                            {
+                                string sUsername = s.Split(']')[0];
+
+                                if (sUsername != "current_number" && sUsername != "trainer_names_numbers" && !string.IsNullOrEmpty(sUsername))
+                                {
+                                    lsUsernames.Add(sUsername);
+                                    int iPokedex = 0;
+                                    int iShinys = 0;
+                                    List<Line> lsNormalLines = new List<Line>();
+                                    List<Line> lsShinyLines = new List<Line>();
+                                    string[] saLines = s.Split(']')[1].Split('\n');
+                                    foreach (string sLine in saLines)
+                                    {
+                                        if (!sLine.ToLowerInvariant().Contains("shinys") && !sLine.ToLowerInvariant().Contains("pokedex") && !sLine.ToLowerInvariant().Contains("]") && !string.IsNullOrEmpty((sLine)))
+                                        {
+                                            if (sLine.ToLowerInvariant().Contains("s"))
+                                            {
+                                                Line l = new Line((sLine));
+                                                lsShinyLines.Add(l);
+                                                iShinys++;
+                                            }
+                                            else
+                                            {
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(sLine.Split('=')[0]);
+                                                    Line l = new Line(sLine);
+                                                    lsNormalLines.Add(l);
+                                                    iPokedex++;
+                                                }
+                                                catch { }
+                                            }
+                                        }
+                                    }
+                                    lsNormalLines = lsNormalLines.OrderBy(i => i.iNumber).ToList();
+                                    lsShinyLines = lsShinyLines.OrderBy(i => i.iNumber).ToList();
+                                    sw.WriteLine("[" + sUsername + "]");
+                                    sw.WriteLine("pokedex=\"" + iPokedex.ToString() + ".000000\"");
+                                    sw.WriteLine("shinys=\"" + iShinys.ToString() + ".000000\"");
+                                    for (int i = 0; i < lsNormalLines.Count; i++)
+                                    {
+                                        sw.WriteLine(lsNormalLines[i].sLine);
+                                    }
+                                    for (int i = 0; i < lsShinyLines.Count; i++)
+                                    {
+                                        string sLine = lsShinyLines[i].sLine;
+                                        if (sLine[0] == '"') sLine = sLine.Remove(0, 1).Replace("\"=", "=");
+                                        sw.WriteLine(sLine);
+                                    }
+                                }
+                            }
+                        }
+                        sr.Close();
+                    }
+
+                    sw.WriteLine("[current_number]");
+                    sw.WriteLine("amount=\"" + lsUsernames.Count + ".000000\"");
+                    sw.WriteLine("[trainer_names_numbers]");
+                    for (int i = 0; i < lsUsernames.Count; i++)
+                    {
+                        sw.WriteLine(i.ToString() + "=\"" + lsUsernames[i] + "\"");
+                    }
+
+                    sw.Flush();
+                    sw.Close();
+                }
+                FolderBrowserDialog fb = new FolderBrowserDialog();
+                fb.Description = "Please your LB2 folder.\nThe LB2 folder should contain the Lioranboard 2.0.exe.";
+
+                if (fb.ShowDialog() == DialogResult.OK)
+                {
+                    if (!Directory.Exists(fb.SelectedPath + "\\transmitter") || !File.Exists(fb.SelectedPath + "\\LioranBoard 2.0.exe"))
+                    {
+                        MessageBox.Show("Migration failed.\nUnfortunately this is not the LB2 folder.\nThe LB2 folder contains a transmitter folder and the Lioranboard 2.0.exe.\nPlease try again and select the correct folder.");
+                        return;
+                    }
+                    if (!Directory.Exists(fb.SelectedPath + "\\Pokemon and Friends")) Directory.CreateDirectory(fb.SelectedPath + "\\Pokemon and Friends");
+                    File.Copy("temp", fb.SelectedPath + "\\Pokemon and Friends\\Pokemon_trainers.ini", true);
+                    File.Delete("temp");
+
+                    string sPathLB1 = f.FileName.ToLowerInvariant().Replace("pokemon_trainers.ini", "trainer_images.ini");
+                    if (File.Exists(sPathLB1)) File.Copy(sPathLB1, fb.SelectedPath + "\\Pokemon and Friends\\trainer_images.ini", true);
+                }
+
+                MessageBox.Show("Pokemon_trainers.ini has been ported over to LB2!");
+            }
+        }
+        private void btnSupport_Click(object sender, EventArgs e)
+        {
+            frmChrizzz frm = new frmChrizzz();
+            frm.Show();
+        }
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            if (DialogResult.Yes == MessageBox.Show("Welcome to the Pokemon and friends upgrader.\nFirst of all I wanted to say that this is an unofficial Project created by me and it is not supported by the StreamUp Team.\nTo upgrade the program you need to follow these steps: \n\n1. Delete the Pokemon Scene from your OBS\n2. Close OBS and Lioran Board\n3. Select your LioranBoard Receiver(PC) Folder and let the Upgrader grab the correct board\n4. Setup your Values\n5. Hit Install\n6. Open OBS and LB and connect them\n7. Type !poke-upgrade\n(8.Adjust the volume of the scene and add pictures to the channelpoint rewards)\n9.Add the newly generated scene to the scenes where you want to use the game as a nested scene\n\nIf you have any questions, feel free to hop into my discord or dm me directly: Chrizzz#0810.\n\nWant to open discord now?", "Help", MessageBoxButtons.YesNo))
+            Process.Start("Installation Manual.txt");
+            if (DialogResult.Yes == MessageBox.Show("Need more help? Feel free to join my discord! Wanna join now?", "Help", MessageBoxButtons.YesNo))
             {
                 Process.Start("https://discord.gg/gggS8AD");
             }
         }
-
         private void btnCredits_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This upgrader was developed by chrizzz_1508.\n\nSpecial thanks to:\nWaldoAndFriends - Developing the Base Version\nTempest - Beta Testing\nKefiren - Beta Testing\nMurtherX - Beta Testing\nPox4eveR - Beta Testing");
+            MessageBox.Show("This Mod was developed by chrizzz_1508.\n\nSpecial thanks to:\nWaldoAndFriends - Developing the Base Version\nTempest - Beta Testing\nKefiren - Beta Testing\nMurtherX - Beta Testing\nPox4eveR - Beta Testing");
         }
 
-        private void LoadValues()
+        #endregion
+
+        #region "Select Stuff"
+
+        private void btnLoadingSound_Click(object sender, EventArgs e)
         {
-            txtWebhookURL.Text = Properties.Settings.Default.WebhookURL;
-            txtRunMin.Text = Properties.Settings.Default.RunAwayMin;
-            txtRunMax.Text = Properties.Settings.Default.RunAwayMax;
-            txtFirstPokemon.Text = Properties.Settings.Default.FirstPokemonNr;
-            txtLastPokemon.Text = Properties.Settings.Default.LastPokemonNr;
-            txtShinyChance.Text = Properties.Settings.Default.ShinyPercentage;
-            txtMaxPokemon.Text = Properties.Settings.Default.MaxAmountOfPokemon;
-            txtSpawnTimer.Text = Properties.Settings.Default.SpawnTimer;
-            txtRunTimer.Text = Properties.Settings.Default.RunTimer;
-            txtGreatballTimer.Text = Properties.Settings.Default.GreatballTimer;
-            txtUltraballTimer.Text = Properties.Settings.Default.UltraballTimer;
-            txtWebhookUser.Text = Properties.Settings.Default.WebhookUser;
-            txtCatchRate.Text = Properties.Settings.Default.CatchRate;
-
-            cbLanguage.SelectedIndex = Properties.Settings.Default.Language;
-            cbMasterball.SelectedIndex = Properties.Settings.Default.Masterball;
-            cbUseLoadingScreen.SelectedIndex = Properties.Settings.Default.LoadingScreen;
-            cbUseSpawnMusic.SelectedIndex = Properties.Settings.Default.SpawnMusic;
-            cbUseBreakout.SelectedIndex = Properties.Settings.Default.BreakoutMessage;
-            cbUseDiscord.SelectedIndex = Properties.Settings.Default.Discord;
-            cbUseGift.SelectedIndex = Properties.Settings.Default.Gift;
-
-            txtStreamerName.Text = Properties.Settings.Default.StreamerName;
-            cbUseSummonReward.SelectedIndex = Properties.Settings.Default.UseSummon;
-            txtMyPokemonUser.Text = Properties.Settings.Default.MyPokemonUser;
-            txtMyPokemonWebhook.Text = Properties.Settings.Default.MyPokemonWebhook;
-            cbUsePriorityThrow.SelectedIndex = Properties.Settings.Default.UsePriorityThrow;
-            cbUseBonusTime.SelectedIndex = Properties.Settings.Default.UseBonusTime;
-            txtBonusTime.Text = Properties.Settings.Default.BonusTime;
-
-            cbOvertimeThrows.SelectedIndex = Properties.Settings.Default.UseThrowOvertime;
-            cbUseThrowMessage.SelectedIndex = Properties.Settings.Default.UseThrowMessage;
-
-            cbUseSeparateWebhook.SelectedIndex = Properties.Settings.Default.UseSeperateWebhook;
-            cbRefundMessage.SelectedIndex = Properties.Settings.Default.UseRefundMessage;
+            frmSelectLoadingSound frm = new frmSelectLoadingSound();
+            frm.txt = txtLoadingSound;
+            frm.ShowDialog();
         }
-
         private void LoadSources()
         {
             sLoadingScreenPath = Properties.Settings.Default.LoadingScreenPath;
-            if(File.Exists(sLoadingScreenPath))
+            if (File.Exists(sLoadingScreenPath))
             {
                 pbLoadingScreen.Image = Image.FromFile(sLoadingScreenPath);
             }
@@ -463,57 +801,6 @@ namespace Pokemon_and_Friends_Upgrader
             }
             txtLoadingSound.Text = Properties.Settings.Default.LoadingSoundPath;
         }
-
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.WebhookURL = txtWebhookURL.Text;
-            Properties.Settings.Default.RunAwayMin = txtRunMin.Text;
-            Properties.Settings.Default.RunAwayMax = txtRunMax.Text;
-            Properties.Settings.Default.FirstPokemonNr = txtFirstPokemon.Text;
-            Properties.Settings.Default.LastPokemonNr = txtLastPokemon.Text;
-            Properties.Settings.Default.ShinyPercentage = txtShinyChance.Text;
-            Properties.Settings.Default.MaxAmountOfPokemon = txtMaxPokemon.Text;
-            Properties.Settings.Default.SpawnTimer = txtSpawnTimer.Text;
-            Properties.Settings.Default.RunTimer = txtRunTimer.Text;
-            Properties.Settings.Default.GreatballTimer = txtGreatballTimer.Text;
-            Properties.Settings.Default.UltraballTimer = txtUltraballTimer.Text;
-            Properties.Settings.Default.WebhookUser = txtWebhookUser.Text;
-            Properties.Settings.Default.CatchRate = txtCatchRate.Text;
-
-            Properties.Settings.Default.Language = cbLanguage.SelectedIndex;
-            Properties.Settings.Default.Masterball = cbMasterball.SelectedIndex;
-            Properties.Settings.Default.LoadingScreen = cbUseLoadingScreen.SelectedIndex;
-            Properties.Settings.Default.SpawnMusic = cbUseSpawnMusic.SelectedIndex;
-            Properties.Settings.Default.BreakoutMessage = cbUseBreakout.SelectedIndex;
-            Properties.Settings.Default.Discord = cbUseDiscord.SelectedIndex;
-            Properties.Settings.Default.Gift = cbUseGift.SelectedIndex;
-
-            Properties.Settings.Default.StreamerName = txtStreamerName.Text;
-            Properties.Settings.Default.UseSummon = cbUseSummonReward.SelectedIndex;
-            Properties.Settings.Default.MyPokemonUser = txtMyPokemonUser.Text;
-            Properties.Settings.Default.MyPokemonWebhook = txtMyPokemonWebhook.Text;
-            Properties.Settings.Default.UsePriorityThrow = cbUsePriorityThrow.SelectedIndex;
-            Properties.Settings.Default.BonusTime = txtBonusTime.Text;
-            Properties.Settings.Default.UseBonusTime = cbUseBonusTime.SelectedIndex;
-
-            Properties.Settings.Default.UseThrowOvertime = cbOvertimeThrows.SelectedIndex;
-            Properties.Settings.Default.UseThrowMessage = cbUseThrowMessage.SelectedIndex;
-
-            Properties.Settings.Default.UseSeperateWebhook = cbUseSeparateWebhook.SelectedIndex;
-            Properties.Settings.Default.LoadingSoundPath = txtLoadingSound.Text;
-            Properties.Settings.Default.ShinyScreenPath = sShinyScreenPath;
-            Properties.Settings.Default.LoadingScreenPath = sLoadingScreenPath;
-            Properties.Settings.Default.UseRefundMessage = cbRefundMessage.SelectedIndex;
-
-            Properties.Settings.Default.Save();
-        }
-
-        private void btnSupport_Click(object sender, EventArgs e)
-        {
-            frmChrizzz frm = new frmChrizzz();
-            frm.Show();
-        }
-
         private void btnSelectLoadingScreen_Click(object sender, EventArgs e)
         {
             frmSelectLoadingScreen frm = new frmSelectLoadingScreen();
@@ -521,15 +808,14 @@ namespace Pokemon_and_Friends_Upgrader
             if (frm.DialogResult == DialogResult.OK)
             {
                 sLoadingScreenPath = frm._txt;
-                string sFileOutput = sLoadingScreenPath.Split('\\')[sLoadingScreenPath.Split('\\').Length -1];
-                if(!File.Exists(@"files\" + sFileOutput))
+                string sFileOutput = sLoadingScreenPath.Split('\\')[sLoadingScreenPath.Split('\\').Length - 1];
+                if (!File.Exists(@"files\loadingscreens\" + sFileOutput))
                 {
-                    File.Copy(sLoadingScreenPath, @"files\" + sFileOutput,true);
+                    File.Copy(sLoadingScreenPath, @"files\loadingscreens\" + sFileOutput, true);
                 }
-                pbLoadingScreen.Image = Image.FromFile(@"files\" + sFileOutput);
+                pbLoadingScreen.Image = Image.FromFile(@"files\loadingscreens\" + sFileOutput);
             }
         }
-
         private void btnSelectShinyScreen_Click(object sender, EventArgs e)
         {
             frmSelectShiny frm = new frmSelectShiny();
@@ -538,62 +824,57 @@ namespace Pokemon_and_Friends_Upgrader
             {
                 sShinyScreenPath = frm._txt;
                 string sFileOutput = sShinyScreenPath.Split('\\')[sShinyScreenPath.Split('\\').Length - 1];
-                if (!File.Exists(@"files\" + sFileOutput))
+                if (!File.Exists(@"files\shinybackgrounds\" + sFileOutput))
                 {
-                    File.Copy(sShinyScreenPath, @"files\" + sFileOutput,true);
+                    File.Copy(sShinyScreenPath, @"files\shinybackgrounds\" + sFileOutput, true);
                 }
-                pbShinyScreen.Image = Image.FromFile(@"files\" + sFileOutput);
+                pbShinyScreen.Image = Image.FromFile(@"files\shinybackgrounds\" + sFileOutput);
             }
         }
-
         private void TestSound(object sender, EventArgs e)
         {
             Mp3Player.Stop();
-            if (File.Exists(@"files\" + txtLoadingSound.Text))
+            if (File.Exists(@"files\loadingsounds\" + txtLoadingSound.Text))
             {
-                Mp3Player.Play(@"files\" + txtLoadingSound.Text, false);
+                Mp3Player.Play(@"files\loadingsounds\" + txtLoadingSound.Text, false);
             }
         }
 
-        private void btnLoadingSound_Click(object sender, EventArgs e)
+
+        #endregion
+    }
+
+    public class PokeTrainer
+    {
+        public string sName;
+        public int iDex;
+        public int iShinys;
+
+        public PokeTrainer(string sName, int iDex, int iShinys)
         {
-            frmSelectLoadingSound frm = new frmSelectLoadingSound();
-            frm.txt = txtLoadingSound;
-            frm.ShowDialog();
+            this.sName = sName;
+            this.iDex = iDex;
+            this.iShinys = iShinys;
         }
+    }
+    public class Line
+    {
+        public string sLine;
+        public int iNumber;
 
-        private void cbUseSeparateWebhook_SelectedIndexChanged(object sender, EventArgs e)
+        public Line(string sLine)
         {
-            if (cbUseSeparateWebhook.SelectedIndex == 0)
+            this.sLine = sLine.TrimEnd(new char[] { '\r', '\n' });
+            try
             {
-                lblMYPWebhook.Visible = true;
-                lblMYPUser.Visible = true;
-
-                txtMyPokemonWebhook.Visible = true;
-                txtMyPokemonUser.Visible = true;
+                this.iNumber = Convert.ToInt32(sLine.Replace("S", "").Replace("\"", "").Replace("=1.000000", ""));
             }
-            else
+            catch (Exception ex)
             {
-                lblMYPWebhook.Visible = false;
-                lblMYPUser.Visible = false;
-
-                txtMyPokemonWebhook.Visible = false;
-                txtMyPokemonUser.Visible = false;
-            }
-        }
-
-        private void cbOvertimeThrows_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cbOvertimeThrows.SelectedIndex == 0)
-            {
-                cbUseThrowMessage.Visible = true;
-                lblThrowMessage.Visible = true;
-            }
-            else
-            {
-                cbUseThrowMessage.Visible = false;
-                lblThrowMessage.Visible = false;
+                MessageBox.Show(sLine + "\n" + ex.ToString());
             }
         }
     }
+
 }
+

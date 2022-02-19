@@ -12,7 +12,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,12 +26,12 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string WebhookURL {
+        public string LB2 {
             get {
-                return ((string)(this["WebhookURL"]));
+                return ((string)(this["LB2"]));
             }
             set {
-                this["WebhookURL"] = value;
+                this["LB2"] = value;
             }
         }
         
@@ -49,79 +49,115 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7")]
-        public string RunAwayMin {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int NonAffiliate {
             get {
-                return ((string)(this["RunAwayMin"]));
+                return ((int)(this["NonAffiliate"]));
             }
             set {
-                this["RunAwayMin"] = value;
+                this["NonAffiliate"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public string RunAwayMax {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Leaderboard {
             get {
-                return ((string)(this["RunAwayMax"]));
+                return ((int)(this["Leaderboard"]));
             }
             set {
-                this["RunAwayMax"] = value;
+                this["Leaderboard"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("35")]
+        public string AudioTreshhold {
+            get {
+                return ((string)(this["AudioTreshhold"]));
+            }
+            set {
+                this["AudioTreshhold"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4444")]
+        public string OBSWSPort {
+            get {
+                return ((string)(this["OBSWSPort"]));
+            }
+            set {
+                this["OBSWSPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OBSWSPW {
+            get {
+                return ((string)(this["OBSWSPW"]));
+            }
+            set {
+                this["OBSWSPW"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public string FirstPokemonNr {
+        public string FirstPokemon {
             get {
-                return ((string)(this["FirstPokemonNr"]));
+                return ((string)(this["FirstPokemon"]));
             }
             set {
-                this["FirstPokemonNr"] = value;
+                this["FirstPokemon"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("898")]
-        public string LastPokemonNr {
+        [global::System.Configuration.DefaultSettingValueAttribute("958")]
+        public string LastPokemon {
             get {
-                return ((string)(this["LastPokemonNr"]));
+                return ((string)(this["LastPokemon"]));
             }
             set {
-                this["LastPokemonNr"] = value;
+                this["LastPokemon"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public string ShinyPercentage {
+        [global::System.Configuration.DefaultSettingValueAttribute("958")]
+        public string MaxPokemon {
             get {
-                return ((string)(this["ShinyPercentage"]));
+                return ((string)(this["MaxPokemon"]));
             }
             set {
-                this["ShinyPercentage"] = value;
+                this["MaxPokemon"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("898")]
-        public string MaxAmountOfPokemon {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Gifs {
             get {
-                return ((string)(this["MaxAmountOfPokemon"]));
+                return ((int)(this["Gifs"]));
             }
             set {
-                this["MaxAmountOfPokemon"] = value;
+                this["Gifs"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("300000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
         public string SpawnTimer {
             get {
                 return ((string)(this["SpawnTimer"]));
@@ -133,49 +169,13 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("180000")]
-        public string RunTimer {
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public string SpawnChance {
             get {
-                return ((string)(this["RunTimer"]));
+                return ((string)(this["SpawnChance"]));
             }
             set {
-                this["RunTimer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30000")]
-        public string GreatballTimer {
-            get {
-                return ((string)(this["GreatballTimer"]));
-            }
-            set {
-                this["GreatballTimer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60000")]
-        public string UltraballTimer {
-            get {
-                return ((string)(this["UltraballTimer"]));
-            }
-            set {
-                this["UltraballTimer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int LoadingScreen {
-            get {
-                return ((int)(this["LoadingScreen"]));
-            }
-            set {
-                this["LoadingScreen"] = value;
+                this["SpawnChance"] = value;
             }
         }
         
@@ -194,78 +194,246 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int BreakoutMessage {
+        public int LoadingScreen {
             get {
-                return ((int)(this["BreakoutMessage"]));
+                return ((int)(this["LoadingScreen"]));
             }
             set {
-                this["BreakoutMessage"] = value;
+                this["LoadingScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int LoadingAnimation {
+            get {
+                return ((int)(this["LoadingAnimation"]));
+            }
+            set {
+                this["LoadingAnimation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public string CatchValuePokeball {
+            get {
+                return ((string)(this["CatchValuePokeball"]));
+            }
+            set {
+                this["CatchValuePokeball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string CatchValueGreatball {
+            get {
+                return ((string)(this["CatchValueGreatball"]));
+            }
+            set {
+                this["CatchValueGreatball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        public string CatchValueUltraball {
+            get {
+                return ((string)(this["CatchValueUltraball"]));
+            }
+            set {
+                this["CatchValueUltraball"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Discord {
+        public string CatchMinIncrease {
             get {
-                return ((int)(this["Discord"]));
+                return ((string)(this["CatchMinIncrease"]));
             }
             set {
-                this["Discord"] = value;
+                this["CatchMinIncrease"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PokemonBot")]
-        public string WebhookUser {
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public string CatchMaxIncrease {
             get {
-                return ((string)(this["WebhookUser"]));
+                return ((string)(this["CatchMaxIncrease"]));
             }
             set {
-                this["WebhookUser"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("35")]
-        public string CatchRate {
-            get {
-                return ((string)(this["CatchRate"]));
-            }
-            set {
-                this["CatchRate"] = value;
+                this["CatchMaxIncrease"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Gift {
+        public int UseBonustime {
             get {
-                return ((int)(this["Gift"]));
+                return ((int)(this["UseBonustime"]));
             }
             set {
-                this["Gift"] = value;
+                this["UseBonustime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string BonusTimeMinUsers {
+            get {
+                return ((string)(this["BonusTimeMinUsers"]));
+            }
+            set {
+                this["BonusTimeMinUsers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public string BonusTimeSpawnTimer {
+            get {
+                return ((string)(this["BonusTimeSpawnTimer"]));
+            }
+            set {
+                this["BonusTimeSpawnTimer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public string RunAwayMinIncrease {
+            get {
+                return ((string)(this["RunAwayMinIncrease"]));
+            }
+            set {
+                this["RunAwayMinIncrease"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public string RunAwayMaxIncrease {
+            get {
+                return ((string)(this["RunAwayMaxIncrease"]));
+            }
+            set {
+                this["RunAwayMaxIncrease"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("180")]
+        public string RunTimer {
+            get {
+                return ((string)(this["RunTimer"]));
+            }
+            set {
+                this["RunTimer"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Masterball {
+        public int UseDiscord {
             get {
-                return ((int)(this["Masterball"]));
+                return ((int)(this["UseDiscord"]));
             }
             set {
-                this["Masterball"] = value;
+                this["UseDiscord"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("files\\LoadingScreen.png")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int UseSepareteWebhook {
+            get {
+                return ((int)(this["UseSepareteWebhook"]));
+            }
+            set {
+                this["UseSepareteWebhook"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WebhookURLCatch {
+            get {
+                return ((string)(this["WebhookURLCatch"]));
+            }
+            set {
+                this["WebhookURLCatch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WebhookURLMYP {
+            get {
+                return ((string)(this["WebhookURLMYP"]));
+            }
+            set {
+                this["WebhookURLMYP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseBreakoutMessage {
+            get {
+                return ((int)(this["UseBreakoutMessage"]));
+            }
+            set {
+                this["UseBreakoutMessage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseRefundMessage {
+            get {
+                return ((int)(this["UseRefundMessage"]));
+            }
+            set {
+                this["UseRefundMessage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseRunMessage {
+            get {
+                return ((int)(this["UseRunMessage"]));
+            }
+            set {
+                this["UseRunMessage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("files\\loadingscreens\\WildPokemonEnglish.png")]
         public string LoadingScreenPath {
             get {
                 return ((string)(this["LoadingScreenPath"]));
@@ -277,7 +445,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("files\\shinyblue.png")]
+        [global::System.Configuration.DefaultSettingValueAttribute("files\\shinybackgrounds\\shinygold.png")]
         public string ShinyScreenPath {
             get {
                 return ((string)(this["ShinyScreenPath"]));
@@ -289,7 +457,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Challenger Approaches.mp3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("files\\loadingsounds\\Pokemon Battle.mp3")]
         public string LoadingSoundPath {
             get {
                 return ((string)(this["LoadingSoundPath"]));
@@ -301,13 +469,145 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("chrizzz_1508")]
-        public string StreamerName {
+        [global::System.Configuration.DefaultSettingValueAttribute("Pokeball")]
+        public string NamePokeball {
             get {
-                return ((string)(this["StreamerName"]));
+                return ((string)(this["NamePokeball"]));
             }
             set {
-                this["StreamerName"] = value;
+                this["NamePokeball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Greatball")]
+        public string NameGreatball {
+            get {
+                return ((string)(this["NameGreatball"]));
+            }
+            set {
+                this["NameGreatball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseGreatball {
+            get {
+                return ((int)(this["UseGreatball"]));
+            }
+            set {
+                this["UseGreatball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ultraball")]
+        public string NameUltraball {
+            get {
+                return ((string)(this["NameUltraball"]));
+            }
+            set {
+                this["NameUltraball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseUltraball {
+            get {
+                return ((int)(this["UseUltraball"]));
+            }
+            set {
+                this["UseUltraball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Masterball")]
+        public string NameMasterball {
+            get {
+                return ((string)(this["NameMasterball"]));
+            }
+            set {
+                this["NameMasterball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseMasterball {
+            get {
+                return ((int)(this["UseMasterball"]));
+            }
+            set {
+                this["UseMasterball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Mystery Pokemon")]
+        public string NameMysteryPokemon {
+            get {
+                return ((string)(this["NameMysteryPokemon"]));
+            }
+            set {
+                this["NameMysteryPokemon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseMysteryPokemon {
+            get {
+                return ((int)(this["UseMysteryPokemon"]));
+            }
+            set {
+                this["UseMysteryPokemon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Mystery Shiny")]
+        public string NameMysteryShiny {
+            get {
+                return ((string)(this["NameMysteryShiny"]));
+            }
+            set {
+                this["NameMysteryShiny"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseMysteryShiny {
+            get {
+                return ((int)(this["UseMysteryShiny"]));
+            }
+            set {
+                this["UseMysteryShiny"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Summon Pokemon")]
+        public string NameSummon {
+            get {
+                return ((string)(this["NameSummon"]));
+            }
+            set {
+                this["NameSummon"] = value;
             }
         }
         
@@ -325,109 +625,157 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string MyPokemonWebhook {
+        [global::System.Configuration.DefaultSettingValueAttribute("Give a Gift")]
+        public string NameGift {
             get {
-                return ((string)(this["MyPokemonWebhook"]));
+                return ((string)(this["NameGift"]));
             }
             set {
-                this["MyPokemonWebhook"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PokemonBot")]
-        public string MyPokemonUser {
-            get {
-                return ((string)(this["MyPokemonUser"]));
-            }
-            set {
-                this["MyPokemonUser"] = value;
+                this["NameGift"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int UsePriorityThrow {
+        public int UseGift {
             get {
-                return ((int)(this["UsePriorityThrow"]));
+                return ((int)(this["UseGift"]));
             }
             set {
-                this["UsePriorityThrow"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int UseBonusTime {
-            get {
-                return ((int)(this["UseBonusTime"]));
-            }
-            set {
-                this["UseBonusTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("300000")]
-        public string BonusTime {
-            get {
-                return ((string)(this["BonusTime"]));
-            }
-            set {
-                this["BonusTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int UseThrowOvertime {
-            get {
-                return ((int)(this["UseThrowOvertime"]));
-            }
-            set {
-                this["UseThrowOvertime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int UseThrowMessage {
-            get {
-                return ((int)(this["UseThrowMessage"]));
-            }
-            set {
-                this["UseThrowMessage"] = value;
+                this["UseGift"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int UseSeperateWebhook {
+        public int UseSpawnChance {
             get {
-                return ((int)(this["UseSeperateWebhook"]));
+                return ((int)(this["UseSpawnChance"]));
             }
             set {
-                this["UseSeperateWebhook"] = value;
+                this["UseSpawnChance"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int UseRefundMessage {
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
+        public string BonusTimeDuration {
             get {
-                return ((int)(this["UseRefundMessage"]));
+                return ((string)(this["BonusTimeDuration"]));
             }
             set {
-                this["UseRefundMessage"] = value;
+                this["BonusTimeDuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string ShinyChance {
+            get {
+                return ((string)(this["ShinyChance"]));
+            }
+            set {
+                this["ShinyChance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public string PricePokeball {
+            get {
+                return ((string)(this["PricePokeball"]));
+            }
+            set {
+                this["PricePokeball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public string PriceGreatball {
+            get {
+                return ((string)(this["PriceGreatball"]));
+            }
+            set {
+                this["PriceGreatball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public string PriceUltraball {
+            get {
+                return ((string)(this["PriceUltraball"]));
+            }
+            set {
+                this["PriceUltraball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("25000")]
+        public string PriceMasterball {
+            get {
+                return ((string)(this["PriceMasterball"]));
+            }
+            set {
+                this["PriceMasterball"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
+        public string PriceSummon {
+            get {
+                return ((string)(this["PriceSummon"]));
+            }
+            set {
+                this["PriceSummon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public string PriceMysteryPokemon {
+            get {
+                return ((string)(this["PriceMysteryPokemon"]));
+            }
+            set {
+                this["PriceMysteryPokemon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public string PriceMysteryShiny {
+            get {
+                return ((string)(this["PriceMysteryShiny"]));
+            }
+            set {
+                this["PriceMysteryShiny"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public string PriceGift {
+            get {
+                return ((string)(this["PriceGift"]));
+            }
+            set {
+                this["PriceGift"] = value;
             }
         }
     }

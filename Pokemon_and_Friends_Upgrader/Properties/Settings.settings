@@ -2,107 +2,194 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Pokemon_and_Friends_Upgrader.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="WebhookURL" Type="System.String" Scope="User">
+    <Setting Name="LB2" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Language" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="RunAwayMin" Type="System.String" Scope="User">
-      <Value Profile="(Default)">7</Value>
-    </Setting>
-    <Setting Name="RunAwayMax" Type="System.String" Scope="User">
-      <Value Profile="(Default)">20</Value>
-    </Setting>
-    <Setting Name="FirstPokemonNr" Type="System.String" Scope="User">
+    <Setting Name="NonAffiliate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="LastPokemonNr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">898</Value>
+    <Setting Name="Leaderboard" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="ShinyPercentage" Type="System.String" Scope="User">
-      <Value Profile="(Default)">10</Value>
+    <Setting Name="AudioTreshhold" Type="System.String" Scope="User">
+      <Value Profile="(Default)">35</Value>
     </Setting>
-    <Setting Name="MaxAmountOfPokemon" Type="System.String" Scope="User">
-      <Value Profile="(Default)">898</Value>
+    <Setting Name="OBSWSPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4444</Value>
+    </Setting>
+    <Setting Name="OBSWSPW" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FirstPokemon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="LastPokemon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">958</Value>
+    </Setting>
+    <Setting Name="MaxPokemon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">958</Value>
+    </Setting>
+    <Setting Name="Gifs" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="SpawnTimer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">300000</Value>
+      <Value Profile="(Default)">300</Value>
     </Setting>
-    <Setting Name="RunTimer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">180000</Value>
-    </Setting>
-    <Setting Name="GreatballTimer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">30000</Value>
-    </Setting>
-    <Setting Name="UltraballTimer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">60000</Value>
-    </Setting>
-    <Setting Name="LoadingScreen" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="SpawnChance" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="SpawnMusic" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="BreakoutMessage" Type="System.Int32" Scope="User">
+    <Setting Name="LoadingScreen" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Discord" Type="System.Int32" Scope="User">
+    <Setting Name="LoadingAnimation" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="CatchValuePokeball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="CatchValueGreatball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="CatchValueUltraball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="CatchMinIncrease" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="WebhookUser" Type="System.String" Scope="User">
-      <Value Profile="(Default)">PokemonBot</Value>
+    <Setting Name="CatchMaxIncrease" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5</Value>
     </Setting>
-    <Setting Name="CatchRate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">35</Value>
-    </Setting>
-    <Setting Name="Gift" Type="System.Int32" Scope="User">
+    <Setting Name="UseBonustime" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Masterball" Type="System.Int32" Scope="User">
+    <Setting Name="BonusTimeMinUsers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="BonusTimeSpawnTimer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="RunAwayMinIncrease" Type="System.String" Scope="User">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="RunAwayMaxIncrease" Type="System.String" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="RunTimer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">180</Value>
+    </Setting>
+    <Setting Name="UseDiscord" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="UseSepareteWebhook" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="WebhookURLCatch" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WebhookURLMYP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UseBreakoutMessage" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="UseRefundMessage" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="UseRunMessage" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="LoadingScreenPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">files\LoadingScreen.png</Value>
+      <Value Profile="(Default)">files\loadingscreens\WildPokemonEnglish.png</Value>
     </Setting>
     <Setting Name="ShinyScreenPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">files\shinyblue.png</Value>
+      <Value Profile="(Default)">files\shinybackgrounds\shinygold.png</Value>
     </Setting>
     <Setting Name="LoadingSoundPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Challenger Approaches.mp3</Value>
+      <Value Profile="(Default)">files\loadingsounds\Pokemon Battle.mp3</Value>
     </Setting>
-    <Setting Name="StreamerName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">chrizzz_1508</Value>
+    <Setting Name="NamePokeball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Pokeball</Value>
+    </Setting>
+    <Setting Name="NameGreatball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Greatball</Value>
+    </Setting>
+    <Setting Name="UseGreatball" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="NameUltraball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ultraball</Value>
+    </Setting>
+    <Setting Name="UseUltraball" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="NameMasterball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Masterball</Value>
+    </Setting>
+    <Setting Name="UseMasterball" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="NameMysteryPokemon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Mystery Pokemon</Value>
+    </Setting>
+    <Setting Name="UseMysteryPokemon" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="NameMysteryShiny" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Mystery Shiny</Value>
+    </Setting>
+    <Setting Name="UseMysteryShiny" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="NameSummon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Summon Pokemon</Value>
     </Setting>
     <Setting Name="UseSummon" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="MyPokemonWebhook" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="NameGift" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Give a Gift</Value>
     </Setting>
-    <Setting Name="MyPokemonUser" Type="System.String" Scope="User">
-      <Value Profile="(Default)">PokemonBot</Value>
-    </Setting>
-    <Setting Name="UsePriorityThrow" Type="System.Int32" Scope="User">
+    <Setting Name="UseGift" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="UseBonusTime" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="BonusTime" Type="System.String" Scope="User">
-      <Value Profile="(Default)">300000</Value>
-    </Setting>
-    <Setting Name="UseThrowOvertime" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="UseThrowMessage" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="UseSeperateWebhook" Type="System.Int32" Scope="User">
+    <Setting Name="UseSpawnChance" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="UseRefundMessage" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="BonusTimeDuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="ShinyChance" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="PricePokeball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="PriceGreatball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="PriceUltraball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="PriceMasterball" Type="System.String" Scope="User">
+      <Value Profile="(Default)">25000</Value>
+    </Setting>
+    <Setting Name="PriceSummon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="PriceMysteryPokemon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="PriceMysteryShiny" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5000</Value>
+    </Setting>
+    <Setting Name="PriceGift" Type="System.String" Scope="User">
+      <Value Profile="(Default)">500</Value>
     </Setting>
   </Settings>
 </SettingsFile>

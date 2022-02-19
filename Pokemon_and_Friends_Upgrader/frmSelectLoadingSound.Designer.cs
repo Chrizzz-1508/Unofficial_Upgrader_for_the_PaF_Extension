@@ -66,7 +66,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(369, 61);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Select a loading music";
+            this.label1.Text = "Select a spawn music";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbSound
@@ -104,7 +104,7 @@
             this.Controls.Add(this.btnSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmSelectLoadingSound";
-            this.Text = "Select Shiny Screen";
+            this.Text = "Select Spawn Music";
             this.Load += new System.EventHandler(this.frmSelectLoadingSound_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPlay)).EndInit();
             this.ResumeLayout(false);

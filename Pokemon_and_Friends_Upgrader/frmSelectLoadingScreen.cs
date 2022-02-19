@@ -26,15 +26,18 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void frmSelectLoadingScreen_Load(object sender, EventArgs e)
         {
-            DirectoryInfo df = new DirectoryInfo("files");
+            DirectoryInfo df = new DirectoryInfo("files\\loadingscreens");
             foreach(FileInfo f in df.GetFiles())
             {
                 if (f.Name.Contains(".png") || f.Name.Contains(".jpg"))
                 {
-                    Image img = Image.FromFile(f.FullName);
-                    if (img.Width == 1920 && img.Height == 1080)
+                    if (!f.Name.Contains("PokedexWallpaper"))
                     {
-                        lsLoading.Add(f.FullName);
+                        Image img = Image.FromFile(f.FullName);
+                        if (img.Width == 1920 && img.Height == 1080)
+                        {
+                            lsLoading.Add(f.FullName);
+                        }
                     }
                 }
             }

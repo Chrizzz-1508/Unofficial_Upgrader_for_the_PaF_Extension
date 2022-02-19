@@ -26,8 +26,8 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void frmSelectShiny_Load(object sender, EventArgs e)
         {
-            DirectoryInfo df = new DirectoryInfo("files");
-            foreach(FileInfo f in df.GetFiles())
+            DirectoryInfo df = new DirectoryInfo("files\\shinybackgrounds");
+            foreach (FileInfo f in df.GetFiles())
             {
                 if (f.Name.Contains(".png") || f.Name.Contains(".jpg"))
                 {

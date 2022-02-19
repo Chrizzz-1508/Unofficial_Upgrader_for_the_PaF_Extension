@@ -20,7 +20,7 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void pbPaypal_Click(object sender, EventArgs e)
         {
-            Process.Start(@"https://www.paypal.com/donate/?hosted_button_id=F35RJZAWDPMQ2");
+            Process.Start(@"https://www.paypal.com/paypalme/chrizzz1508");
         }
 
         private void pbTwitch_Click(object sender, EventArgs e)
