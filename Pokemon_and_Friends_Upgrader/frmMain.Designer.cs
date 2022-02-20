@@ -1063,7 +1063,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(169, 24);
             this.label2.TabIndex = 76;
-            this.label2.Text = "Closed Beta V1.0.2";
+            this.label2.Text = "Closed Beta V1.0.4";
             // 
             // groupBox6
             // 
