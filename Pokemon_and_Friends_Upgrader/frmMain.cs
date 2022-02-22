@@ -359,7 +359,7 @@ namespace Pokemon_and_Friends_Upgrader
 
                 if (!File.Exists(txtLB2.Text + @"\Pokemon and Friends\hdsprites240\normal\1.png") || (!File.Exists(txtLB2.Text + @"\Pokemon and Friends\hdsprites240\normalgif\1.gif") && cbUseGIFS.SelectedIndex == 0))
                 {
-                    if (DialogResult.Yes == MessageBox.Show("Not all Files were copied successfully, do you want to try again?", "Try again?", MessageBoxButtons.YesNo)) btnInstall_Click(null, null);
+                    if (DialogResult.Yes == MessageBox.Show("Not all files were copied successfully, do you want to try again?", "Try again?", MessageBoxButtons.YesNo)) btnInstall_Click(null, null);
                 }
                 else
                 {
@@ -368,14 +368,13 @@ namespace Pokemon_and_Friends_Upgrader
             }
             else
             {
-                MessageBox.Show("No LB2 Folder selected");
-                btnSearch_Click(null, null);
+                MessageBox.Show("Not all the fields were filled out correctly.");
             }
         }
         private bool CheckValues()
         {
             if (string.IsNullOrEmpty(txtLB2.Text)) return false;
-
+            if (cbUseDiscord.SelectedIndex == 0 && String.IsNullOrEmpty(txtWebhookURL.Text)) return false;
             return true;
         }
 
