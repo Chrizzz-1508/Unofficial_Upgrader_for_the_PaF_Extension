@@ -83,84 +83,115 @@ namespace Pokemon_and_Friends_Upgrader
             DirectoryInfo diTrainers = new DirectoryInfo(@"files\trainers");
             foreach (FileInfo f in diTrainers.GetFiles())
             {
-                string fptarget = sPAFPath + @"\trainers\" + f.Name;
-                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
-            }
+                try
+                {
+                    string fptarget = sPAFPath + @"\trainers\" + f.Name;
+                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                } 
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+        }
 
             //Copy Wallpapers
             DirectoryInfo diWallpapers = new DirectoryInfo(@"files\wallpaper");
             foreach (FileInfo f in diWallpapers.GetFiles())
             {
-                string fptarget = sPAFPath + @"\wallpaper\" + f.Name;
-                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                try
+                {
+                    string fptarget = sPAFPath + @"\wallpaper\" + f.Name;
+                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             }
 
             //Copy Pokemon240PNG
             DirectoryInfo diPokemonPNG240Normal = new DirectoryInfo(@"files\hdsprites240\normal");
             foreach (FileInfo f in diPokemonPNG240Normal.GetFiles())
             {
-                string fptarget = sPAFPath + @"\hdsprites240\normal\" + f.Name;
-                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
-            }
+                try
+                {
+                    string fptarget = sPAFPath + @"\hdsprites240\normal\" + f.Name;
+                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+        }
 
             DirectoryInfo diPokemonPNG240Shiny = new DirectoryInfo(@"files\hdsprites240\shiny");
             foreach (FileInfo f in diPokemonPNG240Shiny.GetFiles())
             {
-                string fptarget = sPAFPath + @"\hdsprites240\shiny\" + f.Name;
-                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                try
+                {
+                    string fptarget = sPAFPath + @"\hdsprites240\shiny\" + f.Name;
+                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             }
 
             //Copy Pokemon512PNG
             DirectoryInfo diPokemonPNG512Normal = new DirectoryInfo(@"files\hdsprites512\normal");
             foreach (FileInfo f in diPokemonPNG512Normal.GetFiles())
             {
-                string fptarget = sPAFPath + @"\hdsprites512\normal\" + f.Name;
-                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                try
+                {
+                    string fptarget = sPAFPath + @"\hdsprites512\normal\" + f.Name;
+                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             }
 
             DirectoryInfo diPokemonPNG512Shiny = new DirectoryInfo(@"files\hdsprites512\shiny");
             foreach (FileInfo f in diPokemonPNG512Shiny.GetFiles())
             {
-                string fptarget = sPAFPath + @"\hdsprites512\shiny\" + f.Name;
-                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                try
+                {
+                    string fptarget = sPAFPath + @"\hdsprites512\shiny\" + f.Name;
+                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             }
 
             //Copy Other Stuff
             string ftSourceTargetPath = sPAFPath + @"\sources\";
 
-            if (!File.Exists(ftSourceTargetPath + @"pokeball.png")) File.Copy(@"files\sources\pokeball.png", ftSourceTargetPath + @"pokeball.png");
-            if (!File.Exists(ftSourceTargetPath + @"greatball.png")) File.Copy(@"files\sources\greatball.png", ftSourceTargetPath + @"greatball.png");
-            if (!File.Exists(ftSourceTargetPath + @"ultraball.png")) File.Copy(@"files\sources\ultraball.png", ftSourceTargetPath + @"ultraball.png");
-            if (!File.Exists(ftSourceTargetPath + @"masterball.png")) File.Copy(@"files\sources\masterball.png", ftSourceTargetPath + @"masterball.png");
-            if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper.png")) File.Copy(@"files\sources\PokedexWallpaper.png", ftSourceTargetPath + @"PokedexWallpaper.png");
-            if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper720.png")) File.Copy(@"files\sources\PokedexWallpaper720.png", ftSourceTargetPath + @"PokedexWallpaper720.png");
-            if (!File.Exists(ftSourceTargetPath + @"pokemon_wallpaper.png")) File.Copy(@"files\sources\pokemon_wallpaper.png", ftSourceTargetPath + @"pokemon_wallpaper.png");
-
-            if (!File.Exists(ftSourceTargetPath + @"Pokemon_Loading_Animation.webm")) File.Copy(@"files\loadinganimations\Pokemon_Loading_Animation.webm", ftSourceTargetPath + @"Pokemon_Loading_Animation.webm");
-            if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_POOF.wav")) File.Copy(@"files\sources\SFX_BALL_POOF.wav", ftSourceTargetPath + @"SFX_BALL_POOF.wav");
-            if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_TOSS.wav")) File.Copy(@"files\sources\SFX_BALL_TOSS.wav", ftSourceTargetPath + @"SFX_BALL_TOSS.wav");
-            if (!File.Exists(ftSourceTargetPath + @"SFX_CAUGHT_MON.wav")) File.Copy(@"files\sources\SFX_CAUGHT_MON.wav", ftSourceTargetPath + @"SFX_CAUGHT_MON.wav");
-            if (!File.Exists(ftSourceTargetPath + @"SFX_RUN.wav")) File.Copy(@"files\sources\SFX_RUN.wav", ftSourceTargetPath + @"SFX_RUN.wav");
-            File.Copy(sLoadingScreenPath, ftSourceTargetPath + @"LoadingScreen.png", true);
-            File.Copy(sShinyScreenPath, ftSourceTargetPath + @"shiny.png", true);
-            File.Copy(@"files\loadingsounds\" + txtLoadingSound.Text, ftSourceTargetPath + @"Challenger Approaches.mp3", true);
+            try { if (!File.Exists(ftSourceTargetPath + @"pokeball.png")) File.Copy(@"files\sources\pokeball.png", ftSourceTargetPath + @"pokeball.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try{ if (!File.Exists(ftSourceTargetPath + @"greatball.png")) File.Copy(@"files\sources\greatball.png", ftSourceTargetPath + @"greatball.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"ultraball.png")) File.Copy(@"files\sources\ultraball.png", ftSourceTargetPath + @"ultraball.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"masterball.png")) File.Copy(@"files\sources\masterball.png", ftSourceTargetPath + @"masterball.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper.png")) File.Copy(@"files\sources\PokedexWallpaper.png", ftSourceTargetPath + @"PokedexWallpaper.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper720.png")) File.Copy(@"files\sources\PokedexWallpaper720.png", ftSourceTargetPath + @"PokedexWallpaper720.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"pokemon_wallpaper.png")) File.Copy(@"files\sources\pokemon_wallpaper.png", ftSourceTargetPath + @"pokemon_wallpaper.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"Pokemon_Loading_Animation.webm")) File.Copy(@"files\loadinganimations\Pokemon_Loading_Animation.webm", ftSourceTargetPath + @"Pokemon_Loading_Animation.webm");} catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_POOF.wav")) File.Copy(@"files\sources\SFX_BALL_POOF.wav", ftSourceTargetPath + @"SFX_BALL_POOF.wav");} catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_TOSS.wav")) File.Copy(@"files\sources\SFX_BALL_TOSS.wav", ftSourceTargetPath + @"SFX_BALL_TOSS.wav");} catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"SFX_CAUGHT_MON.wav")) File.Copy(@"files\sources\SFX_CAUGHT_MON.wav", ftSourceTargetPath + @"SFX_CAUGHT_MON.wav"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ if (!File.Exists(ftSourceTargetPath + @"SFX_RUN.wav")) File.Copy(@"files\sources\SFX_RUN.wav", ftSourceTargetPath + @"SFX_RUN.wav"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ File.Copy(sLoadingScreenPath, ftSourceTargetPath + @"LoadingScreen.png", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ File.Copy(sShinyScreenPath, ftSourceTargetPath + @"shiny.png", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try{ File.Copy(@"files\loadingsounds\" + txtLoadingSound.Text, ftSourceTargetPath + @"Challenger Approaches.mp3", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
 
             //Copy GIF Files
 
             DirectoryInfo diPokemonGIF240Normal = new DirectoryInfo(@"files\hdsprites240\normalgif");
             foreach (FileInfo f in diPokemonGIF240Normal.GetFiles())
             {
-                string fptarget = sPAFPath + @"\hdsprites240\normalgif\" + f.Name;
-                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                try
+                {
+                    string fptarget = sPAFPath + @"\hdsprites240\normalgif\" + f.Name;
+                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                } catch (Exception ex) { MessageBox.Show(ex.ToString()); };
             }
 
             DirectoryInfo diPokemonGIF240Shiny = new DirectoryInfo(@"files\hdsprites240\shinygif");
             foreach (FileInfo f in diPokemonGIF240Shiny.GetFiles())
             {
-                string fptarget = sPAFPath + @"\hdsprites240\shinygif\" + f.Name;
-                if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
-            }         
+                try
+                {
+                    string fptarget = sPAFPath + @"\hdsprites240\shinygif\" + f.Name;
+                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); };
+            }
         }
+    
         private void CreateLB2Extension()
         {
             StreamReader sr = new StreamReader(@"files\PaF_Unconverted");
@@ -332,7 +363,7 @@ namespace Pokemon_and_Friends_Upgrader
                 }
                 else
                 {
-                    MessageBox.Show("DONE");
+                    MessageBox.Show("Installation completed.\n\nNext please Install the PaFGame.lb2 Extension from your \"LB2 => Pokemon and Friends\" folder and then type !poke-install into the chat.");
                 }
             }
             else
@@ -765,7 +796,7 @@ namespace Pokemon_and_Friends_Upgrader
         }
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            Process.Start("Installation Manual.txt");
+            Process.Start("Pokemon and Friends Mod V1.0.pdf");
             if (DialogResult.Yes == MessageBox.Show("Need more help? Feel free to join my discord! Wanna join now?", "Help", MessageBoxButtons.YesNo))
             {
                 Process.Start("https://discord.gg/gggS8AD");

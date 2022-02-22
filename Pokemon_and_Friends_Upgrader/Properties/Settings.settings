@@ -111,7 +111,7 @@
       <Value Profile="(Default)">files\shinybackgrounds\shinygold.png</Value>
     </Setting>
     <Setting Name="LoadingSoundPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">files\loadingsounds\Pokemon Battle.mp3</Value>
+      <Value Profile="(Default)">Pokemon Battle.mp3</Value>
     </Setting>
     <Setting Name="NamePokeball" Type="System.String" Scope="User">
       <Value Profile="(Default)">Pokeball</Value>

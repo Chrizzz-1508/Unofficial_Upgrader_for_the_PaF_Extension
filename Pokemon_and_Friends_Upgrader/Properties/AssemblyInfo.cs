@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
-[assembly: AssemblyTitle("Pokemon_and_Friends_Upgrader")]
-[assembly: AssemblyDescription("SmallUpgraderForPaFinLioranBoard")]
-[assembly: AssemblyConfiguration("V1.0")]
-[assembly: AssemblyCompany("Chrizzz")]
-[assembly: AssemblyProduct("Pokemon_and_Friends_Upgrader")]
+[assembly: AssemblyTitle("Pokemon_and_Friends_LB2_Mod")]
+[assembly: AssemblyDescription("Pokemon_and_Friends_LB2_Mod")]
+[assembly: AssemblyConfiguration("V1.0.0")]
+[assembly: AssemblyCompany("Chrizzz_1508")]
+[assembly: AssemblyProduct("Pokemon_and_Friends_LB2_Mod")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

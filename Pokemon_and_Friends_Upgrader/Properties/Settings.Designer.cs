@@ -457,7 +457,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("files\\loadingsounds\\Pokemon Battle.mp3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pokemon Battle.mp3")]
         public string LoadingSoundPath {
             get {
                 return ((string)(this["LoadingSoundPath"]));

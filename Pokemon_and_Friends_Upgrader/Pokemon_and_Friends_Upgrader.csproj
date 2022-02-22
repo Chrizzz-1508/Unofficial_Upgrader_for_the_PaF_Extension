@@ -197,7 +197,10 @@
     <None Include="files\PaF_Unconverted">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="PaF_Upgrader_Manual.pdf">
+    <None Include="Pokemon and Friends Mod V1.0.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Pokemon and Friends Mod V1.0.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Pokemon_and_Friends_Upgrader_TemporaryKey.pfx" />
