@@ -17573,6 +17573,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Poke-Ball.ico" />
+    <Content Include="Version.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\chrizzz twitch logo.png" />
     <Content Include="files\loadingsounds\Challenger Approaches.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

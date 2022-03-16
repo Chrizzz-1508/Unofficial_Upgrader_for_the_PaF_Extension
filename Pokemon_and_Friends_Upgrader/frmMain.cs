@@ -798,7 +798,7 @@ namespace Pokemon_and_Friends_Upgrader
             Process.Start("Pokemon and Friends Mod V1.0.pdf");
             if (DialogResult.Yes == MessageBox.Show("Need more help? Feel free to join my discord! Wanna join now?", "Help", MessageBoxButtons.YesNo))
             {
-                Process.Start("https://discord.gg/gggS8AD");
+                Process.Start("https://discord.gg/A3VF9kW");
             }
         }
         private void btnCredits_Click(object sender, EventArgs e)
