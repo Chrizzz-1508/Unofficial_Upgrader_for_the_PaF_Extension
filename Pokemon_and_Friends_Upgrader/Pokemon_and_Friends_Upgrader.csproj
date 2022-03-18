@@ -2392,6 +2392,9 @@
     <Content Include="files\hdsprites240\normalgif\720.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="files\hdsprites240\normalgif\721.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="files\hdsprites240\normalgif\722.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
