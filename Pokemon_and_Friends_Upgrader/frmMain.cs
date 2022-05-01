@@ -164,7 +164,9 @@ namespace Pokemon_and_Friends_Upgrader
             try{ if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_TOSS.wav")) File.Copy(@"files\sources\SFX_BALL_TOSS.wav", ftSourceTargetPath + @"SFX_BALL_TOSS.wav");} catch(Exception ex) { MessageBox.Show(ex.ToString());}
             try{ if (!File.Exists(ftSourceTargetPath + @"SFX_CAUGHT_MON.wav")) File.Copy(@"files\sources\SFX_CAUGHT_MON.wav", ftSourceTargetPath + @"SFX_CAUGHT_MON.wav"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
             try{ if (!File.Exists(ftSourceTargetPath + @"SFX_RUN.wav")) File.Copy(@"files\sources\SFX_RUN.wav", ftSourceTargetPath + @"SFX_RUN.wav"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ File.Copy(sLoadingScreenPath, ftSourceTargetPath + @"LoadingScreen.png", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try { if (!File.Exists(ftSourceTargetPath + @"ShinyStars.png")) File.Copy(@"files\sources\ShinyStars.png", ftSourceTargetPath + @"ShinyStars.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
+            try { File.Copy(sLoadingScreenPath, ftSourceTargetPath + @"LoadingScreen.png", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
             try{ File.Copy(sShinyScreenPath, ftSourceTargetPath + @"shiny.png", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
             try{ File.Copy(@"files\loadingsounds\" + txtLoadingSound.Text, ftSourceTargetPath + @"Challenger Approaches.mp3", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
 
@@ -198,6 +200,12 @@ namespace Pokemon_and_Friends_Upgrader
             string sOutput = sr.ReadToEnd();
             sr.Close();
 
+
+            //English
+            //German
+            //French
+            //Spanish
+            //Italian
             string VAR_LANGUAGE_VAR = "en";
             switch(cbLanguage.SelectedIndex)
             {
@@ -207,9 +215,16 @@ namespace Pokemon_and_Friends_Upgrader
                 case 2:
                     VAR_LANGUAGE_VAR = "fr";
                     break;
+                case 3:
+                    VAR_LANGUAGE_VAR = "es";
+                    break;
+                case 4:
+                    VAR_LANGUAGE_VAR = "it";
+                    break;
                 default:
                     break;
             }
+
 
             string VAR_USE_NON_AFFILIATE_VAR = "true";
             if (cbAffiliate.SelectedIndex == 1) VAR_USE_NON_AFFILIATE_VAR = "false";
@@ -268,6 +283,45 @@ namespace Pokemon_and_Friends_Upgrader
             string VAR_USE_REFUND_MSG_VAR = "true";
             if (cbRefundMessage.SelectedIndex == 1) VAR_USE_REFUND_MSG_VAR = "false";
 
+            //V1.1
+
+            string VAR_USE_GEN_1_VAR = "true";
+            if (cbGen1.SelectedIndex == 1) VAR_USE_GEN_1_VAR = "false";
+
+            string VAR_USE_GEN_2_VAR = "true";
+            if (cbGen2.SelectedIndex == 1) VAR_USE_GEN_2_VAR = "false";
+
+            string VAR_USE_GEN_3_VAR = "true";
+            if (cbGen3.SelectedIndex == 1) VAR_USE_GEN_3_VAR = "false";
+
+            string VAR_USE_GEN_4_VAR = "true";
+            if (cbGen4.SelectedIndex == 1) VAR_USE_GEN_4_VAR = "false";
+
+            string VAR_USE_GEN_5_VAR = "true";
+            if (cbGen5.SelectedIndex == 1) VAR_USE_GEN_5_VAR = "false";
+
+            string VAR_USE_GEN_6_VAR = "true";
+            if (cbGen6.SelectedIndex == 1) VAR_USE_GEN_6_VAR = "false";
+
+            string VAR_USE_GEN_7_VAR = "true";
+            if (cbGen7.SelectedIndex == 1) VAR_USE_GEN_7_VAR = "false";
+
+            string VAR_USE_GEN_8_VAR = "true";
+            if (cbGen8.SelectedIndex == 1) VAR_USE_GEN_8_VAR = "false";
+
+            string VAR_USE_REGIONALS_VAR = "true";
+            if (cbRegional.SelectedIndex == 1) VAR_USE_REGIONALS_VAR = "false";
+
+            string VAR_USE_CUSTOM_VAR = "true";
+            if (cbCustom.SelectedIndex == 1) VAR_USE_CUSTOM_VAR = "false";
+
+            string VAR_ANIMATED_TRAINERS_VAR = "true";
+            if (cbAnimatedTrainers.SelectedIndex == 1) VAR_ANIMATED_TRAINERS_VAR = "false";
+
+            string VAR_ANNOUNCE_VAR = "true";
+            if (cbAnnounce.SelectedIndex == 1) VAR_ANNOUNCE_VAR = "false";
+
+
             sOutput = sOutput.Replace("VAR_LANGUAGE_VAR", VAR_LANGUAGE_VAR);
             sOutput = sOutput.Replace("VAR_POKE_PATH_VAR",txtLB2.Text.Replace(@"\","/") + @"/Pokemon and Friends/");
             sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", VAR_USE_NON_AFFILIATE_VAR);
@@ -275,9 +329,6 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("VAR_USE_IGNORE_LB_VAR", VAR_USE_IGNORE_LB_VAR);
             sOutput = sOutput.Replace("VAR_OBSWSPORT_VAR",txtOBSWSPort.Text);
             sOutput = sOutput.Replace("VAR_OBSWSPW_VAR",txtOBSWSPW.Text);
-            sOutput = sOutput.Replace("VAR_FIRSTPKM_VAR",txtFirstPokemon.Text);
-            sOutput = sOutput.Replace("VAR_LASTPKM_VAR",txtLastPokemon.Text);
-            sOutput = sOutput.Replace("VAR_MAXNUMBER_VAR",txtMaxPokemon.Text);
             sOutput = sOutput.Replace("VAR_SHINYCHANCE_VAR",txtShinyChance.Text);
             sOutput = sOutput.Replace("VAR_USE_GIFS_VAR", VAR_USE_GIFS_VAR);
             sOutput = sOutput.Replace("VAR_CR_POKEBALL_VAR",txtCatchRatePokeball.Text);
@@ -314,24 +365,41 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("VAR_USE_BREAKOUT_MSG_VAR", VAR_USE_BREAKOUT_MSG_VAR);
             sOutput = sOutput.Replace("VAR_USE_RUN_MSG_VAR", VAR_USE_RUN_MSG_VAR);
             sOutput = sOutput.Replace("VAR_USE_REFUND_MSG_VAR", VAR_USE_REFUND_MSG_VAR);
+            
             sOutput = sOutput.Replace("VAR_MYSTERY_P_VAR",txtMysteryPokemon.Text);
             sOutput = sOutput.Replace("VAR_MYSTERY_S_VAR", txtMysteryShiny.Text);
             sOutput = sOutput.Replace("VAR_SUMMON_VAR", txtSummon.Text);
+            sOutput = sOutput.Replace("VAR_GIFT_VAR", txtGift.Text);
+
             sOutput = sOutput.Replace("VAR_POKEBALL_VAR", txtPokeball.Text);
             sOutput = sOutput.Replace("VAR_GREATBALL_VAR",txtGreatball.Text);
             sOutput = sOutput.Replace("VAR_ULTRABALL_VAR",txtUltraball.Text);
             sOutput = sOutput.Replace("VAR_MASTERBALL_VAR", txtMasterball.Text);
-            sOutput = sOutput.Replace("VAR_GIFT_VAR", txtGift.Text);
-
+           
+            sOutput = sOutput.Replace("VAR_PRICE_MYSTERY_P_VAR", txtPriceMysteryPokemon.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_MYSTERY_S_VAR", txtPriceMysteryShiny.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_SUMMON_VAR", txtPriceSummon.Text);
+            sOutput = sOutput.Replace("VAR_PRICE_GIFT_VAR", txtPriceGift.Text);
+            
             sOutput = sOutput.Replace("VAR_PRICE_POKEBALL_VAR", txtPricePokeball.Text);
             sOutput = sOutput.Replace("VAR_PRICE_GREATBALL_VAR", txtPriceGreatball.Text);
             sOutput = sOutput.Replace("VAR_PRICE_ULTRABALL_VAR", txtPriceUltraball.Text);
             sOutput = sOutput.Replace("VAR_PRICE_MASTERBALL_VAR", txtPriceMasterball.Text);
-            sOutput = sOutput.Replace("VAR_PRICE_SUMMON_VAR", txtPriceSummon.Text);
-            sOutput = sOutput.Replace("VAR_PRICE_MYSTERY_P_VAR", txtPriceMysteryPokemon.Text);
-            sOutput = sOutput.Replace("VAR_PRICE_MYSTERY_S_VAR", txtPriceMysteryShiny.Text);
-            sOutput = sOutput.Replace("VAR_PRICE_GIFT_VAR", txtPriceGift.Text);
 
+            sOutput = sOutput.Replace("VAR_USE_GEN_1_VAR", VAR_USE_GEN_1_VAR);
+            sOutput = sOutput.Replace("VAR_USE_GEN_2_VAR", VAR_USE_GEN_2_VAR);
+            sOutput = sOutput.Replace("VAR_USE_GEN_3_VAR", VAR_USE_GEN_3_VAR);
+            sOutput = sOutput.Replace("VAR_USE_GEN_4_VAR", VAR_USE_GEN_4_VAR);
+            sOutput = sOutput.Replace("VAR_USE_GEN_5_VAR", VAR_USE_GEN_5_VAR);
+            sOutput = sOutput.Replace("VAR_USE_GEN_6_VAR", VAR_USE_GEN_6_VAR);
+            sOutput = sOutput.Replace("VAR_USE_GEN_7_VAR", VAR_USE_GEN_7_VAR);
+            sOutput = sOutput.Replace("VAR_USE_GEN_8_VAR", VAR_USE_GEN_8_VAR);
+            sOutput = sOutput.Replace("VAR_USE_REGIONALS_VAR", VAR_USE_REGIONALS_VAR);
+            sOutput = sOutput.Replace("VAR_USE_CUSTOM_VAR", VAR_USE_CUSTOM_VAR);
+            
+            sOutput = sOutput.Replace("VAR_ANIMATED_TRAINERS_VAR",VAR_ANIMATED_TRAINERS_VAR);
+            sOutput = sOutput.Replace("VAR_ANNOUNCE_VAR",VAR_ANNOUNCE_VAR);
+            sOutput = sOutput.Replace("VAR_BROADCASTER_VAR", txtBroadcaster.Text.ToLowerInvariant());
 
             using (StreamWriter sw = new StreamWriter(txtLB2.Text + @"\Pokemon and Friends\PaFGame.lb2"))
             {
@@ -374,6 +442,7 @@ namespace Pokemon_and_Friends_Upgrader
         private bool CheckValues()
         {
             if (string.IsNullOrEmpty(txtLB2.Text)) return false;
+            if(string.IsNullOrEmpty(txtBroadcaster.Text)) return false; 
             if (cbUseDiscord.SelectedIndex == 0 && String.IsNullOrEmpty(txtWebhookURL.Text)) return false;
             return true;
         }
@@ -395,10 +464,7 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.OBSWSPort = txtOBSWSPort.Text;
             Properties.Settings.Default.OBSWSPW = txtOBSWSPW.Text;
 
-            Properties.Settings.Default.FirstPokemon = txtFirstPokemon.Text;
-            Properties.Settings.Default.LastPokemon = txtLastPokemon.Text;
             Properties.Settings.Default.ShinyChance = txtShinyChance.Text;
-            Properties.Settings.Default.MaxPokemon = txtMaxPokemon.Text;
             Properties.Settings.Default.Gifs = cbUseGIFS.SelectedIndex;
 
             Properties.Settings.Default.SpawnTimer = txtSpawnTimer.Text;
@@ -468,6 +534,21 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.UseGift = cbGift.SelectedIndex;
             Properties.Settings.Default.PriceGift = txtPriceGift.Text;
 
+            Properties.Settings.Default.UseGen1 = cbGen1.SelectedIndex;
+            Properties.Settings.Default.UseGen2 = cbGen2.SelectedIndex;
+            Properties.Settings.Default.UseGen3 = cbGen3.SelectedIndex;
+            Properties.Settings.Default.UseGen4 = cbGen4.SelectedIndex;
+            Properties.Settings.Default.UseGen5 = cbGen5.SelectedIndex;
+            Properties.Settings.Default.UseGen6 = cbGen6.SelectedIndex;
+            Properties.Settings.Default.UseGen7 = cbGen7.SelectedIndex;
+            Properties.Settings.Default.UseGen8 = cbGen8.SelectedIndex;
+            Properties.Settings.Default.UseRegionals = cbRegional.SelectedIndex;
+            Properties.Settings.Default.UseCustomPokemon = cbCustom.SelectedIndex;
+
+            Properties.Settings.Default.UseAnimatedTrainers = cbAnimatedTrainers.SelectedIndex;
+            Properties.Settings.Default.AnnounceRarePokemons = cbAnnounce.SelectedIndex;
+            Properties.Settings.Default.BroadcasterName = txtBroadcaster.Text;
+            
             Properties.Settings.Default.Save();
         }
         private void initializeToolTips()
@@ -480,9 +561,6 @@ namespace Pokemon_and_Friends_Upgrader
             TTExplanation.SetToolTip(lblOBSWSPort, "OBS Websocket Port.\nDefault is \"4444\"\nCan be found in OBS under Tools => Websocket Server Settings");
             TTExplanation.SetToolTip(lblOBSWSPW, "OBS Websocket Password.\nCan be found in OBS under Tools => Websocket Server Settings\nCan be left empty if the Password checkbox is not ticked in the OBS Websocket Settings");
 
-            TTExplanation.SetToolTip(lblFirstPokemon, "First Pokemon number that can appear");
-            TTExplanation.SetToolTip(lblLastPokemon, "Last Pokemon number that can appear");
-            TTExplanation.SetToolTip(lblMaxPokemon, "This is used for the message:\nYou have caught x/<Max Amount> pokemon");
             TTExplanation.SetToolTip(lblShinyChance, "Shiny Chance in %");
             TTExplanation.SetToolTip(lblUseGIFs, "Use GIFs instead of the PNGS files.\nUnfortunately not available for all Pokemon\nyet (around 100 GIFs missing).\nIf GIF is not found, automatic\nfallback to the PNG.");
 
@@ -530,6 +608,20 @@ namespace Pokemon_and_Friends_Upgrader
             TTExplanation.SetToolTip(lblSummon, "This lets you edit the Summon Pokemon Channel Point Reward");
             TTExplanation.SetToolTip(lblGift, "This lets you edit the Give a Gift Channel Point Reward");
 
+            TTExplanation.SetToolTip(lblGen1, "Adds the Pokemons from the Kanto \nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblGen2, "Adds the Pokemons from the Johto \nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblGen3, "Adds the Pokemons from the Hoenn \nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblGen4, "Adds the Pokemons from the Sinnoh\nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblGen5, "Adds the Pokemons from the Einall\nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblGen6, "Adds the Pokemons from the Kalos \nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblGen7, "Adds the Pokemons from the Alola \nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblGen8, "Adds the Pokemons from the Galar \nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblRegional, "Adds the regional forms of \nPokemons to the available Pokemons");
+            TTExplanation.SetToolTip(lblCustom, "Adds custom created Pokemons \nto the available Pokemons");
+
+            TTExplanation.SetToolTip(lblAnimatedTrainers, "Trainers will be animated instead of\nbeeing static if they have an available GIF");
+            TTExplanation.SetToolTip(lblBroadcaster, "Please enter your streamer name");
+            TTExplanation.SetToolTip(lblAnnounce, "Announces in Chat when a legendary or \nmythical Pokemon has spawned");
 
         }
         private void LoadValues()
@@ -542,10 +634,7 @@ namespace Pokemon_and_Friends_Upgrader
             txtOBSWSPort.Text = Properties.Settings.Default.OBSWSPort;
             txtOBSWSPW.Text = Properties.Settings.Default.OBSWSPW;
 
-            txtFirstPokemon.Text = Properties.Settings.Default.FirstPokemon;
-            txtLastPokemon.Text = Properties.Settings.Default.LastPokemon;
             txtShinyChance.Text = Properties.Settings.Default.ShinyChance;
-            txtMaxPokemon.Text = Properties.Settings.Default.MaxPokemon;
             cbUseGIFS.SelectedIndex = Properties.Settings.Default.Gifs;
 
             txtSpawnTimer.Text = Properties.Settings.Default.SpawnTimer;
@@ -613,6 +702,21 @@ namespace Pokemon_and_Friends_Upgrader
             txtGift.Text = Properties.Settings.Default.NameGift;
             cbGift.SelectedIndex = Properties.Settings.Default.UseGift;
             txtPriceGift.Text = Properties.Settings.Default.PriceGift;
+
+            cbGen1.SelectedIndex = Properties.Settings.Default.UseGen1;
+            cbGen2.SelectedIndex = Properties.Settings.Default.UseGen2;
+            cbGen3.SelectedIndex = Properties.Settings.Default.UseGen3;
+            cbGen4.SelectedIndex = Properties.Settings.Default.UseGen4;
+            cbGen5.SelectedIndex = Properties.Settings.Default.UseGen5;
+            cbGen6.SelectedIndex = Properties.Settings.Default.UseGen6;
+            cbGen7.SelectedIndex = Properties.Settings.Default.UseGen7;
+            cbGen8.SelectedIndex = Properties.Settings.Default.UseGen8;
+            cbRegional.SelectedIndex = Properties.Settings.Default.UseRegionals;
+            cbCustom.SelectedIndex = Properties.Settings.Default.UseCustomPokemon;
+
+            cbAnimatedTrainers.SelectedIndex = Properties.Settings.Default.UseAnimatedTrainers;
+            cbAnnounce.SelectedIndex = Properties.Settings.Default.AnnounceRarePokemons;
+            txtBroadcaster.Text = Properties.Settings.Default.BroadcasterName;
         }
 
         #endregion
@@ -869,9 +973,17 @@ namespace Pokemon_and_Friends_Upgrader
                 Mp3Player.Play(@"files\loadingsounds\" + txtLoadingSound.Text, false);
             }
         }
-
-
         #endregion
+
+        private void btnPokemonSettings_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedIndex = 1;
+        }
+
+        private void btnChannelPointSettings_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedIndex = 2;
+        }
     }
 
     public class PokeTrainer

@@ -12,7 +12,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -104,42 +104,6 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
             }
             set {
                 this["OBSWSPW"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public string FirstPokemon {
-            get {
-                return ((string)(this["FirstPokemon"]));
-            }
-            set {
-                this["FirstPokemon"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("958")]
-        public string LastPokemon {
-            get {
-                return ((string)(this["LastPokemon"]));
-            }
-            set {
-                this["LastPokemon"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("958")]
-        public string MaxPokemon {
-            get {
-                return ((string)(this["MaxPokemon"]));
-            }
-            set {
-                this["MaxPokemon"] = value;
             }
         }
         
@@ -776,6 +740,162 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
             }
             set {
                 this["PriceGift"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AnnounceRarePokemons {
+            get {
+                return ((int)(this["AnnounceRarePokemons"]));
+            }
+            set {
+                this["AnnounceRarePokemons"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int UseAnimatedTrainers {
+            get {
+                return ((int)(this["UseAnimatedTrainers"]));
+            }
+            set {
+                this["UseAnimatedTrainers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BroadcasterName {
+            get {
+                return ((string)(this["BroadcasterName"]));
+            }
+            set {
+                this["BroadcasterName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseGen1 {
+            get {
+                return ((int)(this["UseGen1"]));
+            }
+            set {
+                this["UseGen1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseGen2 {
+            get {
+                return ((int)(this["UseGen2"]));
+            }
+            set {
+                this["UseGen2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseGen3 {
+            get {
+                return ((int)(this["UseGen3"]));
+            }
+            set {
+                this["UseGen3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseGen4 {
+            get {
+                return ((int)(this["UseGen4"]));
+            }
+            set {
+                this["UseGen4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseGen5 {
+            get {
+                return ((int)(this["UseGen5"]));
+            }
+            set {
+                this["UseGen5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseGen6 {
+            get {
+                return ((int)(this["UseGen6"]));
+            }
+            set {
+                this["UseGen6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseGen7 {
+            get {
+                return ((int)(this["UseGen7"]));
+            }
+            set {
+                this["UseGen7"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseGen8 {
+            get {
+                return ((int)(this["UseGen8"]));
+            }
+            set {
+                this["UseGen8"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseRegionals {
+            get {
+                return ((int)(this["UseRegionals"]));
+            }
+            set {
+                this["UseRegionals"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int UseCustomPokemon {
+            get {
+                return ((int)(this["UseCustomPokemon"]));
+            }
+            set {
+                this["UseCustomPokemon"] = value;
             }
         }
     }
