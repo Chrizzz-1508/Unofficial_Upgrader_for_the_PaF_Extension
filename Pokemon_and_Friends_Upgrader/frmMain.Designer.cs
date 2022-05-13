@@ -259,9 +259,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label2.Location = new System.Drawing.Point(32, 545);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 24);
+            this.label2.Size = new System.Drawing.Size(63, 24);
             this.label2.TabIndex = 76;
-            this.label2.Text = "Beta V1.1.0";
+            this.label2.Text = "V1.1.0";
             // 
             // btnMigrate
             // 
@@ -292,7 +292,7 @@
             this.lblLoading.BackColor = System.Drawing.Color.Black;
             this.lblLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoading.ForeColor = System.Drawing.Color.White;
-            this.lblLoading.Location = new System.Drawing.Point(262, 50);
+            this.lblLoading.Location = new System.Drawing.Point(262, 8);
             this.lblLoading.Name = "lblLoading";
             this.lblLoading.Size = new System.Drawing.Size(649, 55);
             this.lblLoading.TabIndex = 106;
@@ -740,6 +740,7 @@
             // lblBroadcaster
             // 
             this.lblBroadcaster.AutoSize = true;
+            this.lblBroadcaster.BackColor = System.Drawing.Color.Transparent;
             this.lblBroadcaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblBroadcaster.Location = new System.Drawing.Point(7, 121);
             this.lblBroadcaster.Name = "lblBroadcaster";
@@ -950,6 +951,7 @@
             // lblAnnounce
             // 
             this.lblAnnounce.AutoSize = true;
+            this.lblAnnounce.BackColor = System.Drawing.Color.Transparent;
             this.lblAnnounce.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblAnnounce.Location = new System.Drawing.Point(12, 115);
             this.lblAnnounce.Name = "lblAnnounce";
@@ -1503,6 +1505,7 @@
             // lblAnimatedTrainers
             // 
             this.lblAnimatedTrainers.AutoSize = true;
+            this.lblAnimatedTrainers.BackColor = System.Drawing.Color.Transparent;
             this.lblAnimatedTrainers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblAnimatedTrainers.Location = new System.Drawing.Point(8, 174);
             this.lblAnimatedTrainers.Name = "lblAnimatedTrainers";
@@ -1772,6 +1775,7 @@
             // lblCustom
             // 
             this.lblCustom.AutoSize = true;
+            this.lblCustom.BackColor = System.Drawing.Color.Transparent;
             this.lblCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblCustom.Location = new System.Drawing.Point(610, 84);
             this.lblCustom.Name = "lblCustom";
@@ -1795,6 +1799,7 @@
             // lblRegional
             // 
             this.lblRegional.AutoSize = true;
+            this.lblRegional.BackColor = System.Drawing.Color.Transparent;
             this.lblRegional.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblRegional.Location = new System.Drawing.Point(610, 34);
             this.lblRegional.Name = "lblRegional";
@@ -1841,6 +1846,7 @@
             // lblGen8
             // 
             this.lblGen8.AutoSize = true;
+            this.lblGen8.BackColor = System.Drawing.Color.Transparent;
             this.lblGen8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblGen8.Location = new System.Drawing.Point(27, 393);
             this.lblGen8.Name = "lblGen8";
@@ -1884,6 +1890,7 @@
             // lblGen7
             // 
             this.lblGen7.AutoSize = true;
+            this.lblGen7.BackColor = System.Drawing.Color.Transparent;
             this.lblGen7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblGen7.Location = new System.Drawing.Point(27, 340);
             this.lblGen7.Name = "lblGen7";
@@ -1917,6 +1924,7 @@
             // lblGen1
             // 
             this.lblGen1.AutoSize = true;
+            this.lblGen1.BackColor = System.Drawing.Color.Transparent;
             this.lblGen1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblGen1.Location = new System.Drawing.Point(27, 34);
             this.lblGen1.Name = "lblGen1";
@@ -1927,6 +1935,7 @@
             // lblGen4
             // 
             this.lblGen4.AutoSize = true;
+            this.lblGen4.BackColor = System.Drawing.Color.Transparent;
             this.lblGen4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblGen4.Location = new System.Drawing.Point(27, 184);
             this.lblGen4.Name = "lblGen4";
@@ -1937,6 +1946,7 @@
             // lblGen6
             // 
             this.lblGen6.AutoSize = true;
+            this.lblGen6.BackColor = System.Drawing.Color.Transparent;
             this.lblGen6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblGen6.Location = new System.Drawing.Point(27, 287);
             this.lblGen6.Name = "lblGen6";
@@ -1947,6 +1957,7 @@
             // lblGen3
             // 
             this.lblGen3.AutoSize = true;
+            this.lblGen3.BackColor = System.Drawing.Color.Transparent;
             this.lblGen3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblGen3.Location = new System.Drawing.Point(27, 134);
             this.lblGen3.Name = "lblGen3";
@@ -1983,6 +1994,7 @@
             // lblGen2
             // 
             this.lblGen2.AutoSize = true;
+            this.lblGen2.BackColor = System.Drawing.Color.Transparent;
             this.lblGen2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblGen2.Location = new System.Drawing.Point(27, 84);
             this.lblGen2.Name = "lblGen2";
@@ -2006,6 +2018,7 @@
             // lblGen5
             // 
             this.lblGen5.AutoSize = true;
+            this.lblGen5.BackColor = System.Drawing.Color.Transparent;
             this.lblGen5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblGen5.Location = new System.Drawing.Point(27, 234);
             this.lblGen5.Name = "lblGen5";

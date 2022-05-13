@@ -757,7 +757,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int UseAnimatedTrainers {
             get {
                 return ((int)(this["UseAnimatedTrainers"]));

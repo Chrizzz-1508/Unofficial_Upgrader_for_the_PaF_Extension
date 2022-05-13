@@ -1,3 +1,6 @@
+New Installation:
+=================
+
 1. Preparations:
 
 1) Install the following Plugins:
@@ -10,12 +13,12 @@
 2. Creating the necessary Files:
 
 1) (Hit the Migration from LB1 button if you want to port over your progress)
-2) Fill out the settings and hit install
+2) Fill out the settings in the installer and hit install
 
 3. Prepare LB2:
 
 1) Startup LB2
-2) Link your Twitch account with all Scopes checked (to do this you will have to hit "Twitch Connections" => "Edit Scopes" => Check everything => Done => Open URL)
+2) Link your Twitch account with the email scope checked (to do this you will have to hit "Twitch Connections" => "Edit Scopes" => Check "View Email"" => Done => Open URL)
 3) Add the transmitter file in the LB2 folder to OBS as Dock
 4) Make sure all 3 Points are green on the left side in LB2 (Main OBS, Twitch Chat and Transmitter)
 
@@ -23,6 +26,28 @@
 
 1) In LB2 hit Transmitter => Install Extension
 2) Select the PaFGame.lb2 Extension (should be in a folder called Pokemon and Friends in your LB2 folder)
-3) Type !poke-init in the chat
 
 5. Change Channel Point pictures (optional)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Updating from V1.0
+==================
+
+1. Preparations:
+
+1) Delete the old Pokemon Game Channel Point Rewards
+2) Delete the old Scenes (SI - Waldo and Friends - Pokemon & Pokedex Scene)
+3) Update LB2 to V2.07.9+ (can be done in the LB2 settings tab)
+
+2. Creating the necessary Files:
+
+1) Fill out the settings in the installer and hit install
+
+3. Install the PaF Game
+
+1) In LB2 hit Transmitter => Install Extension
+2) Select the PaFGame.lb2 Extension (should be in a folder called Pokemon and Friends in your LB2 folder)
+3) If you are asked for replacing the current files, say yes. Also say yes to recreating everything
+
+4. Change Channel Point pictures (optional)

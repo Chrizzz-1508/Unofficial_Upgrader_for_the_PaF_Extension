@@ -86,7 +86,7 @@ namespace Pokemon_and_Friends_Upgrader
                 try
                 {
                     string fptarget = sPAFPath + @"\trainers\" + f.Name;
-                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                    File.Copy(f.FullName, fptarget,true);
                 } 
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
@@ -617,7 +617,7 @@ namespace Pokemon_and_Friends_Upgrader
             TTExplanation.SetToolTip(lblGen7, "Adds the Pokemons from the Alola \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblGen8, "Adds the Pokemons from the Galar \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblRegional, "Adds the regional forms of \nPokemons to the available Pokemons");
-            TTExplanation.SetToolTip(lblCustom, "Adds custom created Pokemons \nto the available Pokemons");
+            TTExplanation.SetToolTip(lblCustom, "Adds custom created Pokemons \nto the available Pokemons\nwill need the \"Custom Pokemon\" Add On to work");
 
             TTExplanation.SetToolTip(lblAnimatedTrainers, "Trainers will be animated instead of\nbeeing static if they have an available GIF");
             TTExplanation.SetToolTip(lblBroadcaster, "Please enter your streamer name");
