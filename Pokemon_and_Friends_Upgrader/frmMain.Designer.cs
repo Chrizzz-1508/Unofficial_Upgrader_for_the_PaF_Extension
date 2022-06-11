@@ -261,7 +261,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 24);
             this.label2.TabIndex = 76;
-            this.label2.Text = "V1.1.5";
+            this.label2.Text = "V1.1.6";
             // 
             // btnMigrate
             // 
