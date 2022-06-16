@@ -35,7 +35,7 @@
             this.TTExplanation = new System.Windows.Forms.ToolTip(this.components);
             this.btnSupport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.btnMigrate = new System.Windows.Forms.Button();
             this.pbLoading = new System.Windows.Forms.PictureBox();
             this.lblLoading = new System.Windows.Forms.Label();
@@ -192,6 +192,9 @@
             this.cbGen4 = new System.Windows.Forms.ComboBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.btnSetItUpForMe = new System.Windows.Forms.Button();
+            this.btnEnglishGuide = new System.Windows.Forms.Button();
+            this.btnGermanGuide = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -247,28 +250,28 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(246, 545);
+            this.label1.Location = new System.Drawing.Point(36, 558);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 24);
             this.label1.TabIndex = 57;
             this.label1.Text = "© by chrizzz_1508";
             // 
-            // label2
+            // lblVersion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label2.Location = new System.Drawing.Point(32, 545);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 24);
-            this.label2.TabIndex = 76;
-            this.label2.Text = "V1.1.6";
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.lblVersion.Location = new System.Drawing.Point(86, 534);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(63, 24);
+            this.lblVersion.TabIndex = 76;
+            this.lblVersion.Text = "V1.1.6";
             // 
             // btnMigrate
             // 
-            this.btnMigrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMigrate.Location = new System.Drawing.Point(523, 522);
+            this.btnMigrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnMigrate.Location = new System.Drawing.Point(740, 522);
             this.btnMigrate.Name = "btnMigrate";
-            this.btnMigrate.Size = new System.Drawing.Size(315, 73);
+            this.btnMigrate.Size = new System.Drawing.Size(98, 73);
             this.btnMigrate.TabIndex = 10;
             this.btnMigrate.Text = "Migration from LB1";
             this.btnMigrate.UseVisualStyleBackColor = true;
@@ -278,7 +281,7 @@
             // 
             this.pbLoading.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
-            this.pbLoading.Location = new System.Drawing.Point(0, 0);
+            this.pbLoading.Location = new System.Drawing.Point(0, 1000);
             this.pbLoading.Name = "pbLoading";
             this.pbLoading.Size = new System.Drawing.Size(1216, 609);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -2078,14 +2081,50 @@
             this.comboBox8.Size = new System.Drawing.Size(156, 37);
             this.comboBox8.TabIndex = 97;
             // 
+            // btnSetItUpForMe
+            // 
+            this.btnSetItUpForMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSetItUpForMe.Location = new System.Drawing.Point(531, 522);
+            this.btnSetItUpForMe.Name = "btnSetItUpForMe";
+            this.btnSetItUpForMe.Size = new System.Drawing.Size(143, 73);
+            this.btnSetItUpForMe.TabIndex = 118;
+            this.btnSetItUpForMe.Text = "Set it up\r\nfor me please";
+            this.btnSetItUpForMe.UseVisualStyleBackColor = true;
+            this.btnSetItUpForMe.Click += new System.EventHandler(this.btnSetItUpForMe_Click);
+            // 
+            // btnEnglishGuide
+            // 
+            this.btnEnglishGuide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnEnglishGuide.Location = new System.Drawing.Point(380, 522);
+            this.btnEnglishGuide.Name = "btnEnglishGuide";
+            this.btnEnglishGuide.Size = new System.Drawing.Size(143, 73);
+            this.btnEnglishGuide.TabIndex = 117;
+            this.btnEnglishGuide.Text = "English Installation\r\nVideo Guide";
+            this.btnEnglishGuide.UseVisualStyleBackColor = true;
+            this.btnEnglishGuide.Click += new System.EventHandler(this.btnEnglishGuide_Click);
+            // 
+            // btnGermanGuide
+            // 
+            this.btnGermanGuide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGermanGuide.Location = new System.Drawing.Point(229, 522);
+            this.btnGermanGuide.Name = "btnGermanGuide";
+            this.btnGermanGuide.Size = new System.Drawing.Size(143, 73);
+            this.btnGermanGuide.TabIndex = 116;
+            this.btnGermanGuide.Text = "German Installation\r\nVideo Guide";
+            this.btnGermanGuide.UseVisualStyleBackColor = true;
+            this.btnGermanGuide.Click += new System.EventHandler(this.btnGermanGuide_Click);
+            // 
             // frmMain
             // 
             this.AcceptButton = this.btnInstall;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 607);
-            this.Controls.Add(this.comboBox8);
             this.Controls.Add(this.pbLoading);
+            this.Controls.Add(this.btnSetItUpForMe);
+            this.Controls.Add(this.btnEnglishGuide);
+            this.Controls.Add(this.btnGermanGuide);
+            this.Controls.Add(this.comboBox8);
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.comboBox7);
             this.Controls.Add(this.tabControl1);
@@ -2094,7 +2133,7 @@
             this.Controls.Add(this.btnSupport);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnInstall);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblVersion);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "PaF LB2 Mod";
@@ -2137,7 +2176,7 @@
         private System.Windows.Forms.ToolTip TTExplanation;
         private System.Windows.Forms.Button btnSupport;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Button btnMigrate;
         private System.Windows.Forms.PictureBox pbLoading;
         private System.Windows.Forms.Label lblLoading;
@@ -2294,6 +2333,9 @@
         private System.Windows.Forms.ComboBox cbAnimatedTrainers;
         private System.Windows.Forms.Label lblAnimatedTrainers;
         private System.Windows.Forms.Button btnChannelPointSettings;
+        private System.Windows.Forms.Button btnSetItUpForMe;
+        private System.Windows.Forms.Button btnEnglishGuide;
+        private System.Windows.Forms.Button btnGermanGuide;
     }
 }
 

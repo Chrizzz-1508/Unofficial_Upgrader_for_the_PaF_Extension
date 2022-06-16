@@ -787,6 +787,8 @@ namespace Pokemon_and_Friends_Upgrader
         #region "Other Buttons"
         private void btnMigrate_Click(object sender, EventArgs e)
         {
+            if (DialogResult.No == MessageBox.Show("Please use this function only when you are switching from LB1 to LB2 for the first time, if not please don't use this. Do you want to continue?", "Migrate from LB1?", MessageBoxButtons.YesNo)) return;
+
             OpenFileDialog f = new OpenFileDialog();
             f.Title = "Select your Pokemon_trainers.ini in the LB1 folder";
             f.Filter = "File|Pokemon_trainers.ini";
@@ -983,6 +985,21 @@ namespace Pokemon_and_Friends_Upgrader
         private void btnChannelPointSettings_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex = 2;
+        }
+
+        private void btnGermanGuide_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.youtube.com/watch?v=Wue5iiK9eMQ&t"); 
+        }
+
+        private void btnEnglishGuide_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.youtube.com/watch?v=YA-5pqSsbK4");
+        }
+
+        private void btnSetItUpForMe_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("If you want, I can also do the complete Setup for you, for a small donation / tip.\n\nJust dm me on Discord (Chrizzz#0810) if you are interessted in this service.");
         }
     }
 
