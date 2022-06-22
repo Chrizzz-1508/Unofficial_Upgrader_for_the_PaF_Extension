@@ -401,6 +401,9 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("VAR_ANNOUNCE_VAR",VAR_ANNOUNCE_VAR);
             sOutput = sOutput.Replace("VAR_BROADCASTER_VAR", txtBroadcaster.Text.ToLowerInvariant());
 
+            sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"lioranboard_version\":\"2.07.9\", \"extension_triggers\":[\"PaFModInstall\"]}");
+
+
             using (StreamWriter sw = new StreamWriter(txtLB2.Text + @"\Pokemon and Friends\PaFGame.lb2"))
             {
                 sw.Write(sOutput);

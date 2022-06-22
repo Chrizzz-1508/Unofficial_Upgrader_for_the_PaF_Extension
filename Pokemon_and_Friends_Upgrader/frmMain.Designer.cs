@@ -235,6 +235,14 @@
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
+            // TTExplanation
+            // 
+            this.TTExplanation.AutomaticDelay = 250;
+            this.TTExplanation.AutoPopDelay = 20000;
+            this.TTExplanation.InitialDelay = 250;
+            this.TTExplanation.IsBalloon = true;
+            this.TTExplanation.ReshowDelay = 50;
+            // 
             // btnSupport
             // 
             this.btnSupport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
