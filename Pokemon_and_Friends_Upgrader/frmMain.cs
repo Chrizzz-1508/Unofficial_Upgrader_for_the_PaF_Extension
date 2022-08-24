@@ -5,14 +5,17 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Media;
 using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+
 
 namespace Pokemon_and_Friends_Upgrader
 {
@@ -32,32 +35,33 @@ namespace Pokemon_and_Friends_Upgrader
         {
             try
             {
+                
                 FolderBrowserDialog fb = new FolderBrowserDialog();
-                fb.Description = "Select your LB2 folder\nIt should contain the LioranBoard 2.0.exe";
+                fb.Description = "Select your SAMMI folder\nIt should contain the SAMMI Core.exe";
 
                 if (fb.ShowDialog() == DialogResult.OK)
                 {
-                    if (!Directory.Exists(fb.SelectedPath + "\\transmitter") || !File.Exists(fb.SelectedPath + "\\LioranBoard 2.0.exe"))
+                    if (!File.Exists(fb.SelectedPath + "\\SAMMI Core.exe"))
                     {
-                        MessageBox.Show("Unfortunately this is not the LB2 folder.\nThe LB2 folder contains a transmitter folder and the Lioranboard 2.0.exe.\nPlease select the correct folder.");
+                        MessageBox.Show("Unfortunately this is not the SAMMI folder.\nThe SAMMI folder must contain the SAMMI Core.exe.\nPlease select the correct folder.");
                         btnSearch_Click(null,null);
                     }
                     else
                     {
                         if (!Directory.Exists(fb.SelectedPath + "\\Pokemon and Friends")) Directory.CreateDirectory(fb.SelectedPath + "\\Pokemon and Friends");
-                        txtLB2.Text = fb.SelectedPath;
+                        txtSAMMI.Text = fb.SelectedPath;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can't access the file. Please close the .ini File and Lioaran Board first." + ex.ToString());
+                MessageBox.Show("Can't access the file. Please close the .ini File and SAMMI first." + ex.ToString());
             }
             
         }
         private void CopyFiles()
         {
-            string sPAFPath = txtLB2.Text + @"\Pokemon and Friends";            
+            string sPAFPath = txtSAMMI.Text + @"\Pokemon and Friends";            
 
             if (!Directory.Exists(sPAFPath + @"\backup")) Directory.CreateDirectory(sPAFPath + @"\backup");
             if (!Directory.Exists(sPAFPath + @"\database")) Directory.CreateDirectory(sPAFPath + @"\database");
@@ -194,7 +198,7 @@ namespace Pokemon_and_Friends_Upgrader
             }
         }
     
-        private void CreateLB2Extension()
+        private void CreateSAMMIExtension()
         {
             StreamReader sr = new StreamReader(@"files\PaF_Unconverted");
             string sOutput = sr.ReadToEnd();
@@ -228,9 +232,6 @@ namespace Pokemon_and_Friends_Upgrader
 
             string VAR_USE_NON_AFFILIATE_VAR = "true";
             if (cbAffiliate.SelectedIndex == 1) VAR_USE_NON_AFFILIATE_VAR = "false";
-
-            string VAR_USE_IGNORE_LB_VAR = "true";
-            if (cbLeaderboard.SelectedIndex == 1) VAR_USE_IGNORE_LB_VAR = "false";
 
             string VAR_USE_GIFS_VAR = "true";
             if (cbUseGIFS.SelectedIndex == 1) VAR_USE_GIFS_VAR = "false";
@@ -315,6 +316,9 @@ namespace Pokemon_and_Friends_Upgrader
             string VAR_USE_CUSTOM_VAR = "true";
             if (cbCustom.SelectedIndex == 1) VAR_USE_CUSTOM_VAR = "false";
 
+            string VAR_USE_MEGA_VAR = "true";
+            if (cbMega.SelectedIndex == 1) VAR_USE_MEGA_VAR = "false";
+
             string VAR_ANIMATED_TRAINERS_VAR = "true";
             if (cbAnimatedTrainers.SelectedIndex == 1) VAR_ANIMATED_TRAINERS_VAR = "false";
 
@@ -323,10 +327,9 @@ namespace Pokemon_and_Friends_Upgrader
 
 
             sOutput = sOutput.Replace("VAR_LANGUAGE_VAR", VAR_LANGUAGE_VAR);
-            sOutput = sOutput.Replace("VAR_POKE_PATH_VAR",txtLB2.Text.Replace(@"\","/") + @"/Pokemon and Friends/");
+            sOutput = sOutput.Replace("VAR_POKE_PATH_VAR",txtSAMMI.Text.Replace(@"\","/") + @"/Pokemon and Friends/");
             sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", VAR_USE_NON_AFFILIATE_VAR);
             sOutput = sOutput.Replace("VAR_THRESHOLD_VAR", txtAudioTreshhold.Text);
-            sOutput = sOutput.Replace("VAR_USE_IGNORE_LB_VAR", VAR_USE_IGNORE_LB_VAR);
             sOutput = sOutput.Replace("VAR_OBSWSPORT_VAR",txtOBSWSPort.Text);
             sOutput = sOutput.Replace("VAR_OBSWSPW_VAR",txtOBSWSPW.Text);
             sOutput = sOutput.Replace("VAR_SHINYCHANCE_VAR",txtShinyChance.Text);
@@ -396,15 +399,20 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("VAR_USE_GEN_8_VAR", VAR_USE_GEN_8_VAR);
             sOutput = sOutput.Replace("VAR_USE_REGIONALS_VAR", VAR_USE_REGIONALS_VAR);
             sOutput = sOutput.Replace("VAR_USE_CUSTOM_VAR", VAR_USE_CUSTOM_VAR);
-            
+            sOutput = sOutput.Replace("VAR_USE_MEGA_VAR", VAR_USE_MEGA_VAR);
+
             sOutput = sOutput.Replace("VAR_ANIMATED_TRAINERS_VAR",VAR_ANIMATED_TRAINERS_VAR);
             sOutput = sOutput.Replace("VAR_ANNOUNCE_VAR",VAR_ANNOUNCE_VAR);
-            sOutput = sOutput.Replace("VAR_BROADCASTER_VAR", txtBroadcaster.Text.ToLowerInvariant());
+            sOutput = sOutput.Replace("VAR_BROADCASTER_VAR", txtBroadcaster.Text.ToLowerInvariant().Replace(" ",""));
 
-            sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"lioranboard_version\":\"2.07.9\", \"extension_triggers\":[\"PaFModInstall\"]}");
+            sOutput = sOutput.Replace("12345", Convert.ToString(Convert.ToInt32(txtQueueTime.Text) * 1000));
+            sOutput = sOutput.Replace("67890", Convert.ToString((Convert.ToInt32(txtQueueTime.Text) * 1000) + 1000));
 
 
-            using (StreamWriter sw = new StreamWriter(txtLB2.Text + @"\Pokemon and Friends\PaFGame.lb2"))
+            sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"sammi_version\":\"2022.4.0\", \"extension_triggers\":[\"PaFModInstall\"]}");
+           
+
+            using (StreamWriter sw = new StreamWriter(txtSAMMI.Text + @"\Pokemon and Friends\PaFGame.sef"))
             {
                 sw.Write(sOutput);
                 sw.Flush();
@@ -413,9 +421,12 @@ namespace Pokemon_and_Friends_Upgrader
         }
         private void btnInstall_Click(object sender, EventArgs e)
         {
+
+            ///
+            /// CREATE CSV
             if (CheckValues())
             {
-                CreateLB2Extension();
+                CreateSAMMIExtension();
                 pbLoading.Visible = true;
                 lblLoading.Parent = pbLoading;
                 lblLoading.Visible = true;
@@ -428,13 +439,13 @@ namespace Pokemon_and_Friends_Upgrader
                 }
                 pbLoading.Visible = false;
 
-                if (!File.Exists(txtLB2.Text + @"\Pokemon and Friends\hdsprites240\normal\1.png") || (!File.Exists(txtLB2.Text + @"\Pokemon and Friends\hdsprites240\normalgif\1.gif") && cbUseGIFS.SelectedIndex == 0))
+                if (!File.Exists(txtSAMMI.Text + @"\Pokemon and Friends\hdsprites240\normal\1.png") || (!File.Exists(txtSAMMI.Text + @"\Pokemon and Friends\hdsprites240\normalgif\1.gif") && cbUseGIFS.SelectedIndex == 0))
                 {
                     if (DialogResult.Yes == MessageBox.Show("Not all files were copied successfully, do you want to try again?", "Try again?", MessageBoxButtons.YesNo)) btnInstall_Click(null, null);
                 }
                 else
                 {
-                    MessageBox.Show("Installation completed.\n\nNext please Install the PaFGame.lb2 Extension from your \"LB2 => Pokemon and Friends\" folder and then type !poke-install into the chat.");
+                    MessageBox.Show("Installation completed.\n\nNext please Install the PaFGame.sef Extension from your \"SAMMI => Pokemon and Friends\" folder and then type !poke-install into the chat.\n\nIF THIS IS YOUR FIRST TIME UPGRADING FROM V1.1.6 OR LOWER TO V1.2.0 PLEASE MAKE SURE TO CONVERT THE DATABASE TO A CSV FILE WITH THIS TOOL, ONLY DO IT WHEN SWITICHING THE FIRST TIME SINCE IT WILL OVERWRITE YOUR DATA OTHERWISE!");
                 }
             }
             else
@@ -444,7 +455,7 @@ namespace Pokemon_and_Friends_Upgrader
         }
         private bool CheckValues()
         {
-            if (string.IsNullOrEmpty(txtLB2.Text)) return false;
+            if (string.IsNullOrEmpty(txtSAMMI.Text)) return false;
             if(string.IsNullOrEmpty(txtBroadcaster.Text)) return false; 
             if (cbUseDiscord.SelectedIndex == 0 && String.IsNullOrEmpty(txtWebhookURL.Text)) return false;
             return true;
@@ -459,10 +470,10 @@ namespace Pokemon_and_Friends_Upgrader
         }
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.LB2 = txtLB2.Text;
+            Properties.Settings.Default.SAMMI = txtSAMMI.Text;
             Properties.Settings.Default.Language = cbLanguage.SelectedIndex;
             Properties.Settings.Default.NonAffiliate = cbAffiliate.SelectedIndex;
-            Properties.Settings.Default.Leaderboard = cbLeaderboard.SelectedIndex;
+            Properties.Settings.Default.QueueTime = txtQueueTime.Text;
             Properties.Settings.Default.AudioTreshhold = txtAudioTreshhold.Text;
             Properties.Settings.Default.OBSWSPort = txtOBSWSPort.Text;
             Properties.Settings.Default.OBSWSPW = txtOBSWSPW.Text;
@@ -547,19 +558,22 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.UseGen8 = cbGen8.SelectedIndex;
             Properties.Settings.Default.UseRegionals = cbRegional.SelectedIndex;
             Properties.Settings.Default.UseCustomPokemon = cbCustom.SelectedIndex;
+            Properties.Settings.Default.UseMega = cbMega.SelectedIndex;
 
             Properties.Settings.Default.UseAnimatedTrainers = cbAnimatedTrainers.SelectedIndex;
             Properties.Settings.Default.AnnounceRarePokemons = cbAnnounce.SelectedIndex;
             Properties.Settings.Default.BroadcasterName = txtBroadcaster.Text;
             
+            Properties.Settings.Default.OBSPath = txtOBSPath.Text;
+
             Properties.Settings.Default.Save();
         }
         private void initializeToolTips()
         {          
-            TTExplanation.SetToolTip(lblLB2, "Select your LB2 Folder");
+            TTExplanation.SetToolTip(lblSAMMI, "Select your SAMMI Folder");
             TTExplanation.SetToolTip(lblLanguage, "Select your Language");
             TTExplanation.SetToolTip(lblAffiliate, "Non Affiliate Mode turns off channel points and \nadds the !throw command instead.\nRecommended only for people who\nhaven't unlocked Channel Points yet");
-            TTExplanation.SetToolTip(lblLeaderboard, "Turn on to not showup on the leaderboard");
+            TTExplanation.SetToolTip(lblQueueTime, "Amount of time before the queue gets closed, don't use more than 9 or it can cause problems");
             TTExplanation.SetToolTip(lblAudioTreshhold, "Sets the Limter of the Volume of the Sounds\nThe higher it is, the lower the maximum Volume of the Sounds will be\nRecommended Value is 30-35\n0 = Nearly no Limit");
             TTExplanation.SetToolTip(lblOBSWSPort, "OBS Websocket Port.\nDefault is \"4444\"\nCan be found in OBS under Tools => Websocket Server Settings");
             TTExplanation.SetToolTip(lblOBSWSPW, "OBS Websocket Password.\nCan be found in OBS under Tools => Websocket Server Settings\nCan be left empty if the Password checkbox is not ticked in the OBS Websocket Settings");
@@ -620,6 +634,7 @@ namespace Pokemon_and_Friends_Upgrader
             TTExplanation.SetToolTip(lblGen7, "Adds the Pokemons from the Alola \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblGen8, "Adds the Pokemons from the Galar \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblRegional, "Adds the regional forms of \nPokemons to the available Pokemons");
+            TTExplanation.SetToolTip(lblMega, "Adds Mega Pokemons \nto the available Pokemons");
             TTExplanation.SetToolTip(lblCustom, "Adds custom created Pokemons \nto the available Pokemons\nwill need the \"Custom Pokemon\" Add On to work");
 
             TTExplanation.SetToolTip(lblAnimatedTrainers, "Trainers will be animated instead of\nbeeing static if they have an available GIF");
@@ -629,10 +644,10 @@ namespace Pokemon_and_Friends_Upgrader
         }
         private void LoadValues()
         {
-            txtLB2.Text = Properties.Settings.Default.LB2;
+            txtSAMMI.Text = Properties.Settings.Default.SAMMI;
             cbLanguage.SelectedIndex = Properties.Settings.Default.Language;
             cbAffiliate.SelectedIndex = Properties.Settings.Default.NonAffiliate;
-            cbLeaderboard.SelectedIndex = Properties.Settings.Default.Leaderboard;
+            txtQueueTime.Text = Properties.Settings.Default.QueueTime;
             txtAudioTreshhold.Text = Properties.Settings.Default.AudioTreshhold;
             txtOBSWSPort.Text = Properties.Settings.Default.OBSWSPort;
             txtOBSWSPW.Text = Properties.Settings.Default.OBSWSPW;
@@ -716,10 +731,13 @@ namespace Pokemon_and_Friends_Upgrader
             cbGen8.SelectedIndex = Properties.Settings.Default.UseGen8;
             cbRegional.SelectedIndex = Properties.Settings.Default.UseRegionals;
             cbCustom.SelectedIndex = Properties.Settings.Default.UseCustomPokemon;
+            cbMega.SelectedIndex = Properties.Settings.Default.UseMega;
 
             cbAnimatedTrainers.SelectedIndex = Properties.Settings.Default.UseAnimatedTrainers;
             cbAnnounce.SelectedIndex = Properties.Settings.Default.AnnounceRarePokemons;
             txtBroadcaster.Text = Properties.Settings.Default.BroadcasterName;
+
+            txtOBSPath.Text = Properties.Settings.Default.OBSPath;
         }
 
         #endregion
@@ -790,7 +808,7 @@ namespace Pokemon_and_Friends_Upgrader
         #region "Other Buttons"
         private void btnMigrate_Click(object sender, EventArgs e)
         {
-            if (DialogResult.No == MessageBox.Show("Please use this function only when you are switching from LB1 to LB2 for the first time, if not please don't use this. Do you want to continue?", "Migrate from LB1?", MessageBoxButtons.YesNo)) return;
+            if (DialogResult.No == MessageBox.Show("Please use this function only when you are switching from LB1 to LB2 / SAMMI for the first time, if not please don't use this. Do you want to continue?", "Migrate from LB1?", MessageBoxButtons.YesNo)) return;
 
             OpenFileDialog f = new OpenFileDialog();
             f.Title = "Select your Pokemon_trainers.ini in the LB1 folder";
@@ -877,13 +895,13 @@ namespace Pokemon_and_Friends_Upgrader
                     sw.Close();
                 }
                 FolderBrowserDialog fb = new FolderBrowserDialog();
-                fb.Description = "Please your LB2 folder.\nThe LB2 folder should contain the Lioranboard 2.0.exe.";
+                fb.Description = "Please select your SAMMI folder.\nThe SAMMI folder should contain the SAMMI Core.exe.";
 
                 if (fb.ShowDialog() == DialogResult.OK)
                 {
-                    if (!Directory.Exists(fb.SelectedPath + "\\transmitter") || !File.Exists(fb.SelectedPath + "\\LioranBoard 2.0.exe"))
+                    if(!File.Exists(fb.SelectedPath + "\\SAMMI Core.exe"))
                     {
-                        MessageBox.Show("Migration failed.\nUnfortunately this is not the LB2 folder.\nThe LB2 folder contains a transmitter folder and the Lioranboard 2.0.exe.\nPlease try again and select the correct folder.");
+                        MessageBox.Show("Migration failed.\nUnfortunately this is not the SAMMI folder.\nThe SAMMI folder must contain the SAMMI Core.exe.\nPlease try again and select the correct folder.");
                         return;
                     }
                     if (!Directory.Exists(fb.SelectedPath + "\\Pokemon and Friends")) Directory.CreateDirectory(fb.SelectedPath + "\\Pokemon and Friends");
@@ -894,7 +912,7 @@ namespace Pokemon_and_Friends_Upgrader
                     if (File.Exists(sPathLB1)) File.Copy(sPathLB1, fb.SelectedPath + "\\Pokemon and Friends\\trainer_images.ini", true);
                 }
 
-                MessageBox.Show("Pokemon_trainers.ini has been ported over to LB2!");
+                MessageBox.Show("Pokemon_trainers.ini has been ported over to SAMMI!");
             }
         }
         private void btnSupport_Click(object sender, EventArgs e)
@@ -912,9 +930,8 @@ namespace Pokemon_and_Friends_Upgrader
         }
         private void btnCredits_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This Mod was developed by chrizzz_1508.\n\nSpecial thanks to:\nWaldoAndFriends - Developing the Base Version\nTempest - Beta Testing\nKefiren - Beta Testing\nMurtherX - Beta Testing\nPox4eveR - Beta Testing");
+            MessageBox.Show("This Mod was developed by chrizzz_1508.\n\nSpecial thanks to:\nWaldoAndFriends - Developing the Base Version\nTempest - Beta Testing\nKefiren - Beta Testing\nMurtherX - Beta Testing\nPox4eveR - Beta Testing\nShadowEnigmaTV - A lot help with the graphics");
         }
-
         #endregion
 
         #region "Select Stuff"
@@ -1004,6 +1021,422 @@ namespace Pokemon_and_Friends_Upgrader
         {
             MessageBox.Show("If you want, I can also do the complete Setup for you, for a small donation / tip.\n\nJust dm me on Discord (Chrizzz#0810) if you are interessted in this service.");
         }
+
+        private void btnConvertToCSV_Click(object sender, EventArgs e)
+        {
+            string sPath = "";
+            if (DialogResult.No == MessageBox.Show("Please use this function only when you are switching from an PaF Mod version lower than V1.2.0 to V1.2.0+ for the first time, if not please don't use this since it will overwrite all your current CSV Infos. Do you want to continue?", "Migrate to CSV?", MessageBoxButtons.YesNo)) return;
+
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+            fb.Description = "Please select your SAMMI folder.\nThe SAMMI folder should contain the SAMMI Core.exe.";
+
+            if (fb.ShowDialog() == DialogResult.OK)
+            {
+                if (!Directory.Exists(fb.SelectedPath + "\\Pokemon and Friends") || !File.Exists(fb.SelectedPath + "\\SAMMI Core.exe"))
+                {
+                    MessageBox.Show("Migration failed.\nUnfortunately this is not the SAMMI folder.\nThe SAMMI folder must contain the Pokemon and Friends folder and the SAMMI Core.exe.");
+                    return;
+                }
+                else sPath = fb.SelectedPath + "\\Pokemon and Friends\\";
+            }
+            else return;
+            try
+            {
+                string[] saExluded = new string[] { "undefined", "petted", "misty", "rocko", "giovanni", "sabrina", "major bob", "pokemonchamp", "trainer_names_numbers", "current_number", "erika", "pyro", "koga" };
+
+                List<string> lsTrainerNames = new List<string>();
+
+                string sTrainerText;
+                using (StreamReader sr = new StreamReader(sPath + "\\Pokemon_trainers.ini"))
+                {
+                    sTrainerText = sr.ReadToEnd().ToLowerInvariant();
+                    sr.Close();
+
+                    Regex reg = new Regex("\\[(.{3,26})\\]");
+                    foreach (Match match in reg.Matches(sTrainerText))
+                    {
+                        string s = match.Groups[1].Value;
+                        if (!saExluded.Contains(s) && !lsTrainerNames.Contains(s)) lsTrainerNames.Add(s);
+                    }
+                }
+
+                string sTrainerImages;
+                using (StreamReader sr = new StreamReader(sPath + "\\trainer_images.ini"))
+                {
+                    sTrainerImages = sr.ReadToEnd();
+                    sr.Close();
+
+                    Regex reg = new Regex("(.{3,26})=\".{1,10}\"");
+                    foreach (Match match in reg.Matches(sTrainerImages))
+                    {
+                        string s = match.Groups[1].Value;
+                        if (!saExluded.Contains(s) && !lsTrainerNames.Contains(s)) lsTrainerNames.Add(s);
+                    }
+                }
+
+                lsTrainerNames.Sort();
+
+                if (MessageBox.Show("Found data for " + lsTrainerNames.Count.ToString() + " trainers. Are you sure you want to continue? This will overwrite any existing CSV files!", "Please confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+
+                StreamWriter sw = new StreamWriter(sPath + @"database\trainer_database.csv");
+                sw.WriteLine(@",trainer,pokedex_count,shiny_count,pokemon_array,shiny_array,likeability,victorys,defeats,winrate,slot1,slot2,slot3,slot4,slot5,slot6,badges_gen1,badges_gen2,badges_gen3,badges_gen4,badges_gen5,badges_gen6,badges_gen7,badges_gen8,badges_gen9,badges_gen10,bonus_catchrate");
+
+                for (int i = 0; i < lsTrainerNames.Count; i++)
+                {
+                    CSVLine line = new CSVLine();
+                    line.sName = lsTrainerNames[i];
+
+                    Regex regTrainer = new Regex(lsTrainerNames[i] + "=\"(.{1,20})\"");
+                    foreach (Match match in regTrainer.Matches(sTrainerImages))
+                    {
+                        line.sTrainer = match.Groups[1].Value;
+                    }
+
+                    string[] sArrBlocks = sTrainerText.Split(new char[] { '[' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string s in sArrBlocks)
+                    {
+                        if (s.Contains(lsTrainerNames[i] + "]"))
+                        {
+                            string sBlock = s.Replace("]", "").Replace(lsTrainerNames[i], "");
+                            Regex regNormalPokemon = new Regex("(\\d{1,3})=\"1");
+                            foreach (Match match in regNormalPokemon.Matches(sBlock))
+                            {
+                                string sMatch = match.Groups[1].Value;
+                                if (!line.lsPokedex.Contains(sMatch)) line.lsPokedex.Add(sMatch);
+                            }
+
+                            Regex regShinyPokemon = new Regex("(\\d{1,3})s=\"1");
+                            foreach (Match match in regShinyPokemon.Matches(sBlock))
+                            {
+                                string sMatch = match.Groups[1].Value;
+                                if (!line.lsShinys.Contains(sMatch)) line.lsShinys.Add(sMatch.Replace("S", ""));
+                            }
+
+                            Regex regLikeability = new Regex("likeability=\"(\\d{1,4})\\.000000\"");
+                            foreach (Match match in regLikeability.Matches(sBlock))
+                            {
+                                line.iLikeability = match.Groups[1].Value;
+                            }
+
+                            Regex regvictorys = new Regex("victorys=\"(\\d{1,4})\\.000000\"");
+                            foreach (Match match in regvictorys.Matches(sBlock))
+                            {
+                                line.iVictorys = match.Groups[1].Value;
+                            }
+
+                            Regex regdefeats = new Regex("defeats=\"(\\d{1,4})\\.000000\"");
+                            foreach (Match match in regdefeats.Matches(sBlock))
+                            {
+                                line.iDefeats = match.Groups[1].Value;
+                            }
+
+                            Regex regslot1 = new Regex("slot1=\"(.{1,4})\"");
+                            foreach (Match match in regslot1.Matches(sBlock))
+                            {
+                                line.sSlot1 = match.Groups[1].Value;
+                            }
+
+                            Regex regslot2 = new Regex("slot2=\"(.{1,4})\"");
+                            foreach (Match match in regslot2.Matches(sBlock))
+                            {
+                                line.sSlot2 = match.Groups[1].Value;
+                            }
+
+                            Regex regslot3 = new Regex("slot3=\"(.{1,4})\"");
+                            foreach (Match match in regslot3.Matches(sBlock))
+                            {
+                                line.sSlot3 = match.Groups[1].Value;
+                            }
+
+                            Regex regslot4 = new Regex("slot4=\"(.{1,4})\"");
+                            foreach (Match match in regslot4.Matches(sBlock))
+                            {
+                                line.sSlot4 = match.Groups[1].Value;
+                            }
+
+                            Regex regslot5 = new Regex("slot5=\"(.{1,4})\"");
+                            foreach (Match match in regslot5.Matches(sBlock))
+                            {
+                                line.sSlot5 = match.Groups[1].Value;
+                            }
+
+                            Regex regslot6 = new Regex("slot6=\"(.{1,4})\"");
+                            foreach (Match match in regslot6.Matches(sBlock))
+                            {
+                                line.sSlot6 = match.Groups[1].Value;
+                            }
+                        }
+                    }
+                    sw.WriteLine(line.ToString());
+                }
+
+                sw.WriteLine("\",DefaulT,\",1,0,0,,,0,0,0,0,,,,,,,,,,,,,,,,,0");
+                sw.Close();
+
+                MessageBox.Show("The convertion into a CSV file was completed successfully! If your SAMMI is currently running, please restart it to load the new data.");
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+        }
+        private static void CopyFilesRecursively(string sourcePath, string targetPath)
+        {
+            //Now Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
+            {
+                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+            }
+
+            //Copy all the files & Replaces any files with the same name
+            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+            {
+                File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+            }
+        }
+        private void CheckPlugins()
+        {
+            if (string.IsNullOrEmpty(txtOBSPath.Text))
+            {
+                btnInstall.Enabled = false;
+                return;
+            }
+            btnInstall.Enabled = true;
+
+
+            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\move-transition.dll"))
+            {
+                pbMoveTransition.Image = ilInstalled.Images[0];
+            }
+            else
+            {
+                pbMoveTransition.Image = ilInstalled.Images[1];
+            }
+            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll"))
+            {
+                pbOBSWS.Image = ilInstalled.Images[0];
+            }
+            else
+            {
+                pbOBSWS.Image = ilInstalled.Images[1];
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CheckPlugins();
+        }
+
+        private void btnDownloadPlugins_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"https://obsproject.com/forum/resources/move-transition.913/version/4297/download?file=84807");
+            Process.Start(@"https://github.com/Xaymar/obs-StreamFX/releases/download/0.11.1/streamfx-windows-2019-0.11.1.0-g81a96998.exe");
+            Process.Start(@"https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket-4.9.1-Windows.zip");
+        }
+
+        private void btnInstallPlugins_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists("ZipInstaller"))
+            {
+                Directory.Delete("ZipInstaller", true);
+            }
+            //Move Transition
+            try
+            {
+                Directory.CreateDirectory("ZipInstaller");
+
+                OpenFileDialog f = new OpenFileDialog();
+                f.Title = "Please select your Move Transition ZIP file";
+                f.Filter = "Move Transition|move-transition*.zip";
+
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
+            //OBS Websocket 4.9.1
+            try
+            {
+                OpenFileDialog f = new OpenFileDialog();
+                f.Title = "Please select your OBS Websocket ZIP file";
+                f.Filter = "OBS Websocket|obs*websocket*.zip";
+
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
+            try
+            {
+                CopyFilesRecursively("ZipInstaller", txtOBSPath.Text);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            CheckPlugins();
+
+            MessageBox.Show("Move Transition and OBS Websocket 4.9.1 were installed successfully. Please install the StreamFX Plugin manually. It should be in your download folder.");
+        }
+
+        private void btnSelectOBSPath_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog f = new OpenFileDialog();
+                f.Title = "Please select your OBS Websocket ZIP file";
+                f.Filter = "OBS|obs*.exe";
+
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    txtOBSPath.Text = f.FileName.Replace(@"bin\64bit\obs64.exe","").Replace(@"bin\32bit\obs32.exe","");
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+        }
+
+        private void txtOBSPath_TextChanged(object sender, EventArgs e)
+        {
+            CheckPlugins();
+        }
+    }
+
+    public class CSVLine
+    {
+        public string sName = "";
+        public string sTrainer = "1";
+
+        public List<string> lsPokedex = new List<string>();
+        public List<string> lsShinys = new List<string>();
+
+        private int iPokedex = 0;
+        private int iShinys = 0;
+
+        public string iLikeability = "0";
+        public string iVictorys = "0";
+        public string iDefeats = "0";
+
+        private double dWinrate;
+
+        public string sSlot1 = "";
+        public string sSlot2 = "";
+        public string sSlot3 = "";
+        public string sSlot4 = "";
+        public string sSlot5 = "";
+        public string sSlot6 = "";
+
+        public override string ToString()
+        {
+            var myComparer = new CustomComparer();
+
+            iPokedex = lsPokedex.Count;
+            iShinys = lsShinys.Count;
+
+            lsPokedex.Sort(myComparer);
+            string sNormalPokemon = "\"[";
+            for(int i = 0; i < lsPokedex.Count; i++)
+            {
+                sNormalPokemon += " \"\"" + CheckForRegionals(lsPokedex[i]) + "\"\"";
+                if (i < lsPokedex.Count - 1) sNormalPokemon += ";";
+            }
+            sNormalPokemon += " ]\"";
+
+            string sShinyPokemon = "\"[";
+            lsShinys.Sort(myComparer);
+
+            for (int i = 0; i < lsShinys.Count; i++)
+            {
+                sShinyPokemon += " \"\"" + CheckForRegionals(lsShinys[i]) + "\"\"";
+                if (i < lsShinys.Count - 1) sShinyPokemon += ";";
+            }
+            sShinyPokemon += " ]\"";
+
+            if (iVictorys != "0")
+            {
+                dWinrate = Math.Round(Convert.ToDouble(iVictorys) / (Convert.ToDouble(iVictorys) + Convert.ToDouble(iDefeats)) * Convert.ToDouble(100), 2);
+            }
+            else dWinrate = 0;
+
+            string sSlot1Temp = CheckForRegionals(sSlot1.Replace("s", ""));
+            if (sSlot1.Contains("s"))
+            {
+                sSlot1 = sSlot1Temp + "S";
+            }
+            else sSlot1 = sSlot1Temp;
+
+            string sSlot2Temp = CheckForRegionals(sSlot2.Replace("s", ""));
+            if (sSlot2.Contains("s"))
+            {
+                sSlot2 = sSlot2Temp + "S";
+            }
+            else sSlot2 = sSlot2Temp;
+
+            string sSlot3Temp = CheckForRegionals(sSlot3.Replace("s", ""));
+            if (sSlot3.Contains("s"))
+            {
+                sSlot3 = sSlot3Temp + "S";
+            }
+            else sSlot3 = sSlot3Temp;
+
+            string sSlot4Temp = CheckForRegionals(sSlot4.Replace("s", ""));
+            if (sSlot4.Contains("s"))
+            {
+                sSlot4 = sSlot4Temp + "S";
+            }
+            else sSlot4 = sSlot4Temp;
+
+            string sSlot5Temp = CheckForRegionals(sSlot5.Replace("s", ""));
+            if (sSlot5.Contains("s"))
+            {
+                sSlot5 = sSlot5Temp + "S";
+            }
+            else sSlot5 = sSlot5Temp;
+
+            string sSlot6Temp = CheckForRegionals(sSlot6.Replace("s", ""));
+            if (sSlot6.Contains("s"))
+            {
+                sSlot6 = sSlot6Temp + "S";
+            }
+            else sSlot6 = sSlot6Temp;
+
+            return sName + "," + sTrainer + "," + iPokedex.ToString() + "," + iShinys.ToString() + "," + sNormalPokemon + "," + sShinyPokemon + "," + iLikeability + "," + iVictorys + "," + iDefeats + "," + dWinrate.ToString().Replace(",",".") + "," + sSlot1 + "," + sSlot2 + "," + sSlot3 + "," + sSlot4 + "," + sSlot5 + "," + sSlot6 + ",,,,,,,,,,,0";
+        }
+
+        private string CheckForRegionals(string sNumber)
+        {
+            if (string.IsNullOrEmpty(sNumber)) return "";
+            try
+            {
+                int iNumber = Convert.ToInt32(sNumber);
+                if (iNumber > 905)
+                {
+                    return "R" + (iNumber - 905).ToString();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(sNumber + ex.ToString()); }
+   
+
+            return sNumber;
+        }
+    }
+    public class CustomComparer : IComparer<string>
+    {
+        public int Compare(string x, string y)
+        {
+            var regex = new Regex("^(d+)");
+
+            // run the regex on both strings
+            var xRegexResult = regex.Match(x);
+            var yRegexResult = regex.Match(y);
+
+            // check if they are both numbers
+            if (xRegexResult.Success && yRegexResult.Success)
+            {
+                return int.Parse(xRegexResult.Groups[1].Value).CompareTo(int.Parse(yRegexResult.Groups[1].Value));
+            }
+
+            // otherwise return as string comparison
+            return x.CompareTo(y);
+        }
     }
 
     public class PokeTrainer
@@ -1014,6 +1447,8 @@ namespace Pokemon_and_Friends_Upgrader
 
         public PokeTrainer(string sName, int iDex, int iShinys)
         {
+            //replace regional form ids
+
             this.sName = sName;
             this.iDex = iDex;
             this.iShinys = iShinys;

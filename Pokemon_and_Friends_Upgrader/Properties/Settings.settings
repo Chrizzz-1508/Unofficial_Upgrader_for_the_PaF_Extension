@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Pokemon_and_Friends_Upgrader.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="LB2" Type="System.String" Scope="User">
+    <Setting Name="SAMMI" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Language" Type="System.Int32" Scope="User">
@@ -10,9 +10,6 @@
     </Setting>
     <Setting Name="NonAffiliate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="Leaderboard" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="AudioTreshhold" Type="System.String" Scope="User">
       <Value Profile="(Default)">35</Value>
@@ -87,7 +84,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="UseBreakoutMessage" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="UseRefundMessage" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -219,7 +216,16 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="UseCustomPokemon" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="QueueTime" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="UseMega" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="OBSPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

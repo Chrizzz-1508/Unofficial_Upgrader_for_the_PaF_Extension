@@ -1,3 +1,7 @@
+This extension only works with SAMMI Version 2022.4.0 or higher, so please make sure to update first!
+Also in case you have upgraded recently, make sure that you gain a new Twitch Token so that SAMMI has the needed permissions.
+
+
 New Installation:
 =================
 
@@ -8,46 +12,33 @@ New Installation:
 - MoveTransition (check if you have the newest one)
 - StreamFX
 2) Delete the old Pokemon Game Channel Point Rewards
-3) Delete the old Scenes (SI - Waldo and Friends - Pokemon & Pokedex Scene)
+3) Delete the old PaF Scenes
 
 2. Creating the necessary Files:
 
-1) (Hit the Migration from LB1 button if you want to port over your progress)
-2) Fill out the settings in the installer and hit install
+1) Fill out the settings in the PaF - Mod Installer.exe and hit install (you can hover the options for more infos)
 
-3. Prepare LB2:
+3. Prepare SAMMI:
 
-1) Startup LB2
+1) Startup SAMMI
 2) Link your Twitch account with the email scope checked (to do this you will have to hit "Twitch Connections" => "Edit Scopes" => Check "View Email"" => Done => Open URL)
-3) Add the transmitter file in the LB2 folder to OBS as Dock
-4) Make sure all 3 Points are green on the left side in LB2 (Main OBS, Twitch Chat and Transmitter)
+3) Add the bridge file in the SAMMI folder to OBS as Dock
+4) Make sure all 4 Points are green on the left side in SAMMI (Main OBS, Twitch Pubsub, Twitch Chat and Bridge)
 
 4. Install the PaF Game
 
-1) In LB2 hit Transmitter => Install Extension
-2) Select the PaFGame.lb2 Extension (should be in a folder called Pokemon and Friends in your LB2 folder)
+1) In SAMMI hit Brigde => Install Extension
+2) Select the PaFGame.sef Extension (should be in a folder called Pokemon and Friends in your SAMMI folder)
 
 5. Change Channel Point pictures (optional)
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Upgrading from V1.1.6 or lower
+==============================
 
-Updating from V1.0
-==================
-
-1. Preparations:
-
-1) Delete the old Pokemon Game Channel Point Rewards
-2) Delete the old Scenes (SI - Waldo and Friends - Pokemon & Pokedex Scene)
-3) Update LB2 to V2.07.9+ (can be done in the LB2 settings tab)
-
-2. Creating the necessary Files:
-
-1) Fill out the settings in the installer and hit install
-
-3. Install the PaF Game
-
-1) In LB2 hit Transmitter => Install Extension
-2) Select the PaFGame.lb2 Extension (should be in a folder called Pokemon and Friends in your LB2 folder)
-3) If you are asked for replacing the current files, say yes. Also say yes to recreating everything
-
-4. Change Channel Point pictures (optional)
+1) Delete all your existing Pokemon Channel Point Rewards
+2) Run the PaF - Mod Installer.exe and fill out your settings (you can hover the options for more infos)
+3) Use the Migrate to SAMMI button to carry over your progress
+4) Start OBS and SAMMI and make sure both are connected
+5) Inside SAMMI install the newly created Extension (PaFGame.sef)
+6) If you are asked if you want to recreate the channel points, say yes
+7) If you are asked if you want to recreate the scenes, say no

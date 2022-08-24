@@ -26,12 +26,12 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LB2 {
+        public string SAMMI {
             get {
-                return ((string)(this["LB2"]));
+                return ((string)(this["SAMMI"]));
             }
             set {
-                this["LB2"] = value;
+                this["SAMMI"] = value;
             }
         }
         
@@ -56,18 +56,6 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
             }
             set {
                 this["NonAffiliate"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Leaderboard {
-            get {
-                return ((int)(this["Leaderboard"]));
-            }
-            set {
-                this["Leaderboard"] = value;
             }
         }
         
@@ -361,7 +349,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int UseBreakoutMessage {
             get {
                 return ((int)(this["UseBreakoutMessage"]));
@@ -889,13 +877,49 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int UseCustomPokemon {
             get {
                 return ((int)(this["UseCustomPokemon"]));
             }
             set {
                 this["UseCustomPokemon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public string QueueTime {
+            get {
+                return ((string)(this["QueueTime"]));
+            }
+            set {
+                this["QueueTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int UseMega {
+            get {
+                return ((int)(this["UseMega"]));
+            }
+            set {
+                this["UseMega"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OBSPath {
+            get {
+                return ((string)(this["OBSPath"]));
+            }
+            set {
+                this["OBSPath"] = value;
             }
         }
     }

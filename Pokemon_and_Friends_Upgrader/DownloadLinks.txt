@@ -1,0 +1,1 @@
+https://obsproject.com/forum/resources/move-transition.913/version/4297/download?file=84807;https://github.com/Xaymar/obs-StreamFX/releases/download/0.11.1/streamfx-windows-2019-0.11.1.0-g81a96998.exe;https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket-4.9.1-Windows.zip

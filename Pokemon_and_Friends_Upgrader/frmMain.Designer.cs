@@ -77,15 +77,15 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnPokemonSettings = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbAnimatedTrainers = new System.Windows.Forms.ComboBox();
+            this.lblAnimatedTrainers = new System.Windows.Forms.Label();
             this.lblBroadcaster = new System.Windows.Forms.Label();
             this.txtBroadcaster = new System.Windows.Forms.TextBox();
-            this.cbLeaderboard = new System.Windows.Forms.ComboBox();
-            this.lblLeaderboard = new System.Windows.Forms.Label();
             this.cbAffiliate = new System.Windows.Forms.ComboBox();
             this.lblAffiliate = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.txtLB2 = new System.Windows.Forms.TextBox();
-            this.lblLB2 = new System.Windows.Forms.Label();
+            this.txtSAMMI = new System.Windows.Forms.TextBox();
+            this.lblSAMMI = new System.Windows.Forms.Label();
             this.lblAudioTreshhold = new System.Windows.Forms.Label();
             this.txtAudioTreshhold = new System.Windows.Forms.TextBox();
             this.lblOBSWSPW = new System.Windows.Forms.Label();
@@ -142,8 +142,8 @@
             this.pbPlay = new System.Windows.Forms.PictureBox();
             this.btnLoadingMusic = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cbAnimatedTrainers = new System.Windows.Forms.ComboBox();
-            this.lblAnimatedTrainers = new System.Windows.Forms.Label();
+            this.lblQueueTime = new System.Windows.Forms.Label();
+            this.txtQueueTime = new System.Windows.Forms.TextBox();
             this.lblCatchIncMax = new System.Windows.Forms.Label();
             this.txtCatchIncMax = new System.Windows.Forms.TextBox();
             this.lblCatchIncMin = new System.Windows.Forms.Label();
@@ -165,6 +165,8 @@
             this.lblBonusTime = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cbMega = new System.Windows.Forms.ComboBox();
+            this.lblMega = new System.Windows.Forms.Label();
             this.cbCustom = new System.Windows.Forms.ComboBox();
             this.lblCustom = new System.Windows.Forms.Label();
             this.cbRegional = new System.Windows.Forms.ComboBox();
@@ -190,11 +192,23 @@
             this.lblGen5 = new System.Windows.Forms.Label();
             this.cbGen3 = new System.Windows.Forms.ComboBox();
             this.cbGen4 = new System.Windows.Forms.ComboBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pbOBSWS = new System.Windows.Forms.PictureBox();
+            this.pbMoveTransition = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblMoveTransition = new System.Windows.Forms.Label();
+            this.btnInstallPlugins = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSelectOBSPath = new System.Windows.Forms.Button();
+            this.txtOBSPath = new System.Windows.Forms.TextBox();
+            this.btnDownloadPlugins = new System.Windows.Forms.Button();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.btnSetItUpForMe = new System.Windows.Forms.Button();
             this.btnEnglishGuide = new System.Windows.Forms.Button();
             this.btnGermanGuide = new System.Windows.Forms.Button();
+            this.btnConvertToCSV = new System.Windows.Forms.Button();
+            this.ilInstalled = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -211,6 +225,9 @@
             this.groupBox7.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOBSWS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMoveTransition)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInstall
@@ -218,7 +235,7 @@
             this.btnInstall.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnInstall.Location = new System.Drawing.Point(1020, 522);
             this.btnInstall.Name = "btnInstall";
-            this.btnInstall.Size = new System.Drawing.Size(190, 73);
+            this.btnInstall.Size = new System.Drawing.Size(190, 74);
             this.btnInstall.TabIndex = 13;
             this.btnInstall.Text = "Install";
             this.btnInstall.UseVisualStyleBackColor = true;
@@ -229,7 +246,7 @@
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnHelp.Location = new System.Drawing.Point(934, 522);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(75, 73);
+            this.btnHelp.Size = new System.Drawing.Size(75, 74);
             this.btnHelp.TabIndex = 12;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
@@ -248,7 +265,7 @@
             this.btnSupport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupport.Location = new System.Drawing.Point(844, 522);
             this.btnSupport.Name = "btnSupport";
-            this.btnSupport.Size = new System.Drawing.Size(84, 73);
+            this.btnSupport.Size = new System.Drawing.Size(84, 74);
             this.btnSupport.TabIndex = 11;
             this.btnSupport.Text = "Support Me";
             this.btnSupport.UseVisualStyleBackColor = true;
@@ -258,7 +275,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(36, 558);
+            this.label1.Location = new System.Drawing.Point(2, 558);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 24);
             this.label1.TabIndex = 57;
@@ -268,18 +285,18 @@
             // 
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lblVersion.Location = new System.Drawing.Point(86, 534);
+            this.lblVersion.Location = new System.Drawing.Point(39, 534);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(63, 24);
             this.lblVersion.TabIndex = 76;
-            this.lblVersion.Text = "V1.1.6";
+            this.lblVersion.Text = "V1.2.0";
             // 
             // btnMigrate
             // 
-            this.btnMigrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnMigrate.Location = new System.Drawing.Point(740, 522);
+            this.btnMigrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMigrate.Location = new System.Drawing.Point(614, 576);
             this.btnMigrate.Name = "btnMigrate";
-            this.btnMigrate.Size = new System.Drawing.Size(98, 73);
+            this.btnMigrate.Size = new System.Drawing.Size(224, 21);
             this.btnMigrate.TabIndex = 10;
             this.btnMigrate.Text = "Migration from LB1";
             this.btnMigrate.UseVisualStyleBackColor = true;
@@ -289,7 +306,7 @@
             // 
             this.pbLoading.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
-            this.pbLoading.Location = new System.Drawing.Point(0, 1000);
+            this.pbLoading.Location = new System.Drawing.Point(0, 0);
             this.pbLoading.Name = "pbLoading";
             this.pbLoading.Size = new System.Drawing.Size(1216, 609);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -723,15 +740,15 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cbAnimatedTrainers);
+            this.groupBox3.Controls.Add(this.lblAnimatedTrainers);
             this.groupBox3.Controls.Add(this.lblBroadcaster);
             this.groupBox3.Controls.Add(this.txtBroadcaster);
-            this.groupBox3.Controls.Add(this.cbLeaderboard);
-            this.groupBox3.Controls.Add(this.lblLeaderboard);
             this.groupBox3.Controls.Add(this.cbAffiliate);
             this.groupBox3.Controls.Add(this.lblAffiliate);
             this.groupBox3.Controls.Add(this.btnSearch);
-            this.groupBox3.Controls.Add(this.txtLB2);
-            this.groupBox3.Controls.Add(this.lblLB2);
+            this.groupBox3.Controls.Add(this.txtSAMMI);
+            this.groupBox3.Controls.Add(this.lblSAMMI);
             this.groupBox3.Controls.Add(this.lblAudioTreshhold);
             this.groupBox3.Controls.Add(this.txtAudioTreshhold);
             this.groupBox3.Controls.Add(this.lblOBSWSPW);
@@ -747,6 +764,30 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "General Settings";
+            // 
+            // cbAnimatedTrainers
+            // 
+            this.cbAnimatedTrainers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAnimatedTrainers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cbAnimatedTrainers.FormattingEnabled = true;
+            this.cbAnimatedTrainers.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.cbAnimatedTrainers.Location = new System.Drawing.Point(149, 236);
+            this.cbAnimatedTrainers.Name = "cbAnimatedTrainers";
+            this.cbAnimatedTrainers.Size = new System.Drawing.Size(121, 21);
+            this.cbAnimatedTrainers.TabIndex = 89;
+            // 
+            // lblAnimatedTrainers
+            // 
+            this.lblAnimatedTrainers.AutoSize = true;
+            this.lblAnimatedTrainers.BackColor = System.Drawing.Color.Transparent;
+            this.lblAnimatedTrainers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblAnimatedTrainers.Location = new System.Drawing.Point(7, 239);
+            this.lblAnimatedTrainers.Name = "lblAnimatedTrainers";
+            this.lblAnimatedTrainers.Size = new System.Drawing.Size(113, 13);
+            this.lblAnimatedTrainers.TabIndex = 90;
+            this.lblAnimatedTrainers.Text = "Use animated Trainers";
             // 
             // lblBroadcaster
             // 
@@ -767,29 +808,6 @@
             this.txtBroadcaster.Name = "txtBroadcaster";
             this.txtBroadcaster.Size = new System.Drawing.Size(121, 20);
             this.txtBroadcaster.TabIndex = 5;
-            // 
-            // cbLeaderboard
-            // 
-            this.cbLeaderboard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.cbLeaderboard.FormattingEnabled = true;
-            this.cbLeaderboard.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.cbLeaderboard.Location = new System.Drawing.Point(149, 145);
-            this.cbLeaderboard.Name = "cbLeaderboard";
-            this.cbLeaderboard.Size = new System.Drawing.Size(121, 21);
-            this.cbLeaderboard.TabIndex = 6;
-            // 
-            // lblLeaderboard
-            // 
-            this.lblLeaderboard.AutoSize = true;
-            this.lblLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblLeaderboard.Location = new System.Drawing.Point(7, 148);
-            this.lblLeaderboard.Name = "lblLeaderboard";
-            this.lblLeaderboard.Size = new System.Drawing.Size(132, 13);
-            this.lblLeaderboard.TabIndex = 86;
-            this.lblLeaderboard.Text = "Ignore BC on Leaderboard";
             // 
             // cbAffiliate
             // 
@@ -825,31 +843,31 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // txtLB2
+            // txtSAMMI
             // 
-            this.txtLB2.Enabled = false;
-            this.txtLB2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtLB2.Location = new System.Drawing.Point(149, 35);
-            this.txtLB2.Name = "txtLB2";
-            this.txtLB2.Size = new System.Drawing.Size(82, 20);
-            this.txtLB2.TabIndex = 1;
-            this.txtLB2.Click += new System.EventHandler(this.btnSearch_Click);
+            this.txtSAMMI.Enabled = false;
+            this.txtSAMMI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtSAMMI.Location = new System.Drawing.Point(149, 35);
+            this.txtSAMMI.Name = "txtSAMMI";
+            this.txtSAMMI.Size = new System.Drawing.Size(82, 20);
+            this.txtSAMMI.TabIndex = 1;
+            this.txtSAMMI.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // lblLB2
+            // lblSAMMI
             // 
-            this.lblLB2.AutoSize = true;
-            this.lblLB2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblLB2.Location = new System.Drawing.Point(7, 34);
-            this.lblLB2.Name = "lblLB2";
-            this.lblLB2.Size = new System.Drawing.Size(70, 13);
-            this.lblLB2.TabIndex = 6;
-            this.lblLB2.Text = "LB2 Location";
+            this.lblSAMMI.AutoSize = true;
+            this.lblSAMMI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblSAMMI.Location = new System.Drawing.Point(7, 34);
+            this.lblSAMMI.Name = "lblSAMMI";
+            this.lblSAMMI.Size = new System.Drawing.Size(86, 13);
+            this.lblSAMMI.TabIndex = 6;
+            this.lblSAMMI.Text = "SAMMI Location";
             // 
             // lblAudioTreshhold
             // 
             this.lblAudioTreshhold.AutoSize = true;
             this.lblAudioTreshhold.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblAudioTreshhold.Location = new System.Drawing.Point(7, 177);
+            this.lblAudioTreshhold.Location = new System.Drawing.Point(7, 150);
             this.lblAudioTreshhold.Name = "lblAudioTreshhold";
             this.lblAudioTreshhold.Size = new System.Drawing.Size(90, 13);
             this.lblAudioTreshhold.TabIndex = 81;
@@ -858,7 +876,7 @@
             // txtAudioTreshhold
             // 
             this.txtAudioTreshhold.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtAudioTreshhold.Location = new System.Drawing.Point(149, 174);
+            this.txtAudioTreshhold.Location = new System.Drawing.Point(149, 147);
             this.txtAudioTreshhold.Name = "txtAudioTreshhold";
             this.txtAudioTreshhold.Size = new System.Drawing.Size(121, 20);
             this.txtAudioTreshhold.TabIndex = 7;
@@ -868,7 +886,7 @@
             // 
             this.lblOBSWSPW.AutoSize = true;
             this.lblOBSWSPW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblOBSWSPW.Location = new System.Drawing.Point(8, 235);
+            this.lblOBSWSPW.Location = new System.Drawing.Point(8, 208);
             this.lblOBSWSPW.Name = "lblOBSWSPW";
             this.lblOBSWSPW.Size = new System.Drawing.Size(136, 13);
             this.lblOBSWSPW.TabIndex = 79;
@@ -877,7 +895,7 @@
             // txtOBSWSPW
             // 
             this.txtOBSWSPW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtOBSWSPW.Location = new System.Drawing.Point(149, 232);
+            this.txtOBSWSPW.Location = new System.Drawing.Point(149, 205);
             this.txtOBSWSPW.Name = "txtOBSWSPW";
             this.txtOBSWSPW.Size = new System.Drawing.Size(121, 20);
             this.txtOBSWSPW.TabIndex = 9;
@@ -887,7 +905,7 @@
             // 
             this.lblOBSWSPort.AutoSize = true;
             this.lblOBSWSPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblOBSWSPort.Location = new System.Drawing.Point(7, 206);
+            this.lblOBSWSPort.Location = new System.Drawing.Point(7, 179);
             this.lblOBSWSPort.Name = "lblOBSWSPort";
             this.lblOBSWSPort.Size = new System.Drawing.Size(109, 13);
             this.lblOBSWSPort.TabIndex = 77;
@@ -922,7 +940,7 @@
             // txtOBSWSPort
             // 
             this.txtOBSWSPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtOBSWSPort.Location = new System.Drawing.Point(149, 203);
+            this.txtOBSWSPort.Location = new System.Drawing.Point(149, 176);
             this.txtOBSWSPort.MaxLength = 5;
             this.txtOBSWSPort.Name = "txtOBSWSPort";
             this.txtOBSWSPort.Size = new System.Drawing.Size(121, 20);
@@ -1480,8 +1498,8 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.cbAnimatedTrainers);
-            this.groupBox6.Controls.Add(this.lblAnimatedTrainers);
+            this.groupBox6.Controls.Add(this.lblQueueTime);
+            this.groupBox6.Controls.Add(this.txtQueueTime);
             this.groupBox6.Controls.Add(this.lblCatchIncMax);
             this.groupBox6.Controls.Add(this.txtCatchIncMax);
             this.groupBox6.Controls.Add(this.lblCatchIncMin);
@@ -1500,29 +1518,25 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Catch Settings";
             // 
-            // cbAnimatedTrainers
+            // lblQueueTime
             // 
-            this.cbAnimatedTrainers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAnimatedTrainers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.cbAnimatedTrainers.FormattingEnabled = true;
-            this.cbAnimatedTrainers.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.cbAnimatedTrainers.Location = new System.Drawing.Point(150, 171);
-            this.cbAnimatedTrainers.Name = "cbAnimatedTrainers";
-            this.cbAnimatedTrainers.Size = new System.Drawing.Size(121, 21);
-            this.cbAnimatedTrainers.TabIndex = 89;
+            this.lblQueueTime.AutoSize = true;
+            this.lblQueueTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblQueueTime.Location = new System.Drawing.Point(9, 178);
+            this.lblQueueTime.Name = "lblQueueTime";
+            this.lblQueueTime.Size = new System.Drawing.Size(79, 13);
+            this.lblQueueTime.TabIndex = 51;
+            this.lblQueueTime.Text = "Queue Time (s)";
             // 
-            // lblAnimatedTrainers
+            // txtQueueTime
             // 
-            this.lblAnimatedTrainers.AutoSize = true;
-            this.lblAnimatedTrainers.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnimatedTrainers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblAnimatedTrainers.Location = new System.Drawing.Point(8, 174);
-            this.lblAnimatedTrainers.Name = "lblAnimatedTrainers";
-            this.lblAnimatedTrainers.Size = new System.Drawing.Size(113, 13);
-            this.lblAnimatedTrainers.TabIndex = 90;
-            this.lblAnimatedTrainers.Text = "Use animated Trainers";
+            this.txtQueueTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtQueueTime.Location = new System.Drawing.Point(150, 175);
+            this.txtQueueTime.MaxLength = 3;
+            this.txtQueueTime.Name = "txtQueueTime";
+            this.txtQueueTime.Size = new System.Drawing.Size(121, 20);
+            this.txtQueueTime.TabIndex = 50;
+            this.txtQueueTime.Text = "2";
             // 
             // lblCatchIncMax
             // 
@@ -1727,6 +1741,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(8, 8);
             this.tabControl1.Name = "tabControl1";
@@ -1737,6 +1752,8 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.LightGray;
+            this.tabPage3.Controls.Add(this.cbMega);
+            this.tabPage3.Controls.Add(this.lblMega);
             this.tabPage3.Controls.Add(this.cbCustom);
             this.tabPage3.Controls.Add(this.lblCustom);
             this.tabPage3.Controls.Add(this.cbRegional);
@@ -1770,6 +1787,30 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Pokemon Settings";
             // 
+            // cbMega
+            // 
+            this.cbMega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMega.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.cbMega.FormattingEnabled = true;
+            this.cbMega.Items.AddRange(new object[] {
+            "Enabled",
+            "Disabled"});
+            this.cbMega.Location = new System.Drawing.Point(899, 81);
+            this.cbMega.Name = "cbMega";
+            this.cbMega.Size = new System.Drawing.Size(276, 39);
+            this.cbMega.TabIndex = 10;
+            // 
+            // lblMega
+            // 
+            this.lblMega.AutoSize = true;
+            this.lblMega.BackColor = System.Drawing.Color.Transparent;
+            this.lblMega.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.lblMega.Location = new System.Drawing.Point(610, 84);
+            this.lblMega.Name = "lblMega";
+            this.lblMega.Size = new System.Drawing.Size(214, 31);
+            this.lblMega.TabIndex = 103;
+            this.lblMega.Text = "Mega Pokemon";
+            // 
             // cbCustom
             // 
             this.cbCustom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1778,17 +1819,17 @@
             this.cbCustom.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbCustom.Location = new System.Drawing.Point(899, 81);
+            this.cbCustom.Location = new System.Drawing.Point(899, 131);
             this.cbCustom.Name = "cbCustom";
             this.cbCustom.Size = new System.Drawing.Size(276, 39);
-            this.cbCustom.TabIndex = 10;
+            this.cbCustom.TabIndex = 11;
             // 
             // lblCustom
             // 
             this.lblCustom.AutoSize = true;
             this.lblCustom.BackColor = System.Drawing.Color.Transparent;
             this.lblCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblCustom.Location = new System.Drawing.Point(610, 84);
+            this.lblCustom.Location = new System.Drawing.Point(610, 134);
             this.lblCustom.Name = "lblCustom";
             this.lblCustom.Size = new System.Drawing.Size(243, 31);
             this.lblCustom.TabIndex = 101;
@@ -1849,7 +1890,7 @@
             this.btnChannelPointSettings.Location = new System.Drawing.Point(922, 284);
             this.btnChannelPointSettings.Name = "btnChannelPointSettings";
             this.btnChannelPointSettings.Size = new System.Drawing.Size(253, 145);
-            this.btnChannelPointSettings.TabIndex = 13;
+            this.btnChannelPointSettings.TabIndex = 14;
             this.btnChannelPointSettings.Text = "Channel Point Settings\r\n======>";
             this.btnChannelPointSettings.UseVisualStyleBackColor = true;
             this.btnChannelPointSettings.Click += new System.EventHandler(this.btnChannelPointSettings_Click);
@@ -1869,7 +1910,7 @@
             // 
             this.lblUseGIFs.AutoSize = true;
             this.lblUseGIFs.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblUseGIFs.Location = new System.Drawing.Point(610, 184);
+            this.lblUseGIFs.Location = new System.Drawing.Point(610, 234);
             this.lblUseGIFs.Name = "lblUseGIFs";
             this.lblUseGIFs.Size = new System.Drawing.Size(127, 31);
             this.lblUseGIFs.TabIndex = 52;
@@ -1883,19 +1924,19 @@
             this.cbUseGIFS.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbUseGIFS.Location = new System.Drawing.Point(899, 181);
+            this.cbUseGIFS.Location = new System.Drawing.Point(899, 231);
             this.cbUseGIFS.Name = "cbUseGIFS";
             this.cbUseGIFS.Size = new System.Drawing.Size(276, 39);
-            this.cbUseGIFS.TabIndex = 12;
+            this.cbUseGIFS.TabIndex = 13;
             // 
             // txtShinyChance
             // 
             this.txtShinyChance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.txtShinyChance.Location = new System.Drawing.Point(899, 132);
+            this.txtShinyChance.Location = new System.Drawing.Point(899, 182);
             this.txtShinyChance.MaxLength = 3;
             this.txtShinyChance.Name = "txtShinyChance";
             this.txtShinyChance.Size = new System.Drawing.Size(276, 38);
-            this.txtShinyChance.TabIndex = 11;
+            this.txtShinyChance.TabIndex = 12;
             this.txtShinyChance.Text = "10";
             // 
             // lblGen7
@@ -1913,7 +1954,7 @@
             // 
             this.lblShinyChance.AutoSize = true;
             this.lblShinyChance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblShinyChance.Location = new System.Drawing.Point(610, 134);
+            this.lblShinyChance.Location = new System.Drawing.Point(610, 184);
             this.lblShinyChance.Name = "lblShinyChance";
             this.lblShinyChance.Size = new System.Drawing.Size(244, 31);
             this.lblShinyChance.TabIndex = 47;
@@ -2063,6 +2104,115 @@
             this.cbGen4.Size = new System.Drawing.Size(276, 39);
             this.cbGen4.TabIndex = 4;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.LightGray;
+            this.tabPage4.Controls.Add(this.pbOBSWS);
+            this.tabPage4.Controls.Add(this.pbMoveTransition);
+            this.tabPage4.Controls.Add(this.label6);
+            this.tabPage4.Controls.Add(this.lblMoveTransition);
+            this.tabPage4.Controls.Add(this.btnInstallPlugins);
+            this.tabPage4.Controls.Add(this.label2);
+            this.tabPage4.Controls.Add(this.btnSelectOBSPath);
+            this.tabPage4.Controls.Add(this.txtOBSPath);
+            this.tabPage4.Controls.Add(this.btnDownloadPlugins);
+            this.tabPage4.Location = new System.Drawing.Point(4, 46);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1196, 455);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "OBS Plugin Installer";
+            // 
+            // pbOBSWS
+            // 
+            this.pbOBSWS.Image = ((System.Drawing.Image)(resources.GetObject("pbOBSWS.Image")));
+            this.pbOBSWS.Location = new System.Drawing.Point(981, 321);
+            this.pbOBSWS.Name = "pbOBSWS";
+            this.pbOBSWS.Size = new System.Drawing.Size(64, 64);
+            this.pbOBSWS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbOBSWS.TabIndex = 13;
+            this.pbOBSWS.TabStop = false;
+            // 
+            // pbMoveTransition
+            // 
+            this.pbMoveTransition.Image = ((System.Drawing.Image)(resources.GetObject("pbMoveTransition.Image")));
+            this.pbMoveTransition.Location = new System.Drawing.Point(981, 194);
+            this.pbMoveTransition.Name = "pbMoveTransition";
+            this.pbMoveTransition.Size = new System.Drawing.Size(64, 64);
+            this.pbMoveTransition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbMoveTransition.TabIndex = 12;
+            this.pbMoveTransition.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(654, 337);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(226, 37);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "OBSWS 4.9.1";
+            // 
+            // lblMoveTransition
+            // 
+            this.lblMoveTransition.AutoSize = true;
+            this.lblMoveTransition.Location = new System.Drawing.Point(654, 208);
+            this.lblMoveTransition.Name = "lblMoveTransition";
+            this.lblMoveTransition.Size = new System.Drawing.Size(259, 37);
+            this.lblMoveTransition.TabIndex = 10;
+            this.lblMoveTransition.Text = "Move Transition";
+            // 
+            // btnInstallPlugins
+            // 
+            this.btnInstallPlugins.Location = new System.Drawing.Point(285, 306);
+            this.btnInstallPlugins.Name = "btnInstallPlugins";
+            this.btnInstallPlugins.Size = new System.Drawing.Size(299, 95);
+            this.btnInstallPlugins.TabIndex = 9;
+            this.btnInstallPlugins.Text = "Install Plugins";
+            this.btnInstallPlugins.UseVisualStyleBackColor = true;
+            this.btnInstallPlugins.Click += new System.EventHandler(this.btnInstallPlugins_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(227, 37);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "OBS Location";
+            // 
+            // btnSelectOBSPath
+            // 
+            this.btnSelectOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.btnSelectOBSPath.Location = new System.Drawing.Point(1095, 65);
+            this.btnSelectOBSPath.Name = "btnSelectOBSPath";
+            this.btnSelectOBSPath.Size = new System.Drawing.Size(75, 84);
+            this.btnSelectOBSPath.TabIndex = 4;
+            this.btnSelectOBSPath.Text = "...";
+            this.btnSelectOBSPath.UseVisualStyleBackColor = true;
+            this.btnSelectOBSPath.Click += new System.EventHandler(this.btnSelectOBSPath_Click);
+            // 
+            // txtOBSPath
+            // 
+            this.txtOBSPath.Enabled = false;
+            this.txtOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.txtOBSPath.Location = new System.Drawing.Point(285, 65);
+            this.txtOBSPath.Multiline = true;
+            this.txtOBSPath.Name = "txtOBSPath";
+            this.txtOBSPath.Size = new System.Drawing.Size(804, 84);
+            this.txtOBSPath.TabIndex = 3;
+            this.txtOBSPath.Text = "C:\\Users\\Chrizzz\\Downloads\\OBS-Studio-28.0-rc1-Full-x64\\";
+            this.txtOBSPath.TextChanged += new System.EventHandler(this.txtOBSPath_TextChanged);
+            // 
+            // btnDownloadPlugins
+            // 
+            this.btnDownloadPlugins.Location = new System.Drawing.Point(285, 175);
+            this.btnDownloadPlugins.Name = "btnDownloadPlugins";
+            this.btnDownloadPlugins.Size = new System.Drawing.Size(299, 95);
+            this.btnDownloadPlugins.TabIndex = 0;
+            this.btnDownloadPlugins.Text = "Download Plugins";
+            this.btnDownloadPlugins.UseVisualStyleBackColor = true;
+            this.btnDownloadPlugins.Click += new System.EventHandler(this.btnDownloadPlugins_Click);
+            // 
             // comboBox7
             // 
             this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2092,9 +2242,9 @@
             // btnSetItUpForMe
             // 
             this.btnSetItUpForMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSetItUpForMe.Location = new System.Drawing.Point(531, 522);
+            this.btnSetItUpForMe.Location = new System.Drawing.Point(466, 523);
             this.btnSetItUpForMe.Name = "btnSetItUpForMe";
-            this.btnSetItUpForMe.Size = new System.Drawing.Size(143, 73);
+            this.btnSetItUpForMe.Size = new System.Drawing.Size(143, 74);
             this.btnSetItUpForMe.TabIndex = 118;
             this.btnSetItUpForMe.Text = "Set it up\r\nfor me please";
             this.btnSetItUpForMe.UseVisualStyleBackColor = true;
@@ -2103,9 +2253,9 @@
             // btnEnglishGuide
             // 
             this.btnEnglishGuide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnEnglishGuide.Location = new System.Drawing.Point(380, 522);
+            this.btnEnglishGuide.Location = new System.Drawing.Point(320, 522);
             this.btnEnglishGuide.Name = "btnEnglishGuide";
-            this.btnEnglishGuide.Size = new System.Drawing.Size(143, 73);
+            this.btnEnglishGuide.Size = new System.Drawing.Size(143, 74);
             this.btnEnglishGuide.TabIndex = 117;
             this.btnEnglishGuide.Text = "English Installation\r\nVideo Guide";
             this.btnEnglishGuide.UseVisualStyleBackColor = true;
@@ -2114,13 +2264,32 @@
             // btnGermanGuide
             // 
             this.btnGermanGuide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnGermanGuide.Location = new System.Drawing.Point(229, 522);
+            this.btnGermanGuide.Location = new System.Drawing.Point(174, 522);
             this.btnGermanGuide.Name = "btnGermanGuide";
-            this.btnGermanGuide.Size = new System.Drawing.Size(143, 73);
+            this.btnGermanGuide.Size = new System.Drawing.Size(143, 74);
             this.btnGermanGuide.TabIndex = 116;
             this.btnGermanGuide.Text = "German Installation\r\nVideo Guide";
             this.btnGermanGuide.UseVisualStyleBackColor = true;
             this.btnGermanGuide.Click += new System.EventHandler(this.btnGermanGuide_Click);
+            // 
+            // btnConvertToCSV
+            // 
+            this.btnConvertToCSV.BackColor = System.Drawing.Color.Red;
+            this.btnConvertToCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnConvertToCSV.Location = new System.Drawing.Point(614, 522);
+            this.btnConvertToCSV.Name = "btnConvertToCSV";
+            this.btnConvertToCSV.Size = new System.Drawing.Size(224, 52);
+            this.btnConvertToCSV.TabIndex = 119;
+            this.btnConvertToCSV.Text = "Migration to SAMMI";
+            this.btnConvertToCSV.UseVisualStyleBackColor = false;
+            this.btnConvertToCSV.Click += new System.EventHandler(this.btnConvertToCSV_Click);
+            // 
+            // ilInstalled
+            // 
+            this.ilInstalled.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilInstalled.ImageStream")));
+            this.ilInstalled.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilInstalled.Images.SetKeyName(0, "Installed.png");
+            this.ilInstalled.Images.SetKeyName(1, "NotInstalled.png");
             // 
             // frmMain
             // 
@@ -2128,12 +2297,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 607);
+            this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.pbLoading);
+            this.Controls.Add(this.btnConvertToCSV);
             this.Controls.Add(this.btnSetItUpForMe);
             this.Controls.Add(this.btnEnglishGuide);
             this.Controls.Add(this.btnGermanGuide);
             this.Controls.Add(this.comboBox8);
-            this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.comboBox7);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnMigrate);
@@ -2144,7 +2314,7 @@
             this.Controls.Add(this.lblVersion);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
-            this.Text = "PaF LB2 Mod";
+            this.Text = "PaF SAMMI Mod";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
@@ -2173,6 +2343,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOBSWS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMoveTransition)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2225,13 +2399,11 @@
         private System.Windows.Forms.Label lblPokeball;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox cbLeaderboard;
-        private System.Windows.Forms.Label lblLeaderboard;
         private System.Windows.Forms.ComboBox cbAffiliate;
         private System.Windows.Forms.Label lblAffiliate;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtLB2;
-        private System.Windows.Forms.Label lblLB2;
+        private System.Windows.Forms.TextBox txtSAMMI;
+        private System.Windows.Forms.Label lblSAMMI;
         private System.Windows.Forms.Label lblAudioTreshhold;
         private System.Windows.Forms.TextBox txtAudioTreshhold;
         private System.Windows.Forms.Label lblOBSWSPW;
@@ -2344,6 +2516,22 @@
         private System.Windows.Forms.Button btnSetItUpForMe;
         private System.Windows.Forms.Button btnEnglishGuide;
         private System.Windows.Forms.Button btnGermanGuide;
+        private System.Windows.Forms.Button btnConvertToCSV;
+        private System.Windows.Forms.Label lblQueueTime;
+        private System.Windows.Forms.TextBox txtQueueTime;
+        private System.Windows.Forms.ComboBox cbMega;
+        private System.Windows.Forms.Label lblMega;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button btnDownloadPlugins;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSelectOBSPath;
+        private System.Windows.Forms.TextBox txtOBSPath;
+        private System.Windows.Forms.Button btnInstallPlugins;
+        private System.Windows.Forms.PictureBox pbOBSWS;
+        private System.Windows.Forms.PictureBox pbMoveTransition;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblMoveTransition;
+        private System.Windows.Forms.ImageList ilInstalled;
     }
 }
 

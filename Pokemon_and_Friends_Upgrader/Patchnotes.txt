@@ -1,0 +1,88 @@
+Update 21.08.22 - V1.2.0 Release
+================================
+
+New Features:
+
+- !namechange "<nameold>" "<namenew>" (makes the whole process of one of your viewers changing their name easier, can only be used by mods)
+- !addpkm / !addshiny (adds a specific pokemon to a user as long as they don't have it, can only be used by mods)
+- !sendpkm <user> <pokemon> / !sendshiny <user> <pokemon> / !acceptpokemon (sends a pokemon to another user, can be used to trade Pokemon, they will have to use !accept or !decline)
+- Added an option to change the time for people to enter the ball queue
+- Added Mega Pokemon
+- Added the first 3 custom Pokemon
+- Added Catch Rate increases for the PvP AddOn (the active champ gains better chances to catch Pokemon as well as viewers who have conquered regions)
+- Added a converter that let's you carry over your current process from the ini files to the new CSV files
+
+Reworked Features:
+
+- !mypokemon <type> (shows only pokemons of a specific type)
+- !pet Rework (now suggests a pokemon on invalid commands and works with missingno)
+- !top10likeability (leaderboard for likeability)
+- Rework of the Leaderboards and !mypokemon (way faster now, even with much data)
+- The broadcaster command !summon will now always summon a normal Pokemon while !summonshiny always summons a shiny Pokemon
+
+Background Processes:
+
+- Switched everything over to SAMMI (LB2 after the rebranding)
+- Auto Fetch SAMMI path (so that you can move SAMMI around without much trouble)
+- Switch databases to CSV files for better structure and faster commands
+- Rework of 26 other buttons (background processes, CSV support, etc)
+- Switch Regional Forms to R1,... and Custom Pokemon to C1,... to add Gen9 easily
+- Added a check that prevents Pokemon from spawning while the despawn of the previous Pokemon is still happening
+
+Update 11.06.22 - V1.1.6 Release
+================================
+
+- Fixed a bug that made SAMMI crash when the game wasn't initialized correctly
+- Fixed a bug with !pokedex showing undefined values
+- Fixed a bug when a pokemon breaking out was crashing SAMMI
+- Added a new function to hide Rewards & Stop timers on crashes / SAMMI closing
+
+Update 08.06.22 - V1.1.5 Release
+================================
+- Fixed a bug where the game would crash on runaway calculation
+- Optimized Rank / Top10 / Top10 Shiny / !mypokemon commands
+- Added some additional things for PvP
+
+Update 04.06.22 - V1.1.4 Release
+================================
+- Fixed a bug with the bonus time spawn rate
+- Fixed a bug with petting
+- Fixed a bug with Pokemon Names including non alphabetical characters
+- Adjusted the installation process to check if Twitch / OBS are connected
+- Mini-Rework of the non affiliate mode delays
+
+Update 25.05.22 - V1.1.3 Release
+==========================
+- Fixed a bug with legendary & mythical spawn rates
+
+Update 21.05.22 - V1.1.2 Release
+==========================
+- Fixed a bug where backups were not beeing created successfully
+- Fixed a bug where viewers could summon Pokemons with chat commands
+
+Update 13.05.22 - V1.1.1 Release
+==========================
+- Fixed Streamdeck Support for throwing balls
+- Fixed viewer commands not showing up in german
+- Fixed a typo for the shiny pokedex on english
+
+Update 11.05.22 - V1.1.0 Release
+==========================
+
+New features:
+
+- Mythical / Legendarys spawn much rarer and can be announced in chat
+- Added Animated trainers 
+- New commands ( !pet *, !poke-filter, !poke-filter * )
+- Databases enhanced for incoming PvP and custom Pokémon Add On
+- Spawn Selection for each Generation (for example Gen 1 and Gen 3 only) 
+- Added Shiny symbol on discord screenshot 
+- Added Spanish, Italian and reworked French Language Keys 
+- Show Pokemon Infos on LB2 Streamdeck (and full streamdeck support) 
+- Bot account support 
+- Added a “Check for Update” function on startup 
+- Moved loading animation to an extra scene
+- Ignore upper / lowercase for pokemon names 
+- Some minor bugfixes
+
+...
