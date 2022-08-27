@@ -11,6 +11,8 @@ New Features:
 - Added the first 3 custom Pokemon
 - Added Catch Rate increases for the PvP AddOn (the active champ gains better chances to catch Pokemon as well as viewers who have conquered regions)
 - Added a converter that let's you carry over your current process from the ini files to the new CSV files
+- Added an OBS plugin Installer
+- Added a security check to check for all installed plugins
 
 Reworked Features:
 

@@ -39,7 +39,7 @@
             this.btnMigrate = new System.Windows.Forms.Button();
             this.pbLoading = new System.Windows.Forms.PictureBox();
             this.lblLoading = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbChannelPoints = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@
             this.lblMysteryPokemon = new System.Windows.Forms.Label();
             this.lblUltraball = new System.Windows.Forms.Label();
             this.lblPokeball = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tbGameSettings = new System.Windows.Forms.TabPage();
             this.btnPokemonSettings = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbAnimatedTrainers = new System.Windows.Forms.ComboBox();
@@ -163,8 +163,22 @@
             this.cbUseBonusTime = new System.Windows.Forms.ComboBox();
             this.lblUseBonusTime = new System.Windows.Forms.Label();
             this.lblBonusTime = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tbOBS = new System.Windows.Forms.TabPage();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.pbStreamFX = new System.Windows.Forms.PictureBox();
+            this.lblStreamFX = new System.Windows.Forms.Label();
+            this.btnGameSettings = new System.Windows.Forms.Button();
+            this.pbOBSWS = new System.Windows.Forms.PictureBox();
+            this.pbMoveTransition = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblMoveTransition = new System.Windows.Forms.Label();
+            this.btnInstallPlugins = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSelectOBSPath = new System.Windows.Forms.Button();
+            this.txtOBSPath = new System.Windows.Forms.TextBox();
+            this.btnDownloadPlugins = new System.Windows.Forms.Button();
+            this.tbPokemonSettings = new System.Windows.Forms.TabPage();
             this.cbMega = new System.Windows.Forms.ComboBox();
             this.lblMega = new System.Windows.Forms.Label();
             this.cbCustom = new System.Windows.Forms.ComboBox();
@@ -192,16 +206,6 @@
             this.lblGen5 = new System.Windows.Forms.Label();
             this.cbGen3 = new System.Windows.Forms.ComboBox();
             this.cbGen4 = new System.Windows.Forms.ComboBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pbOBSWS = new System.Windows.Forms.PictureBox();
-            this.pbMoveTransition = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblMoveTransition = new System.Windows.Forms.Label();
-            this.btnInstallPlugins = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSelectOBSPath = new System.Windows.Forms.Button();
-            this.txtOBSPath = new System.Windows.Forms.TextBox();
-            this.btnDownloadPlugins = new System.Windows.Forms.Button();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.btnSetItUpForMe = new System.Windows.Forms.Button();
@@ -210,8 +214,8 @@
             this.btnConvertToCSV = new System.Windows.Forms.Button();
             this.ilInstalled = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tbChannelPoints.SuspendLayout();
+            this.tbGameSettings.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -223,11 +227,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbPlay)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tbOBS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStreamFX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbOBSWS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMoveTransition)).BeginInit();
+            this.tbPokemonSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnInstall
@@ -294,9 +299,9 @@
             // btnMigrate
             // 
             this.btnMigrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMigrate.Location = new System.Drawing.Point(614, 576);
+            this.btnMigrate.Location = new System.Drawing.Point(542, 522);
             this.btnMigrate.Name = "btnMigrate";
-            this.btnMigrate.Size = new System.Drawing.Size(224, 21);
+            this.btnMigrate.Size = new System.Drawing.Size(68, 72);
             this.btnMigrate.TabIndex = 10;
             this.btnMigrate.Text = "Migration from LB1";
             this.btnMigrate.UseVisualStyleBackColor = true;
@@ -327,49 +332,49 @@
             this.lblLoading.Text = "Installing now, please wait...";
             this.lblLoading.Visible = false;
             // 
-            // tabPage2
+            // tbChannelPoints
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.LightGray;
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.txtPriceGift);
-            this.tabPage2.Controls.Add(this.txtPriceSummon);
-            this.tabPage2.Controls.Add(this.txtPriceMysteryShiny);
-            this.tabPage2.Controls.Add(this.txtPriceMysteryPokemon);
-            this.tabPage2.Controls.Add(this.txtPriceMasterball);
-            this.tabPage2.Controls.Add(this.txtPriceUltraball);
-            this.tabPage2.Controls.Add(this.txtPriceGreatball);
-            this.tabPage2.Controls.Add(this.txtPricePokeball);
-            this.tabPage2.Controls.Add(this.txtGift);
-            this.tabPage2.Controls.Add(this.txtSummon);
-            this.tabPage2.Controls.Add(this.txtMysteryShiny);
-            this.tabPage2.Controls.Add(this.txtMysteryPokemon);
-            this.tabPage2.Controls.Add(this.txtMasterball);
-            this.tabPage2.Controls.Add(this.txtUltraball);
-            this.tabPage2.Controls.Add(this.txtGreatball);
-            this.tabPage2.Controls.Add(this.txtPokeball);
-            this.tabPage2.Controls.Add(this.cbGift);
-            this.tabPage2.Controls.Add(this.cbSummon);
-            this.tabPage2.Controls.Add(this.cbMysteryShiny);
-            this.tabPage2.Controls.Add(this.cbMysteryPokemon);
-            this.tabPage2.Controls.Add(this.cbMasterball);
-            this.tabPage2.Controls.Add(this.cbUltraball);
-            this.tabPage2.Controls.Add(this.cbGreatball);
-            this.tabPage2.Controls.Add(this.lblGift);
-            this.tabPage2.Controls.Add(this.lblMysteryShiny);
-            this.tabPage2.Controls.Add(this.lblMasterball);
-            this.tabPage2.Controls.Add(this.lblSummon);
-            this.tabPage2.Controls.Add(this.lblGreatball);
-            this.tabPage2.Controls.Add(this.lblMysteryPokemon);
-            this.tabPage2.Controls.Add(this.lblUltraball);
-            this.tabPage2.Controls.Add(this.lblPokeball);
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1196, 455);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Channel Point Settings";
+            this.tbChannelPoints.BackColor = System.Drawing.Color.LightGray;
+            this.tbChannelPoints.Controls.Add(this.label5);
+            this.tbChannelPoints.Controls.Add(this.label4);
+            this.tbChannelPoints.Controls.Add(this.label3);
+            this.tbChannelPoints.Controls.Add(this.txtPriceGift);
+            this.tbChannelPoints.Controls.Add(this.txtPriceSummon);
+            this.tbChannelPoints.Controls.Add(this.txtPriceMysteryShiny);
+            this.tbChannelPoints.Controls.Add(this.txtPriceMysteryPokemon);
+            this.tbChannelPoints.Controls.Add(this.txtPriceMasterball);
+            this.tbChannelPoints.Controls.Add(this.txtPriceUltraball);
+            this.tbChannelPoints.Controls.Add(this.txtPriceGreatball);
+            this.tbChannelPoints.Controls.Add(this.txtPricePokeball);
+            this.tbChannelPoints.Controls.Add(this.txtGift);
+            this.tbChannelPoints.Controls.Add(this.txtSummon);
+            this.tbChannelPoints.Controls.Add(this.txtMysteryShiny);
+            this.tbChannelPoints.Controls.Add(this.txtMysteryPokemon);
+            this.tbChannelPoints.Controls.Add(this.txtMasterball);
+            this.tbChannelPoints.Controls.Add(this.txtUltraball);
+            this.tbChannelPoints.Controls.Add(this.txtGreatball);
+            this.tbChannelPoints.Controls.Add(this.txtPokeball);
+            this.tbChannelPoints.Controls.Add(this.cbGift);
+            this.tbChannelPoints.Controls.Add(this.cbSummon);
+            this.tbChannelPoints.Controls.Add(this.cbMysteryShiny);
+            this.tbChannelPoints.Controls.Add(this.cbMysteryPokemon);
+            this.tbChannelPoints.Controls.Add(this.cbMasterball);
+            this.tbChannelPoints.Controls.Add(this.cbUltraball);
+            this.tbChannelPoints.Controls.Add(this.cbGreatball);
+            this.tbChannelPoints.Controls.Add(this.lblGift);
+            this.tbChannelPoints.Controls.Add(this.lblMysteryShiny);
+            this.tbChannelPoints.Controls.Add(this.lblMasterball);
+            this.tbChannelPoints.Controls.Add(this.lblSummon);
+            this.tbChannelPoints.Controls.Add(this.lblGreatball);
+            this.tbChannelPoints.Controls.Add(this.lblMysteryPokemon);
+            this.tbChannelPoints.Controls.Add(this.lblUltraball);
+            this.tbChannelPoints.Controls.Add(this.lblPokeball);
+            this.tbChannelPoints.Location = new System.Drawing.Point(4, 46);
+            this.tbChannelPoints.Name = "tbChannelPoints";
+            this.tbChannelPoints.Padding = new System.Windows.Forms.Padding(3);
+            this.tbChannelPoints.Size = new System.Drawing.Size(1196, 455);
+            this.tbChannelPoints.TabIndex = 1;
+            this.tbChannelPoints.Text = "Channel Point Settings";
             // 
             // label5
             // 
@@ -708,24 +713,24 @@
             this.lblPokeball.TabIndex = 0;
             this.lblPokeball.Text = "Pokeball";
             // 
-            // tabPage1
+            // tbGameSettings
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.LightGray;
-            this.tabPage1.Controls.Add(this.btnPokemonSettings);
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox10);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Controls.Add(this.groupBox11);
-            this.tabPage1.Controls.Add(this.groupBox9);
-            this.tabPage1.Controls.Add(this.groupBox6);
-            this.tabPage1.Controls.Add(this.groupBox7);
-            this.tabPage1.Location = new System.Drawing.Point(4, 46);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1196, 455);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Game Settings";
+            this.tbGameSettings.BackColor = System.Drawing.Color.LightGray;
+            this.tbGameSettings.Controls.Add(this.btnPokemonSettings);
+            this.tbGameSettings.Controls.Add(this.groupBox3);
+            this.tbGameSettings.Controls.Add(this.groupBox10);
+            this.tbGameSettings.Controls.Add(this.groupBox1);
+            this.tbGameSettings.Controls.Add(this.groupBox4);
+            this.tbGameSettings.Controls.Add(this.groupBox11);
+            this.tbGameSettings.Controls.Add(this.groupBox9);
+            this.tbGameSettings.Controls.Add(this.groupBox6);
+            this.tbGameSettings.Controls.Add(this.groupBox7);
+            this.tbGameSettings.Location = new System.Drawing.Point(4, 46);
+            this.tbGameSettings.Name = "tbGameSettings";
+            this.tbGameSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tbGameSettings.Size = new System.Drawing.Size(1196, 455);
+            this.tbGameSettings.TabIndex = 0;
+            this.tbGameSettings.Text = "Game Settings";
             // 
             // btnPokemonSettings
             // 
@@ -821,6 +826,7 @@
             this.cbAffiliate.Name = "cbAffiliate";
             this.cbAffiliate.Size = new System.Drawing.Size(121, 21);
             this.cbAffiliate.TabIndex = 4;
+            this.cbAffiliate.SelectedIndexChanged += new System.EventHandler(this.cbAffiliate_SelectedIndexChanged);
             // 
             // lblAffiliate
             // 
@@ -1736,56 +1742,209 @@
             this.lblBonusTime.TabIndex = 69;
             this.lblBonusTime.Text = "BonusTime (s)";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(8, 8);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1204, 505);
-            this.tabControl1.TabIndex = 1;
+            this.tabControl.Controls.Add(this.tbOBS);
+            this.tabControl.Controls.Add(this.tbGameSettings);
+            this.tabControl.Controls.Add(this.tbPokemonSettings);
+            this.tabControl.Controls.Add(this.tbChannelPoints);
+            this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl.Location = new System.Drawing.Point(8, 8);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(1204, 505);
+            this.tabControl.TabIndex = 1;
             // 
-            // tabPage3
+            // tbOBS
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.LightGray;
-            this.tabPage3.Controls.Add(this.cbMega);
-            this.tabPage3.Controls.Add(this.lblMega);
-            this.tabPage3.Controls.Add(this.cbCustom);
-            this.tabPage3.Controls.Add(this.lblCustom);
-            this.tabPage3.Controls.Add(this.cbRegional);
-            this.tabPage3.Controls.Add(this.lblRegional);
-            this.tabPage3.Controls.Add(this.cbGen8);
-            this.tabPage3.Controls.Add(this.cbGen7);
-            this.tabPage3.Controls.Add(this.btnChannelPointSettings);
-            this.tabPage3.Controls.Add(this.lblGen8);
-            this.tabPage3.Controls.Add(this.lblUseGIFs);
-            this.tabPage3.Controls.Add(this.cbUseGIFS);
-            this.tabPage3.Controls.Add(this.txtShinyChance);
-            this.tabPage3.Controls.Add(this.lblGen7);
-            this.tabPage3.Controls.Add(this.lblShinyChance);
-            this.tabPage3.Controls.Add(this.cbGen6);
-            this.tabPage3.Controls.Add(this.lblGen1);
-            this.tabPage3.Controls.Add(this.lblGen4);
-            this.tabPage3.Controls.Add(this.lblGen6);
-            this.tabPage3.Controls.Add(this.lblGen3);
-            this.tabPage3.Controls.Add(this.cbGen1);
-            this.tabPage3.Controls.Add(this.cbGen5);
-            this.tabPage3.Controls.Add(this.lblGen2);
-            this.tabPage3.Controls.Add(this.cbGen2);
-            this.tabPage3.Controls.Add(this.lblGen5);
-            this.tabPage3.Controls.Add(this.cbGen3);
-            this.tabPage3.Controls.Add(this.cbGen4);
-            this.tabPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1196, 455);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Pokemon Settings";
+            this.tbOBS.BackColor = System.Drawing.Color.LightGray;
+            this.tbOBS.Controls.Add(this.btnRefresh);
+            this.tbOBS.Controls.Add(this.pbStreamFX);
+            this.tbOBS.Controls.Add(this.lblStreamFX);
+            this.tbOBS.Controls.Add(this.btnGameSettings);
+            this.tbOBS.Controls.Add(this.pbOBSWS);
+            this.tbOBS.Controls.Add(this.pbMoveTransition);
+            this.tbOBS.Controls.Add(this.label6);
+            this.tbOBS.Controls.Add(this.lblMoveTransition);
+            this.tbOBS.Controls.Add(this.btnInstallPlugins);
+            this.tbOBS.Controls.Add(this.label2);
+            this.tbOBS.Controls.Add(this.btnSelectOBSPath);
+            this.tbOBS.Controls.Add(this.txtOBSPath);
+            this.tbOBS.Controls.Add(this.btnDownloadPlugins);
+            this.tbOBS.Location = new System.Drawing.Point(4, 46);
+            this.tbOBS.Name = "tbOBS";
+            this.tbOBS.Padding = new System.Windows.Forms.Padding(3);
+            this.tbOBS.Size = new System.Drawing.Size(1196, 455);
+            this.tbOBS.TabIndex = 3;
+            this.tbOBS.Text = "OBS Plugins";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Enabled = false;
+            this.btnRefresh.Location = new System.Drawing.Point(438, 316);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(365, 68);
+            this.btnRefresh.TabIndex = 7;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // pbStreamFX
+            // 
+            this.pbStreamFX.Image = ((System.Drawing.Image)(resources.GetObject("pbStreamFX.Image")));
+            this.pbStreamFX.Location = new System.Drawing.Point(319, 318);
+            this.pbStreamFX.Name = "pbStreamFX";
+            this.pbStreamFX.Size = new System.Drawing.Size(64, 64);
+            this.pbStreamFX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbStreamFX.TabIndex = 16;
+            this.pbStreamFX.TabStop = false;
+            // 
+            // lblStreamFX
+            // 
+            this.lblStreamFX.AutoSize = true;
+            this.lblStreamFX.Location = new System.Drawing.Point(38, 332);
+            this.lblStreamFX.Name = "lblStreamFX";
+            this.lblStreamFX.Size = new System.Drawing.Size(169, 37);
+            this.lblStreamFX.TabIndex = 15;
+            this.lblStreamFX.Text = "StreamFX";
+            // 
+            // btnGameSettings
+            // 
+            this.btnGameSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.btnGameSettings.Location = new System.Drawing.Point(854, 130);
+            this.btnGameSettings.Name = "btnGameSettings";
+            this.btnGameSettings.Size = new System.Drawing.Size(316, 254);
+            this.btnGameSettings.TabIndex = 8;
+            this.btnGameSettings.Text = "Game Settings \r\n======>";
+            this.btnGameSettings.UseVisualStyleBackColor = true;
+            this.btnGameSettings.Click += new System.EventHandler(this.btnGameSettings_Click);
+            // 
+            // pbOBSWS
+            // 
+            this.pbOBSWS.Image = ((System.Drawing.Image)(resources.GetObject("pbOBSWS.Image")));
+            this.pbOBSWS.Location = new System.Drawing.Point(319, 226);
+            this.pbOBSWS.Name = "pbOBSWS";
+            this.pbOBSWS.Size = new System.Drawing.Size(64, 64);
+            this.pbOBSWS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbOBSWS.TabIndex = 13;
+            this.pbOBSWS.TabStop = false;
+            // 
+            // pbMoveTransition
+            // 
+            this.pbMoveTransition.Image = ((System.Drawing.Image)(resources.GetObject("pbMoveTransition.Image")));
+            this.pbMoveTransition.Location = new System.Drawing.Point(319, 134);
+            this.pbMoveTransition.Name = "pbMoveTransition";
+            this.pbMoveTransition.Size = new System.Drawing.Size(64, 64);
+            this.pbMoveTransition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbMoveTransition.TabIndex = 12;
+            this.pbMoveTransition.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 240);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(226, 37);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "OBSWS 4.9.1";
+            // 
+            // lblMoveTransition
+            // 
+            this.lblMoveTransition.AutoSize = true;
+            this.lblMoveTransition.Location = new System.Drawing.Point(37, 148);
+            this.lblMoveTransition.Name = "lblMoveTransition";
+            this.lblMoveTransition.Size = new System.Drawing.Size(259, 37);
+            this.lblMoveTransition.TabIndex = 10;
+            this.lblMoveTransition.Text = "Move Transition";
+            // 
+            // btnInstallPlugins
+            // 
+            this.btnInstallPlugins.Enabled = false;
+            this.btnInstallPlugins.Location = new System.Drawing.Point(438, 220);
+            this.btnInstallPlugins.Name = "btnInstallPlugins";
+            this.btnInstallPlugins.Size = new System.Drawing.Size(365, 72);
+            this.btnInstallPlugins.TabIndex = 6;
+            this.btnInstallPlugins.Text = "Install Plugins";
+            this.btnInstallPlugins.UseVisualStyleBackColor = true;
+            this.btnInstallPlugins.Click += new System.EventHandler(this.btnInstallPlugins_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(227, 37);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "OBS Location";
+            // 
+            // btnSelectOBSPath
+            // 
+            this.btnSelectOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.btnSelectOBSPath.Location = new System.Drawing.Point(1095, 37);
+            this.btnSelectOBSPath.Name = "btnSelectOBSPath";
+            this.btnSelectOBSPath.Size = new System.Drawing.Size(75, 47);
+            this.btnSelectOBSPath.TabIndex = 4;
+            this.btnSelectOBSPath.Text = "...";
+            this.btnSelectOBSPath.UseVisualStyleBackColor = true;
+            this.btnSelectOBSPath.Click += new System.EventHandler(this.btnSelectOBSPath_Click);
+            // 
+            // txtOBSPath
+            // 
+            this.txtOBSPath.Enabled = false;
+            this.txtOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.txtOBSPath.Location = new System.Drawing.Point(318, 39);
+            this.txtOBSPath.Name = "txtOBSPath";
+            this.txtOBSPath.Size = new System.Drawing.Size(774, 44);
+            this.txtOBSPath.TabIndex = 3;
+            this.txtOBSPath.TextChanged += new System.EventHandler(this.txtOBSPath_TextChanged);
+            // 
+            // btnDownloadPlugins
+            // 
+            this.btnDownloadPlugins.Location = new System.Drawing.Point(438, 130);
+            this.btnDownloadPlugins.Name = "btnDownloadPlugins";
+            this.btnDownloadPlugins.Size = new System.Drawing.Size(365, 66);
+            this.btnDownloadPlugins.TabIndex = 5;
+            this.btnDownloadPlugins.Text = "Download Plugins";
+            this.btnDownloadPlugins.UseVisualStyleBackColor = true;
+            this.btnDownloadPlugins.Click += new System.EventHandler(this.btnDownloadPlugins_Click);
+            // 
+            // tbPokemonSettings
+            // 
+            this.tbPokemonSettings.BackColor = System.Drawing.Color.LightGray;
+            this.tbPokemonSettings.Controls.Add(this.cbMega);
+            this.tbPokemonSettings.Controls.Add(this.lblMega);
+            this.tbPokemonSettings.Controls.Add(this.cbCustom);
+            this.tbPokemonSettings.Controls.Add(this.lblCustom);
+            this.tbPokemonSettings.Controls.Add(this.cbRegional);
+            this.tbPokemonSettings.Controls.Add(this.lblRegional);
+            this.tbPokemonSettings.Controls.Add(this.cbGen8);
+            this.tbPokemonSettings.Controls.Add(this.cbGen7);
+            this.tbPokemonSettings.Controls.Add(this.btnChannelPointSettings);
+            this.tbPokemonSettings.Controls.Add(this.lblGen8);
+            this.tbPokemonSettings.Controls.Add(this.lblUseGIFs);
+            this.tbPokemonSettings.Controls.Add(this.cbUseGIFS);
+            this.tbPokemonSettings.Controls.Add(this.txtShinyChance);
+            this.tbPokemonSettings.Controls.Add(this.lblGen7);
+            this.tbPokemonSettings.Controls.Add(this.lblShinyChance);
+            this.tbPokemonSettings.Controls.Add(this.cbGen6);
+            this.tbPokemonSettings.Controls.Add(this.lblGen1);
+            this.tbPokemonSettings.Controls.Add(this.lblGen4);
+            this.tbPokemonSettings.Controls.Add(this.lblGen6);
+            this.tbPokemonSettings.Controls.Add(this.lblGen3);
+            this.tbPokemonSettings.Controls.Add(this.cbGen1);
+            this.tbPokemonSettings.Controls.Add(this.cbGen5);
+            this.tbPokemonSettings.Controls.Add(this.lblGen2);
+            this.tbPokemonSettings.Controls.Add(this.cbGen2);
+            this.tbPokemonSettings.Controls.Add(this.lblGen5);
+            this.tbPokemonSettings.Controls.Add(this.cbGen3);
+            this.tbPokemonSettings.Controls.Add(this.cbGen4);
+            this.tbPokemonSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.tbPokemonSettings.Location = new System.Drawing.Point(4, 46);
+            this.tbPokemonSettings.Name = "tbPokemonSettings";
+            this.tbPokemonSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPokemonSettings.Size = new System.Drawing.Size(1196, 455);
+            this.tbPokemonSettings.TabIndex = 2;
+            this.tbPokemonSettings.Text = "Pokemon Settings";
             // 
             // cbMega
             // 
@@ -1887,9 +2046,9 @@
             // 
             // btnChannelPointSettings
             // 
-            this.btnChannelPointSettings.Location = new System.Drawing.Point(922, 284);
+            this.btnChannelPointSettings.Location = new System.Drawing.Point(899, 284);
             this.btnChannelPointSettings.Name = "btnChannelPointSettings";
-            this.btnChannelPointSettings.Size = new System.Drawing.Size(253, 145);
+            this.btnChannelPointSettings.Size = new System.Drawing.Size(276, 145);
             this.btnChannelPointSettings.TabIndex = 14;
             this.btnChannelPointSettings.Text = "Channel Point Settings\r\n======>";
             this.btnChannelPointSettings.UseVisualStyleBackColor = true;
@@ -2074,9 +2233,9 @@
             this.lblGen5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblGen5.Location = new System.Drawing.Point(27, 234);
             this.lblGen5.Name = "lblGen5";
-            this.lblGen5.Size = new System.Drawing.Size(192, 31);
+            this.lblGen5.Size = new System.Drawing.Size(204, 31);
             this.lblGen5.TabIndex = 90;
-            this.lblGen5.Text = "Gen 5 (Einall)";
+            this.lblGen5.Text = "Gen 5 (Unova)";
             // 
             // cbGen3
             // 
@@ -2103,115 +2262,6 @@
             this.cbGen4.Name = "cbGen4";
             this.cbGen4.Size = new System.Drawing.Size(276, 39);
             this.cbGen4.TabIndex = 4;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.Color.LightGray;
-            this.tabPage4.Controls.Add(this.pbOBSWS);
-            this.tabPage4.Controls.Add(this.pbMoveTransition);
-            this.tabPage4.Controls.Add(this.label6);
-            this.tabPage4.Controls.Add(this.lblMoveTransition);
-            this.tabPage4.Controls.Add(this.btnInstallPlugins);
-            this.tabPage4.Controls.Add(this.label2);
-            this.tabPage4.Controls.Add(this.btnSelectOBSPath);
-            this.tabPage4.Controls.Add(this.txtOBSPath);
-            this.tabPage4.Controls.Add(this.btnDownloadPlugins);
-            this.tabPage4.Location = new System.Drawing.Point(4, 46);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1196, 455);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "OBS Plugin Installer";
-            // 
-            // pbOBSWS
-            // 
-            this.pbOBSWS.Image = ((System.Drawing.Image)(resources.GetObject("pbOBSWS.Image")));
-            this.pbOBSWS.Location = new System.Drawing.Point(981, 321);
-            this.pbOBSWS.Name = "pbOBSWS";
-            this.pbOBSWS.Size = new System.Drawing.Size(64, 64);
-            this.pbOBSWS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbOBSWS.TabIndex = 13;
-            this.pbOBSWS.TabStop = false;
-            // 
-            // pbMoveTransition
-            // 
-            this.pbMoveTransition.Image = ((System.Drawing.Image)(resources.GetObject("pbMoveTransition.Image")));
-            this.pbMoveTransition.Location = new System.Drawing.Point(981, 194);
-            this.pbMoveTransition.Name = "pbMoveTransition";
-            this.pbMoveTransition.Size = new System.Drawing.Size(64, 64);
-            this.pbMoveTransition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbMoveTransition.TabIndex = 12;
-            this.pbMoveTransition.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(654, 337);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(226, 37);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "OBSWS 4.9.1";
-            // 
-            // lblMoveTransition
-            // 
-            this.lblMoveTransition.AutoSize = true;
-            this.lblMoveTransition.Location = new System.Drawing.Point(654, 208);
-            this.lblMoveTransition.Name = "lblMoveTransition";
-            this.lblMoveTransition.Size = new System.Drawing.Size(259, 37);
-            this.lblMoveTransition.TabIndex = 10;
-            this.lblMoveTransition.Text = "Move Transition";
-            // 
-            // btnInstallPlugins
-            // 
-            this.btnInstallPlugins.Location = new System.Drawing.Point(285, 306);
-            this.btnInstallPlugins.Name = "btnInstallPlugins";
-            this.btnInstallPlugins.Size = new System.Drawing.Size(299, 95);
-            this.btnInstallPlugins.TabIndex = 9;
-            this.btnInstallPlugins.Text = "Install Plugins";
-            this.btnInstallPlugins.UseVisualStyleBackColor = true;
-            this.btnInstallPlugins.Click += new System.EventHandler(this.btnInstallPlugins_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 89);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(227, 37);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "OBS Location";
-            // 
-            // btnSelectOBSPath
-            // 
-            this.btnSelectOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
-            this.btnSelectOBSPath.Location = new System.Drawing.Point(1095, 65);
-            this.btnSelectOBSPath.Name = "btnSelectOBSPath";
-            this.btnSelectOBSPath.Size = new System.Drawing.Size(75, 84);
-            this.btnSelectOBSPath.TabIndex = 4;
-            this.btnSelectOBSPath.Text = "...";
-            this.btnSelectOBSPath.UseVisualStyleBackColor = true;
-            this.btnSelectOBSPath.Click += new System.EventHandler(this.btnSelectOBSPath_Click);
-            // 
-            // txtOBSPath
-            // 
-            this.txtOBSPath.Enabled = false;
-            this.txtOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
-            this.txtOBSPath.Location = new System.Drawing.Point(285, 65);
-            this.txtOBSPath.Multiline = true;
-            this.txtOBSPath.Name = "txtOBSPath";
-            this.txtOBSPath.Size = new System.Drawing.Size(804, 84);
-            this.txtOBSPath.TabIndex = 3;
-            this.txtOBSPath.Text = "C:\\Users\\Chrizzz\\Downloads\\OBS-Studio-28.0-rc1-Full-x64\\";
-            this.txtOBSPath.TextChanged += new System.EventHandler(this.txtOBSPath_TextChanged);
-            // 
-            // btnDownloadPlugins
-            // 
-            this.btnDownloadPlugins.Location = new System.Drawing.Point(285, 175);
-            this.btnDownloadPlugins.Name = "btnDownloadPlugins";
-            this.btnDownloadPlugins.Size = new System.Drawing.Size(299, 95);
-            this.btnDownloadPlugins.TabIndex = 0;
-            this.btnDownloadPlugins.Text = "Download Plugins";
-            this.btnDownloadPlugins.UseVisualStyleBackColor = true;
-            this.btnDownloadPlugins.Click += new System.EventHandler(this.btnDownloadPlugins_Click);
             // 
             // comboBox7
             // 
@@ -2242,7 +2292,7 @@
             // btnSetItUpForMe
             // 
             this.btnSetItUpForMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSetItUpForMe.Location = new System.Drawing.Point(466, 523);
+            this.btnSetItUpForMe.Location = new System.Drawing.Point(395, 521);
             this.btnSetItUpForMe.Name = "btnSetItUpForMe";
             this.btnSetItUpForMe.Size = new System.Drawing.Size(143, 74);
             this.btnSetItUpForMe.TabIndex = 118;
@@ -2253,9 +2303,9 @@
             // btnEnglishGuide
             // 
             this.btnEnglishGuide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnEnglishGuide.Location = new System.Drawing.Point(320, 522);
+            this.btnEnglishGuide.Location = new System.Drawing.Point(281, 522);
             this.btnEnglishGuide.Name = "btnEnglishGuide";
-            this.btnEnglishGuide.Size = new System.Drawing.Size(143, 74);
+            this.btnEnglishGuide.Size = new System.Drawing.Size(108, 74);
             this.btnEnglishGuide.TabIndex = 117;
             this.btnEnglishGuide.Text = "English Installation\r\nVideo Guide";
             this.btnEnglishGuide.UseVisualStyleBackColor = true;
@@ -2266,7 +2316,7 @@
             this.btnGermanGuide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnGermanGuide.Location = new System.Drawing.Point(174, 522);
             this.btnGermanGuide.Name = "btnGermanGuide";
-            this.btnGermanGuide.Size = new System.Drawing.Size(143, 74);
+            this.btnGermanGuide.Size = new System.Drawing.Size(105, 74);
             this.btnGermanGuide.TabIndex = 116;
             this.btnGermanGuide.Text = "German Installation\r\nVideo Guide";
             this.btnGermanGuide.UseVisualStyleBackColor = true;
@@ -2275,12 +2325,12 @@
             // btnConvertToCSV
             // 
             this.btnConvertToCSV.BackColor = System.Drawing.Color.Red;
-            this.btnConvertToCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnConvertToCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.btnConvertToCSV.Location = new System.Drawing.Point(614, 522);
             this.btnConvertToCSV.Name = "btnConvertToCSV";
-            this.btnConvertToCSV.Size = new System.Drawing.Size(224, 52);
+            this.btnConvertToCSV.Size = new System.Drawing.Size(224, 73);
             this.btnConvertToCSV.TabIndex = 119;
-            this.btnConvertToCSV.Text = "Migration to SAMMI";
+            this.btnConvertToCSV.Text = "Migration to CSV\r\n(required when upgrading to V1.2.0 for the first time)";
             this.btnConvertToCSV.UseVisualStyleBackColor = false;
             this.btnConvertToCSV.Click += new System.EventHandler(this.btnConvertToCSV_Click);
             // 
@@ -2305,7 +2355,7 @@
             this.Controls.Add(this.btnGermanGuide);
             this.Controls.Add(this.comboBox8);
             this.Controls.Add(this.comboBox7);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btnMigrate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSupport);
@@ -2318,9 +2368,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
+            this.tbChannelPoints.ResumeLayout(false);
+            this.tbChannelPoints.PerformLayout();
+            this.tbGameSettings.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -2340,13 +2390,14 @@
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
+            this.tabControl.ResumeLayout(false);
+            this.tbOBS.ResumeLayout(false);
+            this.tbOBS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStreamFX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbOBSWS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMoveTransition)).EndInit();
+            this.tbPokemonSettings.ResumeLayout(false);
+            this.tbPokemonSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2362,7 +2413,7 @@
         private System.Windows.Forms.Button btnMigrate;
         private System.Windows.Forms.PictureBox pbLoading;
         private System.Windows.Forms.Label lblLoading;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tbChannelPoints;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -2397,7 +2448,7 @@
         private System.Windows.Forms.Label lblMysteryPokemon;
         private System.Windows.Forms.Label lblUltraball;
         private System.Windows.Forms.Label lblPokeball;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tbGameSettings;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cbAffiliate;
         private System.Windows.Forms.Label lblAffiliate;
@@ -2477,9 +2528,9 @@
         private System.Windows.Forms.ComboBox cbUseBonusTime;
         private System.Windows.Forms.Label lblUseBonusTime;
         private System.Windows.Forms.Label lblBonusTime;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Button btnPokemonSettings;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tbPokemonSettings;
         private System.Windows.Forms.Label lblUseGIFs;
         private System.Windows.Forms.ComboBox cbUseGIFS;
         private System.Windows.Forms.TextBox txtShinyChance;
@@ -2521,7 +2572,7 @@
         private System.Windows.Forms.TextBox txtQueueTime;
         private System.Windows.Forms.ComboBox cbMega;
         private System.Windows.Forms.Label lblMega;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tbOBS;
         private System.Windows.Forms.Button btnDownloadPlugins;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSelectOBSPath;
@@ -2532,6 +2583,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblMoveTransition;
         private System.Windows.Forms.ImageList ilInstalled;
+        private System.Windows.Forms.Button btnGameSettings;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.PictureBox pbStreamFX;
+        private System.Windows.Forms.Label lblStreamFX;
     }
 }
 

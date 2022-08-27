@@ -629,7 +629,7 @@ namespace Pokemon_and_Friends_Upgrader
             TTExplanation.SetToolTip(lblGen2, "Adds the Pokemons from the Johto \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblGen3, "Adds the Pokemons from the Hoenn \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblGen4, "Adds the Pokemons from the Sinnoh\nregion to the available Pokemons");
-            TTExplanation.SetToolTip(lblGen5, "Adds the Pokemons from the Einall\nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblGen5, "Adds the Pokemons from the Unova\nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblGen6, "Adds the Pokemons from the Kalos \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblGen7, "Adds the Pokemons from the Alola \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblGen8, "Adds the Pokemons from the Galar \nregion to the available Pokemons");
@@ -912,7 +912,7 @@ namespace Pokemon_and_Friends_Upgrader
                     if (File.Exists(sPathLB1)) File.Copy(sPathLB1, fb.SelectedPath + "\\Pokemon and Friends\\trainer_images.ini", true);
                 }
 
-                MessageBox.Show("Pokemon_trainers.ini has been ported over to SAMMI!");
+                MessageBox.Show("Pokemon_trainers.ini has been ported over to a CSV file!");
             }
         }
         private void btnSupport_Click(object sender, EventArgs e)
@@ -922,7 +922,7 @@ namespace Pokemon_and_Friends_Upgrader
         }
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            Process.Start("Pokemon and Friends Mod V1.0.pdf");
+            Process.Start("Pokemon and Friends Mod V1.2.pdf");
             if (DialogResult.Yes == MessageBox.Show("Need more help? Feel free to join my discord! Wanna join now?", "Help", MessageBoxButtons.YesNo))
             {
                 Process.Start("https://discord.gg/A3VF9kW");
@@ -999,12 +999,12 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void btnPokemonSettings_Click(object sender, EventArgs e)
         {
-            this.tabControl1.SelectedIndex = 1;
+            this.tabControl.SelectedTab = tbPokemonSettings;
         }
 
         private void btnChannelPointSettings_Click(object sender, EventArgs e)
         {
-            this.tabControl1.SelectedIndex = 2;
+            this.tabControl.SelectedTab = tbChannelPoints;
         }
 
         private void btnGermanGuide_Click(object sender, EventArgs e)
@@ -1014,7 +1014,7 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void btnEnglishGuide_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.youtube.com/watch?v=YA-5pqSsbK4");
+            Process.Start("https://www.youtube.com/watch?v=LFhNXw0FNVk");
         }
 
         private void btnSetItUpForMe_Click(object sender, EventArgs e)
@@ -1195,13 +1195,14 @@ namespace Pokemon_and_Friends_Upgrader
         {
             if (string.IsNullOrEmpty(txtOBSPath.Text))
             {
-                btnInstall.Enabled = false;
+                btnInstallPlugins.Enabled = false;
+                btnRefresh.Enabled = false;
                 return;
             }
-            btnInstall.Enabled = true;
-
-
-            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\move-transition.dll"))
+            btnInstallPlugins.Enabled = true;
+            btnRefresh.Enabled = true;
+            //Move Transition
+            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\move-transition.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\move-transition.dll"))
             {
                 pbMoveTransition.Image = ilInstalled.Images[0];
             }
@@ -1209,7 +1210,8 @@ namespace Pokemon_and_Friends_Upgrader
             {
                 pbMoveTransition.Image = ilInstalled.Images[1];
             }
-            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll"))
+            //OBSWS
+            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll"))
             {
                 pbOBSWS.Image = ilInstalled.Images[0];
             }
@@ -1217,7 +1219,15 @@ namespace Pokemon_and_Friends_Upgrader
             {
                 pbOBSWS.Image = ilInstalled.Images[1];
             }
-
+            //StreamFX
+            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\StreamFX.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\StreamFX.dll"))
+            {
+                pbStreamFX.Image = ilInstalled.Images[0];
+            }
+            else
+            {
+                pbStreamFX.Image = ilInstalled.Images[1];
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -1227,29 +1237,52 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void btnDownloadPlugins_Click(object sender, EventArgs e)
         {
-            Process.Start(@"https://obsproject.com/forum/resources/move-transition.913/version/4297/download?file=84807");
-            Process.Start(@"https://github.com/Xaymar/obs-StreamFX/releases/download/0.11.1/streamfx-windows-2019-0.11.1.0-g81a96998.exe");
-            Process.Start(@"https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket-4.9.1-Windows.zip");
+            WebRequest request = WebRequest.Create("https://raw.githubusercontent.com/Chrizzz-1508/Unofficial_Upgrader_for_the_PaF_Extension/master/Pokemon_and_Friends_Upgrader/DownloadLinks.txt");
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream dataStream = response.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            StreamReader reader = new StreamReader(dataStream);
+            // Read the content.
+            string responseFromServer = reader.ReadToEnd();
+            // Display the content.
+            //MessageBox.Show(responseFromServer);
+            string [] sArrLinks = responseFromServer.Split(';');
+            // Cleanup the streams and the response.
+            reader.Close();
+            dataStream.Close();
+            response.Close();
+            foreach(string s in sArrLinks)
+            {
+                Process.Start(s);
+            }
         }
 
         private void btnInstallPlugins_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists("ZipInstaller"))
+            MessageBox.Show("Please make sure that your OBS is closed before continuing with the installation of the plugins!");
+            try
             {
-                Directory.Delete("ZipInstaller", true);
+                if (Directory.Exists("ZipInstaller"))
+                {
+                    Directory.Delete("ZipInstaller", true);
+                }
+                Directory.CreateDirectory("ZipInstaller");
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+
             //Move Transition
             try
             {
-                Directory.CreateDirectory("ZipInstaller");
-
-                OpenFileDialog f = new OpenFileDialog();
-                f.Title = "Please select your Move Transition ZIP file";
-                f.Filter = "Move Transition|move-transition*.zip";
-
-                if (f.ShowDialog() == DialogResult.OK)
+                if (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\move-transition.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\move-transition.dll"))
                 {
-                    ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                    OpenFileDialog f = new OpenFileDialog();
+                    f.Title = "Please select your Move Transition ZIP file";
+                    f.Filter = "Move Transition|move-transition*.zip";
+
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                    }
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
@@ -1257,13 +1290,16 @@ namespace Pokemon_and_Friends_Upgrader
             //OBS Websocket 4.9.1
             try
             {
-                OpenFileDialog f = new OpenFileDialog();
-                f.Title = "Please select your OBS Websocket ZIP file";
-                f.Filter = "OBS Websocket|obs*websocket*.zip";
-
-                if (f.ShowDialog() == DialogResult.OK)
+                if (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll"))
                 {
-                    ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                    OpenFileDialog f = new OpenFileDialog();
+                    f.Title = "Please select your OBS Websocket ZIP file";
+                    f.Filter = "OBS Websocket|obs*websocket*.zip";
+
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                    }
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
@@ -1272,10 +1308,32 @@ namespace Pokemon_and_Friends_Upgrader
             {
                 CopyFilesRecursively("ZipInstaller", txtOBSPath.Text);
             }
+            catch  (Exception ex){
+                CheckPlugins();
+                MessageBox.Show(ex.ToString());
+                return;
+            }
+
+            try
+            {
+                //StreamFX
+                if (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\StreamFX.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\StreamFX.dll"))
+                {
+                    OpenFileDialog f = new OpenFileDialog();
+                    f.Title = @"Please select your Stream FX installer";
+                    f.Filter = "Stream FX|streamfx*.exe";
+
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        Process.Start(f.FileName);
+                    }
+                }
+            }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
             CheckPlugins();
 
-            MessageBox.Show("Move Transition and OBS Websocket 4.9.1 were installed successfully. Please install the StreamFX Plugin manually. It should be in your download folder.");
+            MessageBox.Show("Move Plugin and OBSWS 4.9.1 are installed correctly! Please finish the Installation of Stream FX and then press \"Refresh\" to check if it also was installed successfully.");
         }
 
         private void btnSelectOBSPath_Click(object sender, EventArgs e)
@@ -1283,7 +1341,7 @@ namespace Pokemon_and_Friends_Upgrader
             try
             {
                 OpenFileDialog f = new OpenFileDialog();
-                f.Title = "Please select your OBS Websocket ZIP file";
+                f.Title = @"Please select your OBS64.exe / OBS32.exe file. By default it's in: C:\Program Files\obs-studio\bin\64bit";
                 f.Filter = "OBS|obs*.exe";
 
                 if (f.ShowDialog() == DialogResult.OK)
@@ -1295,6 +1353,24 @@ namespace Pokemon_and_Friends_Upgrader
         }
 
         private void txtOBSPath_TextChanged(object sender, EventArgs e)
+        {
+            CheckPlugins();
+        }
+
+        private void cbAffiliate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbAffiliate.SelectedIndex == 0)
+            {
+                if (DialogResult.Yes != MessageBox.Show("This modus should only be turned on if you DON'T want to use channel points! Are you sure that you want to continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) cbAffiliate.SelectedIndex = 1;
+            }
+        }
+
+        private void btnGameSettings_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedTab = tbGameSettings;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
             CheckPlugins();
         }
