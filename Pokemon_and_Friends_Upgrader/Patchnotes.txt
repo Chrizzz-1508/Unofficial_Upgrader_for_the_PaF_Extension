@@ -1,3 +1,13 @@
+Update 06.09.22 - V1.2.1 Release
+================================
+- Updated OBS Plugin Installer for OBS 28
+- New broadcaster command: !limitspawn <Mew> (limits the spawn pool to a specific Pokemon)
+- New moderator command: !addpokemontoall <Mew> (adds a Pokemon to all active viewers who don't own that Pokemon yet)
+- New moderator command: !addshinytoall <Mew> (adds a Shiny to all active viewers who don't own that Pokemon yet)
+- New command: !releasepokemon <Mew> (removes Mew from your owned Pokemon)
+- New command !releaseshiny <Mew> (removes shiny Mew from your owned Pokemon)
+- Check for CSV files before deleting them on the initialization
+
 Update 21.08.22 - V1.2.0 Release
 ================================
 

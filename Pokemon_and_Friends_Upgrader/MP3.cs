@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Pokemon_and_Friends_Upgrader
+﻿namespace Pokemon_and_Friends_Upgrader
 {
     class MP3
     {

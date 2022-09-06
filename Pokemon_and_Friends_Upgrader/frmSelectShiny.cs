@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Pokemon_and_Friends_Upgrader
@@ -31,11 +27,11 @@ namespace Pokemon_and_Friends_Upgrader
             {
                 if (f.Name.Contains(".png") || f.Name.Contains(".jpg"))
                 {
-                    using(Image img2 = Image.FromFile(f.FullName))
-                    if (img2.Width == 240 && img2.Height == 240)
-                    {
-                        lsShiny.Add(f.FullName);
-                    }
+                    using (Image img2 = Image.FromFile(f.FullName))
+                        if (img2.Width == 240 && img2.Height == 240)
+                        {
+                            lsShiny.Add(f.FullName);
+                        }
                 }
             }
             UpdateBackgrounds();
@@ -43,7 +39,7 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if(iShiny < lsShiny.Count - 1)
+            if (iShiny < lsShiny.Count - 1)
             {
                 iShiny++;
             }
@@ -59,7 +55,7 @@ namespace Pokemon_and_Friends_Upgrader
             OpenFileDialog file = new OpenFileDialog();
             file.Title = "Select your Shiny Background";
             file.Filter = "Image Files(*.PNG;*.JPG.)|*.PNG;*.JPG";
-            if(file.ShowDialog() == DialogResult.OK)
+            if (file.ShowDialog() == DialogResult.OK)
             {
                 Image img = Image.FromFile(file.FileName);
                 if (img.Width == 240 && img.Height == 240)
@@ -83,7 +79,7 @@ namespace Pokemon_and_Friends_Upgrader
             }
             else
             {
-                iShiny = lsShiny.Count -1;
+                iShiny = lsShiny.Count - 1;
             }
             UpdateBackgrounds();
         }

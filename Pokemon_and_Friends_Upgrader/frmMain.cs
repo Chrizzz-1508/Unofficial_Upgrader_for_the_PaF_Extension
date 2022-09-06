@@ -1,18 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Media;
 using System.Net;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
@@ -36,7 +31,7 @@ namespace Pokemon_and_Friends_Upgrader
         {
             try
             {
-                
+
                 FolderBrowserDialog fb = new FolderBrowserDialog();
                 fb.Description = "Select your SAMMI folder\nIt should contain the SAMMI Core.exe";
 
@@ -45,7 +40,7 @@ namespace Pokemon_and_Friends_Upgrader
                     if (!File.Exists(fb.SelectedPath + "\\SAMMI Core.exe"))
                     {
                         MessageBox.Show("Unfortunately this is not the SAMMI folder.\nThe SAMMI folder must contain the SAMMI Core.exe.\nPlease select the correct folder.");
-                        btnSearch_Click(null,null);
+                        btnSearch_Click(null, null);
                     }
                     else
                     {
@@ -58,11 +53,11 @@ namespace Pokemon_and_Friends_Upgrader
             {
                 MessageBox.Show("Can't access the file. Please close the .ini File and SAMMI first." + ex.ToString());
             }
-            
+
         }
         private void CopyFiles()
         {
-            string sPAFPath = txtSAMMI.Text + @"\Pokemon and Friends";            
+            string sPAFPath = txtSAMMI.Text + @"\Pokemon and Friends";
 
             if (!Directory.Exists(sPAFPath + @"\backup")) Directory.CreateDirectory(sPAFPath + @"\backup");
             if (!Directory.Exists(sPAFPath + @"\database")) Directory.CreateDirectory(sPAFPath + @"\database");
@@ -91,10 +86,10 @@ namespace Pokemon_and_Friends_Upgrader
                 try
                 {
                     string fptarget = sPAFPath + @"\trainers\" + f.Name;
-                    File.Copy(f.FullName, fptarget,true);
-                } 
+                    File.Copy(f.FullName, fptarget, true);
+                }
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-        }
+            }
 
             //Copy Wallpapers
             DirectoryInfo diWallpapers = new DirectoryInfo(@"files\wallpaper");
@@ -118,7 +113,7 @@ namespace Pokemon_and_Friends_Upgrader
                     if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
                 }
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-        }
+            }
 
             DirectoryInfo diPokemonPNG240Shiny = new DirectoryInfo(@"files\hdsprites240\shiny");
             foreach (FileInfo f in diPokemonPNG240Shiny.GetFiles())
@@ -158,22 +153,22 @@ namespace Pokemon_and_Friends_Upgrader
             string ftSourceTargetPath = sPAFPath + @"\sources\";
 
             try { if (!File.Exists(ftSourceTargetPath + @"pokeball.png")) File.Copy(@"files\sources\pokeball.png", ftSourceTargetPath + @"pokeball.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-            try{ if (!File.Exists(ftSourceTargetPath + @"greatball.png")) File.Copy(@"files\sources\greatball.png", ftSourceTargetPath + @"greatball.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"ultraball.png")) File.Copy(@"files\sources\ultraball.png", ftSourceTargetPath + @"ultraball.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"masterball.png")) File.Copy(@"files\sources\masterball.png", ftSourceTargetPath + @"masterball.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper.png")) File.Copy(@"files\sources\PokedexWallpaper.png", ftSourceTargetPath + @"PokedexWallpaper.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper720.png")) File.Copy(@"files\sources\PokedexWallpaper720.png", ftSourceTargetPath + @"PokedexWallpaper720.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"pokemon_wallpaper.png")) File.Copy(@"files\sources\pokemon_wallpaper.png", ftSourceTargetPath + @"pokemon_wallpaper.png"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"Pokemon_Loading_Animation.webm")) File.Copy(@"files\loadinganimations\Pokemon_Loading_Animation.webm", ftSourceTargetPath + @"Pokemon_Loading_Animation.webm");} catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_POOF.wav")) File.Copy(@"files\sources\SFX_BALL_POOF.wav", ftSourceTargetPath + @"SFX_BALL_POOF.wav");} catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_TOSS.wav")) File.Copy(@"files\sources\SFX_BALL_TOSS.wav", ftSourceTargetPath + @"SFX_BALL_TOSS.wav");} catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"SFX_CAUGHT_MON.wav")) File.Copy(@"files\sources\SFX_CAUGHT_MON.wav", ftSourceTargetPath + @"SFX_CAUGHT_MON.wav"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ if (!File.Exists(ftSourceTargetPath + @"SFX_RUN.wav")) File.Copy(@"files\sources\SFX_RUN.wav", ftSourceTargetPath + @"SFX_RUN.wav"); } catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try { if (!File.Exists(ftSourceTargetPath + @"greatball.png")) File.Copy(@"files\sources\greatball.png", ftSourceTargetPath + @"greatball.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"ultraball.png")) File.Copy(@"files\sources\ultraball.png", ftSourceTargetPath + @"ultraball.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"masterball.png")) File.Copy(@"files\sources\masterball.png", ftSourceTargetPath + @"masterball.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper.png")) File.Copy(@"files\sources\PokedexWallpaper.png", ftSourceTargetPath + @"PokedexWallpaper.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"PokedexWallpaper720.png")) File.Copy(@"files\sources\PokedexWallpaper720.png", ftSourceTargetPath + @"PokedexWallpaper720.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"pokemon_wallpaper.png")) File.Copy(@"files\sources\pokemon_wallpaper.png", ftSourceTargetPath + @"pokemon_wallpaper.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"Pokemon_Loading_Animation.webm")) File.Copy(@"files\loadinganimations\Pokemon_Loading_Animation.webm", ftSourceTargetPath + @"Pokemon_Loading_Animation.webm"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_POOF.wav")) File.Copy(@"files\sources\SFX_BALL_POOF.wav", ftSourceTargetPath + @"SFX_BALL_POOF.wav"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"SFX_BALL_TOSS.wav")) File.Copy(@"files\sources\SFX_BALL_TOSS.wav", ftSourceTargetPath + @"SFX_BALL_TOSS.wav"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"SFX_CAUGHT_MON.wav")) File.Copy(@"files\sources\SFX_CAUGHT_MON.wav", ftSourceTargetPath + @"SFX_CAUGHT_MON.wav"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"SFX_RUN.wav")) File.Copy(@"files\sources\SFX_RUN.wav", ftSourceTargetPath + @"SFX_RUN.wav"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             try { if (!File.Exists(ftSourceTargetPath + @"ShinyStars.png")) File.Copy(@"files\sources\ShinyStars.png", ftSourceTargetPath + @"ShinyStars.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
-            try { File.Copy(sLoadingScreenPath, ftSourceTargetPath + @"LoadingScreen.png", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ File.Copy(sShinyScreenPath, ftSourceTargetPath + @"shiny.png", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
-            try{ File.Copy(@"files\loadingsounds\" + txtLoadingSound.Text, ftSourceTargetPath + @"Challenger Approaches.mp3", true);} catch(Exception ex) { MessageBox.Show(ex.ToString());}
+            try { File.Copy(sLoadingScreenPath, ftSourceTargetPath + @"LoadingScreen.png", true); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { File.Copy(sShinyScreenPath, ftSourceTargetPath + @"shiny.png", true); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { File.Copy(@"files\loadingsounds\" + txtLoadingSound.Text, ftSourceTargetPath + @"Challenger Approaches.mp3", true); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
             //Copy GIF Files
 
@@ -184,7 +179,8 @@ namespace Pokemon_and_Friends_Upgrader
                 {
                     string fptarget = sPAFPath + @"\hdsprites240\normalgif\" + f.Name;
                     if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
-                } catch (Exception ex) { MessageBox.Show(ex.ToString()); };
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); };
             }
 
             DirectoryInfo diPokemonGIF240Shiny = new DirectoryInfo(@"files\hdsprites240\shinygif");
@@ -198,7 +194,7 @@ namespace Pokemon_and_Friends_Upgrader
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); };
             }
         }
-    
+
         private void CreateSAMMIExtension()
         {
             StreamReader sr = new StreamReader(@"files\PaF_Unconverted");
@@ -212,7 +208,7 @@ namespace Pokemon_and_Friends_Upgrader
             //Spanish
             //Italian
             string VAR_LANGUAGE_VAR = "en";
-            switch(cbLanguage.SelectedIndex)
+            switch (cbLanguage.SelectedIndex)
             {
                 case 1:
                     VAR_LANGUAGE_VAR = "de";
@@ -328,36 +324,36 @@ namespace Pokemon_and_Friends_Upgrader
 
 
             sOutput = sOutput.Replace("VAR_LANGUAGE_VAR", VAR_LANGUAGE_VAR);
-            sOutput = sOutput.Replace("VAR_POKE_PATH_VAR",txtSAMMI.Text.Replace(@"\","/") + @"/Pokemon and Friends/");
+            sOutput = sOutput.Replace("VAR_POKE_PATH_VAR", txtSAMMI.Text.Replace(@"\", "/") + @"/Pokemon and Friends/");
             sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", VAR_USE_NON_AFFILIATE_VAR);
             sOutput = sOutput.Replace("VAR_THRESHOLD_VAR", txtAudioTreshhold.Text);
-            sOutput = sOutput.Replace("VAR_OBSWSPORT_VAR",txtOBSWSPort.Text);
-            sOutput = sOutput.Replace("VAR_OBSWSPW_VAR",txtOBSWSPW.Text);
-            sOutput = sOutput.Replace("VAR_SHINYCHANCE_VAR",txtShinyChance.Text);
+            sOutput = sOutput.Replace("VAR_OBSWSPORT_VAR", txtOBSWSPort.Text);
+            sOutput = sOutput.Replace("VAR_OBSWSPW_VAR", txtOBSWSPW.Text);
+            sOutput = sOutput.Replace("VAR_SHINYCHANCE_VAR", txtShinyChance.Text);
             sOutput = sOutput.Replace("VAR_USE_GIFS_VAR", VAR_USE_GIFS_VAR);
-            sOutput = sOutput.Replace("VAR_CR_POKEBALL_VAR",txtCatchRatePokeball.Text);
-            sOutput = sOutput.Replace("VAR_CR_GREATBALL_VAR",txtCatchRateGreatball.Text);
-            sOutput = sOutput.Replace("VAR_CR_ULTRABALL_VAR",txtCatchRateUltraball.Text);
-            sOutput = sOutput.Replace("VAR_CR_MIN_VAR",txtCatchIncMin.Text);
+            sOutput = sOutput.Replace("VAR_CR_POKEBALL_VAR", txtCatchRatePokeball.Text);
+            sOutput = sOutput.Replace("VAR_CR_GREATBALL_VAR", txtCatchRateGreatball.Text);
+            sOutput = sOutput.Replace("VAR_CR_ULTRABALL_VAR", txtCatchRateUltraball.Text);
+            sOutput = sOutput.Replace("VAR_CR_MIN_VAR", txtCatchIncMin.Text);
             sOutput = sOutput.Replace("VAR_CR_MAX_VAR", txtCatchIncMax.Text);
             sOutput = sOutput.Replace("VAR_SPAWN_TIME_VAR", txtSpawnTimer.Text);
             sOutput = sOutput.Replace("VAR_USE_SPAWNCHANCE_VAR", VAR_USE_SPAWNCHANCE_VAR);
-            sOutput = sOutput.Replace("VAR_SPAWNCHANCE_VAR",txtSpawnChance.Text);
+            sOutput = sOutput.Replace("VAR_SPAWNCHANCE_VAR", txtSpawnChance.Text);
             sOutput = sOutput.Replace("VAR_USE_SPAWNMUSIC_VAR", VAR_USE_SPAWNMUSIC_VAR);
             sOutput = sOutput.Replace("VAR_USE_LOADINGSCREEN_VAR", VAR_USE_LOADINGSCREEN_VAR);
             sOutput = sOutput.Replace("VAR_USE_LOADINGANIMATION_VAR", VAR_USE_LOADINGANIMATION_VAR);
-            sOutput = sOutput.Replace("VAR_RUN_MIN_VAR",txtRunMin.Text);
-            sOutput = sOutput.Replace("VAR_RUN_MAX_VAR",txtRunMax.Text);
-            sOutput = sOutput.Replace("VAR_RUN_TIME_VAR",txtRunTimer.Text);
+            sOutput = sOutput.Replace("VAR_RUN_MIN_VAR", txtRunMin.Text);
+            sOutput = sOutput.Replace("VAR_RUN_MAX_VAR", txtRunMax.Text);
+            sOutput = sOutput.Replace("VAR_RUN_TIME_VAR", txtRunTimer.Text);
             sOutput = sOutput.Replace("VAR_USE_DISCORD_VAR", VAR_USE_DISCORD_VAR);
-            sOutput = sOutput.Replace("VAR_DC_CATCHHOOK_VAR",txtWebhookURL.Text);
+            sOutput = sOutput.Replace("VAR_DC_CATCHHOOK_VAR", txtWebhookURL.Text);
 
-            if(cbUseSeparateWebhook.SelectedIndex == 1) sOutput = sOutput.Replace("VAR_MYP_CATCHHOOK_VAR", txtWebhookURL.Text);
+            if (cbUseSeparateWebhook.SelectedIndex == 1) sOutput = sOutput.Replace("VAR_MYP_CATCHHOOK_VAR", txtWebhookURL.Text);
             else sOutput = sOutput.Replace("VAR_MYP_CATCHHOOK_VAR", txtMyPokemonWebhook.Text);
 
             sOutput = sOutput.Replace("VAR_USE_BONUSTIME_VAR", VAR_USE_BONUSTIME_VAR);
-            sOutput = sOutput.Replace("VAR_BONUS_MIN_USERS_VAR",txtBonusMinUsers.Text);
-            sOutput = sOutput.Replace("VAR_BONUS_DURATION_VAR",txtBonusTime.Text);
+            sOutput = sOutput.Replace("VAR_BONUS_MIN_USERS_VAR", txtBonusMinUsers.Text);
+            sOutput = sOutput.Replace("VAR_BONUS_DURATION_VAR", txtBonusTime.Text);
             sOutput = sOutput.Replace("VAR_BONUS_SPAWNTIME_VAR", txtBonusSpawnTimer.Text);
             sOutput = sOutput.Replace("VAR_USE_GREATBALL_VAR", VAR_USE_GREATBALL_VAR);
             sOutput = sOutput.Replace("VAR_USE_ULTRABALL_VAR", VAR_USE_ULTRABALL_VAR);
@@ -369,22 +365,22 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("VAR_USE_BREAKOUT_MSG_VAR", VAR_USE_BREAKOUT_MSG_VAR);
             sOutput = sOutput.Replace("VAR_USE_RUN_MSG_VAR", VAR_USE_RUN_MSG_VAR);
             sOutput = sOutput.Replace("VAR_USE_REFUND_MSG_VAR", VAR_USE_REFUND_MSG_VAR);
-            
-            sOutput = sOutput.Replace("VAR_MYSTERY_P_VAR",txtMysteryPokemon.Text);
+
+            sOutput = sOutput.Replace("VAR_MYSTERY_P_VAR", txtMysteryPokemon.Text);
             sOutput = sOutput.Replace("VAR_MYSTERY_S_VAR", txtMysteryShiny.Text);
             sOutput = sOutput.Replace("VAR_SUMMON_VAR", txtSummon.Text);
             sOutput = sOutput.Replace("VAR_GIFT_VAR", txtGift.Text);
 
             sOutput = sOutput.Replace("VAR_POKEBALL_VAR", txtPokeball.Text);
-            sOutput = sOutput.Replace("VAR_GREATBALL_VAR",txtGreatball.Text);
-            sOutput = sOutput.Replace("VAR_ULTRABALL_VAR",txtUltraball.Text);
+            sOutput = sOutput.Replace("VAR_GREATBALL_VAR", txtGreatball.Text);
+            sOutput = sOutput.Replace("VAR_ULTRABALL_VAR", txtUltraball.Text);
             sOutput = sOutput.Replace("VAR_MASTERBALL_VAR", txtMasterball.Text);
-           
+
             sOutput = sOutput.Replace("VAR_PRICE_MYSTERY_P_VAR", txtPriceMysteryPokemon.Text);
             sOutput = sOutput.Replace("VAR_PRICE_MYSTERY_S_VAR", txtPriceMysteryShiny.Text);
             sOutput = sOutput.Replace("VAR_PRICE_SUMMON_VAR", txtPriceSummon.Text);
             sOutput = sOutput.Replace("VAR_PRICE_GIFT_VAR", txtPriceGift.Text);
-            
+
             sOutput = sOutput.Replace("VAR_PRICE_POKEBALL_VAR", txtPricePokeball.Text);
             sOutput = sOutput.Replace("VAR_PRICE_GREATBALL_VAR", txtPriceGreatball.Text);
             sOutput = sOutput.Replace("VAR_PRICE_ULTRABALL_VAR", txtPriceUltraball.Text);
@@ -402,16 +398,16 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("VAR_USE_CUSTOM_VAR", VAR_USE_CUSTOM_VAR);
             sOutput = sOutput.Replace("VAR_USE_MEGA_VAR", VAR_USE_MEGA_VAR);
 
-            sOutput = sOutput.Replace("VAR_ANIMATED_TRAINERS_VAR",VAR_ANIMATED_TRAINERS_VAR);
-            sOutput = sOutput.Replace("VAR_ANNOUNCE_VAR",VAR_ANNOUNCE_VAR);
-            sOutput = sOutput.Replace("VAR_BROADCASTER_VAR", txtBroadcaster.Text.ToLowerInvariant().Replace(" ",""));
+            sOutput = sOutput.Replace("VAR_ANIMATED_TRAINERS_VAR", VAR_ANIMATED_TRAINERS_VAR);
+            sOutput = sOutput.Replace("VAR_ANNOUNCE_VAR", VAR_ANNOUNCE_VAR);
+            sOutput = sOutput.Replace("VAR_BROADCASTER_VAR", txtBroadcaster.Text.ToLowerInvariant().Replace(" ", ""));
 
             sOutput = sOutput.Replace("12345", Convert.ToString(Convert.ToInt32(txtQueueTime.Text) * 1000));
             sOutput = sOutput.Replace("67890", Convert.ToString((Convert.ToInt32(txtQueueTime.Text) * 1000) + 1000));
 
 
             sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"sammi_version\":\"2022.4.0\", \"extension_triggers\":[\"PaFModInstall\"]}");
-           
+
 
             using (StreamWriter sw = new StreamWriter(txtSAMMI.Text + @"\Pokemon and Friends\PaFGame.sef"))
             {
@@ -457,7 +453,7 @@ namespace Pokemon_and_Friends_Upgrader
         private bool CheckValues()
         {
             if (string.IsNullOrEmpty(txtSAMMI.Text)) return false;
-            if(string.IsNullOrEmpty(txtBroadcaster.Text)) return false; 
+            if (string.IsNullOrEmpty(txtBroadcaster.Text)) return false;
             if (cbUseDiscord.SelectedIndex == 0 && String.IsNullOrEmpty(txtWebhookURL.Text)) return false;
             return true;
         }
@@ -488,7 +484,7 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.SpawnMusic = cbSpawnSound.SelectedIndex;
             Properties.Settings.Default.LoadingScreen = cbUseLoadingScreen.SelectedIndex;
             Properties.Settings.Default.LoadingAnimation = cbLoadingAnimation.SelectedIndex;
-            
+
             Properties.Settings.Default.CatchValuePokeball = txtCatchRatePokeball.Text;
             Properties.Settings.Default.CatchValueGreatball = txtCatchRateGreatball.Text;
             Properties.Settings.Default.CatchValueUltraball = txtCatchRateUltraball.Text;
@@ -564,13 +560,14 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.UseAnimatedTrainers = cbAnimatedTrainers.SelectedIndex;
             Properties.Settings.Default.AnnounceRarePokemons = cbAnnounce.SelectedIndex;
             Properties.Settings.Default.BroadcasterName = txtBroadcaster.Text;
-            
+
             Properties.Settings.Default.OBSPath = txtOBSPath.Text;
+            Properties.Settings.Default.OBSVersion = cbOBSVersion.SelectedIndex;
 
             Properties.Settings.Default.Save();
         }
         private void initializeToolTips()
-        {          
+        {
             TTExplanation.SetToolTip(lblSAMMI, "Select your SAMMI Folder");
             TTExplanation.SetToolTip(lblLanguage, "Select your Language");
             TTExplanation.SetToolTip(lblAffiliate, "Non Affiliate Mode turns off channel points and \nadds the !throw command instead.\nRecommended only for people who\nhaven't unlocked Channel Points yet");
@@ -739,6 +736,7 @@ namespace Pokemon_and_Friends_Upgrader
             txtBroadcaster.Text = Properties.Settings.Default.BroadcasterName;
 
             txtOBSPath.Text = Properties.Settings.Default.OBSPath;
+            cbOBSVersion.SelectedIndex = Properties.Settings.Default.OBSVersion;
         }
 
         #endregion
@@ -761,7 +759,7 @@ namespace Pokemon_and_Friends_Upgrader
         {
             if (cbUseDiscord.SelectedIndex == 0)
             {
-                txtWebhookURL.Visible = true;              
+                txtWebhookURL.Visible = true;
                 lblWebhookURL.Visible = true;
 
                 lblUseSeparateWebhook.Visible = true;
@@ -900,7 +898,7 @@ namespace Pokemon_and_Friends_Upgrader
 
                 if (fb.ShowDialog() == DialogResult.OK)
                 {
-                    if(!File.Exists(fb.SelectedPath + "\\SAMMI Core.exe"))
+                    if (!File.Exists(fb.SelectedPath + "\\SAMMI Core.exe"))
                     {
                         MessageBox.Show("Migration failed.\nUnfortunately this is not the SAMMI folder.\nThe SAMMI folder must contain the SAMMI Core.exe.\nPlease try again and select the correct folder.");
                         return;
@@ -1010,7 +1008,7 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void btnGermanGuide_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.youtube.com/watch?v=Wue5iiK9eMQ&t"); 
+            Process.Start("https://www.youtube.com/watch?v=Wue5iiK9eMQ&t");
         }
 
         private void btnEnglishGuide_Click(object sender, EventArgs e)
@@ -1062,7 +1060,7 @@ namespace Pokemon_and_Friends_Upgrader
                             if (!saExluded.Contains(s) && !lsTrainerNames.Contains(s)) lsTrainerNames.Add(s);
                         }
                     }
-                } 
+                }
 
                 string sTrainerImages = "";
                 if (File.Exists(sPath + "\\trainer_images.ini"))
@@ -1218,7 +1216,7 @@ namespace Pokemon_and_Friends_Upgrader
                 pbMoveTransition.Image = ilInstalled.Images[1];
             }
             //OBSWS
-            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll"))
+            if ((cbOBSVersion.SelectedIndex == 0 && (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll"))) || (cbOBSVersion.SelectedIndex == 1 && (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll"))))
             {
                 pbOBSWS.Image = ilInstalled.Images[0];
             }
@@ -1258,17 +1256,16 @@ namespace Pokemon_and_Friends_Upgrader
 
             if (cbOBSVersion.SelectedIndex == 0)
             {
-                Process.Start(dl.V27OBSWS);
+                Process.Start(dl.V27OBSWS491);
                 Process.Start(dl.V27MoveTransition);
                 Process.Start(dl.V27StreamFX);
             }
-            else if(cbOBSVersion.SelectedIndex == 1)
+            else if (cbOBSVersion.SelectedIndex == 1)
             {
-                Process.Start(dl.V28OBSWS);
+                Process.Start(dl.V28OBSWS491);
                 Process.Start(dl.V28MoveTransition);
                 Process.Start(dl.V28StreamFX);
             }
-
         }
 
         private void btnInstallPlugins_Click(object sender, EventArgs e)
@@ -1298,13 +1295,24 @@ namespace Pokemon_and_Friends_Upgrader
                         ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
                     }
                 }
+                if (DialogResult.Yes == MessageBox.Show("It seems there is already an existing installation of the Move Transition Plugin, want to reinstall now?", "Reinstall Move Transition Plugin?", MessageBoxButtons.YesNo))
+                {
+                    OpenFileDialog f = new OpenFileDialog();
+                    f.Title = "Please select your Move Transition ZIP file";
+                    f.Filter = "Move Transition|move-transition*.zip";
+
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                    }
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
             //OBS Websocket 4.9.1
             try
             {
-                if (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll"))
+                if ((cbOBSVersion.SelectedIndex == 0 && (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll"))) || (cbOBSVersion.SelectedIndex == 1 && (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll"))))
                 {
                     OpenFileDialog f = new OpenFileDialog();
                     f.Title = "Please select your OBS Websocket ZIP file";
@@ -1315,6 +1323,20 @@ namespace Pokemon_and_Friends_Upgrader
                         ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
                     }
                 }
+                else
+                {
+                    if(DialogResult.Yes == MessageBox.Show("It seems there is already an existing installation of the OBS Websocket Plugin, want to reinstall now?","Reinstall OBSWebsocket Plugin?", MessageBoxButtons.YesNo))
+                    {
+                        OpenFileDialog f = new OpenFileDialog();
+                        f.Title = "Please select your OBS Websocket ZIP file";
+                        f.Filter = "OBS Websocket|obs*websocket*.zip";
+
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                        }
+                    }
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
@@ -1322,7 +1344,8 @@ namespace Pokemon_and_Friends_Upgrader
             {
                 CopyFilesRecursively("ZipInstaller", txtOBSPath.Text);
             }
-            catch  (Exception ex){
+            catch (Exception ex)
+            {
                 CheckPlugins();
                 MessageBox.Show(ex.ToString());
                 return;
@@ -1340,6 +1363,20 @@ namespace Pokemon_and_Friends_Upgrader
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         Process.Start(f.FileName);
+                    }
+                }
+                else
+                {
+                    if (DialogResult.Yes == MessageBox.Show("It seems there is already an existing installation of the StreamFX Plugin, want to reinstall now?", "Reinstall StreamFX Plugin?", MessageBoxButtons.YesNo))
+                    {
+                        OpenFileDialog f = new OpenFileDialog();
+                        f.Title = @"Please select your Stream FX installer";
+                        f.Filter = "Stream FX|streamfx*.exe";
+
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            Process.Start(f.FileName);
+                        }
                     }
                 }
             }
@@ -1360,7 +1397,7 @@ namespace Pokemon_and_Friends_Upgrader
 
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    txtOBSPath.Text = f.FileName.Replace(@"bin\64bit\obs64.exe","").Replace(@"bin\32bit\obs32.exe","");
+                    txtOBSPath.Text = f.FileName.Replace(@"bin\64bit\obs64.exe", "").Replace(@"bin\32bit\obs32.exe", "");
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
@@ -1373,7 +1410,7 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void cbAffiliate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbAffiliate.SelectedIndex == 0)
+            if (cbAffiliate.SelectedIndex == 0)
             {
                 if (DialogResult.Yes != MessageBox.Show("This modus should only be turned on if you DON'T want to use channel points! Are you sure that you want to continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) cbAffiliate.SelectedIndex = 1;
             }
@@ -1385,6 +1422,11 @@ namespace Pokemon_and_Friends_Upgrader
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            CheckPlugins();
+        }
+
+        private void cbOBSVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             CheckPlugins();
         }
@@ -1423,7 +1465,7 @@ namespace Pokemon_and_Friends_Upgrader
 
             lsPokedex.Sort(myComparer);
             string sNormalPokemon = "\"[";
-            for(int i = 0; i < lsPokedex.Count; i++)
+            for (int i = 0; i < lsPokedex.Count; i++)
             {
                 sNormalPokemon += " \"\"" + CheckForRegionals(lsPokedex[i]) + "\"\"";
                 if (i < lsPokedex.Count - 1) sNormalPokemon += ";";
@@ -1488,7 +1530,7 @@ namespace Pokemon_and_Friends_Upgrader
             }
             else sSlot6 = sSlot6Temp;
 
-            return sName + "," + sTrainer + "," + iPokedex.ToString() + "," + iShinys.ToString() + "," + sNormalPokemon + "," + sShinyPokemon + "," + iLikeability + "," + iVictorys + "," + iDefeats + "," + dWinrate.ToString().Replace(",",".") + "," + sSlot1 + "," + sSlot2 + "," + sSlot3 + "," + sSlot4 + "," + sSlot5 + "," + sSlot6 + ",,,,,,,,,,,0";
+            return sName + "," + sTrainer + "," + iPokedex.ToString() + "," + iShinys.ToString() + "," + sNormalPokemon + "," + sShinyPokemon + "," + iLikeability + "," + iVictorys + "," + iDefeats + "," + dWinrate.ToString().Replace(",", ".") + "," + sSlot1 + "," + sSlot2 + "," + sSlot3 + "," + sSlot4 + "," + sSlot5 + "," + sSlot6 + ",,,,,,,,,,,0";
         }
 
         private string CheckForRegionals(string sNumber)
@@ -1503,7 +1545,7 @@ namespace Pokemon_and_Friends_Upgrader
                 }
             }
             catch (Exception ex) { MessageBox.Show(sNumber + ex.ToString()); }
-   
+
 
             return sNumber;
         }

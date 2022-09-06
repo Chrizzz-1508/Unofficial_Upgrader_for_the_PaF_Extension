@@ -32,13 +32,22 @@ New Installation:
 
 5. Change Channel Point pictures (optional)
 
-Upgrading from V1.1.6 or lower
-==============================
+Upgrading from V1.1.6 or lower:
+===============================
 
 1) Delete all your existing Pokemon Channel Point Rewards
 2) Run the PaF - Mod Installer.exe and fill out your settings (you can hover the options for more infos)
 3) Use the Migrate to SAMMI button to carry over your progress
 4) Start OBS and SAMMI and make sure both are connected
-5) Inside SAMMI install the newly created Extension (PaFGame.sef)
+5) Inside SAMMI install the newly created Extension (PaFGame.sef) and replace the existing extension & deck
 6) If you are asked if you want to recreate the channel points, say yes
+7) If you are asked if you want to recreate the scenes, say no
+
+Upgrading from V1.2.0:
+======================
+
+1) Run the PaF - Mod Installer.exe and fill out your settings (you can hover the options for more infos)
+2) Start OBS and SAMMI and make sure both are connected
+3) Inside SAMMI install the newly created Extension (PaFGame.sef) and replace the existing extension & deck
+6) If you are asked if you want to recreate the channel points, say no
 7) If you are asked if you want to recreate the scenes, say no

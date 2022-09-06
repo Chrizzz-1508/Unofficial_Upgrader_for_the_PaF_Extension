@@ -313,7 +313,7 @@
             // 
             this.pbLoading.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
-            this.pbLoading.Location = new System.Drawing.Point(0, 2000);
+            this.pbLoading.Location = new System.Drawing.Point(0, 0);
             this.pbLoading.Name = "pbLoading";
             this.pbLoading.Size = new System.Drawing.Size(1216, 609);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1792,7 +1792,8 @@
             this.cbOBSVersion.Location = new System.Drawing.Point(318, 31);
             this.cbOBSVersion.Name = "cbOBSVersion";
             this.cbOBSVersion.Size = new System.Drawing.Size(852, 45);
-            this.cbOBSVersion.TabIndex = 18;
+            this.cbOBSVersion.TabIndex = 0;
+            this.cbOBSVersion.SelectedIndexChanged += new System.EventHandler(this.cbOBSVersion_SelectedIndexChanged);
             // 
             // lblOBSVersion
             // 

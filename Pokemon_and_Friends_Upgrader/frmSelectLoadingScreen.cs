@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Pokemon_and_Friends_Upgrader
@@ -27,7 +23,7 @@ namespace Pokemon_and_Friends_Upgrader
         private void frmSelectLoadingScreen_Load(object sender, EventArgs e)
         {
             DirectoryInfo df = new DirectoryInfo("files\\loadingscreens");
-            foreach(FileInfo f in df.GetFiles())
+            foreach (FileInfo f in df.GetFiles())
             {
                 if (f.Name.Contains(".png") || f.Name.Contains(".jpg"))
                 {
@@ -48,7 +44,7 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if(iLoading < lsLoading.Count - 1)
+            if (iLoading < lsLoading.Count - 1)
             {
                 iLoading++;
             }
@@ -64,7 +60,7 @@ namespace Pokemon_and_Friends_Upgrader
             OpenFileDialog file = new OpenFileDialog();
             file.Title = "Select your Loading Screen";
             file.Filter = "Image Files(*.PNG;*.JPG.)|*.PNG;*.JPG";
-            if(file.ShowDialog() == DialogResult.OK)
+            if (file.ShowDialog() == DialogResult.OK)
             {
                 Image img = Image.FromFile(file.FileName);
                 if (img.Width == 1920 && img.Height == 1080)
@@ -88,7 +84,7 @@ namespace Pokemon_and_Friends_Upgrader
             }
             else
             {
-                iLoading = lsLoading.Count -1;
+                iLoading = lsLoading.Count - 1;
             }
             pbPreview.Image = Image.FromFile(lsLoading[iLoading]);
         }

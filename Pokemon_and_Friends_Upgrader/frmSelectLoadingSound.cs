@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Pokemon_and_Friends_Upgrader
@@ -21,7 +15,7 @@ namespace Pokemon_and_Friends_Upgrader
         private void frmSelectLoadingSound_Load(object sender, EventArgs e)
         {
             DirectoryInfo df = new DirectoryInfo("files\\loadingsounds");
-            foreach(FileInfo f in df.GetFiles())
+            foreach (FileInfo f in df.GetFiles())
             {
                 if (f.Name.Contains(".mp3"))
                 {
@@ -38,12 +32,12 @@ namespace Pokemon_and_Friends_Upgrader
             OpenFileDialog file = new OpenFileDialog();
             file.Title = "Select your Loading Sound";
             file.Filter = "Audio Files(*.MP3)|*.MP3";
-            if(file.ShowDialog() == DialogResult.OK)
+            if (file.ShowDialog() == DialogResult.OK)
             {
                 MP3 m = new MP3(file.FileName);
                 lbSound.Items.Add(m);
                 lbSound.Sorted = true;
-                for(int i = 0; i < lbSound.Items.Count; i++)
+                for (int i = 0; i < lbSound.Items.Count; i++)
                 {
                     if (((MP3)lbSound.Items[i]) == m) lbSound.SelectedIndex = i;
                 }
@@ -54,7 +48,7 @@ namespace Pokemon_and_Friends_Upgrader
         {
             MP3 m = ((MP3)lbSound.SelectedItem);
             txt.Text = m.sName;
-            if(!File.Exists(@"files\loadingsounds\" + m.sName))
+            if (!File.Exists(@"files\loadingsounds\" + m.sName))
             {
                 File.Copy(m.sPath, @"files\loadingsounds\" + m.sName, false);
             }
@@ -64,7 +58,7 @@ namespace Pokemon_and_Friends_Upgrader
         private void pbPlay_Click(object sender, EventArgs e)
         {
             Mp3Player.Stop();
-            if(lbSound.SelectedIndex > -1)
+            if (lbSound.SelectedIndex > -1)
             {
                 MP3 m = (MP3)lbSound.SelectedItem;
                 if (File.Exists(m.sPath))
@@ -72,7 +66,7 @@ namespace Pokemon_and_Friends_Upgrader
                     Mp3Player.Play(m.sPath, false);
                 }
             }
-            
+
         }
 
         private void lbSound_SelectedIndexChanged(object sender, EventArgs e)
