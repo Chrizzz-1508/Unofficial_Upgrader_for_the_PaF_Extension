@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -1046,31 +1047,37 @@ namespace Pokemon_and_Friends_Upgrader
 
                 List<string> lsTrainerNames = new List<string>();
 
-                string sTrainerText;
-                using (StreamReader sr = new StreamReader(sPath + "\\Pokemon_trainers.ini"))
+                string sTrainerText = "";
+                if (File.Exists(sPath + "\\Pokemon_trainers.ini"))
                 {
-                    sTrainerText = sr.ReadToEnd().ToLowerInvariant();
-                    sr.Close();
-
-                    Regex reg = new Regex("\\[(.{3,26})\\]");
-                    foreach (Match match in reg.Matches(sTrainerText))
+                    using (StreamReader sr = new StreamReader(sPath + "\\Pokemon_trainers.ini"))
                     {
-                        string s = match.Groups[1].Value;
-                        if (!saExluded.Contains(s) && !lsTrainerNames.Contains(s)) lsTrainerNames.Add(s);
+                        sTrainerText = sr.ReadToEnd().ToLowerInvariant();
+                        sr.Close();
+
+                        Regex reg = new Regex("\\[(.{3,26})\\]");
+                        foreach (Match match in reg.Matches(sTrainerText))
+                        {
+                            string s = match.Groups[1].Value;
+                            if (!saExluded.Contains(s) && !lsTrainerNames.Contains(s)) lsTrainerNames.Add(s);
+                        }
                     }
-                }
+                } 
 
-                string sTrainerImages;
-                using (StreamReader sr = new StreamReader(sPath + "\\trainer_images.ini"))
+                string sTrainerImages = "";
+                if (File.Exists(sPath + "\\trainer_images.ini"))
                 {
-                    sTrainerImages = sr.ReadToEnd();
-                    sr.Close();
-
-                    Regex reg = new Regex("(.{3,26})=\".{1,10}\"");
-                    foreach (Match match in reg.Matches(sTrainerImages))
+                    using (StreamReader sr = new StreamReader(sPath + "\\trainer_images.ini"))
                     {
-                        string s = match.Groups[1].Value;
-                        if (!saExluded.Contains(s) && !lsTrainerNames.Contains(s)) lsTrainerNames.Add(s);
+                        sTrainerImages = sr.ReadToEnd();
+                        sr.Close();
+
+                        Regex reg = new Regex("(.{3,26})=\".{1,10}\"");
+                        foreach (Match match in reg.Matches(sTrainerImages))
+                        {
+                            string s = match.Groups[1].Value;
+                            if (!saExluded.Contains(s) && !lsTrainerNames.Contains(s)) lsTrainerNames.Add(s);
+                        }
                     }
                 }
 
@@ -1237,24 +1244,31 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void btnDownloadPlugins_Click(object sender, EventArgs e)
         {
-            WebRequest request = WebRequest.Create("https://raw.githubusercontent.com/Chrizzz-1508/Unofficial_Upgrader_for_the_PaF_Extension/master/Pokemon_and_Friends_Upgrader/DownloadLinks.txt");
+            WebRequest request = WebRequest.Create("https://raw.githubusercontent.com/Chrizzz-1508/Unofficial_Upgrader_for_the_PaF_Extension/master/Pokemon_and_Friends_Upgrader/DownloadLinks.json");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
             StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
             string responseFromServer = reader.ReadToEnd();
-            // Display the content.
-            //MessageBox.Show(responseFromServer);
-            string [] sArrLinks = responseFromServer.Split(';');
+            DownloadLinks dl = JsonConvert.DeserializeObject<DownloadLinks>(responseFromServer);
+
             // Cleanup the streams and the response.
             reader.Close();
             dataStream.Close();
             response.Close();
-            foreach(string s in sArrLinks)
+
+            if (cbOBSVersion.SelectedIndex == 0)
             {
-                Process.Start(s);
+                Process.Start(dl.V27OBSWS);
+                Process.Start(dl.V27MoveTransition);
+                Process.Start(dl.V27StreamFX);
             }
+            else if(cbOBSVersion.SelectedIndex == 1)
+            {
+                Process.Start(dl.V28OBSWS);
+                Process.Start(dl.V28MoveTransition);
+                Process.Start(dl.V28StreamFX);
+            }
+
         }
 
         private void btnInstallPlugins_Click(object sender, EventArgs e)
