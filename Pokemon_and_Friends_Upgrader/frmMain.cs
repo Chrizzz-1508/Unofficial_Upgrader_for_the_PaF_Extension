@@ -327,7 +327,6 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("VAR_POKE_PATH_VAR", txtSAMMI.Text.Replace(@"\", "/") + @"/Pokemon and Friends/");
             sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", VAR_USE_NON_AFFILIATE_VAR);
             sOutput = sOutput.Replace("VAR_THRESHOLD_VAR", txtAudioTreshhold.Text);
-            sOutput = sOutput.Replace("VAR_OBSWSPORT_VAR", txtOBSWSPort.Text);
             sOutput = sOutput.Replace("VAR_OBSWSPW_VAR", txtOBSWSPW.Text);
             sOutput = sOutput.Replace("VAR_SHINYCHANCE_VAR", txtShinyChance.Text);
             sOutput = sOutput.Replace("VAR_USE_GIFS_VAR", VAR_USE_GIFS_VAR);
@@ -406,7 +405,7 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("67890", Convert.ToString((Convert.ToInt32(txtQueueTime.Text) * 1000) + 1000));
 
 
-            sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"sammi_version\":\"2022.4.0\", \"extension_triggers\":[\"PaFModInstall\"]}");
+            sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"sammi_version\":\"2022.4.4\", \"extension_triggers\":[\"PaFModInstall\"]}");
 
 
             using (StreamWriter sw = new StreamWriter(txtSAMMI.Text + @"\Pokemon and Friends\PaFGame.sef"))
@@ -472,7 +471,6 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.NonAffiliate = cbAffiliate.SelectedIndex;
             Properties.Settings.Default.QueueTime = txtQueueTime.Text;
             Properties.Settings.Default.AudioTreshhold = txtAudioTreshhold.Text;
-            Properties.Settings.Default.OBSWSPort = txtOBSWSPort.Text;
             Properties.Settings.Default.OBSWSPW = txtOBSWSPW.Text;
 
             Properties.Settings.Default.ShinyChance = txtShinyChance.Text;
@@ -564,6 +562,8 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.OBSPath = txtOBSPath.Text;
             Properties.Settings.Default.OBSVersion = cbOBSVersion.SelectedIndex;
 
+            Properties.Settings.Default.OBSWSVersion = cbWebsocket.SelectedIndex;
+
             Properties.Settings.Default.Save();
         }
         private void initializeToolTips()
@@ -573,7 +573,6 @@ namespace Pokemon_and_Friends_Upgrader
             TTExplanation.SetToolTip(lblAffiliate, "Non Affiliate Mode turns off channel points and \nadds the !throw command instead.\nRecommended only for people who\nhaven't unlocked Channel Points yet");
             TTExplanation.SetToolTip(lblQueueTime, "Amount of time before the queue gets closed, don't use more than 9 or it can cause problems");
             TTExplanation.SetToolTip(lblAudioTreshhold, "Sets the Limter of the Volume of the Sounds\nThe higher it is, the lower the maximum Volume of the Sounds will be\nRecommended Value is 30-35\n0 = Nearly no Limit");
-            TTExplanation.SetToolTip(lblOBSWSPort, "OBS Websocket Port.\nDefault is \"4444\"\nCan be found in OBS under Tools => Websocket Server Settings");
             TTExplanation.SetToolTip(lblOBSWSPW, "OBS Websocket Password.\nCan be found in OBS under Tools => Websocket Server Settings\nCan be left empty if the Password checkbox is not ticked in the OBS Websocket Settings");
 
             TTExplanation.SetToolTip(lblShinyChance, "Shiny Chance in %");
@@ -647,7 +646,6 @@ namespace Pokemon_and_Friends_Upgrader
             cbAffiliate.SelectedIndex = Properties.Settings.Default.NonAffiliate;
             txtQueueTime.Text = Properties.Settings.Default.QueueTime;
             txtAudioTreshhold.Text = Properties.Settings.Default.AudioTreshhold;
-            txtOBSWSPort.Text = Properties.Settings.Default.OBSWSPort;
             txtOBSWSPW.Text = Properties.Settings.Default.OBSWSPW;
 
             txtShinyChance.Text = Properties.Settings.Default.ShinyChance;
@@ -737,6 +735,8 @@ namespace Pokemon_and_Friends_Upgrader
 
             txtOBSPath.Text = Properties.Settings.Default.OBSPath;
             cbOBSVersion.SelectedIndex = Properties.Settings.Default.OBSVersion;
+
+            cbWebsocket.SelectedIndex = Properties.Settings.Default.OBSWSVersion;
         }
 
         #endregion
@@ -1429,6 +1429,10 @@ namespace Pokemon_and_Friends_Upgrader
         private void cbOBSVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             CheckPlugins();
+            if(cbOBSVersion.SelectedIndex == 0)
+            {
+                cbWebsocket.Items.Clear();
+            }
         }
     }
 

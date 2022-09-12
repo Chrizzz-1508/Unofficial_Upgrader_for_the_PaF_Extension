@@ -1,0 +1,10 @@
+{
+  "V27OBSWS491": "https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket-4.9.1-Windows.zip",
+  "V27OBSWS5": "",
+  "V27MoveTransition": "https://obsproject.com/forum/resources/move-transition.913/version/4297/download?file=84807",
+  "V27StreamFX": "https://github.com/Xaymar/obs-StreamFX/releases/download/0.11.1/streamfx-windows-2019-0.11.1.0-g81a96998.exe",
+  "V28OBSWS491": "https://github.com/obsproject/obs-websocket/releases/download/4.9.1-compat/obs-websocket-4.9.1-compat-Qt6-Windows.zip",
+  "V28OBSWS5": "",
+  "V28MoveTransition": "https://obsproject.com/forum/resources/move-transition.913/version/4297/download?file=84807",
+  "V28StreamFX": "https://github.com/Xaymar/obs-StreamFX/releases/download/0.12.0a117/streamfx-windows-0.12.0a117-g0ba2849d.exe"
+}

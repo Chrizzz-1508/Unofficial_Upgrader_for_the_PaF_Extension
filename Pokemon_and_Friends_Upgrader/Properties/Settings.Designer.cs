@@ -934,5 +934,17 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
                 this["OBSVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int OBSWSVersion {
+            get {
+                return ((int)(this["OBSWSVersion"]));
+            }
+            set {
+                this["OBSWSVersion"] = value;
+            }
+        }
     }
 }

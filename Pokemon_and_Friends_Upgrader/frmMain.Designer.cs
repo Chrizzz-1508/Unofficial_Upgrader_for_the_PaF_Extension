@@ -90,10 +90,8 @@
             this.txtAudioTreshhold = new System.Windows.Forms.TextBox();
             this.lblOBSWSPW = new System.Windows.Forms.Label();
             this.txtOBSWSPW = new System.Windows.Forms.TextBox();
-            this.lblOBSWSPort = new System.Windows.Forms.Label();
             this.lblLanguage = new System.Windows.Forms.Label();
             this.cbLanguage = new System.Windows.Forms.ComboBox();
-            this.txtOBSWSPort = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.cbAnnounce = new System.Windows.Forms.ComboBox();
             this.lblAnnounce = new System.Windows.Forms.Label();
@@ -173,7 +171,7 @@
             this.btnGameSettings = new System.Windows.Forms.Button();
             this.pbOBSWS = new System.Windows.Forms.PictureBox();
             this.pbMoveTransition = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblOBSWS = new System.Windows.Forms.Label();
             this.lblMoveTransition = new System.Windows.Forms.Label();
             this.btnInstallPlugins = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -215,6 +213,8 @@
             this.btnGermanGuide = new System.Windows.Forms.Button();
             this.btnConvertToCSV = new System.Windows.Forms.Button();
             this.ilInstalled = new System.Windows.Forms.ImageList(this.components);
+            this.cbWebsocket = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.tbChannelPoints.SuspendLayout();
             this.tbGameSettings.SuspendLayout();
@@ -296,7 +296,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(63, 24);
             this.lblVersion.TabIndex = 76;
-            this.lblVersion.Text = "V1.2.0";
+            this.lblVersion.Text = "V1.2.2";
             // 
             // btnMigrate
             // 
@@ -313,7 +313,7 @@
             // 
             this.pbLoading.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
-            this.pbLoading.Location = new System.Drawing.Point(0, 0);
+            this.pbLoading.Location = new System.Drawing.Point(0, 2000);
             this.pbLoading.Name = "pbLoading";
             this.pbLoading.Size = new System.Drawing.Size(1216, 609);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -760,14 +760,12 @@
             this.groupBox3.Controls.Add(this.txtAudioTreshhold);
             this.groupBox3.Controls.Add(this.lblOBSWSPW);
             this.groupBox3.Controls.Add(this.txtOBSWSPW);
-            this.groupBox3.Controls.Add(this.lblOBSWSPort);
             this.groupBox3.Controls.Add(this.lblLanguage);
             this.groupBox3.Controls.Add(this.cbLanguage);
-            this.groupBox3.Controls.Add(this.txtOBSWSPort);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(13, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(285, 270);
+            this.groupBox3.Size = new System.Drawing.Size(285, 243);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "General Settings";
@@ -780,7 +778,7 @@
             this.cbAnimatedTrainers.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbAnimatedTrainers.Location = new System.Drawing.Point(149, 236);
+            this.cbAnimatedTrainers.Location = new System.Drawing.Point(149, 208);
             this.cbAnimatedTrainers.Name = "cbAnimatedTrainers";
             this.cbAnimatedTrainers.Size = new System.Drawing.Size(121, 21);
             this.cbAnimatedTrainers.TabIndex = 89;
@@ -790,7 +788,7 @@
             this.lblAnimatedTrainers.AutoSize = true;
             this.lblAnimatedTrainers.BackColor = System.Drawing.Color.Transparent;
             this.lblAnimatedTrainers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblAnimatedTrainers.Location = new System.Drawing.Point(7, 239);
+            this.lblAnimatedTrainers.Location = new System.Drawing.Point(7, 211);
             this.lblAnimatedTrainers.Name = "lblAnimatedTrainers";
             this.lblAnimatedTrainers.Size = new System.Drawing.Size(113, 13);
             this.lblAnimatedTrainers.TabIndex = 90;
@@ -894,7 +892,7 @@
             // 
             this.lblOBSWSPW.AutoSize = true;
             this.lblOBSWSPW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblOBSWSPW.Location = new System.Drawing.Point(8, 208);
+            this.lblOBSWSPW.Location = new System.Drawing.Point(8, 180);
             this.lblOBSWSPW.Name = "lblOBSWSPW";
             this.lblOBSWSPW.Size = new System.Drawing.Size(136, 13);
             this.lblOBSWSPW.TabIndex = 79;
@@ -903,21 +901,11 @@
             // txtOBSWSPW
             // 
             this.txtOBSWSPW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtOBSWSPW.Location = new System.Drawing.Point(149, 205);
+            this.txtOBSWSPW.Location = new System.Drawing.Point(149, 177);
             this.txtOBSWSPW.Name = "txtOBSWSPW";
             this.txtOBSWSPW.Size = new System.Drawing.Size(121, 20);
             this.txtOBSWSPW.TabIndex = 9;
             this.txtOBSWSPW.UseSystemPasswordChar = true;
-            // 
-            // lblOBSWSPort
-            // 
-            this.lblOBSWSPort.AutoSize = true;
-            this.lblOBSWSPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblOBSWSPort.Location = new System.Drawing.Point(7, 179);
-            this.lblOBSWSPort.Name = "lblOBSWSPort";
-            this.lblOBSWSPort.Size = new System.Drawing.Size(109, 13);
-            this.lblOBSWSPort.TabIndex = 77;
-            this.lblOBSWSPort.Text = "OBS Websocket Port";
             // 
             // lblLanguage
             // 
@@ -944,15 +932,6 @@
             this.cbLanguage.Name = "cbLanguage";
             this.cbLanguage.Size = new System.Drawing.Size(121, 21);
             this.cbLanguage.TabIndex = 3;
-            // 
-            // txtOBSWSPort
-            // 
-            this.txtOBSWSPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtOBSWSPort.Location = new System.Drawing.Point(149, 176);
-            this.txtOBSWSPort.MaxLength = 5;
-            this.txtOBSWSPort.Name = "txtOBSWSPort";
-            this.txtOBSWSPort.Size = new System.Drawing.Size(121, 20);
-            this.txtOBSWSPort.TabIndex = 8;
             // 
             // groupBox10
             // 
@@ -1760,6 +1739,8 @@
             // tbOBS
             // 
             this.tbOBS.BackColor = System.Drawing.Color.LightGray;
+            this.tbOBS.Controls.Add(this.cbWebsocket);
+            this.tbOBS.Controls.Add(this.label6);
             this.tbOBS.Controls.Add(this.cbOBSVersion);
             this.tbOBS.Controls.Add(this.lblOBSVersion);
             this.tbOBS.Controls.Add(this.btnRefresh);
@@ -1768,7 +1749,7 @@
             this.tbOBS.Controls.Add(this.btnGameSettings);
             this.tbOBS.Controls.Add(this.pbOBSWS);
             this.tbOBS.Controls.Add(this.pbMoveTransition);
-            this.tbOBS.Controls.Add(this.label6);
+            this.tbOBS.Controls.Add(this.lblOBSWS);
             this.tbOBS.Controls.Add(this.lblMoveTransition);
             this.tbOBS.Controls.Add(this.btnInstallPlugins);
             this.tbOBS.Controls.Add(this.label2);
@@ -1789,9 +1770,9 @@
             this.cbOBSVersion.Items.AddRange(new object[] {
             "OBS Version 27.2.4 or lower",
             "OBS Version 28.0.0 or higher"});
-            this.cbOBSVersion.Location = new System.Drawing.Point(318, 31);
+            this.cbOBSVersion.Location = new System.Drawing.Point(349, 31);
             this.cbOBSVersion.Name = "cbOBSVersion";
-            this.cbOBSVersion.Size = new System.Drawing.Size(852, 45);
+            this.cbOBSVersion.Size = new System.Drawing.Size(821, 45);
             this.cbOBSVersion.TabIndex = 0;
             this.cbOBSVersion.SelectedIndexChanged += new System.EventHandler(this.cbOBSVersion_SelectedIndexChanged);
             // 
@@ -1807,7 +1788,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Enabled = false;
-            this.btnRefresh.Location = new System.Drawing.Point(438, 361);
+            this.btnRefresh.Location = new System.Drawing.Point(453, 375);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(365, 68);
             this.btnRefresh.TabIndex = 7;
@@ -1818,7 +1799,7 @@
             // pbStreamFX
             // 
             this.pbStreamFX.Image = ((System.Drawing.Image)(resources.GetObject("pbStreamFX.Image")));
-            this.pbStreamFX.Location = new System.Drawing.Point(319, 363);
+            this.pbStreamFX.Location = new System.Drawing.Point(350, 377);
             this.pbStreamFX.Name = "pbStreamFX";
             this.pbStreamFX.Size = new System.Drawing.Size(64, 64);
             this.pbStreamFX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1828,7 +1809,7 @@
             // lblStreamFX
             // 
             this.lblStreamFX.AutoSize = true;
-            this.lblStreamFX.Location = new System.Drawing.Point(38, 377);
+            this.lblStreamFX.Location = new System.Drawing.Point(38, 391);
             this.lblStreamFX.Name = "lblStreamFX";
             this.lblStreamFX.Size = new System.Drawing.Size(169, 37);
             this.lblStreamFX.TabIndex = 15;
@@ -1837,9 +1818,9 @@
             // btnGameSettings
             // 
             this.btnGameSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.btnGameSettings.Location = new System.Drawing.Point(854, 175);
+            this.btnGameSettings.Location = new System.Drawing.Point(854, 225);
             this.btnGameSettings.Name = "btnGameSettings";
-            this.btnGameSettings.Size = new System.Drawing.Size(316, 254);
+            this.btnGameSettings.Size = new System.Drawing.Size(316, 216);
             this.btnGameSettings.TabIndex = 8;
             this.btnGameSettings.Text = "Game Settings \r\n======>";
             this.btnGameSettings.UseVisualStyleBackColor = true;
@@ -1848,7 +1829,7 @@
             // pbOBSWS
             // 
             this.pbOBSWS.Image = ((System.Drawing.Image)(resources.GetObject("pbOBSWS.Image")));
-            this.pbOBSWS.Location = new System.Drawing.Point(319, 271);
+            this.pbOBSWS.Location = new System.Drawing.Point(350, 303);
             this.pbOBSWS.Name = "pbOBSWS";
             this.pbOBSWS.Size = new System.Drawing.Size(64, 64);
             this.pbOBSWS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1858,26 +1839,26 @@
             // pbMoveTransition
             // 
             this.pbMoveTransition.Image = ((System.Drawing.Image)(resources.GetObject("pbMoveTransition.Image")));
-            this.pbMoveTransition.Location = new System.Drawing.Point(319, 179);
+            this.pbMoveTransition.Location = new System.Drawing.Point(350, 229);
             this.pbMoveTransition.Name = "pbMoveTransition";
             this.pbMoveTransition.Size = new System.Drawing.Size(64, 64);
             this.pbMoveTransition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMoveTransition.TabIndex = 12;
             this.pbMoveTransition.TabStop = false;
             // 
-            // label6
+            // lblOBSWS
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 285);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(226, 37);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "OBSWS 4.9.1";
+            this.lblOBSWS.AutoSize = true;
+            this.lblOBSWS.Location = new System.Drawing.Point(37, 317);
+            this.lblOBSWS.Name = "lblOBSWS";
+            this.lblOBSWS.Size = new System.Drawing.Size(226, 37);
+            this.lblOBSWS.TabIndex = 11;
+            this.lblOBSWS.Text = "OBSWS 4.9.1";
             // 
             // lblMoveTransition
             // 
             this.lblMoveTransition.AutoSize = true;
-            this.lblMoveTransition.Location = new System.Drawing.Point(37, 193);
+            this.lblMoveTransition.Location = new System.Drawing.Point(37, 243);
             this.lblMoveTransition.Name = "lblMoveTransition";
             this.lblMoveTransition.Size = new System.Drawing.Size(259, 37);
             this.lblMoveTransition.TabIndex = 10;
@@ -1886,7 +1867,7 @@
             // btnInstallPlugins
             // 
             this.btnInstallPlugins.Enabled = false;
-            this.btnInstallPlugins.Location = new System.Drawing.Point(438, 265);
+            this.btnInstallPlugins.Location = new System.Drawing.Point(453, 297);
             this.btnInstallPlugins.Name = "btnInstallPlugins";
             this.btnInstallPlugins.Size = new System.Drawing.Size(365, 72);
             this.btnInstallPlugins.TabIndex = 6;
@@ -1897,7 +1878,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 109);
+            this.label2.Location = new System.Drawing.Point(32, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(227, 37);
             this.label2.TabIndex = 7;
@@ -1906,7 +1887,7 @@
             // btnSelectOBSPath
             // 
             this.btnSelectOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
-            this.btnSelectOBSPath.Location = new System.Drawing.Point(1095, 104);
+            this.btnSelectOBSPath.Location = new System.Drawing.Point(1095, 152);
             this.btnSelectOBSPath.Name = "btnSelectOBSPath";
             this.btnSelectOBSPath.Size = new System.Drawing.Size(75, 47);
             this.btnSelectOBSPath.TabIndex = 4;
@@ -1918,15 +1899,15 @@
             // 
             this.txtOBSPath.Enabled = false;
             this.txtOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
-            this.txtOBSPath.Location = new System.Drawing.Point(318, 106);
+            this.txtOBSPath.Location = new System.Drawing.Point(349, 154);
             this.txtOBSPath.Name = "txtOBSPath";
-            this.txtOBSPath.Size = new System.Drawing.Size(774, 44);
+            this.txtOBSPath.Size = new System.Drawing.Size(743, 44);
             this.txtOBSPath.TabIndex = 3;
             this.txtOBSPath.TextChanged += new System.EventHandler(this.txtOBSPath_TextChanged);
             // 
             // btnDownloadPlugins
             // 
-            this.btnDownloadPlugins.Location = new System.Drawing.Point(438, 175);
+            this.btnDownloadPlugins.Location = new System.Drawing.Point(453, 225);
             this.btnDownloadPlugins.Name = "btnDownloadPlugins";
             this.btnDownloadPlugins.Size = new System.Drawing.Size(365, 66);
             this.btnDownloadPlugins.TabIndex = 5;
@@ -2367,6 +2348,27 @@
             this.ilInstalled.Images.SetKeyName(0, "Installed.png");
             this.ilInstalled.Images.SetKeyName(1, "NotInstalled.png");
             // 
+            // cbWebsocket
+            // 
+            this.cbWebsocket.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbWebsocket.FormattingEnabled = true;
+            this.cbWebsocket.Items.AddRange(new object[] {
+            "4.9.1",
+            "5.0+ (integrated in OBS 28)"});
+            this.cbWebsocket.Location = new System.Drawing.Point(349, 92);
+            this.cbWebsocket.Name = "cbWebsocket";
+            this.cbWebsocket.Size = new System.Drawing.Size(822, 45);
+            this.cbWebsocket.TabIndex = 18;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(33, 95);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(310, 37);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Websocket Version";
+            // 
             // frmMain
             // 
             this.AcceptButton = this.btnInstall;
@@ -2485,10 +2487,8 @@
         private System.Windows.Forms.TextBox txtAudioTreshhold;
         private System.Windows.Forms.Label lblOBSWSPW;
         private System.Windows.Forms.TextBox txtOBSWSPW;
-        private System.Windows.Forms.Label lblOBSWSPort;
         private System.Windows.Forms.Label lblLanguage;
         private System.Windows.Forms.ComboBox cbLanguage;
-        private System.Windows.Forms.TextBox txtOBSWSPort;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.ComboBox cbUseRunMessage;
         private System.Windows.Forms.ComboBox cbUseBreakout;
@@ -2606,7 +2606,7 @@
         private System.Windows.Forms.Button btnInstallPlugins;
         private System.Windows.Forms.PictureBox pbOBSWS;
         private System.Windows.Forms.PictureBox pbMoveTransition;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblOBSWS;
         private System.Windows.Forms.Label lblMoveTransition;
         private System.Windows.Forms.ImageList ilInstalled;
         private System.Windows.Forms.Button btnGameSettings;
@@ -2615,6 +2615,8 @@
         private System.Windows.Forms.Label lblStreamFX;
         private System.Windows.Forms.ComboBox cbOBSVersion;
         private System.Windows.Forms.Label lblOBSVersion;
+        private System.Windows.Forms.ComboBox cbWebsocket;
+        private System.Windows.Forms.Label label6;
     }
 }
 
