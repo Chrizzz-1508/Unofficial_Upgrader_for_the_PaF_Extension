@@ -9,5 +9,6 @@
         public string V27OBSWS491;
         public string V27MoveTransition;
         public string V27StreamFX;
+        public string V27OBSWS5;
     }
 }
