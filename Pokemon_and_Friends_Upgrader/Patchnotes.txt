@@ -1,3 +1,10 @@
+Update 15.09.22 - V1.2.2
+========================
+- Added full support for OBSWS 4.9.1 & OBSWS 5.0+
+- Added a new option to put a background behind the Pokemon (this background can be freely adjusted in OBS)
+- Removed connection settings for the websocket (except password) => The IP and Port now automatically get pulled from your SAMMI connection infos
+- Fixed a bug where !addpokemontoall didn't work for mods
+
 Update 06.09.22 - V1.2.1 Release
 ================================
 - Updated OBS Plugin Installer for OBS 28

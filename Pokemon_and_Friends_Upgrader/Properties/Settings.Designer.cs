@@ -925,7 +925,7 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int OBSVersion {
             get {
                 return ((int)(this["OBSVersion"]));
@@ -944,6 +944,18 @@ namespace Pokemon_and_Friends_Upgrader.Properties {
             }
             set {
                 this["OBSWSVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int UseBackground {
+            get {
+                return ((int)(this["UseBackground"]));
+            }
+            set {
+                this["UseBackground"] = value;
             }
         }
     }

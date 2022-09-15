@@ -1,4 +1,4 @@
-This extension only works with SAMMI Version 2022.4.0 or higher, so please make sure to update first!
+This extension only works with SAMMI Version 2022.4.4 or higher, so please make sure to update first!
 Also in case you have upgraded recently, make sure that you gain a new Twitch Token so that SAMMI has the needed permissions.
 
 
@@ -49,5 +49,7 @@ Upgrading from V1.2.0:
 1) Run the PaF - Mod Installer.exe and fill out your settings (you can hover the options for more infos)
 2) Start OBS and SAMMI and make sure both are connected
 3) Inside SAMMI install the newly created Extension (PaFGame.sef) and replace the existing extension & deck
-6) If you are asked if you want to recreate the channel points, say no
-7) If you are asked if you want to recreate the scenes, say no
+4) If you are asked if you want to recreate the channel points, say no
+5) If you are asked if you want to recreate the scenes, say no
+
+(Side Note: If you wanna use the new Background, you will also have to delete and recreate the scenes)

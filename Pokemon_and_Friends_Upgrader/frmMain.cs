@@ -165,6 +165,7 @@ namespace Pokemon_and_Friends_Upgrader
             try { if (!File.Exists(ftSourceTargetPath + @"SFX_CAUGHT_MON.wav")) File.Copy(@"files\sources\SFX_CAUGHT_MON.wav", ftSourceTargetPath + @"SFX_CAUGHT_MON.wav"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             try { if (!File.Exists(ftSourceTargetPath + @"SFX_RUN.wav")) File.Copy(@"files\sources\SFX_RUN.wav", ftSourceTargetPath + @"SFX_RUN.wav"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             try { if (!File.Exists(ftSourceTargetPath + @"ShinyStars.png")) File.Copy(@"files\sources\ShinyStars.png", ftSourceTargetPath + @"ShinyStars.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            try { if (!File.Exists(ftSourceTargetPath + @"PokemonBackground.png")) File.Copy(@"files\sources\PokemonBackground.png", ftSourceTargetPath + @"PokemonBackground.png"); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
             try { File.Copy(sLoadingScreenPath, ftSourceTargetPath + @"LoadingScreen.png", true); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             try { File.Copy(sShinyScreenPath, ftSourceTargetPath + @"shiny.png", true); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
@@ -322,6 +323,8 @@ namespace Pokemon_and_Friends_Upgrader
             string VAR_ANNOUNCE_VAR = "true";
             if (cbAnnounce.SelectedIndex == 1) VAR_ANNOUNCE_VAR = "false";
 
+            string VAR_USE_BACKGROUND_VAR = "true";
+            if (cbBackground.SelectedIndex == 1) VAR_USE_BACKGROUND_VAR = "false";
 
             sOutput = sOutput.Replace("VAR_LANGUAGE_VAR", VAR_LANGUAGE_VAR);
             sOutput = sOutput.Replace("VAR_POKE_PATH_VAR", txtSAMMI.Text.Replace(@"\", "/") + @"/Pokemon and Friends/");
@@ -404,6 +407,7 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("12345", Convert.ToString(Convert.ToInt32(txtQueueTime.Text) * 1000));
             sOutput = sOutput.Replace("67890", Convert.ToString((Convert.ToInt32(txtQueueTime.Text) * 1000) + 1000));
 
+            sOutput = sOutput.Replace("VAR_USE_BACKGROUND_VAR", VAR_USE_BACKGROUND_VAR);
 
             sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"sammi_version\":\"2022.4.4\", \"extension_triggers\":[\"PaFModInstall\"]}");
 
@@ -563,6 +567,7 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.OBSVersion = cbOBSVersion.SelectedIndex;
 
             Properties.Settings.Default.OBSWSVersion = cbWebsocket.SelectedIndex;
+            Properties.Settings.Default.UseBackground = cbBackground.SelectedIndex;
 
             Properties.Settings.Default.Save();
         }
@@ -637,6 +642,8 @@ namespace Pokemon_and_Friends_Upgrader
             TTExplanation.SetToolTip(lblAnimatedTrainers, "Trainers will be animated instead of\nbeeing static if they have an available GIF");
             TTExplanation.SetToolTip(lblBroadcaster, "Please enter your streamer name");
             TTExplanation.SetToolTip(lblAnnounce, "Announces in Chat when a legendary or \nmythical Pokemon has spawned");
+
+            TTExplanation.SetToolTip(lblBackground, "Enables a background behind the Pokemon\nfor better visibility in all scenes.");
 
         }
         private void LoadValues()
@@ -737,6 +744,7 @@ namespace Pokemon_and_Friends_Upgrader
             cbOBSVersion.SelectedIndex = Properties.Settings.Default.OBSVersion;
 
             cbWebsocket.SelectedIndex = Properties.Settings.Default.OBSWSVersion;
+            cbBackground.SelectedIndex = Properties.Settings.Default.UseBackground;
         }
 
         #endregion
@@ -924,7 +932,7 @@ namespace Pokemon_and_Friends_Upgrader
             Process.Start("Pokemon and Friends Mod V1.2.pdf");
             if (DialogResult.Yes == MessageBox.Show("Need more help? Feel free to join my discord! Wanna join now?", "Help", MessageBoxButtons.YesNo))
             {
-                Process.Start("https://discord.gg/A3VF9kW");
+                Process.Start("https://discord.gg/dZ9ZVJKSJz");
             }
         }
         private void btnCredits_Click(object sender, EventArgs e)
@@ -1216,14 +1224,28 @@ namespace Pokemon_and_Friends_Upgrader
                 pbMoveTransition.Image = ilInstalled.Images[1];
             }
             //OBSWS
-            if ((cbOBSVersion.SelectedIndex == 0 && (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll"))) || (cbOBSVersion.SelectedIndex == 1 && (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll"))))
+            bool bWSExists = false;
+            if(cbOBSVersion.SelectedIndex == 0)
             {
-                pbOBSWS.Image = ilInstalled.Images[0];
+                //OBS27
+                if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll")) bWSExists = true;
             }
             else
             {
-                pbOBSWS.Image = ilInstalled.Images[1];
+                //OBS28
+                if (cbWebsocket.SelectedIndex == 0)
+                {
+                    //WS4.9.1 Compat
+                    if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll")) bWSExists = true;
+                }
+                else
+                {
+                    //WS5 Native
+                    if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll")) bWSExists = true;
+                }
             }
+            if (bWSExists) pbOBSWS.Image = ilInstalled.Images[0];
+            else pbOBSWS.Image = ilInstalled.Images[1];
             //StreamFX
             if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\StreamFX.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\StreamFX.dll"))
             {
@@ -1256,13 +1278,14 @@ namespace Pokemon_and_Friends_Upgrader
 
             if (cbOBSVersion.SelectedIndex == 0)
             {
-                Process.Start(dl.V27OBSWS491);
+                if (cbWebsocket.SelectedIndex == 0) Process.Start(dl.V27OBSWS491);
+                else Process.Start(dl.V27OBSWS5);
                 Process.Start(dl.V27MoveTransition);
                 Process.Start(dl.V27StreamFX);
             }
             else if (cbOBSVersion.SelectedIndex == 1)
             {
-                Process.Start(dl.V28OBSWS491);
+                if (cbWebsocket.SelectedIndex == 0) Process.Start(dl.V28OBSWS491);
                 Process.Start(dl.V28MoveTransition);
                 Process.Start(dl.V28StreamFX);
             }
@@ -1281,6 +1304,69 @@ namespace Pokemon_and_Friends_Upgrader
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
+
+            bool bWSExists = false;
+            if (cbOBSVersion.SelectedIndex == 0)
+            {
+                //OBS27
+                if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll")) bWSExists = true;
+            }
+            else
+            {
+                //OBS28
+                if (cbWebsocket.SelectedIndex == 0)
+                {
+                    //WS4.9.1 Compat
+                    if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll")) bWSExists = true;
+                }
+                else
+                {
+                    //WS5 Native
+                    if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll")) bWSExists = true;
+                }
+            }
+
+            //OBS Websocket 4.9.1
+            try
+            {
+                if (bWSExists == false)
+                {
+                    OpenFileDialog f = new OpenFileDialog();
+                    f.Title = "Please select your OBS Websocket ZIP file";
+                    if (cbOBSVersion.SelectedIndex == 1 && cbWebsocket.SelectedIndex == 0) f.Filter = "OBS Websocket|obs*websocket*compat*.zip"; 
+                    else if (cbWebsocket.SelectedIndex == 0) f.Filter = "OBS Websocket|obs*websocket*4.9.1*.zip";
+                    else if (cbWebsocket.SelectedIndex == 1) f.Filter = "OBS Websocket|obs*websocket*5*.zip";
+
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                    }
+                }
+                else
+                {
+                    
+                    if (DialogResult.Yes == MessageBox.Show("It seems there is already an existing installation of the OBS Websocket Plugin, want to reinstall now?", "Reinstall OBSWebsocket Plugin?", MessageBoxButtons.YesNo))
+                    {
+                        if (cbOBSVersion.SelectedIndex == 1 && cbWebsocket.SelectedIndex == 1) MessageBox.Show("OBS28+ has integrated OBSWS5 natively. If you want to reinstall that, please go to \"OBS\" => \"Help\" => \"Check File Integrity\" to reinstall OBSWS5");
+                        else
+                        {
+                            OpenFileDialog f = new OpenFileDialog();
+                            f.Title = "Please select your OBS Websocket ZIP file";
+                            if (cbOBSVersion.SelectedIndex == 1 && cbWebsocket.SelectedIndex == 0) f.Filter = "OBS Websocket|obs*websocket*compat*.zip";
+                            else if (cbWebsocket.SelectedIndex == 0) f.Filter = "OBS Websocket|obs*websocket*4.9.1*.zip";
+                            else if (cbWebsocket.SelectedIndex == 1) f.Filter = "OBS Websocket|obs*websocket*5*.zip";
+
+                            if (f.ShowDialog() == DialogResult.OK)
+                            {
+                                ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
+
             //Move Transition
             try
             {
@@ -1295,7 +1381,7 @@ namespace Pokemon_and_Friends_Upgrader
                         ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
                     }
                 }
-                if (DialogResult.Yes == MessageBox.Show("It seems there is already an existing installation of the Move Transition Plugin, want to reinstall now?", "Reinstall Move Transition Plugin?", MessageBoxButtons.YesNo))
+                else if (DialogResult.Yes == MessageBox.Show("It seems there is already an existing installation of the Move Transition Plugin, want to reinstall now?", "Reinstall Move Transition Plugin?", MessageBoxButtons.YesNo))
                 {
                     OpenFileDialog f = new OpenFileDialog();
                     f.Title = "Please select your Move Transition ZIP file";
@@ -1304,37 +1390,6 @@ namespace Pokemon_and_Friends_Upgrader
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
-                    }
-                }
-            }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-
-            //OBS Websocket 4.9.1
-            try
-            {
-                if ((cbOBSVersion.SelectedIndex == 0 && (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket.dll"))) || (cbOBSVersion.SelectedIndex == 1 && (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\obs-websocket-compat.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\obs-websocket-compat.dll"))))
-                {
-                    OpenFileDialog f = new OpenFileDialog();
-                    f.Title = "Please select your OBS Websocket ZIP file";
-                    f.Filter = "OBS Websocket|obs*websocket*.zip";
-
-                    if (f.ShowDialog() == DialogResult.OK)
-                    {
-                        ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
-                    }
-                }
-                else
-                {
-                    if(DialogResult.Yes == MessageBox.Show("It seems there is already an existing installation of the OBS Websocket Plugin, want to reinstall now?","Reinstall OBSWebsocket Plugin?", MessageBoxButtons.YesNo))
-                    {
-                        OpenFileDialog f = new OpenFileDialog();
-                        f.Title = "Please select your OBS Websocket ZIP file";
-                        f.Filter = "OBS Websocket|obs*websocket*.zip";
-
-                        if (f.ShowDialog() == DialogResult.OK)
-                        {
-                            ZipFile.ExtractToDirectory(f.FileName, "ZipInstaller");
-                        }
                     }
                 }
             }
@@ -1384,7 +1439,7 @@ namespace Pokemon_and_Friends_Upgrader
 
             CheckPlugins();
 
-            MessageBox.Show("Move Plugin and OBSWS 4.9.1 are installed correctly! Please finish the Installation of Stream FX and then press \"Refresh\" to check if it also was installed successfully.");
+            MessageBox.Show("Automatic Plugin Installation finished! Please finish the Installation of Stream FX and then press \"Refresh\" to check if it also was installed successfully.");
         }
 
         private void btnSelectOBSPath_Click(object sender, EventArgs e)
@@ -1428,11 +1483,25 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void cbOBSVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CheckPlugins();
             if(cbOBSVersion.SelectedIndex == 0)
             {
                 cbWebsocket.Items.Clear();
+                cbWebsocket.Items.Add("4.9.1");
+                cbWebsocket.Items.Add("5.0+");
+                cbWebsocket.SelectedIndex = 0;
             }
+            else
+            {
+                cbWebsocket.Items.Clear();
+                cbWebsocket.Items.Add("4.9.1 QT6 Compat Plugin");
+                cbWebsocket.Items.Add("5.0+ (natively included in OBS28+)");
+                cbWebsocket.SelectedIndex = 1;
+            }
+        }
+
+        private void cbWebsocket_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckPlugins();
         }
     }
 
