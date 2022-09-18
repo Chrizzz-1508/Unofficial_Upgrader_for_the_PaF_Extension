@@ -11,7 +11,8 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-
+using static System.Net.WebRequestMethods;
+using File = System.IO.File;
 
 namespace Pokemon_and_Friends_Upgrader
 {
@@ -740,7 +741,19 @@ namespace Pokemon_and_Friends_Upgrader
             cbAnnounce.SelectedIndex = Properties.Settings.Default.AnnounceRarePokemons;
             txtBroadcaster.Text = Properties.Settings.Default.BroadcasterName;
 
-            txtOBSPath.Text = Properties.Settings.Default.OBSPath;
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.OBSPath))
+            {
+                txtOBSPath.Text = Properties.Settings.Default.OBSPath;
+            }
+            else
+            {
+
+                if (File.Exists("C:\\Program Files\\obs-studio\\bin\\64bit\\OBS64.exe") || File.Exists("C:\\Program Files\\obs-studio\\bin\\32bit\\OBS32.exe"))
+                {
+                    txtOBSPath.Text = "C:\\Program Files\\obs-studio";
+                }
+            }
+            
             cbOBSVersion.SelectedIndex = Properties.Settings.Default.OBSVersion;
 
             cbWebsocket.SelectedIndex = Properties.Settings.Default.OBSWSVersion;
