@@ -1029,7 +1029,7 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void btnGermanGuide_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.youtube.com/watch?v=Wue5iiK9eMQ&t");
+            Process.Start("https://youtu.be/97oNzSXhgTM");
         }
 
         private void btnEnglishGuide_Click(object sender, EventArgs e)
@@ -1260,7 +1260,15 @@ namespace Pokemon_and_Friends_Upgrader
             if (bWSExists) pbOBSWS.Image = ilInstalled.Images[0];
             else pbOBSWS.Image = ilInstalled.Images[1];
             //StreamFX
-            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\StreamFX.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\StreamFX.dll"))
+            //Normal Path = Checked
+            //Portable Path = Checked
+            //User Path != Checked
+            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\StreamFX.dll") ||
+                File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\StreamFX.dll") ||
+                File.Exists(Environment.GetEnvironmentVariable("LocalAppData") + "\\Programs\\obs-studio\\plugins\\StreamFX\\bin\\64bit\\StreamFX.dll") ||
+                File.Exists(Environment.GetEnvironmentVariable("LocalAppData") + "\\Programs\\obs-studio\\plugins\\StreamFX\\bin\\32bit\\StreamFX.dll") ||
+                File.Exists(Environment.GetEnvironmentVariable("ProgramData") + "\\obs-studio\\plugins\\StreamFX\\bin\\64bit\\StreamFX.dll") ||
+                File.Exists(Environment.GetEnvironmentVariable("ProgramData") + "\\obs-studio\\plugins\\StreamFX\\bin\\32bit\\StreamFX.dll"))
             {
                 pbStreamFX.Image = ilInstalled.Images[0];
             }
@@ -1422,7 +1430,12 @@ namespace Pokemon_and_Friends_Upgrader
             try
             {
                 //StreamFX
-                if (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\StreamFX.dll") && !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\StreamFX.dll"))
+                if (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\StreamFX.dll") &&
+                    !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\StreamFX.dll") &&
+                    !File.Exists(Environment.GetEnvironmentVariable("LocalAppData") + "\\Programs\\obs-studio\\plugins\\StreamFX\\bin\\64bit\\StreamFX.dll") &&
+                    !File.Exists(Environment.GetEnvironmentVariable("LocalAppData") + "\\Programs\\obs-studio\\plugins\\StreamFX\\bin\\32bit\\StreamFX.dll") &&
+                    !File.Exists(Environment.GetEnvironmentVariable("ProgramData") + "\\obs-studio\\plugins\\StreamFX\\bin\\64bit\\StreamFX.dll") &&
+                    !File.Exists(Environment.GetEnvironmentVariable("ProgramData") + "\\obs-studio\\plugins\\StreamFX\\bin\\32bit\\StreamFX.dll"))
                 {
                     OpenFileDialog f = new OpenFileDialog();
                     f.Title = @"Please select your Stream FX installer";
