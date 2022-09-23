@@ -298,7 +298,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(63, 24);
             this.lblVersion.TabIndex = 76;
-            this.lblVersion.Text = "V1.2.2";
+            this.lblVersion.Text = "V1.2.3";
             // 
             // btnMigrate
             // 

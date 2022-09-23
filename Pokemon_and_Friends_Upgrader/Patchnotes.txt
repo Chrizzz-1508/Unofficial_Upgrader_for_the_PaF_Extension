@@ -1,3 +1,12 @@
+Update 23.09.22 - v1.2.3
+========================
+- Added a small easteregg (can you find it? small tip: 132)
+- Added new german tutorial guide
+- Moved !limitspawn & !poke-init to mod commands
+- Fixed wrong permissions for some of the commands
+- Fixed the check for the new StreamFX path
+- Updated DL Links for new StreamFX
+
 Update 15.09.22 - V1.2.2
 ========================
 - Added full support for OBSWS 4.9.1 & OBSWS 5.0+
