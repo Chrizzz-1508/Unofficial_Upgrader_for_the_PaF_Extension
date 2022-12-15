@@ -1,3 +1,7 @@
+Update 15.12.22 - V1.2.4
+========================
+- Added Gen 9 (Paldea)
+
 Update 23.09.22 - v1.2.3
 ========================
 - Added a small easteregg (can you find it? small tip: 132)

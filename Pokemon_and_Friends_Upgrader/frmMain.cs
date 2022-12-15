@@ -80,6 +80,59 @@ namespace Pokemon_and_Friends_Upgrader
                 if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
             }
 
+            //Merge PaF Database
+            string sOutput = "";
+            int iCounter = -1;
+
+            //Read Original File
+            using (StreamReader sr = new StreamReader(@"files\database\paf_database.csv"))
+            {
+                while (sr.Peek() > 0)
+                {
+                    string sLine = sr.ReadLine();
+                    if (!string.IsNullOrEmpty(sLine))
+                    {
+                        if (!sLine.Split(',')[1].ToLowerInvariant().Contains("c"))
+                        {
+                            sOutput += sLine + "\n";
+                            iCounter++;
+                        }
+                    }
+                }
+                sr.Close();
+            }
+
+            //Read New File
+            using (StreamReader sr = new StreamReader(sPAFPath + @"\database\paf_database.csv"))
+            {
+                int iCustom = 1;
+                while (sr.Peek() > 0)
+                {   
+                    string sLine = sr.ReadLine();
+                    if (!string.IsNullOrEmpty(sLine))
+                    {
+                        if (sLine.Split(',')[1].ToLowerInvariant().Contains("c"))
+                        {
+                            sOutput += iCounter.ToString() + ",C" + iCustom.ToString();
+                            for (int i = 2; i < 25; i++)
+                            {
+                                sOutput += "," + sLine.Split(',')[i];
+                            }
+                            iCounter++;
+                            iCustom++;
+                            sOutput += "\n";
+                        }
+                    }
+                }
+                sr.Close();
+            }
+
+            using (StreamWriter sw = new StreamWriter(sPAFPath + @"\database\paf_database.csv"))
+            {
+                sw.Write(sOutput);
+                sw.Close();
+            }
+
             //Copy Trainers
             DirectoryInfo diTrainers = new DirectoryInfo(@"files\trainers");
             foreach (FileInfo f in diTrainers.GetFiles())
@@ -309,6 +362,9 @@ namespace Pokemon_and_Friends_Upgrader
             string VAR_USE_GEN_8_VAR = "true";
             if (cbGen8.SelectedIndex == 1) VAR_USE_GEN_8_VAR = "false";
 
+            string VAR_USE_GEN_9_VAR = "true";
+            if (cbGen9.SelectedIndex == 1) VAR_USE_GEN_9_VAR = "false";
+
             string VAR_USE_REGIONALS_VAR = "true";
             if (cbRegional.SelectedIndex == 1) VAR_USE_REGIONALS_VAR = "false";
 
@@ -397,6 +453,8 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("VAR_USE_GEN_6_VAR", VAR_USE_GEN_6_VAR);
             sOutput = sOutput.Replace("VAR_USE_GEN_7_VAR", VAR_USE_GEN_7_VAR);
             sOutput = sOutput.Replace("VAR_USE_GEN_8_VAR", VAR_USE_GEN_8_VAR);
+            sOutput = sOutput.Replace("VAR_USE_GEN_9_VAR", VAR_USE_GEN_9_VAR);
+
             sOutput = sOutput.Replace("VAR_USE_REGIONALS_VAR", VAR_USE_REGIONALS_VAR);
             sOutput = sOutput.Replace("VAR_USE_CUSTOM_VAR", VAR_USE_CUSTOM_VAR);
             sOutput = sOutput.Replace("VAR_USE_MEGA_VAR", VAR_USE_MEGA_VAR);
@@ -556,6 +614,8 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.UseGen6 = cbGen6.SelectedIndex;
             Properties.Settings.Default.UseGen7 = cbGen7.SelectedIndex;
             Properties.Settings.Default.UseGen8 = cbGen8.SelectedIndex;
+            Properties.Settings.Default.UseGen9 = cbGen9.SelectedIndex;
+
             Properties.Settings.Default.UseRegionals = cbRegional.SelectedIndex;
             Properties.Settings.Default.UseCustomPokemon = cbCustom.SelectedIndex;
             Properties.Settings.Default.UseMega = cbMega.SelectedIndex;
@@ -604,7 +664,7 @@ namespace Pokemon_and_Friends_Upgrader
 
             TTExplanation.SetToolTip(lblRunMin, "Pokemon starts with 0% escape rate. \nEverytime it breaks out, this is the minimum rate it can increase");
             TTExplanation.SetToolTip(lblRunMax, "Pokemon starts with 0% escape rate. \nEverytime it breaks out, this is the maximum rate it can increase");
-            TTExplanation.SetToolTip(lblRunTimer, "Time until the current pokemon runs away when no \none throws a ball in miliseconds (180000 = 3min). Throws reset this timer");
+            TTExplanation.SetToolTip(lblRunTimer, "Time until the current pokemon runs away when no \none throws a ball in seconds (180 = 3min). Throws reset this timer");
 
             TTExplanation.SetToolTip(lblDiscord, "Enables the discord extension");
             TTExplanation.SetToolTip(lblUseSeparateWebhook, "Enable this if you want to use 2 webhooks to post into 2 different channels.\nOne for the catches, the other one for the !mypokemon command");
@@ -636,6 +696,8 @@ namespace Pokemon_and_Friends_Upgrader
             TTExplanation.SetToolTip(lblGen6, "Adds the Pokemons from the Kalos \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblGen7, "Adds the Pokemons from the Alola \nregion to the available Pokemons");
             TTExplanation.SetToolTip(lblGen8, "Adds the Pokemons from the Galar \nregion to the available Pokemons");
+            TTExplanation.SetToolTip(lblGen9, "Adds the Pokemons from the Paldea \nregion to the available Pokemons");
+
             TTExplanation.SetToolTip(lblRegional, "Adds the regional forms of \nPokemons to the available Pokemons");
             TTExplanation.SetToolTip(lblMega, "Adds Mega Pokemons \nto the available Pokemons");
             TTExplanation.SetToolTip(lblCustom, "Adds custom created Pokemons \nto the available Pokemons\nwill need the \"Custom Pokemon\" Add On to work");
@@ -733,6 +795,8 @@ namespace Pokemon_and_Friends_Upgrader
             cbGen6.SelectedIndex = Properties.Settings.Default.UseGen6;
             cbGen7.SelectedIndex = Properties.Settings.Default.UseGen7;
             cbGen8.SelectedIndex = Properties.Settings.Default.UseGen8;
+            cbGen9.SelectedIndex = Properties.Settings.Default.UseGen9;
+
             cbRegional.SelectedIndex = Properties.Settings.Default.UseRegionals;
             cbCustom.SelectedIndex = Properties.Settings.Default.UseCustomPokemon;
             cbMega.SelectedIndex = Properties.Settings.Default.UseMega;
@@ -750,7 +814,7 @@ namespace Pokemon_and_Friends_Upgrader
 
                 if (File.Exists("C:\\Program Files\\obs-studio\\bin\\64bit\\OBS64.exe") || File.Exists("C:\\Program Files\\obs-studio\\bin\\32bit\\OBS32.exe"))
                 {
-                    txtOBSPath.Text = "C:\\Program Files\\obs-studio";
+                    txtOBSPath.Text = "C:\\Program Files\\obs-studio\\";
                 }
             }
             

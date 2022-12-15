@@ -183,6 +183,8 @@
             this.txtOBSPath = new System.Windows.Forms.TextBox();
             this.btnDownloadPlugins = new System.Windows.Forms.Button();
             this.tbPokemonSettings = new System.Windows.Forms.TabPage();
+            this.cbGen9 = new System.Windows.Forms.ComboBox();
+            this.lblGen9 = new System.Windows.Forms.Label();
             this.cbMega = new System.Windows.Forms.ComboBox();
             this.lblMega = new System.Windows.Forms.Label();
             this.cbCustom = new System.Windows.Forms.ComboBox();
@@ -298,7 +300,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(63, 24);
             this.lblVersion.TabIndex = 76;
-            this.lblVersion.Text = "V1.2.3";
+            this.lblVersion.Text = "V1.2.4";
             // 
             // btnMigrate
             // 
@@ -1968,6 +1970,8 @@
             // tbPokemonSettings
             // 
             this.tbPokemonSettings.BackColor = System.Drawing.Color.LightGray;
+            this.tbPokemonSettings.Controls.Add(this.cbGen9);
+            this.tbPokemonSettings.Controls.Add(this.lblGen9);
             this.tbPokemonSettings.Controls.Add(this.cbMega);
             this.tbPokemonSettings.Controls.Add(this.lblMega);
             this.tbPokemonSettings.Controls.Add(this.cbCustom);
@@ -2003,6 +2007,30 @@
             this.tbPokemonSettings.TabIndex = 2;
             this.tbPokemonSettings.Text = "Pokemon Settings";
             // 
+            // cbGen9
+            // 
+            this.cbGen9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGen9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.cbGen9.FormattingEnabled = true;
+            this.cbGen9.Items.AddRange(new object[] {
+            "Enabled",
+            "Disabled"});
+            this.cbGen9.Location = new System.Drawing.Point(899, 26);
+            this.cbGen9.Name = "cbGen9";
+            this.cbGen9.Size = new System.Drawing.Size(276, 39);
+            this.cbGen9.TabIndex = 9;
+            // 
+            // lblGen9
+            // 
+            this.lblGen9.AutoSize = true;
+            this.lblGen9.BackColor = System.Drawing.Color.Transparent;
+            this.lblGen9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.lblGen9.Location = new System.Drawing.Point(610, 29);
+            this.lblGen9.Name = "lblGen9";
+            this.lblGen9.Size = new System.Drawing.Size(270, 31);
+            this.lblGen9.TabIndex = 105;
+            this.lblGen9.Text = "Use Gen 9 (Paldea)";
+            // 
             // cbMega
             // 
             this.cbMega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2011,17 +2039,17 @@
             this.cbMega.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbMega.Location = new System.Drawing.Point(899, 81);
+            this.cbMega.Location = new System.Drawing.Point(899, 126);
             this.cbMega.Name = "cbMega";
             this.cbMega.Size = new System.Drawing.Size(276, 39);
-            this.cbMega.TabIndex = 10;
+            this.cbMega.TabIndex = 11;
             // 
             // lblMega
             // 
             this.lblMega.AutoSize = true;
             this.lblMega.BackColor = System.Drawing.Color.Transparent;
             this.lblMega.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblMega.Location = new System.Drawing.Point(610, 84);
+            this.lblMega.Location = new System.Drawing.Point(610, 129);
             this.lblMega.Name = "lblMega";
             this.lblMega.Size = new System.Drawing.Size(214, 31);
             this.lblMega.TabIndex = 103;
@@ -2035,17 +2063,17 @@
             this.cbCustom.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbCustom.Location = new System.Drawing.Point(899, 131);
+            this.cbCustom.Location = new System.Drawing.Point(899, 176);
             this.cbCustom.Name = "cbCustom";
             this.cbCustom.Size = new System.Drawing.Size(276, 39);
-            this.cbCustom.TabIndex = 11;
+            this.cbCustom.TabIndex = 12;
             // 
             // lblCustom
             // 
             this.lblCustom.AutoSize = true;
             this.lblCustom.BackColor = System.Drawing.Color.Transparent;
             this.lblCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblCustom.Location = new System.Drawing.Point(610, 134);
+            this.lblCustom.Location = new System.Drawing.Point(610, 179);
             this.lblCustom.Name = "lblCustom";
             this.lblCustom.Size = new System.Drawing.Size(243, 31);
             this.lblCustom.TabIndex = 101;
@@ -2059,17 +2087,17 @@
             this.cbRegional.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbRegional.Location = new System.Drawing.Point(899, 31);
+            this.cbRegional.Location = new System.Drawing.Point(899, 76);
             this.cbRegional.Name = "cbRegional";
             this.cbRegional.Size = new System.Drawing.Size(276, 39);
-            this.cbRegional.TabIndex = 9;
+            this.cbRegional.TabIndex = 10;
             // 
             // lblRegional
             // 
             this.lblRegional.AutoSize = true;
             this.lblRegional.BackColor = System.Drawing.Color.Transparent;
             this.lblRegional.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblRegional.Location = new System.Drawing.Point(610, 34);
+            this.lblRegional.Location = new System.Drawing.Point(610, 79);
             this.lblRegional.Name = "lblRegional";
             this.lblRegional.Size = new System.Drawing.Size(258, 31);
             this.lblRegional.TabIndex = 99;
@@ -2103,10 +2131,10 @@
             // 
             // btnChannelPointSettings
             // 
-            this.btnChannelPointSettings.Location = new System.Drawing.Point(899, 284);
+            this.btnChannelPointSettings.Location = new System.Drawing.Point(616, 340);
             this.btnChannelPointSettings.Name = "btnChannelPointSettings";
-            this.btnChannelPointSettings.Size = new System.Drawing.Size(276, 145);
-            this.btnChannelPointSettings.TabIndex = 14;
+            this.btnChannelPointSettings.Size = new System.Drawing.Size(559, 89);
+            this.btnChannelPointSettings.TabIndex = 15;
             this.btnChannelPointSettings.Text = "Channel Point Settings\r\n======>";
             this.btnChannelPointSettings.UseVisualStyleBackColor = true;
             this.btnChannelPointSettings.Click += new System.EventHandler(this.btnChannelPointSettings_Click);
@@ -2126,7 +2154,7 @@
             // 
             this.lblUseGIFs.AutoSize = true;
             this.lblUseGIFs.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblUseGIFs.Location = new System.Drawing.Point(610, 234);
+            this.lblUseGIFs.Location = new System.Drawing.Point(610, 279);
             this.lblUseGIFs.Name = "lblUseGIFs";
             this.lblUseGIFs.Size = new System.Drawing.Size(127, 31);
             this.lblUseGIFs.TabIndex = 52;
@@ -2140,19 +2168,19 @@
             this.cbUseGIFS.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbUseGIFS.Location = new System.Drawing.Point(899, 231);
+            this.cbUseGIFS.Location = new System.Drawing.Point(899, 276);
             this.cbUseGIFS.Name = "cbUseGIFS";
             this.cbUseGIFS.Size = new System.Drawing.Size(276, 39);
-            this.cbUseGIFS.TabIndex = 13;
+            this.cbUseGIFS.TabIndex = 14;
             // 
             // txtShinyChance
             // 
             this.txtShinyChance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.txtShinyChance.Location = new System.Drawing.Point(899, 182);
+            this.txtShinyChance.Location = new System.Drawing.Point(899, 227);
             this.txtShinyChance.MaxLength = 3;
             this.txtShinyChance.Name = "txtShinyChance";
             this.txtShinyChance.Size = new System.Drawing.Size(276, 38);
-            this.txtShinyChance.TabIndex = 12;
+            this.txtShinyChance.TabIndex = 13;
             this.txtShinyChance.Text = "10";
             // 
             // lblGen7
@@ -2170,7 +2198,7 @@
             // 
             this.lblShinyChance.AutoSize = true;
             this.lblShinyChance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblShinyChance.Location = new System.Drawing.Point(610, 184);
+            this.lblShinyChance.Location = new System.Drawing.Point(610, 229);
             this.lblShinyChance.Name = "lblShinyChance";
             this.lblShinyChance.Size = new System.Drawing.Size(244, 31);
             this.lblShinyChance.TabIndex = 47;
@@ -2404,8 +2432,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 607);
-            this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.pbLoading);
+            this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.btnConvertToCSV);
             this.Controls.Add(this.btnSetItUpForMe);
             this.Controls.Add(this.btnEnglishGuide);
@@ -2648,6 +2676,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbBackground;
         private System.Windows.Forms.Label lblBackground;
+        private System.Windows.Forms.ComboBox cbGen9;
+        private System.Windows.Forms.Label lblGen9;
     }
 }
 
