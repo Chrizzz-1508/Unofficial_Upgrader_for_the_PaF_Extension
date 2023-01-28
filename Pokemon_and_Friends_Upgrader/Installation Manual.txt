@@ -43,7 +43,7 @@ Upgrading from V1.1.6 or lower:
 6) If you are asked if you want to recreate the channel points, say yes
 7) If you are asked if you want to recreate the scenes, say no
 
-Upgrading from V1.2.0:
+Upgrading from V1.2.X:
 ======================
 
 1) Run the PaF - Mod Installer.exe and fill out your settings (you can hover the options for more infos)

@@ -1,3 +1,10 @@
+Update 25.01.23 - V1.2.5
+========================
+- Changed the !changename command (now also works, even when the user has caught Pokemon under his new name)
+- Fixed a bug where custom Pokemon would be corrupted when installing the 1.2.4 BETA
+- Fixed the wrong type of Shroodle & Grafaiai
+- Added the Sprites of the Gen 9 Gym Leaders for the PvP AddOn
+
 Update 15.12.22 - V1.2.4
 ========================
 - Added Gen 9 (Paldea)

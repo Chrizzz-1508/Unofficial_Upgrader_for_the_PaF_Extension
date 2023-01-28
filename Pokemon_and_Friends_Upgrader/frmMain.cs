@@ -83,7 +83,7 @@ namespace Pokemon_and_Friends_Upgrader
             //Merge PaF Database
             string sOutput = "";
             int iCounter = -1;
-
+            List<string> lsCustom = new List<string>();
             //Read Original File
             using (StreamReader sr = new StreamReader(@"files\database\paf_database.csv"))
             {
@@ -97,6 +97,10 @@ namespace Pokemon_and_Friends_Upgrader
                             sOutput += sLine + "\n";
                             iCounter++;
                         }
+                        else
+                        {
+                            lsCustom.Add(sLine);
+                        }
                     }
                 }
                 sr.Close();
@@ -106,25 +110,82 @@ namespace Pokemon_and_Friends_Upgrader
             using (StreamReader sr = new StreamReader(sPAFPath + @"\database\paf_database.csv"))
             {
                 int iCustom = 1;
-                while (sr.Peek() > 0)
-                {   
-                    string sLine = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(sLine))
+                try
+                {
+                    string sTemp = "";
+                    while (sr.Peek() > 0)
                     {
-                        if (sLine.Split(',')[1].ToLowerInvariant().Contains("c"))
+                        string sLine = sr.ReadLine();
+                        if (!string.IsNullOrEmpty(sLine))
                         {
-                            sOutput += iCounter.ToString() + ",C" + iCustom.ToString();
-                            for (int i = 2; i < 25; i++)
+                            string[] sArr = Regex.Split(sLine, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+                            if (sArr[1].ToLowerInvariant().Contains("c"))
                             {
-                                sOutput += "," + sLine.Split(',')[i];
+                                int test = 0;
+                                test = Convert.ToInt32(sArr[17]);
+                                test = Convert.ToInt32(sArr[18]);
+                                test = Convert.ToInt32(sArr[19]);
+                                test = Convert.ToInt32(sArr[20]);
+                                test = Convert.ToInt32(sArr[21]);
+                                test = Convert.ToInt32(sArr[24]);
+                                test = Convert.ToInt32(sArr[25]);
+
+                                sTemp += iCounter.ToString() + ",C" + iCustom.ToString();
+                                for (int i = 2; i < sArr.Length; i++)
+                                {
+                                    sTemp += "," + sArr[i];
+                                }
+                                iCounter++;
+                                iCustom++;
+                                sTemp += "\n";
                             }
-                            iCounter++;
-                            iCustom++;
-                            sOutput += "\n";
                         }
+                    }
+                    sOutput += sTemp;
+                }
+                catch
+                {
+                    ///DO DUMP HERE
+                    using (StreamReader srDump = new StreamReader(sPAFPath + @"\database\paf_database.csv"))
+                    {
+                        using(StreamWriter swDump = new StreamWriter("CorruptedLines.txt",false))
+                        {
+                            while (srDump.Peek() > 0)
+                            {
+                                string sLine = srDump.ReadLine();
+                                if (!string.IsNullOrEmpty(sLine))
+                                {
+                                    string[] sArr = Regex.Split(sLine, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+                                    if (sArr[1].ToLowerInvariant().Contains("c"))
+                                    {
+                                        for(int i = 0; i < sArr.Length; i++)
+                                        {
+                                            swDump.WriteLine(sArr[i]);
+                                        }
+                                        swDump.WriteLine();
+                                    }
+                                }
+                            }
+                            swDump.Close();
+                        }
+                        srDump.Close();
+                    }
+                    iCustom = 1;
+
+                    if(MessageBox.Show("Unfortunately corrupted data for your custom Pokemon was found. This is either from the V1.2.4 BETA or you manually manipulating the PaF Database CSV file.\n\nBecause of this custom Pokemon will be reset.\n\nA text file with your corrupted data has been created as CorruptedLines.txt, which you could use to recreate your Pokemon.\n\nDo you want to open it now?","Open File?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Process.Start("CorruptedLines.txt");
                     }
                 }
                 sr.Close();
+                if(iCustom == 1)
+                {
+                    for (int i = 0; i < lsCustom.Count; i++)
+                    {
+                        sOutput += lsCustom[i] + "\n";
+                    }
+                }
             }
 
             using (StreamWriter sw = new StreamWriter(sPAFPath + @"\database\paf_database.csv"))
@@ -157,6 +218,14 @@ namespace Pokemon_and_Friends_Upgrader
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             }
 
+            //Create Array:
+            List<string> lsGen9 = new List<string>();
+            for(int i = 906; i <= 1008; i++)
+            {
+                lsGen9.Add(i.ToString() + ".png");
+            }
+
+
             //Copy Pokemon240PNG
             DirectoryInfo diPokemonPNG240Normal = new DirectoryInfo(@"files\hdsprites240\normal");
             foreach (FileInfo f in diPokemonPNG240Normal.GetFiles())
@@ -165,6 +234,13 @@ namespace Pokemon_and_Friends_Upgrader
                 {
                     string fptarget = sPAFPath + @"\hdsprites240\normal\" + f.Name;
                     if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                    else
+                    {
+                        for (int i = 0; i < lsGen9.Count; i++)
+                        {
+                            if (f.FullName.Contains(lsGen9[i])) File.Copy(f.FullName, fptarget, true);
+                        }
+                    }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             }
@@ -176,6 +252,13 @@ namespace Pokemon_and_Friends_Upgrader
                 {
                     string fptarget = sPAFPath + @"\hdsprites240\shiny\" + f.Name;
                     if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                    else
+                    {
+                        for(int i = 0; i < lsGen9.Count; i++)
+                        {
+                            if (f.FullName.Contains(lsGen9[i])) File.Copy(f.FullName, fptarget,true);
+                        }
+                    }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             }
@@ -188,6 +271,13 @@ namespace Pokemon_and_Friends_Upgrader
                 {
                     string fptarget = sPAFPath + @"\hdsprites512\normal\" + f.Name;
                     if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                    else
+                    {
+                        for (int i = 0; i < lsGen9.Count; i++)
+                        {
+                            if (f.FullName.Contains(lsGen9[i])) File.Copy(f.FullName, fptarget, true);
+                        }
+                    }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             }
@@ -199,6 +289,13 @@ namespace Pokemon_and_Friends_Upgrader
                 {
                     string fptarget = sPAFPath + @"\hdsprites512\shiny\" + f.Name;
                     if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                    else
+                    {
+                        for (int i = 0; i < lsGen9.Count; i++)
+                        {
+                            if (f.FullName.Contains(lsGen9[i])) File.Copy(f.FullName, fptarget, true);
+                        }
+                    }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             }
