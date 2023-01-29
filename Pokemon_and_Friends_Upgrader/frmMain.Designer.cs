@@ -169,9 +169,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cbOBSVersion = new System.Windows.Forms.ComboBox();
             this.lblOBSVersion = new System.Windows.Forms.Label();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.pbStreamFX = new System.Windows.Forms.PictureBox();
-            this.lblStreamFX = new System.Windows.Forms.Label();
             this.btnGameSettings = new System.Windows.Forms.Button();
             this.pbOBSWS = new System.Windows.Forms.PictureBox();
             this.pbMoveTransition = new System.Windows.Forms.PictureBox();
@@ -235,7 +232,6 @@
             this.groupBox7.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tbOBS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStreamFX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbOBSWS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMoveTransition)).BeginInit();
             this.tbPokemonSettings.SuspendLayout();
@@ -300,7 +296,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(63, 24);
             this.lblVersion.TabIndex = 76;
-            this.lblVersion.Text = "V1.2.5";
+            this.lblVersion.Text = "V1.2.6";
             // 
             // btnMigrate
             // 
@@ -1760,7 +1756,7 @@
             this.tabControl.Controls.Add(this.tbPokemonSettings);
             this.tabControl.Controls.Add(this.tbChannelPoints);
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl.Location = new System.Drawing.Point(8, 8);
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1204, 505);
@@ -1773,9 +1769,6 @@
             this.tbOBS.Controls.Add(this.label6);
             this.tbOBS.Controls.Add(this.cbOBSVersion);
             this.tbOBS.Controls.Add(this.lblOBSVersion);
-            this.tbOBS.Controls.Add(this.btnRefresh);
-            this.tbOBS.Controls.Add(this.pbStreamFX);
-            this.tbOBS.Controls.Add(this.lblStreamFX);
             this.tbOBS.Controls.Add(this.btnGameSettings);
             this.tbOBS.Controls.Add(this.pbOBSWS);
             this.tbOBS.Controls.Add(this.pbMoveTransition);
@@ -1800,7 +1793,7 @@
             this.cbWebsocket.Items.AddRange(new object[] {
             "4.9.1",
             "5.0+ (integrated in OBS 28)"});
-            this.cbWebsocket.Location = new System.Drawing.Point(349, 87);
+            this.cbWebsocket.Location = new System.Drawing.Point(343, 122);
             this.cbWebsocket.Name = "cbWebsocket";
             this.cbWebsocket.Size = new System.Drawing.Size(822, 45);
             this.cbWebsocket.TabIndex = 18;
@@ -1809,7 +1802,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 90);
+            this.label6.Location = new System.Drawing.Point(27, 125);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(310, 37);
             this.label6.TabIndex = 19;
@@ -1822,7 +1815,7 @@
             this.cbOBSVersion.Items.AddRange(new object[] {
             "OBS Version 27.2.4 or lower",
             "OBS Version 28.0.0 or higher"});
-            this.cbOBSVersion.Location = new System.Drawing.Point(349, 18);
+            this.cbOBSVersion.Location = new System.Drawing.Point(343, 53);
             this.cbOBSVersion.Name = "cbOBSVersion";
             this.cbOBSVersion.Size = new System.Drawing.Size(821, 45);
             this.cbOBSVersion.TabIndex = 0;
@@ -1831,48 +1824,18 @@
             // lblOBSVersion
             // 
             this.lblOBSVersion.AutoSize = true;
-            this.lblOBSVersion.Location = new System.Drawing.Point(33, 21);
+            this.lblOBSVersion.Location = new System.Drawing.Point(27, 56);
             this.lblOBSVersion.Name = "lblOBSVersion";
             this.lblOBSVersion.Size = new System.Drawing.Size(213, 37);
             this.lblOBSVersion.TabIndex = 17;
             this.lblOBSVersion.Text = "OBS Version";
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Enabled = false;
-            this.btnRefresh.Location = new System.Drawing.Point(453, 379);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(365, 64);
-            this.btnRefresh.TabIndex = 7;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // pbStreamFX
-            // 
-            this.pbStreamFX.Image = ((System.Drawing.Image)(resources.GetObject("pbStreamFX.Image")));
-            this.pbStreamFX.Location = new System.Drawing.Point(349, 379);
-            this.pbStreamFX.Name = "pbStreamFX";
-            this.pbStreamFX.Size = new System.Drawing.Size(64, 64);
-            this.pbStreamFX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbStreamFX.TabIndex = 16;
-            this.pbStreamFX.TabStop = false;
-            // 
-            // lblStreamFX
-            // 
-            this.lblStreamFX.AutoSize = true;
-            this.lblStreamFX.Location = new System.Drawing.Point(33, 393);
-            this.lblStreamFX.Name = "lblStreamFX";
-            this.lblStreamFX.Size = new System.Drawing.Size(169, 37);
-            this.lblStreamFX.TabIndex = 15;
-            this.lblStreamFX.Text = "StreamFX";
-            // 
             // btnGameSettings
             // 
             this.btnGameSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.btnGameSettings.Location = new System.Drawing.Point(854, 227);
+            this.btnGameSettings.Location = new System.Drawing.Point(848, 262);
             this.btnGameSettings.Name = "btnGameSettings";
-            this.btnGameSettings.Size = new System.Drawing.Size(316, 216);
+            this.btnGameSettings.Size = new System.Drawing.Size(316, 147);
             this.btnGameSettings.TabIndex = 8;
             this.btnGameSettings.Text = "Game Settings \r\n======>";
             this.btnGameSettings.UseVisualStyleBackColor = true;
@@ -1881,7 +1844,7 @@
             // pbOBSWS
             // 
             this.pbOBSWS.Image = ((System.Drawing.Image)(resources.GetObject("pbOBSWS.Image")));
-            this.pbOBSWS.Location = new System.Drawing.Point(349, 227);
+            this.pbOBSWS.Location = new System.Drawing.Point(343, 262);
             this.pbOBSWS.Name = "pbOBSWS";
             this.pbOBSWS.Size = new System.Drawing.Size(64, 64);
             this.pbOBSWS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1891,7 +1854,7 @@
             // pbMoveTransition
             // 
             this.pbMoveTransition.Image = ((System.Drawing.Image)(resources.GetObject("pbMoveTransition.Image")));
-            this.pbMoveTransition.Location = new System.Drawing.Point(349, 303);
+            this.pbMoveTransition.Location = new System.Drawing.Point(343, 345);
             this.pbMoveTransition.Name = "pbMoveTransition";
             this.pbMoveTransition.Size = new System.Drawing.Size(64, 64);
             this.pbMoveTransition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1901,7 +1864,7 @@
             // lblOBSWS
             // 
             this.lblOBSWS.AutoSize = true;
-            this.lblOBSWS.Location = new System.Drawing.Point(33, 241);
+            this.lblOBSWS.Location = new System.Drawing.Point(27, 276);
             this.lblOBSWS.Name = "lblOBSWS";
             this.lblOBSWS.Size = new System.Drawing.Size(141, 37);
             this.lblOBSWS.TabIndex = 11;
@@ -1910,7 +1873,7 @@
             // lblMoveTransition
             // 
             this.lblMoveTransition.AutoSize = true;
-            this.lblMoveTransition.Location = new System.Drawing.Point(33, 317);
+            this.lblMoveTransition.Location = new System.Drawing.Point(27, 359);
             this.lblMoveTransition.Name = "lblMoveTransition";
             this.lblMoveTransition.Size = new System.Drawing.Size(259, 37);
             this.lblMoveTransition.TabIndex = 10;
@@ -1919,7 +1882,7 @@
             // btnInstallPlugins
             // 
             this.btnInstallPlugins.Enabled = false;
-            this.btnInstallPlugins.Location = new System.Drawing.Point(453, 303);
+            this.btnInstallPlugins.Location = new System.Drawing.Point(447, 345);
             this.btnInstallPlugins.Name = "btnInstallPlugins";
             this.btnInstallPlugins.Size = new System.Drawing.Size(365, 64);
             this.btnInstallPlugins.TabIndex = 6;
@@ -1930,7 +1893,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 161);
+            this.label2.Location = new System.Drawing.Point(27, 196);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(227, 37);
             this.label2.TabIndex = 7;
@@ -1939,7 +1902,7 @@
             // btnSelectOBSPath
             // 
             this.btnSelectOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
-            this.btnSelectOBSPath.Location = new System.Drawing.Point(1095, 156);
+            this.btnSelectOBSPath.Location = new System.Drawing.Point(1089, 191);
             this.btnSelectOBSPath.Name = "btnSelectOBSPath";
             this.btnSelectOBSPath.Size = new System.Drawing.Size(75, 47);
             this.btnSelectOBSPath.TabIndex = 4;
@@ -1951,7 +1914,7 @@
             // 
             this.txtOBSPath.Enabled = false;
             this.txtOBSPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
-            this.txtOBSPath.Location = new System.Drawing.Point(349, 157);
+            this.txtOBSPath.Location = new System.Drawing.Point(343, 192);
             this.txtOBSPath.Name = "txtOBSPath";
             this.txtOBSPath.Size = new System.Drawing.Size(743, 44);
             this.txtOBSPath.TabIndex = 3;
@@ -1959,7 +1922,7 @@
             // 
             // btnDownloadPlugins
             // 
-            this.btnDownloadPlugins.Location = new System.Drawing.Point(453, 227);
+            this.btnDownloadPlugins.Location = new System.Drawing.Point(447, 262);
             this.btnDownloadPlugins.Name = "btnDownloadPlugins";
             this.btnDownloadPlugins.Size = new System.Drawing.Size(365, 64);
             this.btnDownloadPlugins.TabIndex = 5;
@@ -2478,7 +2441,6 @@
             this.tabControl.ResumeLayout(false);
             this.tbOBS.ResumeLayout(false);
             this.tbOBS.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStreamFX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbOBSWS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMoveTransition)).EndInit();
             this.tbPokemonSettings.ResumeLayout(false);
@@ -2667,9 +2629,6 @@
         private System.Windows.Forms.Label lblMoveTransition;
         private System.Windows.Forms.ImageList ilInstalled;
         private System.Windows.Forms.Button btnGameSettings;
-        private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.PictureBox pbStreamFX;
-        private System.Windows.Forms.Label lblStreamFX;
         private System.Windows.Forms.ComboBox cbOBSVersion;
         private System.Windows.Forms.Label lblOBSVersion;
         private System.Windows.Forms.ComboBox cbWebsocket;

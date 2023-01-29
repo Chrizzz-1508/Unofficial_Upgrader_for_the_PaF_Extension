@@ -1383,11 +1383,9 @@ namespace Pokemon_and_Friends_Upgrader
             if (string.IsNullOrEmpty(txtOBSPath.Text))
             {
                 btnInstallPlugins.Enabled = false;
-                btnRefresh.Enabled = false;
                 return;
             }
             btnInstallPlugins.Enabled = true;
-            btnRefresh.Enabled = true;
             //Move Transition
             if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\move-transition.dll") || File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\move-transition.dll"))
             {
@@ -1420,28 +1418,6 @@ namespace Pokemon_and_Friends_Upgrader
             }
             if (bWSExists) pbOBSWS.Image = ilInstalled.Images[0];
             else pbOBSWS.Image = ilInstalled.Images[1];
-            //StreamFX
-            //Normal Path = Checked
-            //Portable Path = Checked
-            //User Path != Checked
-            if (File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\StreamFX.dll") ||
-                File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\StreamFX.dll") ||
-                File.Exists(Environment.GetEnvironmentVariable("LocalAppData") + "\\Programs\\obs-studio\\plugins\\StreamFX\\bin\\64bit\\StreamFX.dll") ||
-                File.Exists(Environment.GetEnvironmentVariable("LocalAppData") + "\\Programs\\obs-studio\\plugins\\StreamFX\\bin\\32bit\\StreamFX.dll") ||
-                File.Exists(Environment.GetEnvironmentVariable("ProgramData") + "\\obs-studio\\plugins\\StreamFX\\bin\\64bit\\StreamFX.dll") ||
-                File.Exists(Environment.GetEnvironmentVariable("ProgramData") + "\\obs-studio\\plugins\\StreamFX\\bin\\32bit\\StreamFX.dll"))
-            {
-                pbStreamFX.Image = ilInstalled.Images[0];
-            }
-            else
-            {
-                pbStreamFX.Image = ilInstalled.Images[1];
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            CheckPlugins();
         }
 
         private void btnDownloadPlugins_Click(object sender, EventArgs e)
@@ -1463,13 +1439,11 @@ namespace Pokemon_and_Friends_Upgrader
                 if (cbWebsocket.SelectedIndex == 0) Process.Start(dl.V27OBSWS491);
                 else Process.Start(dl.V27OBSWS5);
                 Process.Start(dl.V27MoveTransition);
-                Process.Start(dl.V27StreamFX);
             }
             else if (cbOBSVersion.SelectedIndex == 1)
             {
                 if (cbWebsocket.SelectedIndex == 0) Process.Start(dl.V28OBSWS491);
                 Process.Start(dl.V28MoveTransition);
-                Process.Start(dl.V28StreamFX);
             }
         }
 
@@ -1588,45 +1562,9 @@ namespace Pokemon_and_Friends_Upgrader
                 return;
             }
 
-            try
-            {
-                //StreamFX
-                if (!File.Exists(txtOBSPath.Text + @"obs-plugins\64bit\StreamFX.dll") &&
-                    !File.Exists(txtOBSPath.Text + @"obs-plugins\32bit\StreamFX.dll") &&
-                    !File.Exists(Environment.GetEnvironmentVariable("LocalAppData") + "\\Programs\\obs-studio\\plugins\\StreamFX\\bin\\64bit\\StreamFX.dll") &&
-                    !File.Exists(Environment.GetEnvironmentVariable("LocalAppData") + "\\Programs\\obs-studio\\plugins\\StreamFX\\bin\\32bit\\StreamFX.dll") &&
-                    !File.Exists(Environment.GetEnvironmentVariable("ProgramData") + "\\obs-studio\\plugins\\StreamFX\\bin\\64bit\\StreamFX.dll") &&
-                    !File.Exists(Environment.GetEnvironmentVariable("ProgramData") + "\\obs-studio\\plugins\\StreamFX\\bin\\32bit\\StreamFX.dll"))
-                {
-                    OpenFileDialog f = new OpenFileDialog();
-                    f.Title = @"Please select your Stream FX installer";
-                    f.Filter = "Stream FX|streamfx*.exe";
-
-                    if (f.ShowDialog() == DialogResult.OK)
-                    {
-                        Process.Start(f.FileName);
-                    }
-                }
-                else
-                {
-                    if (DialogResult.Yes == MessageBox.Show("It seems there is already an existing installation of the StreamFX Plugin, want to reinstall now?", "Reinstall StreamFX Plugin?", MessageBoxButtons.YesNo))
-                    {
-                        OpenFileDialog f = new OpenFileDialog();
-                        f.Title = @"Please select your Stream FX installer";
-                        f.Filter = "Stream FX|streamfx*.exe";
-
-                        if (f.ShowDialog() == DialogResult.OK)
-                        {
-                            Process.Start(f.FileName);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-
             CheckPlugins();
 
-            MessageBox.Show("Automatic Plugin Installation finished! Please finish the Installation of Stream FX and then press \"Refresh\" to check if it also was installed successfully.");
+            MessageBox.Show("Automatic Plugin Installation finished!");
         }
 
         private void btnSelectOBSPath_Click(object sender, EventArgs e)

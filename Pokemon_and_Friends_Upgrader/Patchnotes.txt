@@ -1,3 +1,8 @@
+Update 30.01.23 - V1.2.6
+========================
+- Removed StreamFX since only patrons have access to that now, it will be no longer required
+- Fixed a bug where Pokeballs would have the catchrate of an ultraball
+
 Update 25.01.23 - V1.2.5
 ========================
 - Changed the !changename command (now also works, even when the user has caught Pokemon under his new name)
