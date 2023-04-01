@@ -185,6 +185,22 @@ namespace Pokemon_and_Friends_Upgrader
                     {
                         sOutput += lsCustom[i] + "\n";
                     }
+                    string sINI = "";
+                    using (StreamReader srINI = new StreamReader(sPAFPath + "\\poke_settings.ini"))
+                    {
+                        while (srINI.Peek() > 0)
+                        {
+                            string s = srINI.ReadLine();
+                            if (s.Contains("custompokemoncount=")) sINI += "custompokemoncount=\"" + lsCustom.Count.ToString() + ".000000\"\n";
+                            else sINI += s + "\n";
+                        }
+                        srINI.Close();
+                    }
+                    using (StreamWriter swINI = new StreamWriter(sPAFPath + "\\poke_settings.ini"))
+                    {
+                        swINI.Write(sINI);
+                        swINI.Close();
+                    }
                 }
             }
 
@@ -322,6 +338,43 @@ namespace Pokemon_and_Friends_Upgrader
             try { File.Copy(sShinyScreenPath, ftSourceTargetPath + @"shiny.png", true); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             try { File.Copy(@"files\loadingsounds\" + txtLoadingSound.Text, ftSourceTargetPath + @"Challenger Approaches.mp3", true); } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
+            //Delete old GIFs
+
+            //Create Array
+            List<string> lsGen9GIF = new List<string>();
+            for (int i = 906; i <= 1008; i++)
+            {
+                lsGen9GIF.Add(i.ToString() + ".gif");
+            }
+
+            //Normal GIFs
+            DirectoryInfo diPokemonGIF240NormalSAMMI = new DirectoryInfo(sPAFPath + @"\hdsprites240\normalgif");
+            foreach (FileInfo f in diPokemonGIF240NormalSAMMI.GetFiles())
+            {
+                try
+                {
+                    if (lsGen9GIF.Contains(f.Name))
+                    {
+                        File.Delete(f.FullName);
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); };
+            }
+
+            //Shiny GIFs
+            DirectoryInfo diPokemonGIF240ShinySAMMI = new DirectoryInfo(sPAFPath + @"\hdsprites240\shinygif");
+            foreach (FileInfo f in diPokemonGIF240ShinySAMMI.GetFiles())
+            {
+                try
+                {
+                    if (lsGen9GIF.Contains(f.Name))
+                    {
+                        File.Delete(f.FullName);
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); };
+            }
+
             //Copy GIF Files
 
             DirectoryInfo diPokemonGIF240Normal = new DirectoryInfo(@"files\hdsprites240\normalgif");
@@ -344,7 +397,7 @@ namespace Pokemon_and_Friends_Upgrader
                     if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
                 }
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); };
-            }
+            }          
         }
 
         private void CreateSAMMIExtension()
@@ -373,6 +426,9 @@ namespace Pokemon_and_Friends_Upgrader
                     break;
                 case 4:
                     VAR_LANGUAGE_VAR = "it";
+                    break;
+                case 5:
+                    VAR_LANGUAGE_VAR = "pt";
                     break;
                 default:
                     break;

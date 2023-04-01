@@ -296,7 +296,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(63, 24);
             this.lblVersion.TabIndex = 76;
-            this.lblVersion.Text = "V1.2.6";
+            this.lblVersion.Text = "V1.2.7";
             // 
             // btnMigrate
             // 
@@ -953,7 +953,8 @@
             "German",
             "French",
             "Spanish",
-            "Italian"});
+            "Italian",
+            "Portuguese"});
             this.cbLanguage.Location = new System.Drawing.Point(149, 60);
             this.cbLanguage.Name = "cbLanguage";
             this.cbLanguage.Size = new System.Drawing.Size(121, 21);
