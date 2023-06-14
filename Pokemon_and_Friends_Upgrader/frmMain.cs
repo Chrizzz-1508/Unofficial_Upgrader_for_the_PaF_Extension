@@ -1618,6 +1618,14 @@ namespace Pokemon_and_Friends_Upgrader
                 return;
             }
 
+            if(File.Exists("Other Useful Things\\pokemon-font.ttf"))
+            {
+                if(DialogResult.Yes == MessageBox.Show("Do you want to install the Pokemon Font?","Install Pokemon Font?",MessageBoxButtons.YesNo))
+                {
+                    Process.Start("Other Useful Things\\pokemon-font.ttf");
+                }
+            }
+
             CheckPlugins();
 
             MessageBox.Show("Automatic Plugin Installation finished!");

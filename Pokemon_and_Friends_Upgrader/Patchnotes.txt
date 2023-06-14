@@ -1,3 +1,19 @@
+13.06.23 Update V1.2.8
+======================
+- Fixed a bug with "!addpokemontoall" where SAMMI would crash
+- Fixed a bug with "!pet" where SAMMI would crash
+- Fixed a bug with "!poke-filter" showing Gen 9 Pokemon when only Gen 8 was enabled
+- Fixed a bug with "!mypokemon" where SAMMI would crash
+- Fixed a bug with "!pokedex" where invalid names would result in an undefined message
+- Added support for the Elgato Stream Deck to catch Pokemon
+- Added a new command: "!poke-filter reset" which resets the Pokemon Filter
+- Added a new extension trigger for poke-filter to make it easily accisable from other functions
+- Added the extension version to the SAMMI bridge
+- Added more infos to "!pokedex" like ATK, DEF, HP, SPD, Type, Rarity
+- Fixed Legendary Status for some Gen 9 Pokemon (Wo-Chien, Chien-Pao, Ting-Lu and Chi-Yu)
+- Moved Mega Pokemon and Regional Pokemon to their correct spawn pools (for example Mega Rayquazza won't spawn anymore when only Gen 1 is enabled)
+- Added the Pokemon Font installation to the installation progress
+
 01.04.23 Update V1.2.7
 ======================
 - Added portuguese translations (translated by RizakH)
