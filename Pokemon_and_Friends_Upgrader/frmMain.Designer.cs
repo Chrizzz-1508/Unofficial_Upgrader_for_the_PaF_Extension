@@ -77,6 +77,8 @@
             this.tbGameSettings = new System.Windows.Forms.TabPage();
             this.btnPokemonSettings = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblUseSubscriberBonus = new System.Windows.Forms.Label();
+            this.cbUseSubscriberBonus = new System.Windows.Forms.ComboBox();
             this.cbBackground = new System.Windows.Forms.ComboBox();
             this.lblBackground = new System.Windows.Forms.Label();
             this.cbAnimatedTrainers = new System.Windows.Forms.ComboBox();
@@ -95,6 +97,8 @@
             this.lblLanguage = new System.Windows.Forms.Label();
             this.cbLanguage = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.lblSubscriberMessage = new System.Windows.Forms.Label();
+            this.cbSubscriberMessage = new System.Windows.Forms.ComboBox();
             this.cbAnnounce = new System.Windows.Forms.ComboBox();
             this.lblAnnounce = new System.Windows.Forms.Label();
             this.cbUseRunMessage = new System.Windows.Forms.ComboBox();
@@ -142,6 +146,8 @@
             this.pbPlay = new System.Windows.Forms.PictureBox();
             this.btnLoadingMusic = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lblUserCooldown = new System.Windows.Forms.Label();
+            this.txtUserCooldown = new System.Windows.Forms.TextBox();
             this.lblQueueTime = new System.Windows.Forms.Label();
             this.txtQueueTime = new System.Windows.Forms.TextBox();
             this.lblCatchIncMax = new System.Windows.Forms.Label();
@@ -240,9 +246,9 @@
             // btnInstall
             // 
             this.btnInstall.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnInstall.Location = new System.Drawing.Point(1020, 522);
+            this.btnInstall.Location = new System.Drawing.Point(1020, 554);
             this.btnInstall.Name = "btnInstall";
-            this.btnInstall.Size = new System.Drawing.Size(190, 74);
+            this.btnInstall.Size = new System.Drawing.Size(180, 74);
             this.btnInstall.TabIndex = 13;
             this.btnInstall.Text = "Install";
             this.btnInstall.UseVisualStyleBackColor = true;
@@ -251,7 +257,7 @@
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnHelp.Location = new System.Drawing.Point(934, 522);
+            this.btnHelp.Location = new System.Drawing.Point(934, 554);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 74);
             this.btnHelp.TabIndex = 12;
@@ -270,7 +276,7 @@
             // btnSupport
             // 
             this.btnSupport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupport.Location = new System.Drawing.Point(844, 522);
+            this.btnSupport.Location = new System.Drawing.Point(844, 554);
             this.btnSupport.Name = "btnSupport";
             this.btnSupport.Size = new System.Drawing.Size(84, 74);
             this.btnSupport.TabIndex = 11;
@@ -282,7 +288,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(2, 558);
+            this.label1.Location = new System.Drawing.Point(2, 590);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 24);
             this.label1.TabIndex = 57;
@@ -292,16 +298,16 @@
             // 
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lblVersion.Location = new System.Drawing.Point(39, 534);
+            this.lblVersion.Location = new System.Drawing.Point(39, 566);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(63, 24);
             this.lblVersion.TabIndex = 76;
-            this.lblVersion.Text = "V1.2.8";
+            this.lblVersion.Text = "V1.3.0";
             // 
             // btnMigrate
             // 
             this.btnMigrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMigrate.Location = new System.Drawing.Point(542, 522);
+            this.btnMigrate.Location = new System.Drawing.Point(542, 554);
             this.btnMigrate.Name = "btnMigrate";
             this.btnMigrate.Size = new System.Drawing.Size(68, 72);
             this.btnMigrate.TabIndex = 10;
@@ -315,7 +321,7 @@
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
             this.pbLoading.Location = new System.Drawing.Point(0, 0);
             this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(1216, 609);
+            this.pbLoading.Size = new System.Drawing.Size(1216, 645);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 105;
             this.pbLoading.TabStop = false;
@@ -374,7 +380,7 @@
             this.tbChannelPoints.Location = new System.Drawing.Point(4, 46);
             this.tbChannelPoints.Name = "tbChannelPoints";
             this.tbChannelPoints.Padding = new System.Windows.Forms.Padding(3);
-            this.tbChannelPoints.Size = new System.Drawing.Size(1196, 455);
+            this.tbChannelPoints.Size = new System.Drawing.Size(1196, 497);
             this.tbChannelPoints.TabIndex = 1;
             this.tbChannelPoints.Text = "Channel Point Settings";
             // 
@@ -411,7 +417,7 @@
             // txtPriceGift
             // 
             this.txtPriceGift.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriceGift.Location = new System.Drawing.Point(714, 390);
+            this.txtPriceGift.Location = new System.Drawing.Point(714, 447);
             this.txtPriceGift.Name = "txtPriceGift";
             this.txtPriceGift.Size = new System.Drawing.Size(139, 38);
             this.txtPriceGift.TabIndex = 102;
@@ -419,7 +425,7 @@
             // txtPriceSummon
             // 
             this.txtPriceSummon.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriceSummon.Location = new System.Drawing.Point(714, 343);
+            this.txtPriceSummon.Location = new System.Drawing.Point(714, 392);
             this.txtPriceSummon.Name = "txtPriceSummon";
             this.txtPriceSummon.Size = new System.Drawing.Size(139, 38);
             this.txtPriceSummon.TabIndex = 99;
@@ -427,7 +433,7 @@
             // txtPriceMysteryShiny
             // 
             this.txtPriceMysteryShiny.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriceMysteryShiny.Location = new System.Drawing.Point(714, 296);
+            this.txtPriceMysteryShiny.Location = new System.Drawing.Point(714, 337);
             this.txtPriceMysteryShiny.Name = "txtPriceMysteryShiny";
             this.txtPriceMysteryShiny.Size = new System.Drawing.Size(139, 38);
             this.txtPriceMysteryShiny.TabIndex = 96;
@@ -435,7 +441,7 @@
             // txtPriceMysteryPokemon
             // 
             this.txtPriceMysteryPokemon.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriceMysteryPokemon.Location = new System.Drawing.Point(714, 249);
+            this.txtPriceMysteryPokemon.Location = new System.Drawing.Point(714, 282);
             this.txtPriceMysteryPokemon.Name = "txtPriceMysteryPokemon";
             this.txtPriceMysteryPokemon.Size = new System.Drawing.Size(139, 38);
             this.txtPriceMysteryPokemon.TabIndex = 93;
@@ -443,7 +449,7 @@
             // txtPriceMasterball
             // 
             this.txtPriceMasterball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriceMasterball.Location = new System.Drawing.Point(714, 202);
+            this.txtPriceMasterball.Location = new System.Drawing.Point(714, 227);
             this.txtPriceMasterball.Name = "txtPriceMasterball";
             this.txtPriceMasterball.Size = new System.Drawing.Size(139, 38);
             this.txtPriceMasterball.TabIndex = 90;
@@ -451,7 +457,7 @@
             // txtPriceUltraball
             // 
             this.txtPriceUltraball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriceUltraball.Location = new System.Drawing.Point(714, 155);
+            this.txtPriceUltraball.Location = new System.Drawing.Point(714, 172);
             this.txtPriceUltraball.Name = "txtPriceUltraball";
             this.txtPriceUltraball.Size = new System.Drawing.Size(139, 38);
             this.txtPriceUltraball.TabIndex = 87;
@@ -459,7 +465,7 @@
             // txtPriceGreatball
             // 
             this.txtPriceGreatball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriceGreatball.Location = new System.Drawing.Point(714, 108);
+            this.txtPriceGreatball.Location = new System.Drawing.Point(714, 117);
             this.txtPriceGreatball.Name = "txtPriceGreatball";
             this.txtPriceGreatball.Size = new System.Drawing.Size(139, 38);
             this.txtPriceGreatball.TabIndex = 84;
@@ -467,7 +473,7 @@
             // txtPricePokeball
             // 
             this.txtPricePokeball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPricePokeball.Location = new System.Drawing.Point(714, 61);
+            this.txtPricePokeball.Location = new System.Drawing.Point(714, 62);
             this.txtPricePokeball.Name = "txtPricePokeball";
             this.txtPricePokeball.Size = new System.Drawing.Size(139, 38);
             this.txtPricePokeball.TabIndex = 82;
@@ -475,7 +481,7 @@
             // txtGift
             // 
             this.txtGift.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGift.Location = new System.Drawing.Point(290, 390);
+            this.txtGift.Location = new System.Drawing.Point(290, 447);
             this.txtGift.Name = "txtGift";
             this.txtGift.Size = new System.Drawing.Size(418, 38);
             this.txtGift.TabIndex = 101;
@@ -484,7 +490,7 @@
             // txtSummon
             // 
             this.txtSummon.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSummon.Location = new System.Drawing.Point(290, 343);
+            this.txtSummon.Location = new System.Drawing.Point(290, 392);
             this.txtSummon.Name = "txtSummon";
             this.txtSummon.Size = new System.Drawing.Size(418, 38);
             this.txtSummon.TabIndex = 98;
@@ -493,7 +499,7 @@
             // txtMysteryShiny
             // 
             this.txtMysteryShiny.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMysteryShiny.Location = new System.Drawing.Point(290, 296);
+            this.txtMysteryShiny.Location = new System.Drawing.Point(290, 337);
             this.txtMysteryShiny.Name = "txtMysteryShiny";
             this.txtMysteryShiny.Size = new System.Drawing.Size(418, 38);
             this.txtMysteryShiny.TabIndex = 95;
@@ -502,7 +508,7 @@
             // txtMysteryPokemon
             // 
             this.txtMysteryPokemon.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMysteryPokemon.Location = new System.Drawing.Point(290, 249);
+            this.txtMysteryPokemon.Location = new System.Drawing.Point(290, 282);
             this.txtMysteryPokemon.Name = "txtMysteryPokemon";
             this.txtMysteryPokemon.Size = new System.Drawing.Size(418, 38);
             this.txtMysteryPokemon.TabIndex = 92;
@@ -511,7 +517,7 @@
             // txtMasterball
             // 
             this.txtMasterball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMasterball.Location = new System.Drawing.Point(290, 202);
+            this.txtMasterball.Location = new System.Drawing.Point(290, 227);
             this.txtMasterball.Name = "txtMasterball";
             this.txtMasterball.Size = new System.Drawing.Size(418, 38);
             this.txtMasterball.TabIndex = 89;
@@ -520,7 +526,7 @@
             // txtUltraball
             // 
             this.txtUltraball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUltraball.Location = new System.Drawing.Point(290, 155);
+            this.txtUltraball.Location = new System.Drawing.Point(290, 172);
             this.txtUltraball.Name = "txtUltraball";
             this.txtUltraball.Size = new System.Drawing.Size(418, 38);
             this.txtUltraball.TabIndex = 86;
@@ -529,7 +535,7 @@
             // txtGreatball
             // 
             this.txtGreatball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGreatball.Location = new System.Drawing.Point(290, 108);
+            this.txtGreatball.Location = new System.Drawing.Point(290, 117);
             this.txtGreatball.Name = "txtGreatball";
             this.txtGreatball.Size = new System.Drawing.Size(418, 38);
             this.txtGreatball.TabIndex = 83;
@@ -538,7 +544,7 @@
             // txtPokeball
             // 
             this.txtPokeball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPokeball.Location = new System.Drawing.Point(290, 61);
+            this.txtPokeball.Location = new System.Drawing.Point(290, 62);
             this.txtPokeball.Name = "txtPokeball";
             this.txtPokeball.Size = new System.Drawing.Size(418, 38);
             this.txtPokeball.TabIndex = 81;
@@ -552,7 +558,7 @@
             this.cbGift.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbGift.Location = new System.Drawing.Point(872, 389);
+            this.cbGift.Location = new System.Drawing.Point(872, 446);
             this.cbGift.Name = "cbGift";
             this.cbGift.Size = new System.Drawing.Size(288, 39);
             this.cbGift.TabIndex = 103;
@@ -565,7 +571,7 @@
             this.cbSummon.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbSummon.Location = new System.Drawing.Point(872, 342);
+            this.cbSummon.Location = new System.Drawing.Point(872, 392);
             this.cbSummon.Name = "cbSummon";
             this.cbSummon.Size = new System.Drawing.Size(288, 39);
             this.cbSummon.TabIndex = 100;
@@ -578,7 +584,7 @@
             this.cbMysteryShiny.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbMysteryShiny.Location = new System.Drawing.Point(872, 295);
+            this.cbMysteryShiny.Location = new System.Drawing.Point(872, 336);
             this.cbMysteryShiny.Name = "cbMysteryShiny";
             this.cbMysteryShiny.Size = new System.Drawing.Size(288, 39);
             this.cbMysteryShiny.TabIndex = 97;
@@ -591,7 +597,7 @@
             this.cbMysteryPokemon.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbMysteryPokemon.Location = new System.Drawing.Point(872, 248);
+            this.cbMysteryPokemon.Location = new System.Drawing.Point(872, 281);
             this.cbMysteryPokemon.Name = "cbMysteryPokemon";
             this.cbMysteryPokemon.Size = new System.Drawing.Size(288, 39);
             this.cbMysteryPokemon.TabIndex = 94;
@@ -604,7 +610,7 @@
             this.cbMasterball.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbMasterball.Location = new System.Drawing.Point(872, 201);
+            this.cbMasterball.Location = new System.Drawing.Point(872, 227);
             this.cbMasterball.Name = "cbMasterball";
             this.cbMasterball.Size = new System.Drawing.Size(288, 39);
             this.cbMasterball.TabIndex = 91;
@@ -617,7 +623,7 @@
             this.cbUltraball.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbUltraball.Location = new System.Drawing.Point(872, 154);
+            this.cbUltraball.Location = new System.Drawing.Point(872, 171);
             this.cbUltraball.Name = "cbUltraball";
             this.cbUltraball.Size = new System.Drawing.Size(288, 39);
             this.cbUltraball.TabIndex = 88;
@@ -630,7 +636,7 @@
             this.cbGreatball.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbGreatball.Location = new System.Drawing.Point(872, 107);
+            this.cbGreatball.Location = new System.Drawing.Point(872, 116);
             this.cbGreatball.Name = "cbGreatball";
             this.cbGreatball.Size = new System.Drawing.Size(288, 39);
             this.cbGreatball.TabIndex = 85;
@@ -639,7 +645,7 @@
             // 
             this.lblGift.AutoSize = true;
             this.lblGift.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGift.Location = new System.Drawing.Point(18, 393);
+            this.lblGift.Location = new System.Drawing.Point(18, 449);
             this.lblGift.Name = "lblGift";
             this.lblGift.Size = new System.Drawing.Size(153, 31);
             this.lblGift.TabIndex = 7;
@@ -649,7 +655,7 @@
             // 
             this.lblMysteryShiny.AutoSize = true;
             this.lblMysteryShiny.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMysteryShiny.Location = new System.Drawing.Point(18, 299);
+            this.lblMysteryShiny.Location = new System.Drawing.Point(18, 339);
             this.lblMysteryShiny.Name = "lblMysteryShiny";
             this.lblMysteryShiny.Size = new System.Drawing.Size(198, 31);
             this.lblMysteryShiny.TabIndex = 6;
@@ -659,7 +665,7 @@
             // 
             this.lblMasterball.AutoSize = true;
             this.lblMasterball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMasterball.Location = new System.Drawing.Point(18, 205);
+            this.lblMasterball.Location = new System.Drawing.Point(18, 229);
             this.lblMasterball.Name = "lblMasterball";
             this.lblMasterball.Size = new System.Drawing.Size(149, 31);
             this.lblMasterball.TabIndex = 5;
@@ -669,7 +675,7 @@
             // 
             this.lblSummon.AutoSize = true;
             this.lblSummon.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSummon.Location = new System.Drawing.Point(18, 346);
+            this.lblSummon.Location = new System.Drawing.Point(18, 394);
             this.lblSummon.Name = "lblSummon";
             this.lblSummon.Size = new System.Drawing.Size(256, 31);
             this.lblSummon.TabIndex = 4;
@@ -679,7 +685,7 @@
             // 
             this.lblGreatball.AutoSize = true;
             this.lblGreatball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGreatball.Location = new System.Drawing.Point(18, 111);
+            this.lblGreatball.Location = new System.Drawing.Point(18, 119);
             this.lblGreatball.Name = "lblGreatball";
             this.lblGreatball.Size = new System.Drawing.Size(133, 31);
             this.lblGreatball.TabIndex = 3;
@@ -689,7 +695,7 @@
             // 
             this.lblMysteryPokemon.AutoSize = true;
             this.lblMysteryPokemon.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMysteryPokemon.Location = new System.Drawing.Point(18, 252);
+            this.lblMysteryPokemon.Location = new System.Drawing.Point(18, 284);
             this.lblMysteryPokemon.Name = "lblMysteryPokemon";
             this.lblMysteryPokemon.Size = new System.Drawing.Size(246, 31);
             this.lblMysteryPokemon.TabIndex = 2;
@@ -699,7 +705,7 @@
             // 
             this.lblUltraball.AutoSize = true;
             this.lblUltraball.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUltraball.Location = new System.Drawing.Point(18, 158);
+            this.lblUltraball.Location = new System.Drawing.Point(18, 174);
             this.lblUltraball.Name = "lblUltraball";
             this.lblUltraball.Size = new System.Drawing.Size(123, 31);
             this.lblUltraball.TabIndex = 1;
@@ -730,14 +736,14 @@
             this.tbGameSettings.Location = new System.Drawing.Point(4, 46);
             this.tbGameSettings.Name = "tbGameSettings";
             this.tbGameSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tbGameSettings.Size = new System.Drawing.Size(1196, 455);
+            this.tbGameSettings.Size = new System.Drawing.Size(1196, 497);
             this.tbGameSettings.TabIndex = 0;
             this.tbGameSettings.Text = "Game Settings";
             // 
             // btnPokemonSettings
             // 
             this.btnPokemonSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.btnPokemonSettings.Location = new System.Drawing.Point(923, 328);
+            this.btnPokemonSettings.Location = new System.Drawing.Point(923, 365);
             this.btnPokemonSettings.Name = "btnPokemonSettings";
             this.btnPokemonSettings.Size = new System.Drawing.Size(253, 116);
             this.btnPokemonSettings.TabIndex = 9;
@@ -747,6 +753,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lblUseSubscriberBonus);
+            this.groupBox3.Controls.Add(this.cbUseSubscriberBonus);
             this.groupBox3.Controls.Add(this.cbBackground);
             this.groupBox3.Controls.Add(this.lblBackground);
             this.groupBox3.Controls.Add(this.cbAnimatedTrainers);
@@ -767,10 +775,34 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(13, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(285, 271);
+            this.groupBox3.Size = new System.Drawing.Size(285, 317);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "General Settings";
+            // 
+            // lblUseSubscriberBonus
+            // 
+            this.lblUseSubscriberBonus.AutoSize = true;
+            this.lblUseSubscriberBonus.BackColor = System.Drawing.Color.Transparent;
+            this.lblUseSubscriberBonus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblUseSubscriberBonus.Location = new System.Drawing.Point(8, 275);
+            this.lblUseSubscriberBonus.Name = "lblUseSubscriberBonus";
+            this.lblUseSubscriberBonus.Size = new System.Drawing.Size(112, 13);
+            this.lblUseSubscriberBonus.TabIndex = 94;
+            this.lblUseSubscriberBonus.Text = "Use Subscriber Bonus";
+            // 
+            // cbUseSubscriberBonus
+            // 
+            this.cbUseSubscriberBonus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUseSubscriberBonus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cbUseSubscriberBonus.FormattingEnabled = true;
+            this.cbUseSubscriberBonus.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.cbUseSubscriberBonus.Location = new System.Drawing.Point(154, 272);
+            this.cbUseSubscriberBonus.Name = "cbUseSubscriberBonus";
+            this.cbUseSubscriberBonus.Size = new System.Drawing.Size(121, 21);
+            this.cbUseSubscriberBonus.TabIndex = 93;
             // 
             // cbBackground
             // 
@@ -780,7 +812,7 @@
             this.cbBackground.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbBackground.Location = new System.Drawing.Point(149, 239);
+            this.cbBackground.Location = new System.Drawing.Point(154, 239);
             this.cbBackground.Name = "cbBackground";
             this.cbBackground.Size = new System.Drawing.Size(121, 21);
             this.cbBackground.TabIndex = 91;
@@ -790,7 +822,7 @@
             this.lblBackground.AutoSize = true;
             this.lblBackground.BackColor = System.Drawing.Color.Transparent;
             this.lblBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblBackground.Location = new System.Drawing.Point(7, 242);
+            this.lblBackground.Location = new System.Drawing.Point(8, 242);
             this.lblBackground.Name = "lblBackground";
             this.lblBackground.Size = new System.Drawing.Size(113, 13);
             this.lblBackground.TabIndex = 92;
@@ -804,7 +836,7 @@
             this.cbAnimatedTrainers.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbAnimatedTrainers.Location = new System.Drawing.Point(149, 208);
+            this.cbAnimatedTrainers.Location = new System.Drawing.Point(154, 208);
             this.cbAnimatedTrainers.Name = "cbAnimatedTrainers";
             this.cbAnimatedTrainers.Size = new System.Drawing.Size(121, 21);
             this.cbAnimatedTrainers.TabIndex = 89;
@@ -814,7 +846,7 @@
             this.lblAnimatedTrainers.AutoSize = true;
             this.lblAnimatedTrainers.BackColor = System.Drawing.Color.Transparent;
             this.lblAnimatedTrainers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblAnimatedTrainers.Location = new System.Drawing.Point(7, 211);
+            this.lblAnimatedTrainers.Location = new System.Drawing.Point(8, 211);
             this.lblAnimatedTrainers.Name = "lblAnimatedTrainers";
             this.lblAnimatedTrainers.Size = new System.Drawing.Size(113, 13);
             this.lblAnimatedTrainers.TabIndex = 90;
@@ -825,16 +857,16 @@
             this.lblBroadcaster.AutoSize = true;
             this.lblBroadcaster.BackColor = System.Drawing.Color.Transparent;
             this.lblBroadcaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblBroadcaster.Location = new System.Drawing.Point(7, 121);
+            this.lblBroadcaster.Location = new System.Drawing.Point(8, 121);
             this.lblBroadcaster.Name = "lblBroadcaster";
-            this.lblBroadcaster.Size = new System.Drawing.Size(95, 13);
+            this.lblBroadcaster.Size = new System.Drawing.Size(77, 13);
             this.lblBroadcaster.TabIndex = 88;
-            this.lblBroadcaster.Text = "Broadcaster Name";
+            this.lblBroadcaster.Text = "Channel Name";
             // 
             // txtBroadcaster
             // 
             this.txtBroadcaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtBroadcaster.Location = new System.Drawing.Point(149, 118);
+            this.txtBroadcaster.Location = new System.Drawing.Point(154, 118);
             this.txtBroadcaster.MaxLength = 25;
             this.txtBroadcaster.Name = "txtBroadcaster";
             this.txtBroadcaster.Size = new System.Drawing.Size(121, 20);
@@ -846,9 +878,10 @@
             this.cbAffiliate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cbAffiliate.FormattingEnabled = true;
             this.cbAffiliate.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.cbAffiliate.Location = new System.Drawing.Point(149, 89);
+            "Twitch (Channel Points)",
+            "Twitch (Messages)",
+            "YouTube (Messages)"});
+            this.cbAffiliate.Location = new System.Drawing.Point(154, 89);
             this.cbAffiliate.Name = "cbAffiliate";
             this.cbAffiliate.Size = new System.Drawing.Size(121, 21);
             this.cbAffiliate.TabIndex = 4;
@@ -858,16 +891,16 @@
             // 
             this.lblAffiliate.AutoSize = true;
             this.lblAffiliate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblAffiliate.Location = new System.Drawing.Point(7, 92);
+            this.lblAffiliate.Location = new System.Drawing.Point(8, 92);
             this.lblAffiliate.Name = "lblAffiliate";
-            this.lblAffiliate.Size = new System.Drawing.Size(94, 13);
+            this.lblAffiliate.Size = new System.Drawing.Size(70, 13);
             this.lblAffiliate.TabIndex = 84;
-            this.lblAffiliate.Text = "Non Affiliate Mode";
+            this.lblAffiliate.Text = "Trigger Mode";
             // 
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnSearch.Location = new System.Drawing.Point(237, 34);
+            this.btnSearch.Location = new System.Drawing.Point(243, 34);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(33, 23);
             this.btnSearch.TabIndex = 2;
@@ -879,7 +912,7 @@
             // 
             this.txtSAMMI.Enabled = false;
             this.txtSAMMI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtSAMMI.Location = new System.Drawing.Point(149, 35);
+            this.txtSAMMI.Location = new System.Drawing.Point(154, 35);
             this.txtSAMMI.Name = "txtSAMMI";
             this.txtSAMMI.Size = new System.Drawing.Size(82, 20);
             this.txtSAMMI.TabIndex = 1;
@@ -889,7 +922,7 @@
             // 
             this.lblSAMMI.AutoSize = true;
             this.lblSAMMI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblSAMMI.Location = new System.Drawing.Point(7, 34);
+            this.lblSAMMI.Location = new System.Drawing.Point(8, 34);
             this.lblSAMMI.Name = "lblSAMMI";
             this.lblSAMMI.Size = new System.Drawing.Size(86, 13);
             this.lblSAMMI.TabIndex = 6;
@@ -899,7 +932,7 @@
             // 
             this.lblAudioTreshhold.AutoSize = true;
             this.lblAudioTreshhold.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblAudioTreshhold.Location = new System.Drawing.Point(7, 150);
+            this.lblAudioTreshhold.Location = new System.Drawing.Point(8, 150);
             this.lblAudioTreshhold.Name = "lblAudioTreshhold";
             this.lblAudioTreshhold.Size = new System.Drawing.Size(90, 13);
             this.lblAudioTreshhold.TabIndex = 81;
@@ -908,7 +941,7 @@
             // txtAudioTreshhold
             // 
             this.txtAudioTreshhold.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtAudioTreshhold.Location = new System.Drawing.Point(149, 147);
+            this.txtAudioTreshhold.Location = new System.Drawing.Point(154, 147);
             this.txtAudioTreshhold.Name = "txtAudioTreshhold";
             this.txtAudioTreshhold.Size = new System.Drawing.Size(121, 20);
             this.txtAudioTreshhold.TabIndex = 7;
@@ -927,7 +960,7 @@
             // txtOBSWSPW
             // 
             this.txtOBSWSPW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtOBSWSPW.Location = new System.Drawing.Point(149, 177);
+            this.txtOBSWSPW.Location = new System.Drawing.Point(154, 177);
             this.txtOBSWSPW.Name = "txtOBSWSPW";
             this.txtOBSWSPW.Size = new System.Drawing.Size(121, 20);
             this.txtOBSWSPW.TabIndex = 9;
@@ -937,7 +970,7 @@
             // 
             this.lblLanguage.AutoSize = true;
             this.lblLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblLanguage.Location = new System.Drawing.Point(7, 63);
+            this.lblLanguage.Location = new System.Drawing.Point(8, 63);
             this.lblLanguage.Name = "lblLanguage";
             this.lblLanguage.Size = new System.Drawing.Size(55, 13);
             this.lblLanguage.TabIndex = 22;
@@ -955,13 +988,15 @@
             "Spanish",
             "Italian",
             "Portuguese"});
-            this.cbLanguage.Location = new System.Drawing.Point(149, 60);
+            this.cbLanguage.Location = new System.Drawing.Point(154, 60);
             this.cbLanguage.Name = "cbLanguage";
             this.cbLanguage.Size = new System.Drawing.Size(121, 21);
             this.cbLanguage.TabIndex = 3;
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.lblSubscriberMessage);
+            this.groupBox10.Controls.Add(this.cbSubscriberMessage);
             this.groupBox10.Controls.Add(this.cbAnnounce);
             this.groupBox10.Controls.Add(this.lblAnnounce);
             this.groupBox10.Controls.Add(this.cbUseRunMessage);
@@ -973,10 +1008,34 @@
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.Location = new System.Drawing.Point(625, 302);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(291, 146);
+            this.groupBox10.Size = new System.Drawing.Size(291, 179);
             this.groupBox10.TabIndex = 7;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Messages";
+            // 
+            // lblSubscriberMessage
+            // 
+            this.lblSubscriberMessage.AutoSize = true;
+            this.lblSubscriberMessage.BackColor = System.Drawing.Color.Transparent;
+            this.lblSubscriberMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblSubscriberMessage.Location = new System.Drawing.Point(11, 152);
+            this.lblSubscriberMessage.Name = "lblSubscriberMessage";
+            this.lblSubscriberMessage.Size = new System.Drawing.Size(103, 13);
+            this.lblSubscriberMessage.TabIndex = 88;
+            this.lblSubscriberMessage.Text = "Subscriber Message";
+            // 
+            // cbSubscriberMessage
+            // 
+            this.cbSubscriberMessage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubscriberMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cbSubscriberMessage.FormattingEnabled = true;
+            this.cbSubscriberMessage.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.cbSubscriberMessage.Location = new System.Drawing.Point(153, 149);
+            this.cbSubscriberMessage.Name = "cbSubscriberMessage";
+            this.cbSubscriberMessage.Size = new System.Drawing.Size(121, 21);
+            this.cbSubscriberMessage.TabIndex = 87;
             // 
             // cbAnnounce
             // 
@@ -986,7 +1045,7 @@
             this.cbAnnounce.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbAnnounce.Location = new System.Drawing.Point(153, 111);
+            this.cbAnnounce.Location = new System.Drawing.Point(153, 120);
             this.cbAnnounce.Name = "cbAnnounce";
             this.cbAnnounce.Size = new System.Drawing.Size(121, 21);
             this.cbAnnounce.TabIndex = 85;
@@ -996,7 +1055,7 @@
             this.lblAnnounce.AutoSize = true;
             this.lblAnnounce.BackColor = System.Drawing.Color.Transparent;
             this.lblAnnounce.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblAnnounce.Location = new System.Drawing.Point(12, 115);
+            this.lblAnnounce.Location = new System.Drawing.Point(11, 123);
             this.lblAnnounce.Name = "lblAnnounce";
             this.lblAnnounce.Size = new System.Drawing.Size(135, 13);
             this.lblAnnounce.TabIndex = 86;
@@ -1010,7 +1069,7 @@
             this.cbUseRunMessage.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbUseRunMessage.Location = new System.Drawing.Point(153, 84);
+            this.cbUseRunMessage.Location = new System.Drawing.Point(153, 91);
             this.cbUseRunMessage.Name = "cbUseRunMessage";
             this.cbUseRunMessage.Size = new System.Drawing.Size(121, 21);
             this.cbUseRunMessage.TabIndex = 63;
@@ -1024,7 +1083,7 @@
             this.cbUseBreakout.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbUseBreakout.Location = new System.Drawing.Point(153, 28);
+            this.cbUseBreakout.Location = new System.Drawing.Point(153, 33);
             this.cbUseBreakout.Name = "cbUseBreakout";
             this.cbUseBreakout.Size = new System.Drawing.Size(121, 21);
             this.cbUseBreakout.TabIndex = 61;
@@ -1033,7 +1092,7 @@
             // 
             this.lblUseRunMessage.AutoSize = true;
             this.lblUseRunMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblUseRunMessage.Location = new System.Drawing.Point(11, 87);
+            this.lblUseRunMessage.Location = new System.Drawing.Point(11, 94);
             this.lblUseRunMessage.Name = "lblUseRunMessage";
             this.lblUseRunMessage.Size = new System.Drawing.Size(73, 13);
             this.lblUseRunMessage.TabIndex = 75;
@@ -1043,7 +1102,7 @@
             // 
             this.lblUseBreakout.AutoSize = true;
             this.lblUseBreakout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblUseBreakout.Location = new System.Drawing.Point(11, 31);
+            this.lblUseBreakout.Location = new System.Drawing.Point(11, 36);
             this.lblUseBreakout.Name = "lblUseBreakout";
             this.lblUseBreakout.Size = new System.Drawing.Size(96, 13);
             this.lblUseBreakout.TabIndex = 35;
@@ -1053,7 +1112,7 @@
             // 
             this.lblRefundMessage.AutoSize = true;
             this.lblRefundMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblRefundMessage.Location = new System.Drawing.Point(11, 61);
+            this.lblRefundMessage.Location = new System.Drawing.Point(11, 65);
             this.lblRefundMessage.Name = "lblRefundMessage";
             this.lblRefundMessage.Size = new System.Drawing.Size(88, 13);
             this.lblRefundMessage.TabIndex = 84;
@@ -1067,7 +1126,7 @@
             this.cbRefundMessage.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbRefundMessage.Location = new System.Drawing.Point(153, 55);
+            this.cbRefundMessage.Location = new System.Drawing.Point(153, 62);
             this.cbRefundMessage.Name = "cbRefundMessage";
             this.cbRefundMessage.Size = new System.Drawing.Size(121, 21);
             this.cbRefundMessage.TabIndex = 62;
@@ -1091,7 +1150,7 @@
             // txtRunTimer
             // 
             this.txtRunTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtRunTimer.Location = new System.Drawing.Point(156, 85);
+            this.txtRunTimer.Location = new System.Drawing.Point(153, 85);
             this.txtRunTimer.MaxLength = 5;
             this.txtRunTimer.Name = "txtRunTimer";
             this.txtRunTimer.Size = new System.Drawing.Size(121, 20);
@@ -1102,7 +1161,7 @@
             // 
             this.lblRunTimer.AutoSize = true;
             this.lblRunTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblRunTimer.Location = new System.Drawing.Point(15, 88);
+            this.lblRunTimer.Location = new System.Drawing.Point(11, 88);
             this.lblRunTimer.Name = "lblRunTimer";
             this.lblRunTimer.Size = new System.Drawing.Size(70, 13);
             this.lblRunTimer.TabIndex = 0;
@@ -1111,7 +1170,7 @@
             // txtRunMax
             // 
             this.txtRunMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtRunMax.Location = new System.Drawing.Point(156, 55);
+            this.txtRunMax.Location = new System.Drawing.Point(153, 55);
             this.txtRunMax.MaxLength = 3;
             this.txtRunMax.Name = "txtRunMax";
             this.txtRunMax.Size = new System.Drawing.Size(121, 20);
@@ -1122,7 +1181,7 @@
             // 
             this.lblRunMax.AutoSize = true;
             this.lblRunMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblRunMax.Location = new System.Drawing.Point(15, 59);
+            this.lblRunMax.Location = new System.Drawing.Point(11, 59);
             this.lblRunMax.Name = "lblRunMax";
             this.lblRunMax.Size = new System.Drawing.Size(123, 13);
             this.lblRunMax.TabIndex = 7;
@@ -1131,7 +1190,7 @@
             // txtRunMin
             // 
             this.txtRunMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtRunMin.Location = new System.Drawing.Point(156, 25);
+            this.txtRunMin.Location = new System.Drawing.Point(153, 25);
             this.txtRunMin.MaxLength = 3;
             this.txtRunMin.Name = "txtRunMin";
             this.txtRunMin.Size = new System.Drawing.Size(121, 20);
@@ -1142,7 +1201,7 @@
             // 
             this.lblRunMin.AutoSize = true;
             this.lblRunMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblRunMin.Location = new System.Drawing.Point(15, 28);
+            this.lblRunMin.Location = new System.Drawing.Point(11, 28);
             this.lblRunMin.Name = "lblRunMin";
             this.lblRunMin.Size = new System.Drawing.Size(120, 13);
             this.lblRunMin.TabIndex = 5;
@@ -1159,9 +1218,9 @@
             this.groupBox4.Controls.Add(this.txtMyPokemonWebhook);
             this.groupBox4.Controls.Add(this.cbUseDiscord);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(7, 292);
+            this.groupBox4.Location = new System.Drawing.Point(13, 339);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(291, 156);
+            this.groupBox4.Size = new System.Drawing.Size(291, 142);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Discord";
@@ -1170,7 +1229,7 @@
             // 
             this.lblUseSeparateWebhook.AutoSize = true;
             this.lblUseSeparateWebhook.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblUseSeparateWebhook.Location = new System.Drawing.Point(10, 66);
+            this.lblUseSeparateWebhook.Location = new System.Drawing.Point(8, 66);
             this.lblUseSeparateWebhook.Name = "lblUseSeparateWebhook";
             this.lblUseSeparateWebhook.Size = new System.Drawing.Size(120, 13);
             this.lblUseSeparateWebhook.TabIndex = 76;
@@ -1184,7 +1243,7 @@
             this.cbUseSeparateWebhook.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbUseSeparateWebhook.Location = new System.Drawing.Point(155, 63);
+            this.cbUseSeparateWebhook.Location = new System.Drawing.Point(154, 63);
             this.cbUseSeparateWebhook.Name = "cbUseSeparateWebhook";
             this.cbUseSeparateWebhook.Size = new System.Drawing.Size(121, 21);
             this.cbUseSeparateWebhook.TabIndex = 11;
@@ -1194,7 +1253,7 @@
             // 
             this.lblWebhookURL.AutoSize = true;
             this.lblWebhookURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblWebhookURL.Location = new System.Drawing.Point(10, 90);
+            this.lblWebhookURL.Location = new System.Drawing.Point(8, 90);
             this.lblWebhookURL.Name = "lblWebhookURL";
             this.lblWebhookURL.Size = new System.Drawing.Size(79, 13);
             this.lblWebhookURL.TabIndex = 20;
@@ -1203,7 +1262,7 @@
             // txtWebhookURL
             // 
             this.txtWebhookURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtWebhookURL.Location = new System.Drawing.Point(155, 87);
+            this.txtWebhookURL.Location = new System.Drawing.Point(154, 87);
             this.txtWebhookURL.MaxLength = 200;
             this.txtWebhookURL.Name = "txtWebhookURL";
             this.txtWebhookURL.Size = new System.Drawing.Size(121, 20);
@@ -1213,7 +1272,7 @@
             // 
             this.lblMYPWebhook.AutoSize = true;
             this.lblMYPWebhook.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblMYPWebhook.Location = new System.Drawing.Point(11, 116);
+            this.lblMYPWebhook.Location = new System.Drawing.Point(8, 116);
             this.lblMYPWebhook.Name = "lblMYPWebhook";
             this.lblMYPWebhook.Size = new System.Drawing.Size(92, 13);
             this.lblMYPWebhook.TabIndex = 71;
@@ -1223,7 +1282,7 @@
             // 
             this.lblDiscord.AutoSize = true;
             this.lblDiscord.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblDiscord.Location = new System.Drawing.Point(10, 39);
+            this.lblDiscord.Location = new System.Drawing.Point(8, 39);
             this.lblDiscord.Name = "lblDiscord";
             this.lblDiscord.Size = new System.Drawing.Size(93, 13);
             this.lblDiscord.TabIndex = 37;
@@ -1232,7 +1291,7 @@
             // txtMyPokemonWebhook
             // 
             this.txtMyPokemonWebhook.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtMyPokemonWebhook.Location = new System.Drawing.Point(155, 113);
+            this.txtMyPokemonWebhook.Location = new System.Drawing.Point(154, 113);
             this.txtMyPokemonWebhook.MaxLength = 200;
             this.txtMyPokemonWebhook.Name = "txtMyPokemonWebhook";
             this.txtMyPokemonWebhook.Size = new System.Drawing.Size(121, 20);
@@ -1246,7 +1305,7 @@
             this.cbUseDiscord.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbUseDiscord.Location = new System.Drawing.Point(155, 36);
+            this.cbUseDiscord.Location = new System.Drawing.Point(154, 36);
             this.cbUseDiscord.Name = "cbUseDiscord";
             this.cbUseDiscord.Size = new System.Drawing.Size(121, 21);
             this.cbUseDiscord.TabIndex = 10;
@@ -1305,7 +1364,7 @@
             this.cbLoadingAnimation.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbLoadingAnimation.Location = new System.Drawing.Point(150, 176);
+            this.cbLoadingAnimation.Location = new System.Drawing.Point(149, 176);
             this.cbLoadingAnimation.Name = "cbLoadingAnimation";
             this.cbLoadingAnimation.Size = new System.Drawing.Size(121, 21);
             this.cbLoadingAnimation.TabIndex = 20;
@@ -1420,7 +1479,7 @@
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(923, 13);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(253, 309);
+            this.groupBox9.Size = new System.Drawing.Size(253, 346);
             this.groupBox9.TabIndex = 8;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Media Files";
@@ -1450,9 +1509,9 @@
             // pbShinyScreen
             // 
             this.pbShinyScreen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbShinyScreen.Location = new System.Drawing.Point(102, 138);
+            this.pbShinyScreen.Location = new System.Drawing.Point(92, 144);
             this.pbShinyScreen.Name = "pbShinyScreen";
-            this.pbShinyScreen.Size = new System.Drawing.Size(108, 108);
+            this.pbShinyScreen.Size = new System.Drawing.Size(140, 140);
             this.pbShinyScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbShinyScreen.TabIndex = 59;
             this.pbShinyScreen.TabStop = false;
@@ -1462,7 +1521,7 @@
             // 
             this.lblLoadingSound.AutoSize = true;
             this.lblLoadingSound.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblLoadingSound.Location = new System.Drawing.Point(6, 267);
+            this.lblLoadingSound.Location = new System.Drawing.Point(6, 310);
             this.lblLoadingSound.Name = "lblLoadingSound";
             this.lblLoadingSound.Size = new System.Drawing.Size(67, 13);
             this.lblLoadingSound.TabIndex = 66;
@@ -1472,7 +1531,7 @@
             // 
             this.lblShinyWallpaper.AutoSize = true;
             this.lblShinyWallpaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblShinyWallpaper.Location = new System.Drawing.Point(8, 182);
+            this.lblShinyWallpaper.Location = new System.Drawing.Point(8, 211);
             this.lblShinyWallpaper.Name = "lblShinyWallpaper";
             this.lblShinyWallpaper.Size = new System.Drawing.Size(65, 26);
             this.lblShinyWallpaper.TabIndex = 60;
@@ -1483,7 +1542,7 @@
             // 
             this.txtLoadingSound.Enabled = false;
             this.txtLoadingSound.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtLoadingSound.Location = new System.Drawing.Point(80, 264);
+            this.txtLoadingSound.Location = new System.Drawing.Point(80, 307);
             this.txtLoadingSound.Name = "txtLoadingSound";
             this.txtLoadingSound.Size = new System.Drawing.Size(81, 20);
             this.txtLoadingSound.TabIndex = 71;
@@ -1491,7 +1550,7 @@
             // pbPlay
             // 
             this.pbPlay.Image = ((System.Drawing.Image)(resources.GetObject("pbPlay.Image")));
-            this.pbPlay.Location = new System.Drawing.Point(167, 264);
+            this.pbPlay.Location = new System.Drawing.Point(167, 307);
             this.pbPlay.Name = "pbPlay";
             this.pbPlay.Size = new System.Drawing.Size(28, 22);
             this.pbPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1502,7 +1561,7 @@
             // btnLoadingMusic
             // 
             this.btnLoadingMusic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnLoadingMusic.Location = new System.Drawing.Point(201, 263);
+            this.btnLoadingMusic.Location = new System.Drawing.Point(201, 306);
             this.btnLoadingMusic.Name = "btnLoadingMusic";
             this.btnLoadingMusic.Size = new System.Drawing.Size(33, 23);
             this.btnLoadingMusic.TabIndex = 72;
@@ -1512,6 +1571,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.lblUserCooldown);
+            this.groupBox6.Controls.Add(this.txtUserCooldown);
             this.groupBox6.Controls.Add(this.lblQueueTime);
             this.groupBox6.Controls.Add(this.txtQueueTime);
             this.groupBox6.Controls.Add(this.lblCatchIncMax);
@@ -1527,16 +1588,36 @@
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(319, 238);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(291, 206);
+            this.groupBox6.Size = new System.Drawing.Size(291, 243);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Catch Settings";
+            // 
+            // lblUserCooldown
+            // 
+            this.lblUserCooldown.AutoSize = true;
+            this.lblUserCooldown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblUserCooldown.Location = new System.Drawing.Point(12, 215);
+            this.lblUserCooldown.Name = "lblUserCooldown";
+            this.lblUserCooldown.Size = new System.Drawing.Size(93, 13);
+            this.lblUserCooldown.TabIndex = 53;
+            this.lblUserCooldown.Text = "User Cooldown (s)";
+            // 
+            // txtUserCooldown
+            // 
+            this.txtUserCooldown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtUserCooldown.Location = new System.Drawing.Point(149, 212);
+            this.txtUserCooldown.MaxLength = 3;
+            this.txtUserCooldown.Name = "txtUserCooldown";
+            this.txtUserCooldown.Size = new System.Drawing.Size(121, 20);
+            this.txtUserCooldown.TabIndex = 52;
+            this.txtUserCooldown.Text = "60";
             // 
             // lblQueueTime
             // 
             this.lblQueueTime.AutoSize = true;
             this.lblQueueTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblQueueTime.Location = new System.Drawing.Point(9, 178);
+            this.lblQueueTime.Location = new System.Drawing.Point(13, 185);
             this.lblQueueTime.Name = "lblQueueTime";
             this.lblQueueTime.Size = new System.Drawing.Size(79, 13);
             this.lblQueueTime.TabIndex = 51;
@@ -1545,7 +1626,7 @@
             // txtQueueTime
             // 
             this.txtQueueTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtQueueTime.Location = new System.Drawing.Point(150, 175);
+            this.txtQueueTime.Location = new System.Drawing.Point(149, 182);
             this.txtQueueTime.MaxLength = 3;
             this.txtQueueTime.Name = "txtQueueTime";
             this.txtQueueTime.Size = new System.Drawing.Size(121, 20);
@@ -1556,7 +1637,7 @@
             // 
             this.lblCatchIncMax.AutoSize = true;
             this.lblCatchIncMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCatchIncMax.Location = new System.Drawing.Point(9, 148);
+            this.lblCatchIncMax.Location = new System.Drawing.Point(13, 155);
             this.lblCatchIncMax.Name = "lblCatchIncMax";
             this.lblCatchIncMax.Size = new System.Drawing.Size(102, 13);
             this.lblCatchIncMax.TabIndex = 49;
@@ -1565,7 +1646,7 @@
             // txtCatchIncMax
             // 
             this.txtCatchIncMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtCatchIncMax.Location = new System.Drawing.Point(150, 145);
+            this.txtCatchIncMax.Location = new System.Drawing.Point(149, 152);
             this.txtCatchIncMax.MaxLength = 3;
             this.txtCatchIncMax.Name = "txtCatchIncMax";
             this.txtCatchIncMax.Size = new System.Drawing.Size(121, 20);
@@ -1576,7 +1657,7 @@
             // 
             this.lblCatchIncMin.AutoSize = true;
             this.lblCatchIncMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCatchIncMin.Location = new System.Drawing.Point(9, 119);
+            this.lblCatchIncMin.Location = new System.Drawing.Point(13, 126);
             this.lblCatchIncMin.Name = "lblCatchIncMin";
             this.lblCatchIncMin.Size = new System.Drawing.Size(99, 13);
             this.lblCatchIncMin.TabIndex = 47;
@@ -1585,7 +1666,7 @@
             // txtCatchIncMin
             // 
             this.txtCatchIncMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtCatchIncMin.Location = new System.Drawing.Point(150, 116);
+            this.txtCatchIncMin.Location = new System.Drawing.Point(149, 123);
             this.txtCatchIncMin.MaxLength = 3;
             this.txtCatchIncMin.Name = "txtCatchIncMin";
             this.txtCatchIncMin.Size = new System.Drawing.Size(121, 20);
@@ -1596,7 +1677,7 @@
             // 
             this.lblCatchRateUltraball.AutoSize = true;
             this.lblCatchRateUltraball.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCatchRateUltraball.Location = new System.Drawing.Point(9, 90);
+            this.lblCatchRateUltraball.Location = new System.Drawing.Point(13, 97);
             this.lblCatchRateUltraball.Name = "lblCatchRateUltraball";
             this.lblCatchRateUltraball.Size = new System.Drawing.Size(106, 13);
             this.lblCatchRateUltraball.TabIndex = 45;
@@ -1605,7 +1686,7 @@
             // txtCatchRateUltraball
             // 
             this.txtCatchRateUltraball.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtCatchRateUltraball.Location = new System.Drawing.Point(150, 87);
+            this.txtCatchRateUltraball.Location = new System.Drawing.Point(149, 94);
             this.txtCatchRateUltraball.MaxLength = 3;
             this.txtCatchRateUltraball.Name = "txtCatchRateUltraball";
             this.txtCatchRateUltraball.Size = new System.Drawing.Size(121, 20);
@@ -1616,7 +1697,7 @@
             // 
             this.lblCatchRateGreatball.AutoSize = true;
             this.lblCatchRateGreatball.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCatchRateGreatball.Location = new System.Drawing.Point(9, 61);
+            this.lblCatchRateGreatball.Location = new System.Drawing.Point(13, 68);
             this.lblCatchRateGreatball.Name = "lblCatchRateGreatball";
             this.lblCatchRateGreatball.Size = new System.Drawing.Size(110, 13);
             this.lblCatchRateGreatball.TabIndex = 43;
@@ -1625,7 +1706,7 @@
             // txtCatchRateGreatball
             // 
             this.txtCatchRateGreatball.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtCatchRateGreatball.Location = new System.Drawing.Point(150, 58);
+            this.txtCatchRateGreatball.Location = new System.Drawing.Point(149, 65);
             this.txtCatchRateGreatball.MaxLength = 3;
             this.txtCatchRateGreatball.Name = "txtCatchRateGreatball";
             this.txtCatchRateGreatball.Size = new System.Drawing.Size(121, 20);
@@ -1636,7 +1717,7 @@
             // 
             this.lblCatchRatePokeball.AutoSize = true;
             this.lblCatchRatePokeball.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCatchRatePokeball.Location = new System.Drawing.Point(9, 32);
+            this.lblCatchRatePokeball.Location = new System.Drawing.Point(13, 39);
             this.lblCatchRatePokeball.Name = "lblCatchRatePokeball";
             this.lblCatchRatePokeball.Size = new System.Drawing.Size(109, 13);
             this.lblCatchRatePokeball.TabIndex = 41;
@@ -1645,7 +1726,7 @@
             // txtCatchRatePokeball
             // 
             this.txtCatchRatePokeball.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtCatchRatePokeball.Location = new System.Drawing.Point(150, 29);
+            this.txtCatchRatePokeball.Location = new System.Drawing.Point(149, 36);
             this.txtCatchRatePokeball.MaxLength = 3;
             this.txtCatchRatePokeball.Name = "txtCatchRatePokeball";
             this.txtCatchRatePokeball.Size = new System.Drawing.Size(121, 20);
@@ -1760,7 +1841,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1204, 505);
+            this.tabControl.Size = new System.Drawing.Size(1204, 547);
             this.tabControl.TabIndex = 1;
             // 
             // tbOBS
@@ -1783,7 +1864,7 @@
             this.tbOBS.Location = new System.Drawing.Point(4, 46);
             this.tbOBS.Name = "tbOBS";
             this.tbOBS.Padding = new System.Windows.Forms.Padding(3);
-            this.tbOBS.Size = new System.Drawing.Size(1196, 455);
+            this.tbOBS.Size = new System.Drawing.Size(1196, 497);
             this.tbOBS.TabIndex = 3;
             this.tbOBS.Text = "OBS Plugins";
             // 
@@ -1834,7 +1915,7 @@
             // btnGameSettings
             // 
             this.btnGameSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
-            this.btnGameSettings.Location = new System.Drawing.Point(848, 262);
+            this.btnGameSettings.Location = new System.Drawing.Point(848, 297);
             this.btnGameSettings.Name = "btnGameSettings";
             this.btnGameSettings.Size = new System.Drawing.Size(316, 147);
             this.btnGameSettings.TabIndex = 8;
@@ -1845,7 +1926,7 @@
             // pbOBSWS
             // 
             this.pbOBSWS.Image = ((System.Drawing.Image)(resources.GetObject("pbOBSWS.Image")));
-            this.pbOBSWS.Location = new System.Drawing.Point(343, 262);
+            this.pbOBSWS.Location = new System.Drawing.Point(343, 297);
             this.pbOBSWS.Name = "pbOBSWS";
             this.pbOBSWS.Size = new System.Drawing.Size(64, 64);
             this.pbOBSWS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1855,7 +1936,7 @@
             // pbMoveTransition
             // 
             this.pbMoveTransition.Image = ((System.Drawing.Image)(resources.GetObject("pbMoveTransition.Image")));
-            this.pbMoveTransition.Location = new System.Drawing.Point(343, 345);
+            this.pbMoveTransition.Location = new System.Drawing.Point(343, 380);
             this.pbMoveTransition.Name = "pbMoveTransition";
             this.pbMoveTransition.Size = new System.Drawing.Size(64, 64);
             this.pbMoveTransition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1865,7 +1946,7 @@
             // lblOBSWS
             // 
             this.lblOBSWS.AutoSize = true;
-            this.lblOBSWS.Location = new System.Drawing.Point(27, 276);
+            this.lblOBSWS.Location = new System.Drawing.Point(27, 311);
             this.lblOBSWS.Name = "lblOBSWS";
             this.lblOBSWS.Size = new System.Drawing.Size(141, 37);
             this.lblOBSWS.TabIndex = 11;
@@ -1874,7 +1955,7 @@
             // lblMoveTransition
             // 
             this.lblMoveTransition.AutoSize = true;
-            this.lblMoveTransition.Location = new System.Drawing.Point(27, 359);
+            this.lblMoveTransition.Location = new System.Drawing.Point(27, 394);
             this.lblMoveTransition.Name = "lblMoveTransition";
             this.lblMoveTransition.Size = new System.Drawing.Size(259, 37);
             this.lblMoveTransition.TabIndex = 10;
@@ -1883,7 +1964,7 @@
             // btnInstallPlugins
             // 
             this.btnInstallPlugins.Enabled = false;
-            this.btnInstallPlugins.Location = new System.Drawing.Point(447, 345);
+            this.btnInstallPlugins.Location = new System.Drawing.Point(447, 380);
             this.btnInstallPlugins.Name = "btnInstallPlugins";
             this.btnInstallPlugins.Size = new System.Drawing.Size(365, 64);
             this.btnInstallPlugins.TabIndex = 6;
@@ -1923,7 +2004,7 @@
             // 
             // btnDownloadPlugins
             // 
-            this.btnDownloadPlugins.Location = new System.Drawing.Point(447, 262);
+            this.btnDownloadPlugins.Location = new System.Drawing.Point(447, 297);
             this.btnDownloadPlugins.Name = "btnDownloadPlugins";
             this.btnDownloadPlugins.Size = new System.Drawing.Size(365, 64);
             this.btnDownloadPlugins.TabIndex = 5;
@@ -1967,7 +2048,7 @@
             this.tbPokemonSettings.Location = new System.Drawing.Point(4, 46);
             this.tbPokemonSettings.Name = "tbPokemonSettings";
             this.tbPokemonSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPokemonSettings.Size = new System.Drawing.Size(1196, 455);
+            this.tbPokemonSettings.Size = new System.Drawing.Size(1196, 497);
             this.tbPokemonSettings.TabIndex = 2;
             this.tbPokemonSettings.Text = "Pokemon Settings";
             // 
@@ -1979,7 +2060,7 @@
             this.cbGen9.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbGen9.Location = new System.Drawing.Point(899, 26);
+            this.cbGen9.Location = new System.Drawing.Point(258, 445);
             this.cbGen9.Name = "cbGen9";
             this.cbGen9.Size = new System.Drawing.Size(276, 39);
             this.cbGen9.TabIndex = 9;
@@ -1989,11 +2070,11 @@
             this.lblGen9.AutoSize = true;
             this.lblGen9.BackColor = System.Drawing.Color.Transparent;
             this.lblGen9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblGen9.Location = new System.Drawing.Point(610, 29);
+            this.lblGen9.Location = new System.Drawing.Point(27, 448);
             this.lblGen9.Name = "lblGen9";
-            this.lblGen9.Size = new System.Drawing.Size(270, 31);
+            this.lblGen9.Size = new System.Drawing.Size(210, 31);
             this.lblGen9.TabIndex = 105;
-            this.lblGen9.Text = "Use Gen 9 (Paldea)";
+            this.lblGen9.Text = "Gen 9 (Paldea)";
             // 
             // cbMega
             // 
@@ -2003,7 +2084,7 @@
             this.cbMega.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbMega.Location = new System.Drawing.Point(899, 126);
+            this.cbMega.Location = new System.Drawing.Point(899, 81);
             this.cbMega.Name = "cbMega";
             this.cbMega.Size = new System.Drawing.Size(276, 39);
             this.cbMega.TabIndex = 11;
@@ -2013,7 +2094,7 @@
             this.lblMega.AutoSize = true;
             this.lblMega.BackColor = System.Drawing.Color.Transparent;
             this.lblMega.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblMega.Location = new System.Drawing.Point(610, 129);
+            this.lblMega.Location = new System.Drawing.Point(610, 84);
             this.lblMega.Name = "lblMega";
             this.lblMega.Size = new System.Drawing.Size(214, 31);
             this.lblMega.TabIndex = 103;
@@ -2027,7 +2108,7 @@
             this.cbCustom.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbCustom.Location = new System.Drawing.Point(899, 176);
+            this.cbCustom.Location = new System.Drawing.Point(899, 131);
             this.cbCustom.Name = "cbCustom";
             this.cbCustom.Size = new System.Drawing.Size(276, 39);
             this.cbCustom.TabIndex = 12;
@@ -2037,7 +2118,7 @@
             this.lblCustom.AutoSize = true;
             this.lblCustom.BackColor = System.Drawing.Color.Transparent;
             this.lblCustom.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblCustom.Location = new System.Drawing.Point(610, 179);
+            this.lblCustom.Location = new System.Drawing.Point(610, 134);
             this.lblCustom.Name = "lblCustom";
             this.lblCustom.Size = new System.Drawing.Size(243, 31);
             this.lblCustom.TabIndex = 101;
@@ -2051,7 +2132,7 @@
             this.cbRegional.Items.AddRange(new object[] {
             "Enabled",
             "Disabled"});
-            this.cbRegional.Location = new System.Drawing.Point(899, 76);
+            this.cbRegional.Location = new System.Drawing.Point(899, 31);
             this.cbRegional.Name = "cbRegional";
             this.cbRegional.Size = new System.Drawing.Size(276, 39);
             this.cbRegional.TabIndex = 10;
@@ -2061,7 +2142,7 @@
             this.lblRegional.AutoSize = true;
             this.lblRegional.BackColor = System.Drawing.Color.Transparent;
             this.lblRegional.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblRegional.Location = new System.Drawing.Point(610, 79);
+            this.lblRegional.Location = new System.Drawing.Point(610, 34);
             this.lblRegional.Name = "lblRegional";
             this.lblRegional.Size = new System.Drawing.Size(258, 31);
             this.lblRegional.TabIndex = 99;
@@ -2095,9 +2176,9 @@
             // 
             // btnChannelPointSettings
             // 
-            this.btnChannelPointSettings.Location = new System.Drawing.Point(616, 340);
+            this.btnChannelPointSettings.Location = new System.Drawing.Point(899, 377);
             this.btnChannelPointSettings.Name = "btnChannelPointSettings";
-            this.btnChannelPointSettings.Size = new System.Drawing.Size(559, 89);
+            this.btnChannelPointSettings.Size = new System.Drawing.Size(276, 107);
             this.btnChannelPointSettings.TabIndex = 15;
             this.btnChannelPointSettings.Text = "Channel Point Settings\r\n======>";
             this.btnChannelPointSettings.UseVisualStyleBackColor = true;
@@ -2118,7 +2199,7 @@
             // 
             this.lblUseGIFs.AutoSize = true;
             this.lblUseGIFs.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblUseGIFs.Location = new System.Drawing.Point(610, 279);
+            this.lblUseGIFs.Location = new System.Drawing.Point(610, 234);
             this.lblUseGIFs.Name = "lblUseGIFs";
             this.lblUseGIFs.Size = new System.Drawing.Size(127, 31);
             this.lblUseGIFs.TabIndex = 52;
@@ -2132,7 +2213,7 @@
             this.cbUseGIFS.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbUseGIFS.Location = new System.Drawing.Point(899, 276);
+            this.cbUseGIFS.Location = new System.Drawing.Point(899, 231);
             this.cbUseGIFS.Name = "cbUseGIFS";
             this.cbUseGIFS.Size = new System.Drawing.Size(276, 39);
             this.cbUseGIFS.TabIndex = 14;
@@ -2140,7 +2221,7 @@
             // txtShinyChance
             // 
             this.txtShinyChance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.txtShinyChance.Location = new System.Drawing.Point(899, 227);
+            this.txtShinyChance.Location = new System.Drawing.Point(899, 182);
             this.txtShinyChance.MaxLength = 3;
             this.txtShinyChance.Name = "txtShinyChance";
             this.txtShinyChance.Size = new System.Drawing.Size(276, 38);
@@ -2162,7 +2243,7 @@
             // 
             this.lblShinyChance.AutoSize = true;
             this.lblShinyChance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblShinyChance.Location = new System.Drawing.Point(610, 229);
+            this.lblShinyChance.Location = new System.Drawing.Point(610, 184);
             this.lblShinyChance.Name = "lblShinyChance";
             this.lblShinyChance.Size = new System.Drawing.Size(244, 31);
             this.lblShinyChance.TabIndex = 47;
@@ -2341,7 +2422,7 @@
             // btnSetItUpForMe
             // 
             this.btnSetItUpForMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSetItUpForMe.Location = new System.Drawing.Point(395, 521);
+            this.btnSetItUpForMe.Location = new System.Drawing.Point(395, 553);
             this.btnSetItUpForMe.Name = "btnSetItUpForMe";
             this.btnSetItUpForMe.Size = new System.Drawing.Size(143, 74);
             this.btnSetItUpForMe.TabIndex = 118;
@@ -2352,7 +2433,7 @@
             // btnEnglishGuide
             // 
             this.btnEnglishGuide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnEnglishGuide.Location = new System.Drawing.Point(281, 522);
+            this.btnEnglishGuide.Location = new System.Drawing.Point(281, 554);
             this.btnEnglishGuide.Name = "btnEnglishGuide";
             this.btnEnglishGuide.Size = new System.Drawing.Size(108, 74);
             this.btnEnglishGuide.TabIndex = 117;
@@ -2363,7 +2444,7 @@
             // btnGermanGuide
             // 
             this.btnGermanGuide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.btnGermanGuide.Location = new System.Drawing.Point(174, 522);
+            this.btnGermanGuide.Location = new System.Drawing.Point(174, 554);
             this.btnGermanGuide.Name = "btnGermanGuide";
             this.btnGermanGuide.Size = new System.Drawing.Size(105, 74);
             this.btnGermanGuide.TabIndex = 116;
@@ -2375,7 +2456,7 @@
             // 
             this.btnConvertToCSV.BackColor = System.Drawing.Color.Red;
             this.btnConvertToCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnConvertToCSV.Location = new System.Drawing.Point(614, 522);
+            this.btnConvertToCSV.Location = new System.Drawing.Point(614, 554);
             this.btnConvertToCSV.Name = "btnConvertToCSV";
             this.btnConvertToCSV.Size = new System.Drawing.Size(224, 73);
             this.btnConvertToCSV.TabIndex = 119;
@@ -2395,7 +2476,7 @@
             this.AcceptButton = this.btnInstall;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 607);
+            this.ClientSize = new System.Drawing.Size(1207, 640);
             this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.btnConvertToCSV);
@@ -2638,6 +2719,12 @@
         private System.Windows.Forms.Label lblBackground;
         private System.Windows.Forms.ComboBox cbGen9;
         private System.Windows.Forms.Label lblGen9;
+        private System.Windows.Forms.Label lblUseSubscriberBonus;
+        private System.Windows.Forms.ComboBox cbUseSubscriberBonus;
+        private System.Windows.Forms.Label lblSubscriberMessage;
+        private System.Windows.Forms.ComboBox cbSubscriberMessage;
+        private System.Windows.Forms.Label lblUserCooldown;
+        private System.Windows.Forms.TextBox txtUserCooldown;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -47,6 +48,20 @@ namespace Pokemon_and_Friends_Upgrader
                     {
                         if (!Directory.Exists(fb.SelectedPath + "\\Pokemon and Friends")) Directory.CreateDirectory(fb.SelectedPath + "\\Pokemon and Friends");
                         txtSAMMI.Text = fb.SelectedPath;
+
+                        string sFullPath = Path.Combine(fb.SelectedPath, "json", "decks_data.json");
+                        if (File.Exists(sFullPath))
+                        {
+                            if (File.ReadAllText(sFullPath).Contains("!poke-install"))
+                            {
+                                if(MessageBox.Show("Existing configuration found, load now?","Load existing settings?",MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    LoadCurrentSettings();
+                                }
+
+                            }
+                        }
+                        
                     }
                 }
             }
@@ -71,6 +86,8 @@ namespace Pokemon_and_Friends_Upgrader
             if (!Directory.Exists(sPAFPath + @"\hdsprites240\shinygif")) Directory.CreateDirectory(sPAFPath + @"\hdsprites240\shinygif");
             if (!Directory.Exists(sPAFPath + @"\hdsprites512\normal")) Directory.CreateDirectory(sPAFPath + @"\hdsprites512\normal");
             if (!Directory.Exists(sPAFPath + @"\hdsprites512\shiny")) Directory.CreateDirectory(sPAFPath + @"\hdsprites512\shiny");
+            if (!Directory.Exists(sPAFPath + @"\cries")) Directory.CreateDirectory(sPAFPath + @"\cries");
+
 
             //Copy Database
             DirectoryInfo diDatabase = new DirectoryInfo(@"files\database");
@@ -236,7 +253,7 @@ namespace Pokemon_and_Friends_Upgrader
 
             //Create Array:
             List<string> lsGen9 = new List<string>();
-            for(int i = 906; i <= 1008; i++)
+            for(int i = 906; i <= 1023; i++)
             {
                 lsGen9.Add(i.ToString() + ".png");
             }
@@ -304,6 +321,25 @@ namespace Pokemon_and_Friends_Upgrader
                 try
                 {
                     string fptarget = sPAFPath + @"\hdsprites512\shiny\" + f.Name;
+                    if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
+                    else
+                    {
+                        for (int i = 0; i < lsGen9.Count; i++)
+                        {
+                            if (f.FullName.Contains(lsGen9[i])) File.Copy(f.FullName, fptarget, true);
+                        }
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            }
+
+            //Copy Cries
+            DirectoryInfo diCries = new DirectoryInfo(@"files\cries");
+            foreach (FileInfo f in diCries.GetFiles())
+            {
+                try
+                {
+                    string fptarget = sPAFPath + @"\cries\" + f.Name;
                     if (!File.Exists(fptarget)) File.Copy(f.FullName, fptarget);
                     else
                     {
@@ -406,7 +442,6 @@ namespace Pokemon_and_Friends_Upgrader
             string sOutput = sr.ReadToEnd();
             sr.Close();
 
-
             //English
             //German
             //French
@@ -434,9 +469,29 @@ namespace Pokemon_and_Friends_Upgrader
                     break;
             }
 
-
-            string VAR_USE_NON_AFFILIATE_VAR = "true";
-            if (cbAffiliate.SelectedIndex == 1) VAR_USE_NON_AFFILIATE_VAR = "false";
+            switch(cbAffiliate.SelectedIndex)
+            {
+                case 0:
+                    sOutput = sOutput.Replace("VAR_USE_TWITCH_VAR", "true");
+                    sOutput = sOutput.Replace("VAR_USE_YOUTUBE_VAR", "false");
+                    sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", "false");
+                    break;
+                case 1:
+                    sOutput = sOutput.Replace("VAR_USE_TWITCH_VAR", "true");
+                    sOutput = sOutput.Replace("VAR_USE_YOUTUBE_VAR", "false");
+                    sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", "true");
+                    break;
+                case 2:
+                    sOutput = sOutput.Replace("VAR_USE_TWITCH_VAR", "false");
+                    sOutput = sOutput.Replace("VAR_USE_YOUTUBE_VAR", "true");
+                    sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", "true");
+                    break;
+                case 3:
+                    sOutput = sOutput.Replace("VAR_USE_TWITCH_VAR", "true");
+                    sOutput = sOutput.Replace("VAR_USE_YOUTUBE_VAR", "true");
+                    sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", "true");
+                    break;
+            }
 
             string VAR_USE_GIFS_VAR = "true";
             if (cbUseGIFS.SelectedIndex == 1) VAR_USE_GIFS_VAR = "false";
@@ -536,9 +591,14 @@ namespace Pokemon_and_Friends_Upgrader
             string VAR_USE_BACKGROUND_VAR = "true";
             if (cbBackground.SelectedIndex == 1) VAR_USE_BACKGROUND_VAR = "false";
 
+            string VAR_USE_SUBSCRIBER_BONUS_VAR = "true";
+            if (cbUseSubscriberBonus.SelectedIndex == 1) VAR_USE_SUBSCRIBER_BONUS_VAR = "false";
+
+            string VAR_USE_SUBSCRIBER_MESSAGE = "true";
+            if (cbSubscriberMessage.SelectedIndex == 1) VAR_USE_SUBSCRIBER_MESSAGE = "false";
+
             sOutput = sOutput.Replace("VAR_LANGUAGE_VAR", VAR_LANGUAGE_VAR);
             sOutput = sOutput.Replace("VAR_POKE_PATH_VAR", txtSAMMI.Text.Replace(@"\", "/") + @"/Pokemon and Friends/");
-            sOutput = sOutput.Replace("VAR_USE_NON_AFFILIATE_VAR", VAR_USE_NON_AFFILIATE_VAR);
             sOutput = sOutput.Replace("VAR_THRESHOLD_VAR", txtAudioTreshhold.Text);
             sOutput = sOutput.Replace("VAR_OBSWSPW_VAR", txtOBSWSPW.Text);
             sOutput = sOutput.Replace("VAR_SHINYCHANCE_VAR", txtShinyChance.Text);
@@ -614,15 +674,17 @@ namespace Pokemon_and_Friends_Upgrader
 
             sOutput = sOutput.Replace("VAR_ANIMATED_TRAINERS_VAR", VAR_ANIMATED_TRAINERS_VAR);
             sOutput = sOutput.Replace("VAR_ANNOUNCE_VAR", VAR_ANNOUNCE_VAR);
-            sOutput = sOutput.Replace("VAR_BROADCASTER_VAR", txtBroadcaster.Text.ToLowerInvariant().Replace(" ", ""));
+            sOutput = sOutput.Replace("VAR_BROADCASTER_VAR", txtBroadcaster.Text);
 
-            sOutput = sOutput.Replace("12345", Convert.ToString(Convert.ToInt32(txtQueueTime.Text) * 1000));
-            sOutput = sOutput.Replace("67890", Convert.ToString((Convert.ToInt32(txtQueueTime.Text) * 1000) + 1000));
+            sOutput = sOutput.Replace("VAR_QUEUETIME_DURATION_VAR", txtQueueTime.Text);
 
             sOutput = sOutput.Replace("VAR_USE_BACKGROUND_VAR", VAR_USE_BACKGROUND_VAR);
 
-            sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"sammi_version\":\"2023.1.0\", \"extension_triggers\":[\"PaFModInstall\"]}");
+            sOutput = sOutput.Replace("VAR_USE_SUBSCRIBER_BONUS_VAR", VAR_USE_SUBSCRIBER_BONUS_VAR);
+            sOutput = sOutput.Replace("VAR_USE_SUBSCRIBER_MESSAGE", VAR_USE_SUBSCRIBER_MESSAGE);
+            sOutput = sOutput.Replace("VAR_USER_COOLDOWN_VAR", txtUserCooldown.Text);
 
+            sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"sammi_version\":\"2023.3.1\", \"extension_triggers\":[\"PaFModInstall\"]}");
 
             using (StreamWriter sw = new StreamWriter(txtSAMMI.Text + @"\Pokemon and Friends\PaFGame.sef"))
             {
@@ -657,7 +719,7 @@ namespace Pokemon_and_Friends_Upgrader
                 }
                 else
                 {
-                    MessageBox.Show("Installation completed.\n\nNext please Install the PaFGame.sef Extension from your \"SAMMI => Pokemon and Friends\" folder and then type !poke-install into the chat.\n\nIF THIS IS YOUR FIRST TIME UPGRADING FROM V1.1.6 OR LOWER TO V1.2.0 PLEASE MAKE SURE TO CONVERT THE DATABASE TO A CSV FILE WITH THIS TOOL, ONLY DO IT WHEN SWITICHING THE FIRST TIME SINCE IT WILL OVERWRITE YOUR DATA OTHERWISE!");
+                    MessageBox.Show("Installation completed.\n\nNext please Install the PaFGame.sef Extension from your \"SAMMI => Pokemon and Friends\" folder and then type !poke-install into the chat.\n\nIf you like this extension, please consider becomming one of my Ko-Fi members.\nThis will help me create even more fun stuff.");
                 }
             }
             else
@@ -783,13 +845,17 @@ namespace Pokemon_and_Friends_Upgrader
             Properties.Settings.Default.OBSWSVersion = cbWebsocket.SelectedIndex;
             Properties.Settings.Default.UseBackground = cbBackground.SelectedIndex;
 
+            Properties.Settings.Default.UseSubscriberMessage = cbSubscriberMessage.SelectedIndex;
+            Properties.Settings.Default.UseSubsriberBonus = cbUseSubscriberBonus.SelectedIndex;
+            Properties.Settings.Default.UserCooldown = txtUserCooldown.Text;
+
             Properties.Settings.Default.Save();
         }
         private void initializeToolTips()
         {
             TTExplanation.SetToolTip(lblSAMMI, "Select your SAMMI Folder");
             TTExplanation.SetToolTip(lblLanguage, "Select your Language");
-            TTExplanation.SetToolTip(lblAffiliate, "Non Affiliate Mode turns off channel points and \nadds the !throw command instead.\nRecommended only for people who\nhaven't unlocked Channel Points yet");
+            TTExplanation.SetToolTip(lblAffiliate, "Select your platform where / how you want\nto use this game.");
             TTExplanation.SetToolTip(lblQueueTime, "Amount of time before the queue gets closed, don't use more than 9 or it can cause problems");
             TTExplanation.SetToolTip(lblAudioTreshhold, "Sets the Limter of the Volume of the Sounds\nThe higher it is, the lower the maximum Volume of the Sounds will be\nRecommended Value is 30-35\n0 = Nearly no Limit");
             TTExplanation.SetToolTip(lblOBSWSPW, "OBS Websocket Password.\nCan be found in OBS under Tools => Websocket Server Settings\nCan be left empty if the Password checkbox is not ticked in the OBS Websocket Settings");
@@ -860,6 +926,12 @@ namespace Pokemon_and_Friends_Upgrader
             TTExplanation.SetToolTip(lblAnnounce, "Announces in Chat when a legendary or \nmythical Pokemon has spawned");
 
             TTExplanation.SetToolTip(lblBackground, "Enables a background behind the Pokemon\nfor better visibility in all scenes.");
+
+
+            TTExplanation.SetToolTip(lblSubscriberMessage, "Enables a message when someone subscribes\non Twitch to inform them of their advantages.");
+            TTExplanation.SetToolTip(lblUseSubscriberBonus, "Gives Twitch Subscribers a 5% Bonus Catchrate\nand 25% chance to refund their PaF Redemptions.");
+            TTExplanation.SetToolTip(lblUserCooldown, "Sets the time users will have to wait before throwing another ball.");
+
 
         }
         private void LoadValues()
@@ -975,6 +1047,26 @@ namespace Pokemon_and_Friends_Upgrader
 
             cbWebsocket.SelectedIndex = Properties.Settings.Default.OBSWSVersion;
             cbBackground.SelectedIndex = Properties.Settings.Default.UseBackground;
+
+            cbUseSubscriberBonus.SelectedIndex = Properties.Settings.Default.UseSubsriberBonus;
+            cbSubscriberMessage.SelectedIndex = Properties.Settings.Default.UseSubscriberMessage;
+            txtUserCooldown.Text = Properties.Settings.Default.UserCooldown;
+
+            if(txtSAMMI.Text != "")
+            {
+                string sFullPath = Path.Combine(txtSAMMI.Text, "json", "decks_data.json");
+                if (File.Exists(sFullPath))
+                {
+                    if (File.ReadAllText(sFullPath).Contains("!poke-install"))
+                    {
+                        if (MessageBox.Show("Existing configuration found, load now?", "Load existing settings?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            LoadCurrentSettings();
+                        }
+
+                    }
+                }
+            }
         }
 
         #endregion
@@ -1654,7 +1746,7 @@ namespace Pokemon_and_Friends_Upgrader
 
         private void cbAffiliate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbAffiliate.SelectedIndex == 0)
+            if (cbAffiliate.SelectedIndex == 1)
             {
                 if (DialogResult.Yes != MessageBox.Show("This modus should only be turned on if you DON'T want to use channel points! Are you sure that you want to continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) cbAffiliate.SelectedIndex = 1;
             }
@@ -1691,6 +1783,374 @@ namespace Pokemon_and_Friends_Upgrader
         private void cbWebsocket_SelectedIndexChanged(object sender, EventArgs e)
         {
             CheckPlugins();
+        }
+
+        private void LoadCurrentSettings()
+        {
+            List<SettingsObject> lsSettings = new List<SettingsObject>();
+            HashSet<string> uniqueParameterNames = new HashSet<string>();
+
+            bool bIsTwitch = false;
+            bool bIsYoutube = false;
+
+            if (txtSAMMI.Text == "")
+            {
+                MessageBox.Show("Please set your SAMMI folder first to use this function.");
+                return;
+            }
+
+            string sFullPath = Path.Combine(txtSAMMI.Text, "json", "decks_data.json");
+            if (!File.Exists(sFullPath))
+            {
+                MessageBox.Show("No settings for PaF found in your SAMMI decks.");
+                return;
+            }
+
+            try
+            {
+                // Read the JSON from the file
+                string json = File.ReadAllText(sFullPath);
+
+                if(json.Contains("VAR_LANGUAGE_VAR"))
+                {
+                    MessageBox.Show("Debug Deck, will not try to load variables.");
+                    return;
+                }
+
+                // Parse the JSON into a JObject
+                JObject obj = JObject.Parse(json);
+
+                // Check if the deck_name is "Pokemon and Friends Mod"
+                var pokemonDeck = obj["default"]
+                    .FirstOrDefault(deck => deck["deck_name"]?.ToString() == "Pokemon and Friends Mod");
+
+                if (pokemonDeck != null && pokemonDeck.ToString().Contains("button_list"))
+                {
+                    // Check for a button with "text": "Settings" in the "button_list"
+                    var settingsButton = pokemonDeck["button_list"]
+                        .FirstOrDefault(button => button["text"]?.ToString() == "Settings");
+
+                    if (settingsButton != null)
+                    {
+                        foreach (var command in settingsButton["command_list"])
+                        {
+                            if (command.Value<string>("b0") != null && command.Value<string>("b2") != null)
+                            {
+                                string parameterName = command.Value<string>("b0");
+
+                                // Check if the parameter name is unique
+                                if (uniqueParameterNames.Add(parameterName))
+                                {
+                                    string parameterValue = command.Value<string>("b2");
+
+                                    // Create and use the settings object
+                                    var settingsObject = new SettingsObject
+                                    {
+                                        ParameterName = parameterName,
+                                        ParameterValue = parameterValue.Replace("\"","")
+                                    };
+
+                                    if (settingsObject.ParameterName == "is_twitch" && settingsObject.ParameterValue == "true") bIsTwitch = true;
+                                    if (settingsObject.ParameterName == "is_youtube" && settingsObject.ParameterValue == "true") bIsYoutube = true;
+
+                                    lsSettings.Add(settingsObject);
+
+                                    // Now you can use the settingsObject as needed
+                                    Console.WriteLine($"Parameter Name: {settingsObject.ParameterName}, Parameter Value: {settingsObject.ParameterValue}");
+                                }
+                                else
+                                {
+                                    // Parameter name already exists, handle it as needed
+                                    Console.WriteLine($"Parameter Name '{parameterName}' already exists. Skipping.");
+                                }
+                            }
+                        }
+                    }
+                }
+                string so = "";
+                bool bRewards = false;
+                bool bQueueTime = false;
+
+
+                foreach (SettingsObject s in lsSettings)
+                {
+                    so += s.ParameterName + " " + s.ParameterValue + Environment.NewLine;
+                    switch (s.ParameterName)
+                    {
+                        case "language":
+                            switch(s.ParameterValue)
+                            {
+                                case "en":
+                                    cbLanguage.SelectedIndex = 0;
+                                    break;
+                                case "de":
+                                    cbLanguage.SelectedIndex = 1;
+                                    break;
+                                case "fr":
+                                    cbLanguage.SelectedIndex = 2;
+                                    break;
+                                case "es":
+                                    cbLanguage.SelectedIndex = 3;
+                                    break;
+                                case "it":
+                                    cbLanguage.SelectedIndex = 4;
+                                    break;
+                                case "pt":
+                                    cbLanguage.SelectedIndex = 5;
+                                    break;
+                            }
+                            break;
+                        case "non_afilliate":
+                            if (s.ParameterValue == "false")
+                            {
+                                cbAffiliate.SelectedIndex = 0;
+                            }
+                            else
+                            {
+                                if (bIsTwitch && bIsYoutube) cbAffiliate.SelectedIndex = 3;
+                                else if (bIsTwitch) cbAffiliate.SelectedIndex = 1;
+                                else cbAffiliate.SelectedIndex = 2;
+                            }
+                            break;
+                        case "threshold_value":
+                            txtAudioTreshhold.Text = s.ParameterValue;
+                            break;
+                        case "broadcaster_name":
+                            txtBroadcaster.Text = s.ParameterValue;
+                            break;
+                        case "obswsPW":
+                            txtOBSWSPW.Text = s.ParameterValue;
+                            break;
+                        case "shiny_percentage":
+                            txtShinyChance.Text = s.ParameterValue;
+                            break;
+                        case "use_pokemon_gifs":
+                            cbUseGIFS.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_gen1":
+                            cbGen1.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1; 
+                            break;
+                        case "use_gen2":
+                            cbGen2.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1; 
+                            break;
+                        case "use_gen3":
+                            cbGen3.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1; 
+                            break;
+                        case "use_gen4":
+                            cbGen4.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1; 
+                            break;
+                        case "use_gen5":
+                            cbGen5.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1; 
+                            break;
+                        case "use_gen6":
+                            cbGen6.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_gen7":
+                            cbGen7.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_gen8":
+                            cbGen8.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_gen9":
+                            cbGen9.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_regionals":
+                            cbRegional.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_custom_pokemon":
+                            cbCustom.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_mega_pokemon":
+                            cbMega.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "catch_pokeball":
+                            txtCatchRatePokeball.Text = s.ParameterValue;
+                            break;
+                        case "catch_greatball":
+                            txtCatchRateGreatball.Text = s.ParameterValue;
+                            break;
+                        case "catch_ultraball":
+                            txtCatchRateUltraball.Text = s.ParameterValue;
+                            break;
+                        case "catch_min_increase":
+                            txtCatchIncMin.Text = s.ParameterValue;
+                            break;
+                        case "catch_max_increase":
+                            txtCatchIncMax.Text = s.ParameterValue;
+                            break;
+                        case "use_animated_trainers":
+                            cbAnimatedTrainers.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "spawn_time":
+                            txtSpawnTimer.Text = s.ParameterValue;
+                            break;
+                        case "use_random_spawnchance":
+                            cbRandomSpawn.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "spawn_chance":
+                            txtSpawnChance.Text = s.ParameterValue;
+                            break;
+                        case "use_spawnmusic":
+                            cbSpawnSound.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_loadingscreen":
+                            cbUseLoadingScreen.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_loadinganimation":
+                            cbLoadingAnimation.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_background":
+                            cbBackground.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "runaway_increase_min":
+                            txtRunMin.Text = s.ParameterValue;
+                            break;
+                        case "runaway_increase_max":
+                            txtRunMax.Text = s.ParameterValue;
+                            break;
+                        case "run_time":
+                            txtRunTimer.Text = s.ParameterValue;
+                            break;
+                        case "use_discord":
+                            cbUseDiscord.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "discord_catch_webhook":
+                            txtWebhookURL.Text = s.ParameterValue;
+                            break;
+                        case "discord_other_webhook":
+                            txtMyPokemonWebhook.Text = s.ParameterValue;
+                            break;
+                        case "use_bonustime":
+                            cbUseBonusTime.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "bonustime_min_users":
+                            txtBonusMinUsers.Text = s.ParameterValue;
+                            break;
+                        case "bonustime_duration":
+                            txtBonusTime.Text = s.ParameterValue;
+                            break;
+                        case "bonustime_spawn_time":
+                            txtBonusSpawnTimer.Text = s.ParameterValue;
+                            break;
+                        case "use_greatball":
+                            cbGreatball.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_ultraball":
+                            cbUltraball.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_masterball":
+                            cbMasterball.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_mystery_pokemon":
+                            cbMysteryPokemon.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_mystery_shiny":
+                            cbMysteryShiny.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_summon":
+                            cbSummon.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_gift":
+                            cbGift.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_breakout_message":
+                            cbUseBreakout.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_run_message":
+                            cbUseRunMessage.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_refund_message":
+                            cbRefundMessage.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "announce_rare_pokemons":
+                            cbAnnounce.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+
+                        case "pokeball_name":
+                            txtPokeball.Text = s.ParameterValue;
+                            bRewards = true;
+                            break;
+                        case "greatball_name":
+                            txtGreatball.Text = s.ParameterValue;
+                            break;
+                        case "ultraball_name":
+                            txtUltraball.Text = s.ParameterValue;
+                            break;
+                        case "masterball_name":
+                            txtMasterball.Text = s.ParameterValue;
+                            break;
+                        case "mystery_pokemon_name":
+                            txtMysteryPokemon.Text = s.ParameterValue;
+                            break;
+                        case "mystery_shiny_name":
+                            txtMysteryShiny.Text = s.ParameterValue;
+                            break;
+                        case "summon_name":
+                            txtSummon.Text = s.ParameterValue;
+                            break;
+                        case "gift_name":
+                            txtGift.Text = s.ParameterValue;
+                            break;
+                        case "pokeball_price":
+                            txtPricePokeball.Text = s.ParameterValue;
+                            break;
+                        case "greatball_price":
+                            txtPriceGreatball.Text = s.ParameterValue;
+                            break;
+                        case "ultraball_price":
+                            txtPriceUltraball.Text = s.ParameterValue;
+                            break;
+                        case "masterball_price":
+                            txtPriceMasterball.Text = s.ParameterValue;
+                            break;
+                        case "mystery_pokemon_price":
+                            txtPriceMysteryPokemon.Text = s.ParameterValue;
+                            break;
+                        case "mystery_shiny_price":
+                            txtPriceMysteryShiny.Text = s.ParameterValue;
+                            break;
+                        case "summon_price":
+                            txtPriceSummon.Text = s.ParameterValue;
+                            break;
+                        case "gift_price":
+                            txtPriceGift.Text = s.ParameterValue;
+                            break;
+                        case "queue_time_duration":
+                            txtQueueTime.Text = s.ParameterValue;
+                            bQueueTime = true;
+                            break;
+                        case "use_subscriber_bonus":
+                            cbUseSubscriberBonus.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "use_subscriber_message":
+                            cbSubscriberMessage.SelectedIndex = (s.ParameterValue == "true") ? 0 : 1;
+                            break;
+                        case "user_cooldown":
+                            txtUserCooldown.Text = s.ParameterValue;
+                            break;
+                    }
+                }
+                //Clipboard.SetText(so);
+
+                string sMessage = "Most settings loaded successfully.\nThe following settings can not be loaded:\n\n";
+                sMessage += "- Sounds and graphics files\n";
+                sMessage += "- New settings that weren't in the version you are using\n";
+                if (!bRewards) sMessage += "- Channel Point Names & Prices\n";
+                if (!bQueueTime) sMessage += "- Queue Time Duration\n";
+
+                MessageBox.Show(sMessage);
+            }
+            catch (Exception ex)
+            {
+                if(ex.Message == "Cannot access child value on Newtonsoft.Json.Linq.JValue.") MessageBox.Show("Could not read the Pokemon Deck Settings.\nThis most likely happens because of an encrypted deck.\nPlease try to move the Pokemon and Friends Mod Deck to the first spot in your deck list and try again.");
+                else MessageBox.Show($"Error loading settings: {ex.Message}");
+            }
+        }
+
+        public class SettingsObject
+        {
+            public string ParameterName { get; set; }
+            public string ParameterValue { get; set; }
         }
     }
 
@@ -1832,7 +2292,6 @@ namespace Pokemon_and_Friends_Upgrader
             return x.CompareTo(y);
         }
     }
-
     public class PokeTrainer
     {
         public string sName;

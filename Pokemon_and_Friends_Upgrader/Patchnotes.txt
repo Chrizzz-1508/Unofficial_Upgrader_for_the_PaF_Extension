@@ -1,3 +1,18 @@
+23.12.23 Update V1.3.0
+======================
+- Added YouTube Support (though testing was limited; please report any issues).
+- Updated !poke-commands (now includes non-affiliate commands and more detailed descriptions).
+- Added optional user cooldowns for throwing balls.
+- Added Subscriber advantages for Twitch (Subscribers now gain a 5% bonus catch rate and a 25% refund chance for channel point redemptions).
+- Added Gen 9 DLC Pokemon and 2 new regional forms.
+- Moved Hisui Regionals from Gen 9 to Gen 8
+- Removed unnecessary PaF Commands since they are now natively included in SAMMI.
+- Removed the check for an Update (updating can now be done in the bridge).
+- Reworked the way channel point rewards are handled (automatic checks on install, and manual creations in SAMMI are fetched from Twitch).
+- New command !addrandompokemon "<user>" <Pokemon> (adds a Pokemon to a user who doesn't own it yet).
+- Added an option to automatically fetch the current settings in the installer.
+- Changed the way some messages are sent (now replies to commands like !catchrate instead of just sending it into the chat)
+
 13.06.23 Update V1.2.8
 ======================
 - Fixed a bug with "!addpokemontoall" where SAMMI would crash
