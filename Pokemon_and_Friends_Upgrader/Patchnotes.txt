@@ -1,5 +1,14 @@
-23.12.23 Update V1.3.0
+22.01.24 Update V1.3.0
 ======================
+- Since no bugs where found anymore, this version was officially released
+
+11.01.24 Update BETA V1.3.0.1
+==============================
+- Fixed a bug with channel points not beeing refunded for subscribers with a 25% chance
+- Fixed a bug with channel points not beeing refunded when still beeing on cooldown
+
+31.12.23 Update BETA V1.3.0
+===========================
 - Added YouTube Support (though testing was limited; please report any issues).
 - Updated !poke-commands (now includes non-affiliate commands and more detailed descriptions).
 - Added optional user cooldowns for throwing balls.
