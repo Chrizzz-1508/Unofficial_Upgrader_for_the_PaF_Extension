@@ -1,3 +1,15 @@
+10.10.24 Update V1.3.1
+======================
+
+- New !happyhour command that halves the prices of the PaF Mod channel point redemptions (PvP not included)
+- New !spawn command that displays the timestamp of when the next Pokemon will spawn
+- New !poke-filter option to spawn only stage 1 Pokemon
+- New SAMMI command which lets you apply filters so that you can create your own buttons
+- New POKE_SETTINGS.init_completed variable to check if the game is initialized correctly  
+- Fixed the message for the subscriber bonus (now also displays the name of the user)
+- Fixed the types of Brute Bonnet
+- Fixed a bug for !poke-filter where not all Pokemons were included
+
 22.01.24 Update V1.3.0
 ======================
 - Since no bugs where found anymore, this version was officially released

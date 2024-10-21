@@ -684,7 +684,7 @@ namespace Pokemon_and_Friends_Upgrader
             sOutput = sOutput.Replace("VAR_USE_SUBSCRIBER_MESSAGE", VAR_USE_SUBSCRIBER_MESSAGE);
             sOutput = sOutput.Replace("VAR_USER_COOLDOWN_VAR", txtUserCooldown.Text);
 
-            sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"sammi_version\":\"2023.3.1\", \"extension_triggers\":[\"PaFModInstall\"]}");
+            sOutput = sOutput.Replace("\"include_image\": { }", "\"include_image\": { } ,\"transmitter\":true, \"sammi_version\":\"2024.3.1\", \"extension_triggers\":[\"PaFModInstall\"]}");
 
             using (StreamWriter sw = new StreamWriter(txtSAMMI.Text + @"\Pokemon and Friends\PaFGame.sef"))
             {

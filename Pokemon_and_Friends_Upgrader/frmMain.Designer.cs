@@ -300,9 +300,9 @@
             this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lblVersion.Location = new System.Drawing.Point(39, 566);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(78, 24);
+            this.lblVersion.Size = new System.Drawing.Size(63, 24);
             this.lblVersion.TabIndex = 76;
-            this.lblVersion.Text = "V1.3.0.1";
+            this.lblVersion.Text = "V1.3.1";
             // 
             // btnMigrate
             // 
